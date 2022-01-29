@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="PassesWindow" parent="AdwApplicationWindow">
+    <property name="title" translatable="yes">Passes</property>
+    <property name="default-width">1024</property>
+    <property name="default-height">600</property>
+
+    <child>
+      <object class="AdwLeaflet" id="leaflet">
+        <child>
+          <object class="GtkBox">
+            <property name="orientation">vertical</property>
+            <property name="width_request">294</property>
+            <child>
+              <object class="AdwHeaderBar" id="main_header_bar">
+                <binding name="show-end-title-buttons">
+                  <lookup name="folded">leaflet</lookup>
+                </binding>
+                <child type="start">
+                  <object class="GtkButton" id="button">
+                    <property name="action_name">app.import</property>
+                    <property name="can_focus">False</property>
+                    <property name="icon-name">list-add</property>
+                    <property name="visible">True</property>
+                  </object>
+                </child>
+                <child type="end">
+                  <object class="GtkMenuButton">
+                    <property name="icon-name">open-menu-symbolic</property>
+                    <property name="menu-model">primary_menu</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkScrolledWindow" id="scrolled_window">
+                <property name="hscrollbar_policy">never</property>
+                <property name="vexpand">True</property>
+                <child>
+                  <object class="GtkViewport">
+                    <property name="scroll_to_focus">True</property>
+                    <child>
+                      <object class="GtkListBox" id="pass_list">
+                        <property name="css-classes">navigation-sidebar</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+
+        <child>
+          <object class="AdwLeafletPage">
+            <property name="navigatable">False</property>
+            <property name="child">
+              <object class="GtkSeparator">
+              </object>
+            </property>
+          </object>
+        </child>
+
+        <child>
+          <object class="GtkBox">
+            <property name="orientation">vertical</property>
+            <property name="width_request">294</property>
+            <property name="hexpand">True</property>
+            <child>
+              <object class="AdwHeaderBar">
+                <binding name="show-start-title-buttons">
+                  <lookup name="folded">leaflet</lookup>
+                </binding>
+              </object>
+            </child>
+            <child>
+              <object class="PassDetailedView" id="pass_detailed_view">
+              </object>
+            </child>
+          </object>
+        </child>
+
+      </object>
+    </child>
+  </template>
+
+  <menu id="primary_menu">
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">_Preferences</attribute>
+        <attribute name="action">app.preferences</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_Keyboard Shortcuts</attribute>
+        <attribute name="action">win.show-help-overlay</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_About passes</attribute>
+        <attribute name="action">app.about</attribute>
+      </item>
+    </section>
+  </menu>
+</interface>

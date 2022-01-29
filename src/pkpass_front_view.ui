@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="PassFrontView" parent="GtkBox">
+    <property name="orientation">vertical</property>
+    <property name="margin-top">8</property>
+    <property name="margin-bottom">8</property>
+    <property name="spacing">16</property>
+    <property name="width-request">294</property>
+
+    <child>
+      <object class="GtkImage" id="logo">
+      </object>
+    </child>
+
+    <child>
+      <object class="GtkBox" id="header_fields">
+        <property name="orientation">vertical</property>
+        <property name="spacing">4</property>
+      </object>
+    </child>
+
+    <child>
+      <object class="GtkBox" id="primary_fields">
+        <property name="orientation">vertical</property>
+        <property name="spacing">4</property>
+      </object>
+    </child>
+
+    <child>
+      <object class="GtkBox" id="secondary_fields">
+        <property name="orientation">vertical</property>
+        <property name="spacing">4</property>
+      </object>
+    </child>
+
+    <child>
+      <object class="GtkBox" id="auxiliary_fields">
+        <property name="orientation">vertical</property>
+        <property name="spacing">4</property>
+      </object>
+    </child>
+
+  </template>
+</interface>

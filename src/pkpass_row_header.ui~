@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="PassRowHeader" parent="GtkLabel">
+    <property name="can-focus">False</property>
+    <property name="selectable">False</property>
+    <property name="css-classes">title2</property>
+    <property name="margin-top">8</property>
+    <property name="margin-start">8</property>
+    <property name="margin-end">8</property>
+  </template>
+</interface>

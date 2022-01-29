@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="PassRow" parent="GtkListBoxRow">
+    <property name="can-focus">False</property>
+    <property name="selectable">True</property>
+    <property name="margin-top">8</property>
+
+    <child>
+      <object class="GtkBox" id="box">
+        <property name="can-focus">False</property>
+        <property name="margin-start">0</property>
+        <property name="margin-end">0</property>
+        <property name="margin-top">0</property>
+        <property name="margin-bottom">0</property>
+        <property name="spacing">8</property>
+
+        <child>
+          <object class="ColoredWidget" id="colored_widget">
+            <property name="width-request">52</property>
+            <property name="height-request">0</property>
+            <child>
+              <object class="GtkImage" id="icon">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="pixel-size">36</property>
+                <property name="margin-start">8</property>
+              </object>
+            </child>
+          </object>
+        </child>
+
+        <child>
+          <object class="GtkLabel" id="name">
+            <property name="visible">True</property>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>

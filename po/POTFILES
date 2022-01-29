@@ -1,0 +1,7 @@
+data/me.sanchezrodriguez.passes.desktop.in
+data/me.sanchezrodriguez.passes.appdata.xml.in
+data/me.sanchezrodriguez.passes.gschema.xml
+src/window.ui
+src/main.py
+src/window.py
+

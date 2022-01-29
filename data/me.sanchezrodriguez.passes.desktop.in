@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Passes
+Exec=passes
+Icon=me.sanchezrodriguez.passes
+Terminal=false
+Type=Application
+Categories=GTK;
+StartupNotify=true
