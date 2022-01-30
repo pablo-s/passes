@@ -3,7 +3,7 @@
   <gresource prefix="/me/sanchezrodriguez/passes">
     <file>colored_widget.ui</file>
     <file>pkpass_detailed_view.ui</file>
-    <file>pkpass_front_view.ui</file>
+    <file>pkpass_front_view_fallback.ui</file>
     <file>pkpass_row.ui</file>
     <file>pkpass_row_header.ui</file>
     <file>window.ui</file>

@@ -18,10 +18,19 @@
 from gi.repository import Gtk
 
 
-@Gtk.Template(resource_path='/me/sanchezrodriguez/passes/pkpass_front_view.ui')
-class PassFrontView(Gtk.Box):
+class PassFrontView:
+    """
+    A factory to instance the appropriate view
+    """
+    @staticmethod
+    def new(a_pass):
+        return FallbackView(a_pass)
 
-    __gtype_name__ = 'PassFrontView'
+
+@Gtk.Template(resource_path='/me/sanchezrodriguez/passes/pkpass_front_view_fallback.ui')
+class FallbackView(Gtk.Box):
+
+    __gtype_name__ = 'FallbackView'
 
     logo = Gtk.Template.Child()
     header_fields = Gtk.Template.Child()

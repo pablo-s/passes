@@ -2,7 +2,7 @@
 <interface>
   <requires lib="gtk" version="4.0"/>
   <requires lib="libadwaita" version="1.0"/>
-  <template class="PassFrontView" parent="GtkBox">
+  <template class="FallbackView" parent="GtkBox">
     <property name="orientation">vertical</property>
     <property name="margin-top">8</property>
     <property name="margin-bottom">8</property>
@@ -41,6 +41,7 @@
         <property name="spacing">4</property>
       </object>
     </child>
+
 
   </template>
 </interface>

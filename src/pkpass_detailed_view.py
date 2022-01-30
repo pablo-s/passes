@@ -37,6 +37,6 @@ class PassDetailedView(Gtk.Box):
         if self.__current_front_widget:
             self.front_view.remove(self.__current_front_widget)
 
-        self.__current_front_widget = PassFrontView(a_pass)
+        self.__current_front_widget = PassFrontView.new(a_pass)
         self.front_view.append(self.__current_front_widget)
         self.carousel.scroll_to(self.front_view, True)
