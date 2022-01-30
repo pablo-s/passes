@@ -26,7 +26,9 @@ class PassesWindow(Adw.ApplicationWindow):
     __gtype_name__ = 'PassesWindow'
 
     main_header_bar = Gtk.Template.Child()
-    leaflet = Gtk.Template.Child()
+    main_leaflet = Gtk.Template.Child()
+
+    back_button = Gtk.Template.Child()
 
     pass_list = Gtk.Template.Child()
     pass_detailed_view = Gtk.Template.Child()
@@ -38,7 +40,7 @@ class PassesWindow(Adw.ApplicationWindow):
 
         # Bind GtkListBox with GioListStore
         self.pass_list.bind_model(pass_list_model, self._create_pass_widget)
-        # Connect row activated signal
+        self.back_button.connect('clicked', self._on_back_clicked)
         self.pass_list.connect('row-activated', self._on_row_activated)
 
         self.pass_list.set_header_func(self._on_update_header)
@@ -46,15 +48,19 @@ class PassesWindow(Adw.ApplicationWindow):
     def _create_pass_widget(self, a_pass):
         return PassRow(a_pass)
 
+    def _on_back_clicked(self, button):
+        self.main_leaflet.navigate(Adw.NavigationDirection.BACK)
+
     def _on_row_activated(self, pass_list, pass_row):
         if self.__selected_row == pass_row:
+            self.main_leaflet.navigate(Adw.NavigationDirection.FORWARD)
             return
 
         self.__selected_row = pass_row
 
         row_data = pass_row.data()
         self.pass_detailed_view.content(row_data)
-        self.leaflet.navigate(Adw.NavigationDirection.FORWARD)
+        self.main_leaflet.navigate(Adw.NavigationDirection.FORWARD)
 
 
     def _on_update_header(self, row, row_above):

@@ -8,7 +8,7 @@
     <property name="default-height">600</property>
 
     <child>
-      <object class="AdwLeaflet" id="leaflet">
+      <object class="AdwLeaflet" id="main_leaflet">
         <child>
           <object class="GtkBox">
             <property name="orientation">vertical</property>
@@ -16,7 +16,7 @@
             <child>
               <object class="AdwHeaderBar" id="main_header_bar">
                 <binding name="show-end-title-buttons">
-                  <lookup name="folded">leaflet</lookup>
+                  <lookup name="folded">main_leaflet</lookup>
                 </binding>
                 <child type="start">
                   <object class="GtkButton" id="button">
@@ -71,8 +71,16 @@
             <child>
               <object class="AdwHeaderBar">
                 <binding name="show-start-title-buttons">
-                  <lookup name="folded">leaflet</lookup>
+                  <lookup name="folded">main_leaflet</lookup>
                 </binding>
+                <child type="start">
+                  <object class="GtkButton" id="back_button">
+                    <property name="valign">center</property>
+                    <property name="tooltip-text" translatable="yes">Back</property>
+                    <property name="icon-name">go-previous-symbolic</property>
+                    <property name="visible" bind-source="main_leaflet" bind-property="folded" bind-flags="sync-create"/>
+                  </object>
+                </child>
               </object>
             </child>
             <child>
