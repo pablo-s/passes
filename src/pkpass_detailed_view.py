@@ -17,6 +17,7 @@
 
 from gi.repository import Gtk
 
+from .pkpass_back_view import PassBackView
 from .pkpass_front_view import PassFrontView
 
 
@@ -25,10 +26,22 @@ class PassDetailedView(Gtk.Box):
 
     __gtype_name__ = 'PassDetailedView'
 
-    clamp = Gtk.Template.Child()
+    pass_content = Gtk.Template.Child()
 
     def __init__(self):
        super().__init__()
+       self.__back_widget = None
+       self.__front_widget = None
 
     def content(self, a_pass):
-        self.clamp.set_child(PassFrontView.new(a_pass))
+        if self.__back_widget:
+            self.pass_content.remove(self.__back_widget)
+
+        if self.__front_widget:
+            self.pass_content.remove(self.__front_widget)
+
+        self.__front_widget = PassFrontView.new(a_pass)
+        self.__back_widget = PassBackView(a_pass)
+
+        self.pass_content.append(self.__front_widget)
+        self.pass_content.append(self.__back_widget)

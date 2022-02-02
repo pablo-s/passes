@@ -6,11 +6,28 @@
     <property name="orientation">vertical</property>
 
     <child>
-      <object class="AdwClamp" id="clamp">
-        <property name="margin-start">8</property>
-        <property name="margin-end">8</property>
-        <property name="margin-top">8</property>
-        <property name="margin-bottom">8</property>
+      <object class="GtkScrolledWindow" id="scrolled_window">
+        <property name="hscrollbar_policy">never</property>
+        <property name="vexpand">True</property>
+        <child>
+          <object class="GtkViewport">
+            <property name="scroll_to_focus">True</property>
+            <child>
+              <object class="AdwClamp">
+                <property name="margin-start">8</property>
+                <property name="margin-end">8</property>
+                <property name="margin-top">8</property>
+                <property name="margin-bottom">8</property>
+                <child>
+                  <object class="GtkBox" id="pass_content">
+                    <property name="orientation">vertical</property>
+                    <property name="can_focus">false</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
       </object>
     </child>
 
