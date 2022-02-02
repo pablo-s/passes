@@ -84,7 +84,7 @@
               </object>
             </child>
             <child>
-              <object class="PassDetailedView" id="pass_detailed_view">
+              <object class="PassView" id="pass_view">
               </object>
             </child>
           </object>

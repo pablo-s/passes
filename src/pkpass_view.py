@@ -1,4 +1,4 @@
-# pkpass_detailed_view.py
+# pkpass_view.py
 #
 # Copyright 2022 Pablo Sánchez Rodríguez
 #
@@ -21,10 +21,10 @@ from .pkpass_back_view import PassBackView
 from .pkpass_front_view import PassFrontView
 
 
-@Gtk.Template(resource_path='/me/sanchezrodriguez/passes/pkpass_detailed_view.ui')
-class PassDetailedView(Gtk.Box):
+@Gtk.Template(resource_path='/me/sanchezrodriguez/passes/pkpass_view.ui')
+class PassView(Gtk.Box):
 
-    __gtype_name__ = 'PassDetailedView'
+    __gtype_name__ = 'PassView'
 
     pass_content = Gtk.Template.Child()
 

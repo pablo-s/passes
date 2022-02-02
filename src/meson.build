@@ -32,10 +32,10 @@ passes_sources = [
   'persistence.py',
   'pkpass.py',
   'pkpass_back_view.py',
-  'pkpass_detailed_view.py',
   'pkpass_front_view.py',
   'pkpass_row.py',
   'pkpass_row_header.py',
+  'pkpass_view.py',
   'window.py',
 ]
 

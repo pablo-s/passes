@@ -2,7 +2,7 @@
 <interface>
   <requires lib="gtk" version="4.0"/>
   <requires lib="libadwaita" version="1.0"/>
-  <template class="PassDetailedView" parent="GtkBox">
+  <template class="PassView" parent="GtkBox">
     <property name="orientation">vertical</property>
 
     <child>

@@ -18,7 +18,7 @@
 from gi.repository import Gio, GObject, Gtk, Adw
 
 from .pkpass_row import PassRow
-from .pkpass_detailed_view import PassDetailedView
+from .pkpass_view import PassView
 
 
 @Gtk.Template(resource_path='/me/sanchezrodriguez/passes/window.ui')
@@ -31,7 +31,7 @@ class PassesWindow(Adw.ApplicationWindow):
     back_button = Gtk.Template.Child()
 
     pass_list = Gtk.Template.Child()
-    pass_detailed_view = Gtk.Template.Child()
+    pass_view = Gtk.Template.Child()
 
     def __init__(self, pass_list_model, **kwargs):
         super().__init__(**kwargs)
@@ -59,7 +59,7 @@ class PassesWindow(Adw.ApplicationWindow):
         self.__selected_row = pass_row
 
         row_data = pass_row.data()
-        self.pass_detailed_view.content(row_data)
+        self.pass_view.content(row_data)
         self.main_leaflet.navigate(Adw.NavigationDirection.FORWARD)
 
 
