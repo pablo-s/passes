@@ -7,38 +7,38 @@
     <property name="margin-top">8</property>
     <property name="margin-bottom">8</property>
     <property name="spacing">16</property>
-    <property name="width-request">294</property>
 
     <child>
       <object class="GtkImage" id="logo">
+        <property name="pixel-size">64</property>
       </object>
     </child>
 
     <child>
-      <object class="GtkBox" id="header_fields">
-        <property name="orientation">vertical</property>
-        <property name="spacing">4</property>
+      <object class="GtkListBox" id="header_fields">
+        <property name="selection-mode">none</property>
+        <property name="css-classes">boxed-list</property>
       </object>
     </child>
 
     <child>
-      <object class="GtkBox" id="primary_fields">
-        <property name="orientation">vertical</property>
-        <property name="spacing">4</property>
+      <object class="GtkListBox" id="primary_fields">
+        <property name="selection-mode">none</property>
+        <property name="css-classes">boxed-list</property>
       </object>
     </child>
 
     <child>
-      <object class="GtkBox" id="secondary_fields">
-        <property name="orientation">vertical</property>
-        <property name="spacing">4</property>
+      <object class="GtkListBox" id="secondary_fields">
+        <property name="selection-mode">none</property>
+        <property name="css-classes">boxed-list</property>
       </object>
     </child>
 
     <child>
-      <object class="GtkBox" id="auxiliary_fields">
-        <property name="orientation">vertical</property>
-        <property name="spacing">4</property>
+      <object class="GtkListBox" id="auxiliary_fields">
+        <property name="selection-mode">none</property>
+        <property name="css-classes">boxed-list</property>
       </object>
     </child>
 

@@ -25,18 +25,10 @@ class PassDetailedView(Gtk.Box):
 
     __gtype_name__ = 'PassDetailedView'
 
-    carousel = Gtk.Template.Child()
-    front_view = Gtk.Template.Child()
-    back_view = Gtk.Template.Child()
+    clamp = Gtk.Template.Child()
 
     def __init__(self):
        super().__init__()
-       self.__current_front_widget = None
 
     def content(self, a_pass):
-        if self.__current_front_widget:
-            self.front_view.remove(self.__current_front_widget)
-
-        self.__current_front_widget = PassFrontView.new(a_pass)
-        self.front_view.append(self.__current_front_widget)
-        self.carousel.scroll_to(self.front_view, True)
+        self.clamp.set_child(PassFrontView.new(a_pass))
