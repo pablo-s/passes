@@ -225,8 +225,11 @@ class PassFactory:
                 pixbuf = thisClass.create_pixbuf_from_filename(archive, file_name)
                 pass_images[file_name] = pixbuf
 
-            if file_name.endswith('text.json'):
-                pass
+            if file_name.endswith('pass.strings'):
+                language = file_name.split('.')[0]
+                file_content = archive.read(file_name)
+                translation_dict = thisClass.create_translation_dict(file_content)
+                pass_translations[language] = translation_dict
 
             if file_name.endswith('pass.json'):
                 json_content = archive.read(file_name)
@@ -242,7 +245,23 @@ class PassFactory:
         loader.close()
         return loader.get_pixbuf()
 
+    @classmethod
+    def create_translation_dict(thisClass, translation_file_content):
+        content = translation_file_content.decode()
+        entries = content.split('\n')
 
+        translation_dict = dict()
 
+        for entry in entries:
+            result = re.search('"(.*)" = "(.*)"', entry)
+
+            if not result or len(result.groups()) != 2:
+                continue
+
+            translation_key = result.group(1)
+            translation_value = result.group(2)
+            translation_dict[translation_key] = translation_value
+
+        return translation_dict
 
 
