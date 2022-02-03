@@ -3,7 +3,7 @@
   <requires lib="gtk" version="4.0"/>
   <requires lib="libadwaita" version="1.0"/>
   <template class="PassRow" parent="GtkListBoxRow">
-    <property name="can-focus">False</property>
+    <property name="can-focus">true</property>
     <property name="selectable">True</property>
     <property name="margin-top">8</property>
 
