@@ -81,6 +81,11 @@
                     <property name="visible" bind-source="main_leaflet" bind-property="folded" bind-flags="sync-create"/>
                   </object>
                 </child>
+                <property name="title-widget">
+                  <object class="AdwWindowTitle" id="right_pane_title">
+                    <property name="title"></property>
+                  </object>
+                </property>
               </object>
             </child>
             <child>

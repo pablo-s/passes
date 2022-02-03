@@ -27,6 +27,7 @@ class PassesWindow(Adw.ApplicationWindow):
 
     main_header_bar = Gtk.Template.Child()
     main_leaflet = Gtk.Template.Child()
+    right_pane_title = Gtk.Template.Child()
 
     back_button = Gtk.Template.Child()
 
@@ -61,6 +62,7 @@ class PassesWindow(Adw.ApplicationWindow):
         row_data = pass_row.data()
         self.pass_view.content(row_data)
         self.main_leaflet.navigate(Adw.NavigationDirection.FORWARD)
+        self.right_pane_title.set_title(row_data.description())
 
 
     def _on_update_header(self, row, row_above):
