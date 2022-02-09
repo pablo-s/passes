@@ -27,6 +27,7 @@ configure_file(
 
 passes_sources = [
   '__init__.py',
+  'barcode_widget.py',
   'colored_widget.py',
   'main.py',
   'persistence.py',

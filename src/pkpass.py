@@ -147,7 +147,13 @@ class Pass(GObject.GObject):
     # Visual appearance
 
     def barcode(self):
-        return self._get_optional_data('barcode')
+        barcode_data = self._get_optional_data('barcode')
+        barcode = None
+
+        if barcode_data:
+            barcode = Barcode(barcode_data)
+
+        return barcode
 
     def barcodes(self):
         return self._get_optional_data('barcodes')
@@ -265,3 +271,25 @@ class PassFactory:
         return translation_dict
 
 
+class Barcode:
+
+    def __init__(self, pkpass_barcode_dictionary):
+        self.__format = pkpass_barcode_dictionary['format']
+        self.__message = pkpass_barcode_dictionary['message']
+        self.__message_encoding = pkpass_barcode_dictionary['messageEncoding']
+
+        self.__alt_text = None
+        if 'altText' in pkpass_barcode_dictionary.keys():
+            self.__alt_text = pkpass_barcode_dictionary['altText']
+
+    def alternative_text(self):
+        return self.__alt_text
+
+    def format(self):
+        return self.__format
+
+    def message(self):
+        return self.__message
+
+    def message_encoding(self):
+        return self.__message_encoding

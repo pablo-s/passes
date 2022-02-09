@@ -17,6 +17,8 @@
 
 from gi.repository import Gtk
 
+from .barcode_widget import BarcodeWidget
+
 
 class PassFrontView:
     """
@@ -37,6 +39,7 @@ class FallbackView(Gtk.Box):
     primary_fields = Gtk.Template.Child()
     secondary_fields = Gtk.Template.Child()
     auxiliary_fields = Gtk.Template.Child()
+    barcode = Gtk.Template.Child()
 
     def __init__(self, a_pass):
         super().__init__()
@@ -62,6 +65,11 @@ class FallbackView(Gtk.Box):
             label = header_field['label']
             value = header_field['value']
             self.add_field_to(self.auxiliary_fields, label, value)
+
+        code = a_pass.barcode()
+        if code:
+            self.barcode.message(code.message(), code.message_encoding())
+            self.barcode.set_visible(True)
 
     def add_field_to(self, field_list, label, value):
         row = Gtk.Box()

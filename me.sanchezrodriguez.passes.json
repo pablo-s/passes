@@ -24,6 +24,7 @@
         "*.a"
     ],
     "modules" : [
+        "modules/python3-qrcode.json",
         {
             "name" : "passes",
             "builddir" : true,
