@@ -47,23 +47,23 @@ class FallbackView(Gtk.Box):
         self.logo.set_from_pixbuf(a_pass.logo())
 
         for header_field in a_pass.header_fields():
-            label = header_field['label']
-            value = header_field['value']
+            label = header_field.label()
+            value = header_field.value()
             self.add_field_to(self.header_fields, label, value)
 
         for header_field in a_pass.primary_fields():
-            label = header_field['label']
-            value = header_field['value']
+            label = header_field.label()
+            value = header_field.value()
             self.add_field_to(self.primary_fields, label, value)
 
         for header_field in a_pass.secondary_fields():
-            label = header_field['label']
-            value = header_field['value']
+            label = header_field.label()
+            value = header_field.value()
             self.add_field_to(self.secondary_fields, label, value)
 
         for header_field in a_pass.auxiliary_fields():
-            label = header_field['label']
-            value = header_field['value']
+            label = header_field.label()
+            value = header_field.value()
             self.add_field_to(self.auxiliary_fields, label, value)
 
         code = a_pass.barcode()

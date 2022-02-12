@@ -19,7 +19,7 @@ import json
 import re
 import zipfile
 
-from gi.repository import Gdk, GdkPixbuf, GObject
+from gi.repository import Gdk, GdkPixbuf, GObject, Gtk
 
 
 class Pass(GObject.GObject):
@@ -35,11 +35,11 @@ class Pass(GObject.GObject):
               'generic',
               'storeCard']
 
-    def __init__(self, pass_data, pass_translations, pass_images):
+    def __init__(self, pass_data, pass_translation, pass_images):
         super().__init__()
 
         self.__data = pass_data
-        self.__translations = pass_translations
+        self.__translation = pass_translation
         self.__images = pass_images
 
         self.__style = None
@@ -47,6 +47,8 @@ class Pass(GObject.GObject):
             if style in self.__data.keys():
                 self.__style = style
                 break
+
+        self._setup_fields()
 
 
     # Auxiliary methods
@@ -123,20 +125,37 @@ class Pass(GObject.GObject):
 
     # Fields
 
+    def _create_field_group(self, field_group_name):
+        field_data_list = \
+            self._get_style_specific_optional_data(field_group_name)
+
+        field_group = list()
+        for field_data in field_data_list:
+            field_group.append(StandardField(field_data, self.__translation))
+
+        return field_group
+
+    def _setup_fields(self):
+        self.__auxiliary_fields = self._create_field_group('auxiliaryFields')
+        self.__back_fields = self._create_field_group('backFields')
+        self.__header_fields = self._create_field_group('headerFields')
+        self.__primary_fields = self._create_field_group('primaryFields')
+        self.__secondary_fields = self._create_field_group('secondaryFields')
+
     def auxiliary_fields(self):
-        return self._get_style_specific_optional_data('auxiliaryFields')
+        return self.__auxiliary_fields
 
     def back_fields(self):
-        return self._get_style_specific_optional_data('backFields')
+        return self.__back_fields
 
     def header_fields(self):
-        return self._get_style_specific_optional_data('headerFields')
+        return self.__header_fields
 
     def primary_fields(self):
-        return self._get_style_specific_optional_data('primaryFields')
+        return self.__primary_fields
 
     def secondary_fields(self):
-        return self._get_style_specific_optional_data('secondaryFields')
+        return self.__secondary_fields
 
     def transit_type(self):
         if self.style() == 'boardingPass':
@@ -241,7 +260,25 @@ class PassFactory:
                 json_content = archive.read(file_name)
                 pass_data = json.loads(json_content)
 
-        return Pass(pass_data, pass_translations, pass_images)
+
+        language_to_import = None
+        if pass_translations:
+            user_language = Gtk.get_default_language().to_string()
+
+            for language in pass_translations:
+                if language in user_language:
+                    language_to_import = language
+                    break
+
+            if language_to_import is None:
+                # TODO: Open a dialogue and ask the user what language to import
+                pass
+
+        pass_translation = None
+        if language_to_import:
+            pass_translation = pass_translations[language_to_import]
+
+        return Pass(pass_data, pass_translation, pass_images)
 
     @classmethod
     def create_pixbuf_from_filename(thisClass, archive, file_name):
@@ -293,3 +330,31 @@ class Barcode:
 
     def message_encoding(self):
         return self.__message_encoding
+
+
+class StandardField:
+    """
+    A PKPass Standard Field
+    """
+
+    def __init__(self, pkpass_field_dictionary, translation_dictionary = None):
+        self.__key = pkpass_field_dictionary['key']
+
+        self.__value = pkpass_field_dictionary['value']
+        if translation_dictionary and self.__value in translation_dictionary.keys():
+            self.__value = translation_dictionary[self.__value]
+
+        self.__label = None
+        if 'label' in pkpass_field_dictionary.keys():
+            self.__label = pkpass_field_dictionary['label']
+            if translation_dictionary and self.__label in translation_dictionary.keys():
+                self.__label = translation_dictionary[self.__label]
+
+    def key(self):
+        return self.__key
+
+    def label(self):
+        return self.__label
+
+    def value(self):
+        return self.__value

@@ -30,13 +30,13 @@ class PassBackView(Gtk.Box):
 
         for header_field in a_pass.back_fields():
 
-            if 'label' not in header_field.keys():
-                value = header_field['value']
+            if not header_field.label():
+                value = header_field.value()
                 self.add_simple_field_to(self.back_fields, value)
                 continue
 
-            label = header_field['label']
-            value = header_field['value']
+            label = header_field.label()
+            value = header_field.value()
 
             self.add_field_to(self.back_fields, label, value)
 
