@@ -36,6 +36,11 @@ class PassRow(Gtk.ListBoxRow):
         self.__pass = a_pass
 
         background_color = self.__pass.background_color()
+
+        icon_data = self.__pass.icon().read_pixel_bytes().get_data()
+        if not self.__pass.icon().get_has_alpha() or icon_data[3] > 0:
+            background_color = icon_data[0:3]
+
         self.colored_widget.color(*background_color)
         self.colored_widget.add_css_class('card')
         self.colored_widget.add_css_class('digital-pass-boder-radius')
