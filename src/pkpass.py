@@ -37,10 +37,9 @@ class DigitalPass (GObject.GObject):
         self.__path = new_path
 
 
-class Pass(DigitalPass):
+class PKPass(DigitalPass):
     """
-    TODO: Rename Pass to PKPass
-    A representation of a digital pass
+    A representation of a PassKit pass
     """
 
     styles = ['boardingPass',
@@ -57,7 +56,7 @@ class Pass(DigitalPass):
         self.__images = pass_images
 
         self.__style = None
-        for style in Pass.styles:
+        for style in PKPass.styles:
             if style in self.__data.keys():
                 self.__style = style
                 break
@@ -292,7 +291,7 @@ class PassFactory:
         if language_to_import:
             pass_translation = pass_translations[language_to_import]
 
-        return Pass(pass_data, pass_translation, pass_images)
+        return PKPass(pass_data, pass_translation, pass_images)
 
     @classmethod
     def create_pixbuf_from_filename(thisClass, archive, file_name):
