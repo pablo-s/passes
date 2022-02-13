@@ -46,6 +46,8 @@ class PassesWindow(Adw.ApplicationWindow):
 
         self.pass_list.set_header_func(self._on_update_header)
 
+        self.select_pass_at_index(0)
+
     def _create_pass_widget(self, a_pass):
         return PassRow(a_pass)
 
@@ -70,6 +72,32 @@ class PassesWindow(Adw.ApplicationWindow):
             row.show_header()
         else:
             row.hide_header()
+
+    def select_pass_at_index(self, index):
+        selected_row = self.pass_list.get_row_at_index(index)
+
+        if not selected_row:
+            selected_row = self.pass_list.get_row_at_index(0)
+
+        if selected_row:
+            self.pass_list.select_row(selected_row)
+            self.pass_list.emit('row-activated', selected_row)
+
+    def selected_pass(self):
+        selected_pass = None
+
+        if self.__selected_row:
+            selected_pass = self.__selected_row.data()
+
+        return selected_pass
+
+    def selected_pass_index(self):
+        index = None
+
+        if self.__selected_row:
+            index = self.__selected_row.get_index()
+
+        return index
 
 
 class AboutDialog(Gtk.AboutDialog):

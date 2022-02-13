@@ -22,12 +22,26 @@ import zipfile
 from gi.repository import Gdk, GdkPixbuf, GObject, Gtk
 
 
-class Pass(GObject.GObject):
+class DigitalPass (GObject.GObject):
+
+    __gtype_name__ = 'DigitalPass'
+
+    def __init__(self):
+        super().__init__()
+        self.__path = None
+
+    def get_path(self):
+        return self.__path
+
+    def set_path(self, new_path: str):
+        self.__path = new_path
+
+
+class Pass(DigitalPass):
     """
+    TODO: Rename Pass to PKPass
     A representation of a digital pass
     """
-
-    __gtype_name__ = 'GPass'
 
     styles = ['boardingPass',
               'coupon',

@@ -44,7 +44,9 @@ class PersistenceManager:
         return passes
 
     def delete_pass_file(self, a_pass):
-        pass
+        target_path = a_pass.get_path()
+        target_file = Gio.File.new_for_path(target_path)
+        target_file.delete()
 
     def save_pass_file(self, pass_file):
         print("Saving file...")
@@ -58,3 +60,5 @@ class PersistenceManager:
                        cancellable=None,
                        progress_callback=None,
                        progress_callback_data=None)
+
+        return destination_file

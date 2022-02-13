@@ -25,7 +25,7 @@ gi.require_version('Adw', '1')
 from gi.repository import GLib, Gdk, Gio, Gtk, Adw
 
 from .persistence import PersistenceManager
-from .pkpass import Pass, PassFactory
+from .pkpass import DigitalPass, PassFactory
 from .window import PassesWindow, AboutDialog
 
 
@@ -34,14 +34,18 @@ class Application(Adw.Application):
         super().__init__(application_id='me.sanchezrodriguez.passes',
                          flags=Gio.ApplicationFlags.FLAGS_NONE)
 
-        self.__pass_list = Gio.ListStore.new(Pass)
+        self.__pass_list = Gio.ListStore.new(DigitalPass)
         self.__persistence = PersistenceManager()
 
         passes = self.__persistence.load_passes()
         for each_pass in passes:
             pkpass = PassFactory.create(each_pass)
+            pkpass.set_path(each_pass.get_path())
+
             self.__pass_list.insert_sorted(pkpass,
                                     lambda a1, a2: a1.style() > a2.style())
+
+        self.__pass_list.connect('items-changed', self.on_pass_list_changed)
 
     def do_activate(self):
         window = self.props.active_window
@@ -51,6 +55,7 @@ class Application(Adw.Application):
                                   pass_list_model=self.__pass_list)
 
         self.create_action('about', self.on_about_action)
+        self.create_action('delete', self.on_delete_action)
         self.create_action('import', self.on_import_action)
         self.create_action('preferences', self.on_preferences_action)
 
@@ -63,6 +68,18 @@ class Application(Adw.Application):
         about = AboutDialog(self.props.active_window)
         about.present()
 
+    def on_delete_action(self, widget, _):
+        window = self.props.active_window
+
+        if not window:
+            return
+
+        selected_pass = window.selected_pass()
+        selected_pass_index = window.selected_pass_index()
+
+        self.__persistence.delete_pass_file(selected_pass)
+        self.__pass_list.remove(selected_pass_index)
+
     def on_import_action(self, widget, _):
         print('app.import action activated')
         self.filechooser = Gtk.FileChooserNative.new(
@@ -74,6 +91,14 @@ class Application(Adw.Application):
 
         response = self.filechooser.show()
         self.filechooser.connect('response', self._on_file_chosen)
+
+    def on_pass_list_changed(self, pass_list, position, removed, added):
+        window = self.props.active_window
+
+        if not window:
+            return
+
+        window.select_pass_at_index(0)
 
     def on_preferences_action(self, widget, _):
         print('app.preferences action activated')
@@ -92,7 +117,9 @@ class Application(Adw.Application):
         pkpass_file = filechooser.get_file()
         pkpass = PassFactory.create(pkpass_file)
 
-        self.__persistence.save_pass_file(pkpass_file)
+        stored_file = self.__persistence.save_pass_file(pkpass_file)
+        pkpass.set_path(stored_file.get_path())
+
         self.__pass_list.insert_sorted(pkpass,
                                        lambda a1, a2: a1.style() > a2.style())
 
