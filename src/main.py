@@ -24,7 +24,7 @@ gi.require_version('Adw', '1')
 
 from gi.repository import GLib, Gdk, Gio, Gtk, Adw
 
-from .persistence import PersistenceManager
+from .persistence import FileAlreadyImported, PersistenceManager
 from .digital_pass import DigitalPass
 from .digital_pass_factory import FileIsNotAPass, PassFactory
 from .window import PassesWindow, AboutDialog

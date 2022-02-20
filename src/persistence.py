@@ -53,6 +53,9 @@ class PersistenceManager:
         destination_file_path = self.__data_dir + '/' + destination_file_name
         destination_file = Gio.File.new_for_path(destination_file_path)
 
+        if Gio.File.query_exists(destination_file):
+            raise FileAlreadyImported()
+
         pass_file.copy(destination=destination_file,
                        flags=Gio.FileCopyFlags.NONE,
                        cancellable=None,
@@ -60,3 +63,6 @@ class PersistenceManager:
                        progress_callback_data=None)
 
         return destination_file
+
+class FileAlreadyImported(Exception):
+    pass
