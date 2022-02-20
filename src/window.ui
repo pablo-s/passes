@@ -48,8 +48,9 @@
                             <property name="name">empty-list-page</property>
                             <property name="child">
                               <object class="AdwStatusPage">
-                                <property name="icon-name">airplane-mode-symbolic</property>
-                                <property name="title">You have no passes!</property>
+                                <property name="icon-name">me.sanchezrodriguez.passes</property>
+                                <property name="title">You have no passes</property>
+                                <property name="description">Use the button “+” to start importing your digital passes</property>
                               </object>
                             </property>
                           </object>
