@@ -34,6 +34,7 @@ class Application(Adw.Application):
         super().__init__(application_id='me.sanchezrodriguez.passes',
                          flags=Gio.ApplicationFlags.FLAGS_NONE)
 
+        self.__file_chooser = None
         self.__pass_list = Gio.ListStore.new(DigitalPass)
         self.__persistence = PersistenceManager()
 
@@ -94,16 +95,17 @@ class Application(Adw.Application):
         self.window().select_pass_at_index(index_to_select)
 
     def on_import_action(self, widget, _):
-        print('app.import action activated')
-        self.filechooser = Gtk.FileChooserNative.new(
-            'Open PK',
-            self.window(),
-            Gtk.FileChooserAction.OPEN,
-            None,
-            None)
+        if not self.__file_chooser:
+            self.__file_chooser = Gtk.FileChooserNative.new(
+                'Import a digital pass',
+                self.window(),
+                Gtk.FileChooserAction.OPEN,
+                None,
+                None)
 
-        response = self.filechooser.show()
-        self.filechooser.connect('response', self._on_file_chosen)
+            self.__file_chooser.connect('response', self._on_file_chosen)
+
+        self.__file_chooser.show()
 
     def on_preferences_action(self, widget, _):
         print('app.preferences action activated')
