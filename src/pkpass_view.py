@@ -34,14 +34,16 @@ class PassView(Gtk.Box):
        self.__front_widget = None
 
     def content(self, a_pass):
-        if self.__back_widget:
-            self.pass_content.remove(self.__back_widget)
-
-        if self.__front_widget:
-            self.pass_content.remove(self.__front_widget)
+        self.empty()
 
         self.__front_widget = PassFrontView.new(a_pass)
         self.__back_widget = PassBackView(a_pass)
 
         self.pass_content.append(self.__front_widget)
         self.pass_content.append(self.__back_widget)
+
+    def empty(self):
+        if self.__back_widget:
+            self.pass_content.remove(self.__back_widget)
+        if self.__front_widget:
+            self.pass_content.remove(self.__front_widget)
