@@ -36,6 +36,8 @@ class PassesWindow(Adw.ApplicationWindow):
 
     pass_list_stack = Gtk.Template.Child()
 
+    toast_overlay = Gtk.Template.Child()
+
     def __init__(self, pass_list_model, **kwargs):
         super().__init__(**kwargs)
 
@@ -115,6 +117,10 @@ class PassesWindow(Adw.ApplicationWindow):
 
     def show_pass_list(self):
         self.pass_list_stack.set_visible_child_name('pass-list-page')
+
+    def show_toast(self, message):
+        toast = Adw.Toast.new(message)
+        self.toast_overlay.add_toast(toast)
 
 class AboutDialog(Gtk.AboutDialog):
 

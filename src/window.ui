@@ -8,61 +8,65 @@
     <property name="default-height">600</property>
 
     <child>
-      <object class="AdwLeaflet" id="main_leaflet">
+      <object class="AdwToastOverlay" id="toast_overlay">
         <child>
-          <object class="GtkBox">
-            <property name="orientation">vertical</property>
-            <property name="width_request">294</property>
+          <object class="AdwLeaflet" id="main_leaflet">
             <child>
-              <object class="AdwHeaderBar" id="main_header_bar">
-                <binding name="show-end-title-buttons">
-                  <lookup name="folded">main_leaflet</lookup>
-                </binding>
-                <child type="start">
-                  <object class="GtkButton" id="button">
-                    <property name="action_name">app.import</property>
-                    <property name="can_focus">False</property>
-                    <property name="icon-name">list-add</property>
-                    <property name="visible">True</property>
-                  </object>
-                </child>
-                <child type="end">
-                  <object class="GtkMenuButton">
-                    <property name="icon-name">open-menu-symbolic</property>
-                    <property name="menu-model">primary_menu</property>
-                  </object>
-                </child>
-              </object>
-            </child>
-            <child>
-              <object class="GtkScrolledWindow" id="scrolled_window">
-                <property name="hscrollbar_policy">never</property>
-                <property name="vexpand">True</property>
+              <object class="GtkBox">
+                <property name="orientation">vertical</property>
+                <property name="width_request">294</property>
                 <child>
-                  <object class="GtkViewport">
-                    <property name="scroll_to_focus">True</property>
+                  <object class="AdwHeaderBar" id="main_header_bar">
+                    <binding name="show-end-title-buttons">
+                      <lookup name="folded">main_leaflet</lookup>
+                    </binding>
+                    <child type="start">
+                      <object class="GtkButton" id="button">
+                        <property name="action_name">app.import</property>
+                        <property name="can_focus">False</property>
+                        <property name="icon-name">list-add</property>
+                        <property name="visible">True</property>
+                      </object>
+                    </child>
+                    <child type="end">
+                      <object class="GtkMenuButton">
+                        <property name="icon-name">open-menu-symbolic</property>
+                        <property name="menu-model">primary_menu</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkScrolledWindow" id="scrolled_window">
+                    <property name="hscrollbar_policy">never</property>
+                    <property name="vexpand">True</property>
                     <child>
-                      <object class="AdwViewStack" id="pass_list_stack">
+                      <object class="GtkViewport">
+                        <property name="scroll_to_focus">True</property>
                         <child>
-                          <object class="AdwViewStackPage">
-                            <property name="name">empty-list-page</property>
-                            <property name="child">
-                              <object class="AdwStatusPage">
-                                <property name="icon-name">me.sanchezrodriguez.passes</property>
-                                <property name="title">You have no passes</property>
-                                <property name="description">Use the button “+” to start importing your digital passes</property>
+                          <object class="AdwViewStack" id="pass_list_stack">
+                            <child>
+                              <object class="AdwViewStackPage">
+                                <property name="name">empty-list-page</property>
+                                <property name="child">
+                                  <object class="AdwStatusPage">
+                                    <property name="icon-name">me.sanchezrodriguez.passes</property>
+                                    <property name="title">You have no passes</property>
+                                    <property name="description">Use the button “+” to start importing your digital passes</property>
+                                  </object>
+                                </property>
                               </object>
-                            </property>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="AdwViewStackPage">
-                            <property name="name">pass-list-page</property>>
-                            <property name="child">
-                              <object class="GtkListBox" id="pass_list">
-                                <property name="css-classes">navigation-sidebar</property>
+                            </child>
+                            <child>
+                              <object class="AdwViewStackPage">
+                                <property name="name">pass-list-page</property>>
+                                <property name="child">
+                                  <object class="GtkListBox" id="pass_list">
+                                    <property name="css-classes">navigation-sidebar</property>
+                                  </object>
+                                </property>
                               </object>
-                            </property>
+                            </child>
                           </object>
                         </child>
                       </object>
@@ -71,57 +75,57 @@
                 </child>
               </object>
             </child>
-          </object>
-        </child>
 
-        <child>
-          <object class="AdwLeafletPage">
-            <property name="navigatable">False</property>
-            <property name="child">
-              <object class="GtkSeparator">
-              </object>
-            </property>
-          </object>
-        </child>
-
-        <child>
-          <object class="GtkBox">
-            <property name="orientation">vertical</property>
-            <property name="width_request">294</property>
-            <property name="hexpand">True</property>
             <child>
-              <object class="AdwHeaderBar">
-                <binding name="show-start-title-buttons">
-                  <lookup name="folded">main_leaflet</lookup>
-                </binding>
-                <child type="start">
-                  <object class="GtkButton" id="back_button">
-                    <property name="valign">center</property>
-                    <property name="tooltip-text" translatable="yes">Back</property>
-                    <property name="icon-name">go-previous-symbolic</property>
-                    <property name="visible" bind-source="main_leaflet" bind-property="folded" bind-flags="sync-create"/>
-                  </object>
-                </child>
-                <child type="end">
-                  <object class="GtkMenuButton">
-                    <property name="icon-name">view-more-symbolic</property>
-                    <property name="menu-model">secondary_menu</property>
-                  </object>
-                </child>
-                <property name="title-widget">
-                  <object class="AdwWindowTitle" id="right_pane_title">
-                    <property name="title"></property>
+              <object class="AdwLeafletPage">
+                <property name="navigatable">False</property>
+                <property name="child">
+                  <object class="GtkSeparator">
                   </object>
                 </property>
               </object>
             </child>
+
             <child>
-              <object class="PassView" id="pass_view">
+              <object class="GtkBox">
+                <property name="orientation">vertical</property>
+                <property name="width_request">294</property>
+                <property name="hexpand">True</property>
+                <child>
+                  <object class="AdwHeaderBar">
+                    <binding name="show-start-title-buttons">
+                      <lookup name="folded">main_leaflet</lookup>
+                    </binding>
+                    <child type="start">
+                      <object class="GtkButton" id="back_button">
+                        <property name="valign">center</property>
+                        <property name="tooltip-text" translatable="yes">Back</property>
+                        <property name="icon-name">go-previous-symbolic</property>
+                        <property name="visible" bind-source="main_leaflet" bind-property="folded" bind-flags="sync-create"/>
+                      </object>
+                    </child>
+                    <child type="end">
+                      <object class="GtkMenuButton">
+                        <property name="icon-name">view-more-symbolic</property>
+                        <property name="menu-model">secondary_menu</property>
+                      </object>
+                    </child>
+                    <property name="title-widget">
+                      <object class="AdwWindowTitle" id="right_pane_title">
+                        <property name="title"></property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+                <child>
+                  <object class="PassView" id="pass_view">
+                  </object>
+                </child>
               </object>
             </child>
+
           </object>
         </child>
-
       </object>
     </child>
   </template>

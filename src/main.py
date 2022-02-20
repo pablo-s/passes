@@ -122,24 +122,33 @@ class Application(Adw.Application):
             print('Error')
             return
 
-        pkpass_file = filechooser.get_file()
-        pkpass = PassFactory.create(pkpass_file)
+        try:
+            pkpass_file = filechooser.get_file()
+            pkpass = PassFactory.create(pkpass_file)
 
-        stored_file = self.__persistence.save_pass_file(pkpass_file)
-        pkpass.set_path(stored_file.get_path())
+            stored_file = self.__persistence.save_pass_file(pkpass_file)
+            pkpass.set_path(stored_file.get_path())
 
-        self.__pass_list.insert_sorted(pkpass,
-                                       lambda a1, a2: a1.style() > a2.style())
+            self.__pass_list.insert_sorted(pkpass,
+                                           lambda a1, a2: a1.style() > a2.style())
 
-        pass_list_is_not_emtpy = len(self.__pass_list) > 0
+            pass_list_is_not_emtpy = len(self.__pass_list) > 0
 
-        if pass_list_is_not_emtpy:
-            self.window().show_pass_list()
-            self.window().force_fold(False)
+            if pass_list_is_not_emtpy:
+                self.window().show_pass_list()
+                self.window().force_fold(False)
 
-        found, index = self.__pass_list.find(pkpass)
-        if found:
-            self.window().select_pass_at_index(index)
+            found, index = self.__pass_list.find(pkpass)
+            if found:
+                self.window().select_pass_at_index(index)
+
+        except FileIsNotAPass as exception:
+            message = 'The file was not imported because it is not a pass'
+            self.window().show_toast(message)
+
+        except FileAlreadyImported as exception:
+            message = 'The file was not imported because it already is'
+            self.window().show_toast(message)
 
     def window(self):
         return self.props.active_window
