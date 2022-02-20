@@ -45,8 +45,6 @@ class Application(Adw.Application):
             self.__pass_list.insert_sorted(pkpass,
                                     lambda a1, a2: a1.style() > a2.style())
 
-        self.__pass_list.connect('items-changed', self.on_pass_list_changed)
-
     def do_activate(self):
         window = self.props.active_window
 
@@ -80,6 +78,9 @@ class Application(Adw.Application):
         self.__persistence.delete_pass_file(selected_pass)
         self.__pass_list.remove(selected_pass_index)
 
+        index_to_select = min(len(self.__pass_list) - 1, selected_pass_index)
+        self.window().select_pass_at_index(index_to_select)
+
     def on_import_action(self, widget, _):
         print('app.import action activated')
         self.filechooser = Gtk.FileChooserNative.new(
@@ -91,14 +92,6 @@ class Application(Adw.Application):
 
         response = self.filechooser.show()
         self.filechooser.connect('response', self._on_file_chosen)
-
-    def on_pass_list_changed(self, pass_list, position, removed, added):
-        window = self.props.active_window
-
-        if not window:
-            return
-
-        window.select_pass_at_index(0)
 
     def on_preferences_action(self, widget, _):
         print('app.preferences action activated')
@@ -123,6 +116,12 @@ class Application(Adw.Application):
         self.__pass_list.insert_sorted(pkpass,
                                        lambda a1, a2: a1.style() > a2.style())
 
+        found, index = self.__pass_list.find(pkpass)
+        if found:
+            self.window().select_pass_at_index(index)
+
+    def window(self):
+        return self.props.active_window
 
 def main(version):
     app = Application()
