@@ -61,7 +61,7 @@ class Application(Adw.Application):
         window.force_fold(pass_list_is_emtpy)
 
         if not pass_list_is_emtpy:
-            self.window().show_pass_list()
+            window.show_pass_list()
 
         window.present()
 
@@ -69,17 +69,15 @@ class Application(Adw.Application):
         Adw.Application.do_startup(self)
 
     def on_about_action(self, widget, _):
-        about = AboutDialog(self.props.active_window)
+        about = AboutDialog(self.window())
         about.present()
 
     def on_delete_action(self, widget, _):
-        window = self.props.active_window
-
-        if not window:
+        if not self.window():
             return
 
-        selected_pass = window.selected_pass()
-        selected_pass_index = window.selected_pass_index()
+        selected_pass = self.window().selected_pass()
+        selected_pass_index = self.window().selected_pass_index()
 
         self.__persistence.delete_pass_file(selected_pass)
         self.__pass_list.remove(selected_pass_index)
@@ -99,7 +97,7 @@ class Application(Adw.Application):
         print('app.import action activated')
         self.filechooser = Gtk.FileChooserNative.new(
             'Open PK',
-            self.props.active_window,
+            self.window(),
             Gtk.FileChooserAction.OPEN,
             None,
             None)
