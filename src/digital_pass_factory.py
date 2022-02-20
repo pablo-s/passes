@@ -16,6 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import json
+import re
 import zipfile
 
 from gi.repository import Gdk, GdkPixbuf, GObject, Gtk
