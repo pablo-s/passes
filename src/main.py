@@ -57,6 +57,12 @@ class Application(Adw.Application):
         self.create_action('import', self.on_import_action)
         self.create_action('preferences', self.on_preferences_action)
 
+        pass_list_is_emtpy = len(self.__pass_list) == 0
+        window.force_fold(pass_list_is_emtpy)
+
+        if not pass_list_is_emtpy:
+            self.window().show_pass_list()
+
         window.present()
 
     def do_startup(self):
@@ -77,6 +83,14 @@ class Application(Adw.Application):
 
         self.__persistence.delete_pass_file(selected_pass)
         self.__pass_list.remove(selected_pass_index)
+
+        pass_list_is_emtpy = len(self.__pass_list) == 0
+
+        if pass_list_is_emtpy:
+            self.window().hide_pass_list()
+            self.window().force_fold(True)
+            self.window().navigate_back()
+            return
 
         index_to_select = min(len(self.__pass_list) - 1, selected_pass_index)
         self.window().select_pass_at_index(index_to_select)
@@ -115,6 +129,12 @@ class Application(Adw.Application):
 
         self.__pass_list.insert_sorted(pkpass,
                                        lambda a1, a2: a1.style() > a2.style())
+
+        pass_list_is_not_emtpy = len(self.__pass_list) > 0
+
+        if pass_list_is_not_emtpy:
+            self.window().show_pass_list()
+            self.window().force_fold(False)
 
         found, index = self.__pass_list.find(pkpass)
         if found:

@@ -42,8 +42,28 @@
                   <object class="GtkViewport">
                     <property name="scroll_to_focus">True</property>
                     <child>
-                      <object class="GtkListBox" id="pass_list">
-                        <property name="css-classes">navigation-sidebar</property>
+                      <object class="AdwViewStack" id="pass_list_stack">
+                        <child>
+                          <object class="AdwViewStackPage">
+                            <property name="name">empty-list-page</property>
+                            <property name="child">
+                              <object class="AdwStatusPage">
+                                <property name="icon-name">airplane-mode-symbolic</property>
+                                <property name="title">You have no passes!</property>
+                              </object>
+                            </property>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="AdwViewStackPage">
+                            <property name="name">pass-list-page</property>>
+                            <property name="child">
+                              <object class="GtkListBox" id="pass_list">
+                                <property name="css-classes">navigation-sidebar</property>
+                              </object>
+                            </property>
+                          </object>
+                        </child>
                       </object>
                     </child>
                   </object>

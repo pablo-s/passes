@@ -34,6 +34,8 @@ class PassesWindow(Adw.ApplicationWindow):
     pass_list = Gtk.Template.Child()
     pass_view = Gtk.Template.Child()
 
+    pass_list_stack = Gtk.Template.Child()
+
     def __init__(self, pass_list_model, **kwargs):
         super().__init__(**kwargs)
 
@@ -52,7 +54,7 @@ class PassesWindow(Adw.ApplicationWindow):
         return PassRow(a_pass)
 
     def _on_back_clicked(self, button):
-        self.main_leaflet.navigate(Adw.NavigationDirection.BACK)
+        self.navigate_back()
 
     def _on_row_activated(self, pass_list, pass_row):
         if self.__selected_row == pass_row:
@@ -72,6 +74,18 @@ class PassesWindow(Adw.ApplicationWindow):
             row.show_header()
         else:
             row.hide_header()
+
+    def force_fold(self, force):
+        self.main_leaflet.set_can_unfold(not force)
+
+    def hide_pass_list(self):
+        self.pass_list_stack.set_visible_child_name('empty-list-page')
+
+    def is_folded(self):
+        return self.main_leaflet.get_folded()
+
+    def navigate_back(self):
+        self.main_leaflet.navigate(Adw.NavigationDirection.BACK)
 
     def select_pass_at_index(self, index):
         selected_row = self.pass_list.get_row_at_index(index)
@@ -99,6 +113,8 @@ class PassesWindow(Adw.ApplicationWindow):
 
         return index
 
+    def show_pass_list(self):
+        self.pass_list_stack.set_visible_child_name('pass-list-page')
 
 class AboutDialog(Gtk.AboutDialog):
 
