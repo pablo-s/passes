@@ -19,8 +19,6 @@ import os
 
 from gi.repository import Gio, GLib
 
-from .pkpass import PassFactory
-
 
 class PersistenceManager:
     """

@@ -29,6 +29,8 @@ passes_sources = [
   '__init__.py',
   'barcode_widget.py',
   'colored_widget.py',
+  'digital_pass.py',
+  'digital_pass_factory.py',
   'main.py',
   'persistence.py',
   'pkpass.py',
