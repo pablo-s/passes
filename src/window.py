@@ -17,6 +17,7 @@
 
 from gi.repository import Gio, GObject, Gtk, Adw
 
+from .barcode_dialog import BarcodeDialog
 from .pkpass_row import PassRow
 from .pkpass_view import PassView
 
@@ -30,6 +31,7 @@ class PassesWindow(Adw.ApplicationWindow):
     right_pane_title = Gtk.Template.Child()
 
     back_button = Gtk.Template.Child()
+    barcode_button = Gtk.Template.Child()
 
     pass_list = Gtk.Template.Child()
     pass_view = Gtk.Template.Child()
@@ -46,6 +48,7 @@ class PassesWindow(Adw.ApplicationWindow):
         # Bind GtkListBox with GioListStore
         self.pass_list.bind_model(pass_list_model, self._create_pass_widget)
         self.back_button.connect('clicked', self._on_back_clicked)
+        self.barcode_button.connect('clicked', self._on_barcode_clicked)
         self.pass_list.connect('row-activated', self._on_row_activated)
 
         self.pass_list.set_header_func(self._on_update_header)
@@ -57,6 +60,18 @@ class PassesWindow(Adw.ApplicationWindow):
 
     def _on_back_clicked(self, button):
         self.navigate_back()
+
+    def _on_barcode_clicked(self, button):
+        dialog = BarcodeDialog()
+        dialog.set_modal(self)
+        dialog.set_transient_for(self)
+
+        selected_pass = self.selected_pass()
+        barcode = selected_pass.barcode()
+
+        if barcode:
+            dialog.set_barcode(barcode)
+            dialog.show()
 
     def _on_row_activated(self, pass_list, pass_row):
         if self.__selected_row == pass_row:

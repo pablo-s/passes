@@ -42,13 +42,5 @@
       </object>
     </child>
 
-    <child>
-      <object class="BarcodeWidget" id="barcode">
-        <property name="selection-mode">none</property>
-        <property name="css-classes">card</property>
-        <property name="visible">false</property>
-      </object>
-    </child>
-
   </template>
 </interface>

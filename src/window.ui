@@ -110,6 +110,11 @@
                         <property name="menu-model">secondary_menu</property>
                       </object>
                     </child>
+                    <child type="end">
+                      <object class="GtkButton" id="barcode_button">
+                        <property name="icon-name">qr-code-symbolic</property>
+                      </object>
+                    </child>
                     <property name="title-widget">
                       <object class="AdwWindowTitle" id="right_pane_title">
                         <property name="title"></property>

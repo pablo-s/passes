@@ -2,14 +2,6 @@
 <interface>
   <requires lib="gtk" version="4.0"/>
   <requires lib="libadwaita" version="1.0"/>
-  <template class="BarcodeWidget" parent="GtkListBox">
-
-    <child>
-      <object class="GtkDrawingArea" id="drawing_area">
-        <property name="margin-top">4</property>
-        <property name="margin-bottom">4</property>
-      </object>
-    </child>
-
+  <template class="BarcodeWidget" parent="GtkDrawingArea">
   </template>
 </interface>

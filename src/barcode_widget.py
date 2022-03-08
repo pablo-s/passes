@@ -21,11 +21,9 @@ from gi.repository import Adw, Gtk
 
 
 @Gtk.Template(resource_path='/me/sanchezrodriguez/passes/barcode_widget.ui')
-class BarcodeWidget(Gtk.ListBox):
+class BarcodeWidget(Gtk.DrawingArea):
 
     __gtype_name__ = 'BarcodeWidget'
-
-    drawing_area = Gtk.Template.Child()
 
     def __init__(self):
         super().__init__()
@@ -38,8 +36,8 @@ class BarcodeWidget(Gtk.ListBox):
         # that compound the QR-code
         self.__dot_size = 4
 
-        self.drawing_area.set_draw_func(self._update_drawing_area)
-        self.drawing_area.set_content_height(self.__data_height * self.__dot_size)
+        self.set_draw_func(self._update_drawing_area)
+        self.set_content_height(self.__data_height * self.__dot_size)
 
     def _update_drawing_area(self, drawing_area, cairo_context, canvas_width, canvas_height):
         # Center the qr-code horizontally in the canvas
@@ -65,5 +63,5 @@ class BarcodeWidget(Gtk.ListBox):
         self.__data_matrix = qr_code.get_matrix()
         self.__data_width = len(self.__data_matrix)
         self.__data_height = len(self.__data_matrix[0])
-        self.drawing_area.set_content_height(self.__data_height * self.__dot_size)
+        self.set_content_height(self.__data_height * self.__dot_size)
 
