@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
 	<id>me.sanchezrodriguez.passes.desktop</id>
+	<name>Passes</name>
+	<summary>A digital pass manager</summary>
 	<metadata_license>CC0-1.0</metadata_license>
 	<project_license>GPL-3.0-or-later</project_license>
+	<developer_name>Pablo Sánchez Rodríguez</developer_name>
 	<description>
 	  <p>No description</p>
 	</description>
+	<launchable type="desktop-id">me.sanchezrodriguez.passes.desktop</launchable>
 </component>
