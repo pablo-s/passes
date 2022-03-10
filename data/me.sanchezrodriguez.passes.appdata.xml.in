@@ -9,5 +9,12 @@
 	<description>
 	  <p>No description</p>
 	</description>
+
+	<screenshots>
+		<screenshot type="default">
+			<image>https://raw.githubusercontent.com/pablo-s/passes/main/data/screenshots/passes.png</image>
+		</screenshot>
+	</screenshots>
+
 	<launchable type="desktop-id">me.sanchezrodriguez.passes.desktop</launchable>
 </component>
