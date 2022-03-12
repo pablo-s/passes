@@ -18,7 +18,7 @@
 from gi.repository import Adw, Gtk
 
 
-@Gtk.Template(resource_path='/me/sanchezrodriguez/passes/colored_widget.ui')
+@Gtk.Template(resource_path='/me/sanchezrodriguez/passes/auxiliary/colored_widget.ui')
 class ColoredWidget(Gtk.Box):
 
     __gtype_name__ = 'ColoredWidget'

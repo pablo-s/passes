@@ -27,9 +27,9 @@ configure_file(
 
 passes_sources = [
   '__init__.py',
+  'auxiliary/colored_widget.py',
   'barcode_dialog.py',
   'barcode_widget.py',
-  'colored_widget.py',
   'digital_pass.py',
   'digital_pass_factory.py',
   'main.py',
