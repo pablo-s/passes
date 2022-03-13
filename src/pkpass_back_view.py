@@ -28,7 +28,13 @@ class PassBackView(Gtk.Box):
     def __init__(self, a_pass):
         super().__init__()
 
-        for header_field in a_pass.back_fields():
+        back_fields = a_pass.back_fields()
+
+        if not back_fields:
+            self.back_fields.set_visible(False)
+            return
+
+        for header_field in back_fields:
 
             if not header_field.label():
                 value = header_field.value()

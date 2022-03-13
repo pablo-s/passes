@@ -45,25 +45,23 @@ class FallbackView(Gtk.Box):
 
         self.logo.set_from_pixbuf(a_pass.logo())
 
-        for header_field in a_pass.header_fields():
-            label = header_field.label()
-            value = header_field.value()
-            self.add_field_to(self.header_fields, label, value)
+        for field_group_name in ['header_fields',
+                                 'primary_fields',
+                                 'secondary_fields',
+                                 'auxiliary_fields']:
 
-        for header_field in a_pass.primary_fields():
-            label = header_field.label()
-            value = header_field.value()
-            self.add_field_to(self.primary_fields, label, value)
+            field_group = getattr(a_pass, field_group_name)()
+            gtk_list = getattr(self, field_group_name)
 
-        for header_field in a_pass.secondary_fields():
-            label = header_field.label()
-            value = header_field.value()
-            self.add_field_to(self.secondary_fields, label, value)
+            if not field_group:
+                gtk_list.set_visible(False)
+                continue
 
-        for header_field in a_pass.auxiliary_fields():
-            label = header_field.label()
-            value = header_field.value()
-            self.add_field_to(self.auxiliary_fields, label, value)
+            for field in field_group:
+                label = field.label()
+                value = field.value()
+
+                self.add_field_to(gtk_list, label, value)
 
     def add_field_to(self, field_list, label, value):
         row = Gtk.Box()

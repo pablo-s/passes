@@ -127,6 +127,9 @@ class PKPass(DigitalPass):
         field_data_list = \
             self._get_style_specific_optional_data(field_group_name)
 
+        if not field_data_list:
+            return None
+
         field_group = list()
         for field_data in field_data_list:
             field_group.append(StandardField(field_data, self.__translation))
