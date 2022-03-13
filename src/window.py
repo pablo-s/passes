@@ -68,6 +68,10 @@ class PassesWindow(Adw.ApplicationWindow):
 
         selected_pass = self.selected_pass()
         barcode = selected_pass.barcode()
+        barcodes = selected_pass.barcodes()
+
+        if not barcode and len(barcodes) > 0:
+            barcode = barcodes[0]
 
         if barcode:
             dialog.set_barcode(barcode)

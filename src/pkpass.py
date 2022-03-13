@@ -176,7 +176,18 @@ class PKPass(DigitalPass):
         return barcode
 
     def barcodes(self):
-        return self._get_optional_data('barcodes')
+        barcode_data_list = self._get_optional_data('barcodes')
+
+        if not barcode_data_list:
+            return None
+
+        barcodes = list()
+
+        for barcode_data in barcode_data_list:
+            barcode = Barcode(barcode_data)
+            barcodes.append(barcode)
+
+        return barcodes
 
     def background_color(self):
         color_as_text = self._get_optional_data('backgroundColor')
