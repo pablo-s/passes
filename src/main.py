@@ -26,7 +26,7 @@ from gi.repository import GLib, Gdk, Gio, Gtk, Adw
 
 from .persistence import FileAlreadyImported, PersistenceManager
 from .digital_pass import DigitalPass
-from .digital_pass_factory import FileIsNotAPass, PassFactory
+from .digital_pass_factory import FileIsNotAPass, FormatNotSupportedYet, PassFactory
 from .window import PassesWindow, AboutDialog
 
 
@@ -141,6 +141,10 @@ class Application(Adw.Application):
             found, index = self.__pass_list.find(pkpass)
             if found:
                 self.window().select_pass_at_index(index)
+
+        except FormatNotSupportedYet as exception:
+            message = 'This format is not supported yet'
+            self.window().show_toast(message)
 
         except FileIsNotAPass as exception:
             message = 'The file was not imported because it is not a pass'

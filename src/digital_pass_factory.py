@@ -35,12 +35,21 @@ class PassFactory:
             path = pass_file.get_path()
             archive = zipfile.ZipFile(path, 'r')
 
-            digital_pass = this_class.create_pkpass(archive)
+            if 'main.json' in archive.namelist():
+                digital_pass = this_class.create_espass(archive)
+            elif 'pass.json' in archive.namelist():
+                digital_pass = this_class.create_pkpass(archive)
+            else:
+                raise FileIsNotAPass()
 
             return digital_pass
 
         except zipfile.BadZipFile as exception:
             raise FileIsNotAPass()
+
+    @classmethod
+    def create_espass(this_class, archive):
+        raise FormatNotSupportedYet()
 
     @classmethod
     def create_pkpass(thisClass, archive):
@@ -115,4 +124,8 @@ class PassFactory:
 
 
 class FileIsNotAPass(Exception):
+    pass
+
+
+class FormatNotSupportedYet(Exception):
     pass
