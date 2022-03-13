@@ -24,6 +24,7 @@ class BarcodeDialog(Adw.Window):
     __gtype_name__ = 'BarcodeDialog'
 
     barcode = Gtk.Template.Child()
+    alternative_text = Gtk.Template.Child()
 
     def __init__(self):
         super().__init__()
@@ -31,3 +32,4 @@ class BarcodeDialog(Adw.Window):
     def set_barcode(self, code):
         self.barcode.message(code.message(), code.message_encoding())
         self.barcode.set_visible(True)
+        self.alternative_text.set_text(code.alternative_text())
