@@ -62,15 +62,15 @@ class PKPass(DigitalPass):
 
     def _get_style_specific_mandatory_data(self, data_key):
         data = self._get_mandatory_data(self.style())
+        return data[data_key]
+
+    def _get_style_specific_optional_data(self, data_key):
+        data = self._get_mandatory_data(self.style())
 
         if data_key in data.keys():
             return data[data_key]
         else:
             return None
-
-    def _get_style_specific_optional_data(self, data_key):
-        data = self._get_mandatory_data(self.style())
-        return data[data_key]
 
 
     # Standard
