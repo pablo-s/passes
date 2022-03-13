@@ -32,4 +32,7 @@ class BarcodeDialog(Adw.Window):
     def set_barcode(self, code):
         self.barcode.message(code.message(), code.message_encoding())
         self.barcode.set_visible(True)
-        self.alternative_text.set_text(code.alternative_text())
+
+        alternative_text = code.alternative_text()
+        if alternative_text:
+            self.alternative_text.set_text(alternative_text)
