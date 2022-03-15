@@ -38,12 +38,3 @@ class ColoredWidget(Gtk.Box):
         css_code = '.customclass{ background-color: ' + rgb_color + ';}'
         self.__css_provider.load_from_data(bytes(css_code, 'utf-8'))
 
-
-    """
-    def do_snapshot(self, snapshot):
-        #self.__cssProvider.load_from_data(b'.myclass{ background-color: rgb(1,1,1); }')
-
-        snapshot.render_background(self.__style_context, 0, 0,
-                                   self.get_width(), self.get_height())
-    """
-    
