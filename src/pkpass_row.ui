@@ -17,7 +17,7 @@
         <property name="spacing">8</property>
 
         <child>
-          <object class="ColoredWidget" id="colored_widget">
+          <object class="ColoredBox" id="colored_box">
             <property name="width-request">52</property>
             <property name="height-request">0</property>
             <child>

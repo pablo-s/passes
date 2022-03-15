@@ -27,7 +27,7 @@ configure_file(
 
 passes_sources = [
   '__init__.py',
-  'auxiliary/colored_widget.py',
+  'auxiliary/colored_box.py',
   'model/digital_pass.py',
   'model/digital_pass_factory.py',
   'model/persistence.py',

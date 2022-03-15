@@ -2,6 +2,6 @@
 <interface>
   <requires lib="gtk" version="4.0"/>
   <requires lib="libadwaita" version="1.0"/>
-  <template class="ColoredWidget" parent="GtkBox">
+  <template class="ColoredBox" parent="GtkBox">
   </template>
 </interface>

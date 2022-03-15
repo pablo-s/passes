@@ -1,4 +1,4 @@
-# colored_widget.py
+# colored_box.py
 #
 # Copyright 2022 Pablo Sánchez Rodríguez
 #
@@ -18,10 +18,10 @@
 from gi.repository import Adw, Gtk
 
 
-@Gtk.Template(resource_path='/me/sanchezrodriguez/passes/auxiliary/colored_widget.ui')
-class ColoredWidget(Gtk.Box):
+@Gtk.Template(resource_path='/me/sanchezrodriguez/passes/auxiliary/colored_box.ui')
+class ColoredBox(Gtk.Box):
 
-    __gtype_name__ = 'ColoredWidget'
+    __gtype_name__ = 'ColoredBox'
 
     def __init__(self):
         super().__init__()

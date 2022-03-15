@@ -17,7 +17,7 @@
 
 from gi.repository import Gdk, Gtk
 
-from .colored_widget import ColoredWidget
+from .colored_box import ColoredBox
 from .pkpass_row_header import PassRowHeader
 
 
@@ -26,7 +26,7 @@ class PassRow(Gtk.ListBoxRow):
 
     __gtype_name__ = 'PassRow'
 
-    colored_widget = Gtk.Template.Child()
+    colored_box = Gtk.Template.Child()
 
     icon = Gtk.Template.Child()
     name = Gtk.Template.Child()
@@ -41,9 +41,9 @@ class PassRow(Gtk.ListBoxRow):
         if not self.__pass.icon().get_has_alpha() or icon_data[3] > 0:
             background_color = icon_data[0:3]
 
-        self.colored_widget.color(*background_color)
-        self.colored_widget.add_css_class('card')
-        self.colored_widget.add_css_class('digital-pass-boder-radius')
+        self.colored_box.color(*background_color)
+        self.colored_box.add_css_class('card')
+        self.colored_box.add_css_class('digital-pass-boder-radius')
 
         self.icon.set_from_pixbuf(a_pass.icon())
         self.name.set_text(a_pass.description())
