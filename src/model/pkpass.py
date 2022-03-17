@@ -195,15 +195,7 @@ class PKPass(DigitalPass):
         if not color_as_text:
             return None
 
-        result = re.search('rgb\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)',
-                           color_as_text)
-
-        if not result or len(result.groups()) != 3:
-            return None
-
-        return (result.group(1),
-                result.group(2),
-                result.group(3))
+        return Color.from_css(color_as_text).as_tuple()
 
     def foreground_color(self):
         color_as_text = self._get_optional_data('foregroundColor')
@@ -211,15 +203,7 @@ class PKPass(DigitalPass):
         if not color_as_text:
             return None
 
-        result = re.search('rgb\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)',
-                           color_as_text)
-
-        if not result or len(result.groups()) != 3:
-            return None
-
-        return (result.group(1),
-                result.group(2),
-                result.group(3))
+        return Color.from_css(color_as_text).as_tuple()
 
     def grouping_identifier(self):
         if self.style() in ['boardingPass', 'eventTicket']:
@@ -264,6 +248,29 @@ class Barcode:
         return self.__message_encoding
 
 
+class Color:
+
+    def __init__(self, r, g, b):
+        self.__r = r
+        self.__g = g
+        self.__b = b
+
+    def as_tuple(self):
+        return (self.__r, self.__g, self.__b)
+
+    @classmethod
+    def from_css(this_class, css_string):
+        result = re.search('rgb\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)',
+                           css_string)
+
+        if not result or len(result.groups()) != 3:
+            raise BadColor()
+
+        return Color(result.group(1),
+                     result.group(2),
+                     result.group(3))
+
+
 class StandardField:
     """
     A PKPass Standard Field
@@ -290,3 +297,7 @@ class StandardField:
 
     def value(self):
         return self.__value
+
+
+class BadColor(Exception):
+    pass
