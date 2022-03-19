@@ -15,11 +15,9 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import re
-
 from gi.repository import Gdk, GdkPixbuf, Gtk
 
-from .digital_pass import DigitalPass
+from .digital_pass import Barcode, Color, DigitalPass, PassDataExtractor
 
 
 class PKPass(DigitalPass):
@@ -36,7 +34,7 @@ class PKPass(DigitalPass):
     def __init__(self, pass_data, pass_translation, pass_images):
         super().__init__()
 
-        self.__data = pass_data
+        self.__data = PassDataExtractor(pass_data)
         self.__translation = pass_translation
         self.__images = pass_images
 
@@ -46,73 +44,73 @@ class PKPass(DigitalPass):
                 self.__style = style
                 break
 
-        self._setup_fields()
+        self.__auxiliary_fields = self.__data\
+            .get(self.__style)\
+            .get_list('auxiliaryFields', StandardField, self.__translation)
 
+        self.__back_fields = self.__data\
+            .get(self.__style)\
+            .get_list('backFields', StandardField, self.__translation)
 
-    # Auxiliary methods
+        self.__header_fields = self.__data\
+            .get(self.__style)\
+            .get_list('headerFields', StandardField, self.__translation)
 
-    def _get_mandatory_data(self, data_key):
-        return self.__data[data_key]
+        self.__primary_fields = self.__data\
+            .get(self.__style)\
+            .get_list('primaryFields', StandardField, self.__translation)
 
-    def _get_optional_data(self, data_key):
-        if data_key in self.__data.keys():
-            return self.__data[data_key]
-        else:
-            return None
-
-    def _get_style_specific_mandatory_data(self, data_key):
-        data = self._get_mandatory_data(self.style())
-        return data[data_key]
-
-    def _get_style_specific_optional_data(self, data_key):
-        data = self._get_mandatory_data(self.style())
-
-        if data_key in data.keys():
-            return data[data_key]
-        else:
-            return None
+        self.__secondary_fields = self.__data\
+            .get(self.__style)\
+            .get_list('secondaryFields', StandardField, self.__translation)
 
 
     # Standard
 
+    # mandatory
     def description(self):
-        return self._get_mandatory_data('description')
+        return self.__data.get('description')
 
+    # mandatory
     def format_version(self):
-        return self._get_mandatory_data('formatVersion')
+        return self.__data.get('formatVersion')
 
+    # mandatory
     def organization_name(self):
-        return self._get_mandatory_data('organizationName')
+        return self.__data.get('organizationName')
 
+    # mandatory
     def pass_type_identifier(self):
-        return self._get_mandatory_data('passTypeIdentifier')
+        return self.__data.get('passTypeIdentifier')
 
+    # mandatory
     def serial_number(self):
-        return self._get_mandatory_data('serialNumber')
+        return self.__data.get('serialNumber')
 
+    # mandatory
     def team_identifier(self):
-        return self._get_mandatory_data('teamIdentifier')
+        return self.__data.get('teamIdentifier')
 
 
     # Expiration
 
     def expiration_date(self):
-        return self._get_optional_data('expirationDate')
+        return self.__data.get('expirationDate')
 
     def voided(self):
-        return self._get_optional_data('voided')
+        return self.__data.get('voided', bool)
 
 
     # Relevance
 
     def locations(self):
-        return self._get_optional_data('locations')
+        return self.__data.get('locations')
 
     def maximum_distance(self):
-        return self._get_optional_data('maxDistance')
+        return self.__data.get('maxDistance')
 
     def relevant_date(self):
-        return self._get_optional_data('relevantDate')
+        return self.__data.get('relevantDate')
 
 
     # Style
@@ -122,26 +120,6 @@ class PKPass(DigitalPass):
 
 
     # Fields
-
-    def _create_field_group(self, field_group_name):
-        field_data_list = \
-            self._get_style_specific_optional_data(field_group_name)
-
-        if not field_data_list:
-            return None
-
-        field_group = list()
-        for field_data in field_data_list:
-            field_group.append(StandardField(field_data, self.__translation))
-
-        return field_group
-
-    def _setup_fields(self):
-        self.__auxiliary_fields = self._create_field_group('auxiliaryFields')
-        self.__back_fields = self._create_field_group('backFields')
-        self.__header_fields = self._create_field_group('headerFields')
-        self.__primary_fields = self._create_field_group('primaryFields')
-        self.__secondary_fields = self._create_field_group('secondaryFields')
 
     def auxiliary_fields(self):
         return self.__auxiliary_fields
@@ -159,55 +137,26 @@ class PKPass(DigitalPass):
         return self.__secondary_fields
 
     def transit_type(self):
-        if self.style() == 'boardingPass':
-            return self._get_style_specific_mandatory_data('transitType')
-        else:
-            return None
+        return self.__data.get(self.__style).get('transitType')
+
 
     # Visual appearance
 
     def barcode(self):
-        barcode_data = self._get_optional_data('barcode')
-        barcode = None
-
-        if barcode_data:
-            barcode = Barcode(barcode_data)
-
-        return barcode
+        return self.__data.get('barcode', Barcode)
 
     def barcodes(self):
-        barcode_data_list = self._get_optional_data('barcodes')
-
-        if not barcode_data_list:
-            return None
-
-        barcodes = list()
-
-        for barcode_data in barcode_data_list:
-            barcode = Barcode(barcode_data)
-            barcodes.append(barcode)
-
-        return barcodes
+        return self.__data.get_list('barcodes', Barcode)
 
     def background_color(self):
-        color_as_text = self._get_optional_data('backgroundColor')
-
-        if not color_as_text:
-            return None
-
-        return Color.from_css(color_as_text).as_tuple()
+        return self.__data.get('backgroundColor', Color.from_css).as_tuple()
 
     def foreground_color(self):
-        color_as_text = self._get_optional_data('foregroundColor')
-
-        if not color_as_text:
-            return None
-
-        return Color.from_css(color_as_text).as_tuple()
+        return self.__data.get('foregroundColor', Color.from_css).as_tuple()
 
     def grouping_identifier(self):
         if self.style() in ['boardingPass', 'eventTicket']:
-            return self._get_optional_data('groupingIdentifier')
+            return self.__data.get('groupingIdentifier')
         else:
             return None
 
@@ -215,60 +164,13 @@ class PKPass(DigitalPass):
         return self.__images['icon.png']
 
     def label_color(self):
-        return self._get_optional_data('labelColor')
+        return self.__data.get('labelColor', Color.from_css).as_tuple()
 
     def logo(self):
         return self.__images['logo.png']
 
     def logo_text(self):
-        return self._get_optional_data('logoText')
-
-
-class Barcode:
-
-    def __init__(self, pkpass_barcode_dictionary):
-        self.__format = pkpass_barcode_dictionary['format']
-        self.__message = pkpass_barcode_dictionary['message']
-        self.__message_encoding = pkpass_barcode_dictionary['messageEncoding']
-
-        self.__alt_text = None
-        if 'altText' in pkpass_barcode_dictionary.keys():
-            self.__alt_text = pkpass_barcode_dictionary['altText']
-
-    def alternative_text(self):
-        return self.__alt_text
-
-    def format(self):
-        return self.__format
-
-    def message(self):
-        return self.__message
-
-    def message_encoding(self):
-        return self.__message_encoding
-
-
-class Color:
-
-    def __init__(self, r, g, b):
-        self.__r = r
-        self.__g = g
-        self.__b = b
-
-    def as_tuple(self):
-        return (self.__r, self.__g, self.__b)
-
-    @classmethod
-    def from_css(this_class, css_string):
-        result = re.search('rgb\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)',
-                           css_string)
-
-        if not result or len(result.groups()) != 3:
-            raise BadColor()
-
-        return Color(result.group(1),
-                     result.group(2),
-                     result.group(3))
+        return self.__data.get('logoText')
 
 
 class StandardField:
@@ -298,6 +200,3 @@ class StandardField:
     def value(self):
         return self.__value
 
-
-class BadColor(Exception):
-    pass
