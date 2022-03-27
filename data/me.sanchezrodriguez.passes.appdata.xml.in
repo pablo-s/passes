@@ -18,6 +18,14 @@
 	</description>
 
 	<releases>
+		<release date="2022-03-27" version="0.2.1">
+			<description>
+				<ul>
+					<li>Fix 'Add' icon.</li>
+					<li>Hide Settings entry from primary menu.</li>
+				</ul>
+			</description>
+		</release>
 		<release date="2022-03-23" version="0.2">
 			<description>
 				<p>Initial release</p>

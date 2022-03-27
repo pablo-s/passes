@@ -146,7 +146,7 @@ class AboutDialog(Gtk.AboutDialog):
     def __init__(self, parent):
         Gtk.AboutDialog.__init__(self)
         self.props.program_name = 'Passes'
-        self.props.version = "0.2.0"
+        self.props.version = "0.2.1"
         self.props.authors = ['Pablo Sánchez Rodríguez']
         self.props.copyright = '(C) 2022 Pablo Sánchez Rodríguez'
         self.props.logo_icon_name = 'me.sanchezrodriguez.passes'
