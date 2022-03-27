@@ -7,15 +7,21 @@
 	<project_license>GPL-3.0-or-later</project_license>
 	<developer_name>Pablo Sánchez Rodríguez</developer_name>
 	<description>
-	  <p>Passes is a simple tool that allows you to import and take your digital passes with you.</p>
+		<p>Passes is a simple tool that allows you to import and use your digital passes.</p>
+		<p>In its current version it can:</p>
+		<ul>
+		  <li>Adapt its interface to different screen sizes.</li>
+			<li>Import PKPASS files.</li>
+			<li>Display pass fields.</li>
+			<li>Display QR codes.</li>
+		</ul>
 	</description>
 
 	<releases>
 		<release date="2022-03-23" version="0.2">
 			<description>
-				Initial release
+				<p>Initial release</p>
 			</description>
-
 		</release>
 	</releases>
 
