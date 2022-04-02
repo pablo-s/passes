@@ -16,7 +16,8 @@ Currently only source installation is supported. For Arch Linux an AUR package i
 
 |Distro| Link |
 |:----:|:----:|
-| Arch Linux | [`passes-git`](https://aur.archlinux.org/packages/passes-git) |
+| Arch Linux (AUR) | [`passes`](https://aur.archlinux.org/packages/passes) |
+| Arch Linux (AUR, git version) | [`passes-git`](https://aur.archlinux.org/packages/passes-git) |
 
 
 ## License
