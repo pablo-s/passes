@@ -150,4 +150,6 @@ class AboutDialog(Gtk.AboutDialog):
         self.props.authors = ['Pablo Sánchez Rodríguez']
         self.props.copyright = '(C) 2022 Pablo Sánchez Rodríguez'
         self.props.logo_icon_name = 'me.sanchezrodriguez.passes'
+        self.props.website = "https://github.com/pablo-s/passes"
+        self.props.comments = "A digital pass manager"
         self.set_transient_for(parent)
