@@ -35,7 +35,10 @@ class PassRow(Gtk.ListBoxRow):
         super().__init__()
         self.__pass = a_pass
 
-        background_color = self.__pass.background_color()
+        try:
+            background_color = self.__pass.background_color().as_tuple()
+        except:
+            background_color = (0,0,0)
 
         icon_data = self.__pass.icon().read_pixel_bytes().get_data()
         if not self.__pass.icon().get_has_alpha() or icon_data[3] > 0:

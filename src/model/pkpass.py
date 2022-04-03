@@ -149,10 +149,10 @@ class PKPass(DigitalPass):
         return self.__data.get_list('barcodes', Barcode)
 
     def background_color(self):
-        return self.__data.get('backgroundColor', Color.from_css).as_tuple()
+        return self.__data.get('backgroundColor', Color.from_css)
 
     def foreground_color(self):
-        return self.__data.get('foregroundColor', Color.from_css).as_tuple()
+        return self.__data.get('foregroundColor', Color.from_css)
 
     def grouping_identifier(self):
         if self.style() in ['boardingPass', 'eventTicket']:
