@@ -116,7 +116,7 @@
                       </object>
                     </child>
                     <property name="title-widget">
-                      <object class="AdwWindowTitle" id="right_pane_title">
+                      <object class="AdwWindowTitle">
                         <property name="title"></property>
                       </object>
                     </property>

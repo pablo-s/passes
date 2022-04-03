@@ -30,6 +30,12 @@
     </child>
 
     <child>
+      <object class="GtkLabel" id="description">
+        <property name="css-classes">title-2</property>
+      </object>
+    </child>
+
+    <child>
       <object class="GtkListBox" id="header_fields">
         <property name="selection-mode">none</property>
         <property name="css-classes">boxed-list</property>

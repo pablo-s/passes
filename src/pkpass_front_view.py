@@ -36,6 +36,7 @@ class FallbackView(Gtk.Box):
 
     logo = Gtk.Template.Child()
     logo_row = Gtk.Template.Child()
+    description = Gtk.Template.Child()
     header_fields = Gtk.Template.Child()
     primary_fields = Gtk.Template.Child()
     secondary_fields = Gtk.Template.Child()
@@ -49,6 +50,8 @@ class FallbackView(Gtk.Box):
         background_color = a_pass.background_color()
         self.logo_row.color(*background_color)
         self.logo_row.add_css_class('card')
+
+        self.description.set_text(a_pass.description())
 
         for field_group_name in ['header_fields',
                                  'primary_fields',
