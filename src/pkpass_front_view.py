@@ -75,10 +75,11 @@ class FallbackView(Gtk.Box):
         row = Gtk.Box()
         row.props.orientation = Gtk.Orientation.VERTICAL
 
-        label_widget = Gtk.Label()
-        label_widget.set_text(label)
-        label_widget.add_css_class('caption-heading')
-        row.append(label_widget)
+        if label:
+            label_widget = Gtk.Label()
+            label_widget.set_text(label)
+            label_widget.add_css_class('caption-heading')
+            row.append(label_widget)
 
         label_widget = Gtk.Label()
         label_widget.set_text(value)
