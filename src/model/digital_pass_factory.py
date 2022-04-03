@@ -97,7 +97,7 @@ class PassFactory:
 
     @classmethod
     def create_pixbuf_from_filename(thisClass, archive, file_name):
-        loader = GdkPixbuf.PixbufLoader.new_with_type("png")
+        loader = GdkPixbuf.PixbufLoader()
         image_data = archive.read(file_name)
         loader.write(image_data)
         loader.close()
