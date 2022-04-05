@@ -24,6 +24,22 @@ from gi.repository import Gdk, GdkPixbuf, GObject, Gtk
 from .pkpass import PKPass
 
 
+def decode_string(string):
+    encodings = ['utf-8', 'utf-16']
+    decoded_string = ''
+
+    for encoding in encodings:
+        try:
+            decoded_string = string.decode(encoding)
+        except UnicodeDecodeError:
+            pass
+
+    if not decoded_string:
+        raise UnknownEncoding()
+
+    return decoded_string
+
+
 class PassFactory:
     """
     Create a digital pass
@@ -105,7 +121,7 @@ class PassFactory:
 
     @classmethod
     def create_translation_dict(thisClass, translation_file_content):
-        content = translation_file_content.decode()
+        content = decode_string(translation_file_content)
         entries = content.split('\n')
 
         translation_dict = dict()
@@ -128,4 +144,7 @@ class FileIsNotAPass(Exception):
 
 
 class FormatNotSupportedYet(Exception):
+    pass
+
+class UnknownEncoding(Exception):
     pass
