@@ -67,4 +67,3 @@ class PassBackView(Gtk.Box):
         label_widget.set_wrap(True)
         label_widget.set_halign(Gtk.Align.START)
         field_list.append(label_widget)
-

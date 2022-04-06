@@ -199,4 +199,3 @@ class StandardField:
 
     def value(self):
         return self.__value
-

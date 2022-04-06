@@ -158,4 +158,3 @@ class PassDataExtractor:
 
 class BadColor(Exception):
     pass
-

@@ -37,4 +37,3 @@ class ColoredBox(Gtk.Box):
         rgb_color = 'rgb({},{},{})'.format(r, g, b)
         css_code = '.customclass{ background-color: ' + rgb_color + ';}'
         self.__css_provider.load_from_data(bytes(css_code, 'utf-8'))
-

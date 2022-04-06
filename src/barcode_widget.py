@@ -64,4 +64,3 @@ class BarcodeWidget(Gtk.DrawingArea):
         self.__data_width = len(self.__data_matrix)
         self.__data_height = len(self.__data_matrix[0])
         self.set_content_height(self.__data_height * self.__dot_size)
-
