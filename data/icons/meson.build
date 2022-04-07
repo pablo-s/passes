@@ -12,7 +12,9 @@ install_data(
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
+action_dir = join_paths('hicolor', 'scalable', 'actions')
+action_icons = [join_paths(action_dir, 'qr-code-symbolic.svg')]
 install_data(
-  'qr-code-symbolic.svg',
-  install_dir: join_paths(get_option('datadir'), 'icons')
+  action_icons,
+  install_dir: join_paths(get_option('datadir'), 'icons', action_dir)
 )
