@@ -11,6 +11,9 @@
     <child>
       <object class="ColoredBox" id="logo_row">
         <property name="orientation">vertical</property>
+        <style>
+          <class name="card" />
+        </style>
         <child>
           <object class="AdwClamp">
             <property name="orientation">vertical</property>

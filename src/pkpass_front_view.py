@@ -47,7 +47,6 @@ class FallbackView(Gtk.Box):
         super().__init__()
 
         self.logo.set_pixbuf(a_pass.logo())
-        self.logo_row.add_css_class('card')
 
         background_color = a_pass.background_color()
         if background_color:

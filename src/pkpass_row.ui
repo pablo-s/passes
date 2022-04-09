@@ -20,6 +20,10 @@
           <object class="ColoredBox" id="colored_box">
             <property name="width-request">52</property>
             <property name="height-request">0</property>
+            <style>
+              <class name="card" />
+              <class name="digital-pass-boder-radius" />
+            </style>
             <child>
               <object class="GtkImage" id="icon">
                 <property name="visible">True</property>
