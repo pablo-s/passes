@@ -1,4 +1,4 @@
-# pkpass_back_view.py
+# pkpass_field_row.py
 #
 # Copyright 2022 Pablo Sánchez Rodríguez
 #
@@ -17,29 +17,25 @@
 
 from gi.repository import Gtk
 
-from .pkpass_field_row import PassFieldRow
 
+@Gtk.Template(resource_path='/me/sanchezrodriguez/passes/pkpass_field_row.ui')
+class PassFieldRow(Gtk.Box):
 
-@Gtk.Template(resource_path='/me/sanchezrodriguez/passes/pkpass_back_view.ui')
-class PassBackView(Gtk.Box):
+    __gtype_name__ = 'PassFieldRow'
 
-    __gtype_name__ = 'PassBackView'
+    label = Gtk.Template.Child()
+    value = Gtk.Template.Child()
 
-    back_fields = Gtk.Template.Child()
-
-    def __init__(self, a_pass):
+    def __init__(self, label, value):
         super().__init__()
 
-        back_fields = a_pass.back_fields()
+        if label:
+            self.label.set_text(label)
+        else:
+            self.label.hide()
 
-        if not back_fields:
-            self.back_fields.set_visible(False)
-            return
+        self.value.set_text(value)
 
-        for header_field in back_fields:
-            label = header_field.label()
-            value = header_field.value()
-
-            passFieldRow = PassFieldRow(label, value)
-            passFieldRow.set_halign(Gtk.Align.START)
-            self.back_fields.append(passFieldRow)
+    def set_halign(self, alignment):
+        self.label.set_halign(alignment)
+        self.value.set_halign(alignment)

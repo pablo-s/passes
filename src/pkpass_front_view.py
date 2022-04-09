@@ -18,6 +18,7 @@
 from gi.repository import Gtk
 
 from .barcode_widget import BarcodeWidget
+from .pkpass_field_row import PassFieldRow
 
 
 class PassFrontView:
@@ -69,22 +70,5 @@ class FallbackView(Gtk.Box):
             for field in field_group:
                 label = field.label()
                 value = field.value()
-
-                self.add_field_to(gtk_list, label, value)
-
-    def add_field_to(self, field_list, label, value):
-        row = Gtk.Box()
-        row.props.orientation = Gtk.Orientation.VERTICAL
-
-        if label:
-            label_widget = Gtk.Label()
-            label_widget.set_text(label)
-            label_widget.add_css_class('caption-heading')
-            row.append(label_widget)
-
-        label_widget = Gtk.Label()
-        label_widget.set_text(value)
-        row.append(label_widget)
-
-        field_list.append(row)
-        
+                pass_field_row = PassFieldRow(label, value)
+                gtk_list.append(pass_field_row)

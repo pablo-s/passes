@@ -36,6 +36,7 @@ passes_sources = [
   'barcode_widget.py',
   'main.py',
   'pkpass_back_view.py',
+  'pkpass_field_row.py',
   'pkpass_front_view.py',
   'pkpass_row.py',
   'pkpass_row_header.py',
