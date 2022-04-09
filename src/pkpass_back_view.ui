@@ -4,9 +4,9 @@
   <requires lib="libadwaita" version="1.0"/>
   <template class="PassBackView" parent="GtkBox">
     <property name="orientation">vertical</property>
-    <property name="margin-top">8</property>
-    <property name="margin-bottom">8</property>
-    <property name="spacing">16</property>
+    <property name="margin-top">6</property>
+    <property name="margin-bottom">6</property>
+    <property name="spacing">12</property>
     <property name="width-request">294</property>
 
     <child>

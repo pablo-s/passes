@@ -5,7 +5,7 @@
   <template class="PassRow" parent="GtkListBoxRow">
     <property name="can-focus">true</property>
     <property name="selectable">True</property>
-    <property name="margin-top">8</property>
+    <property name="margin-top">6</property>
 
     <child>
       <object class="GtkBox" id="box">
@@ -14,7 +14,7 @@
         <property name="margin-end">0</property>
         <property name="margin-top">0</property>
         <property name="margin-bottom">0</property>
-        <property name="spacing">8</property>
+        <property name="spacing">6</property>
 
         <child>
           <object class="ColoredBox" id="colored_box">

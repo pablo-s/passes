@@ -4,9 +4,9 @@
   <requires lib="libadwaita" version="1.0"/>
   <template class="FallbackView" parent="GtkBox">
     <property name="orientation">vertical</property>
-    <property name="margin-top">8</property>
-    <property name="margin-bottom">8</property>
-    <property name="spacing">16</property>
+    <property name="margin-top">6</property>
+    <property name="margin-bottom">6</property>
+    <property name="spacing">12</property>
 
     <child>
       <object class="ColoredBox" id="logo_row">
@@ -20,10 +20,10 @@
             <property name="maximum-size">0</property>
             <child>
               <object class="GtkPicture" id="logo">
-                <property name="margin-start">8</property>
-                <property name="margin-end">8</property>
-                <property name="margin-top">8</property>
-                <property name="margin-bottom">8</property>
+                <property name="margin-start">6</property>
+                <property name="margin-end">6</property>
+                <property name="margin-top">6</property>
+                <property name="margin-bottom">6</property>
                 <property name="height-request">64</property>
               </object>
             </child>

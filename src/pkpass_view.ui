@@ -14,10 +14,10 @@
             <property name="scroll_to_focus">True</property>
             <child>
               <object class="AdwClamp">
-                <property name="margin-start">8</property>
-                <property name="margin-end">8</property>
-                <property name="margin-top">8</property>
-                <property name="margin-bottom">8</property>
+                <property name="margin-start">6</property>
+                <property name="margin-end">6</property>
+                <property name="margin-top">6</property>
+                <property name="margin-bottom">6</property>
                 <child>
                   <object class="GtkBox" id="pass_content">
                     <property name="orientation">vertical</property>
