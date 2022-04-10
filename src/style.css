@@ -1,3 +1,10 @@
+/* Use light background color in barcode dialogue. */
+.barcode-dialog
+{
+  color: rgba(0, 0, 0, 0.8); /* @window_fg_color of Adwaita's light variant */
+  background-color: white;
+}
+
 .digital-pass-boder-radius
 {
   border-radius: 4px;

@@ -5,6 +5,9 @@
   <template class="BarcodeDialog" parent="AdwWindow">
     <property name="default-width">294</property>
     <property name="default-height">400</property>
+    <style>
+      <class name="barcode-dialog" />
+    </style>
     <property name="content">
       <object class="GtkBox">
         <property name="orientation">vertical</property>
