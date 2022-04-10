@@ -18,6 +18,24 @@
 	</description>
 
 	<releases>
+	  <release date="2022-04-10" version="0.3">
+			<description>
+				<ul>
+				  <li>NEW: Included website and description in About dialogue.</li>
+				  <li>NEW: The selected pass will not be highlighted if the leaflet is folded.</li>
+				  <li>CHANGED: Corrected margins and spaces between widgets.</li>
+				  <li>CHANGED: Moved pass description in the right pane from title bar to pass view.</li>
+				  <li>CHANGED: Pass field rows can now wrap text if it is too long.</li>
+				  <li>CHANGED: Pass view now shows a bigger logo inside a colored row.</li>
+				  <li>FIXED: Capitalized application name in main menu.</li>
+				  <li>FIXED: Fixed a bug when displaying standard fields that do not have a label.</li>
+				  <li>FIXED: Fixed import of passes with images that are not PNG.</li>
+				  <li>FIXED: Fixed import of passes with text files encoded in UTF-16.</li>
+				  <li>FIXED: Fixed QR code icon color in dark mode.</li>
+				  <li>FIXED: Fixed the background of the barcode dialogue in dark mode.</li>
+				</ul>
+			</description>
+		</release>
 		<release date="2022-03-27" version="0.2.1">
 			<description>
 				<ul>
