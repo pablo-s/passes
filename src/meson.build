@@ -9,6 +9,8 @@ gnome.compile_resources('passes',
   install_dir: pkgdatadir,
 )
 
+subdir('model')
+
 python = import('python')
 
 conf = configuration_data()
@@ -28,6 +30,7 @@ configure_file(
 passes_sources = [
   '__init__.py',
   'auxiliary/colored_box.py',
+  'model/barcode_content_encoder.py',
   'model/digital_pass.py',
   'model/digital_pass_factory.py',
   'model/persistence.py',

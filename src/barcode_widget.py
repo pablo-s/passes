@@ -15,9 +15,11 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import qrcode
+import ctypes
 
 from gi.repository import Adw, Gtk
+
+from .barcode_content_encoder import BarcodeContentEncoder
 
 
 @Gtk.Template(resource_path='/me/sanchezrodriguez/passes/barcode_widget.ui')
@@ -25,10 +27,13 @@ class BarcodeWidget(Gtk.DrawingArea):
 
     __gtype_name__ = 'BarcodeWidget'
 
+    FOREGROUND = '1';
+    BACKGROUND = '2';
+
     def __init__(self):
         super().__init__()
 
-        self.__data_matrix = []
+        self.__data = []
         self.__data_width = 0
         self.__data_height = 0
 
@@ -45,9 +50,11 @@ class BarcodeWidget(Gtk.DrawingArea):
 
         for i in range(self.__data_width):
             for j in range(self.__data_height):
-                dot_is_dark = self.__data_matrix[i][j]
 
-                if not dot_is_dark:
+                is_foreground = \
+                    self.__data[i * self.__data_width + j] == BarcodeWidget.FOREGROUND
+
+                if not is_foreground:
                     continue
 
                 cairo_context.fill()
@@ -57,10 +64,12 @@ class BarcodeWidget(Gtk.DrawingArea):
                                         self.__dot_size)
 
     def message(self, message, encoding):
-        qr_code = qrcode.QRCode(border = 0)
-        qr_code.add_data(message.encode(encoding))
 
-        self.__data_matrix = qr_code.get_matrix()
-        self.__data_width = len(self.__data_matrix)
-        self.__data_height = len(self.__data_matrix[0])
+        module_list, side = \
+            BarcodeContentEncoder.encode_qr_code(message, encoding)
+
+        self.__data = module_list
+        self.__data_width = side
+        self.__data_height = side
+
         self.set_content_height(self.__data_height * self.__dot_size)

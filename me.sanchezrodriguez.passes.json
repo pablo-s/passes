@@ -23,7 +23,7 @@
         "*.a"
     ],
     "modules" : [
-        "modules/python3-qrcode.json",
+        "modules/zint.json",
         {
             "name" : "passes",
             "builddir" : true,

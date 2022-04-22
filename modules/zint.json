@@ -1,0 +1,11 @@
+{
+    "name": "zint",
+    "buildsystem": "cmake",
+    "sources": [
+        {
+            "type": "git",
+            "url": "https://git.code.sf.net/p/zint/code",
+            "sha256": "f1c5a0e91ab4b4be6640bde58d7fc01bda841d59"
+        }
+    ]
+}
