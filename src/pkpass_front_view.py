@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from gi.repository import Gtk
+from gi.repository import GdkPixbuf, Gtk
 
 from .barcode_widget import BarcodeWidget
 from .pkpass_field_row import PassFieldRow
@@ -46,7 +46,7 @@ class FallbackView(Gtk.Box):
     def __init__(self, a_pass):
         super().__init__()
 
-        self.logo.set_pixbuf(a_pass.logo())
+        self.logo.set_pixbuf(a_pass.logo().as_pixbuf())
 
         background_color = a_pass.background_color()
         if background_color:

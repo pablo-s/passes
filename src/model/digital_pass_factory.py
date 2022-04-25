@@ -19,7 +19,7 @@ import json
 import re
 import zipfile
 
-from gi.repository import Gdk, GdkPixbuf, GObject, Gtk
+from gi.repository import Gdk, GObject, Gtk
 
 from .pkpass import PKPass
 
@@ -69,6 +69,10 @@ class PassFactory:
 
     @classmethod
     def create_pkpass(thisClass, archive):
+        """
+        Create a PKPass object from a compressed file
+        """
+
         manifest_text = archive.read('manifest.json')
         manifest = json.loads(manifest_text)
 
@@ -77,9 +81,10 @@ class PassFactory:
         pass_images = dict()
 
         for file_name in manifest.keys():
-            if file_name.endswith('.png'):
-                pixbuf = thisClass.create_pixbuf_from_filename(archive, file_name)
-                pass_images[file_name] = pixbuf
+            if file_name.endswith('.png') and not file_name.endswith('x.png'):
+                # Process only images with lowest resolution
+                image = archive.read(file_name)
+                pass_images[file_name] = image
 
             if file_name.endswith('pass.strings'):
                 language = file_name.split('.')[0]
@@ -110,14 +115,6 @@ class PassFactory:
             pass_translation = pass_translations[language_to_import]
 
         return PKPass(pass_data, pass_translation, pass_images)
-
-    @classmethod
-    def create_pixbuf_from_filename(thisClass, archive, file_name):
-        loader = GdkPixbuf.PixbufLoader()
-        image_data = archive.read(file_name)
-        loader.write(image_data)
-        loader.close()
-        return loader.get_pixbuf()
 
     @classmethod
     def create_translation_dict(thisClass, translation_file_content):

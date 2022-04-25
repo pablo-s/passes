@@ -17,7 +17,7 @@
 
 import re
 
-from gi.repository import GObject
+from gi.repository import GdkPixbuf, GObject
 
 
 class DigitalPass(GObject.GObject):
@@ -80,6 +80,18 @@ class Color:
         return Color(result.group(1),
                      result.group(2),
                      result.group(3))
+
+
+class Image:
+
+    def __init__(self, image_data):
+        self.__data = image_data
+
+    def as_pixbuf(self):
+        loader = GdkPixbuf.PixbufLoader()
+        loader.write(self.__data)
+        loader.close()
+        return loader.get_pixbuf()
 
 
 class PassDataExtractor:

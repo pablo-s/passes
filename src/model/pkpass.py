@@ -15,9 +15,9 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from gi.repository import Gdk, GdkPixbuf, Gtk
+from gi.repository import Gdk, Gtk
 
-from .digital_pass import Barcode, Color, DigitalPass, PassDataExtractor
+from .digital_pass import Barcode, Color, DigitalPass, Image, PassDataExtractor
 
 
 class PKPass(DigitalPass):
@@ -161,13 +161,13 @@ class PKPass(DigitalPass):
             return None
 
     def icon(self):
-        return self.__images['icon.png']
+        return Image(self.__images['icon.png'])
 
     def label_color(self):
         return self.__data.get('labelColor', Color.from_css).as_tuple()
 
     def logo(self):
-        return self.__images['logo.png']
+        return Image(self.__images['logo.png'])
 
     def logo_text(self):
         return self.__data.get('logoText')
