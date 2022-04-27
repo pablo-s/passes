@@ -61,10 +61,6 @@ class PassesWindow(Adw.ApplicationWindow):
         self.navigate_back()
 
     def _on_barcode_clicked(self, button):
-        dialog = BarcodeDialog()
-        dialog.set_modal(self)
-        dialog.set_transient_for(self)
-
         selected_pass = self.selected_pass()
         barcode = selected_pass.barcode()
         barcodes = selected_pass.barcodes()
@@ -73,6 +69,9 @@ class PassesWindow(Adw.ApplicationWindow):
             barcode = barcodes[0]
 
         if barcode:
+            dialog = BarcodeDialog()
+            dialog.set_modal(True)
+            dialog.set_transient_for(self)
             dialog.set_barcode(barcode)
             dialog.show()
 
