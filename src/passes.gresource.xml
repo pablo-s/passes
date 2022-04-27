@@ -3,7 +3,6 @@
   <gresource prefix="/me/sanchezrodriguez/passes">
     <file>auxiliary/colored_box.ui</file>
     <file>barcode_dialog.ui</file>
-    <file>barcode_widget.ui</file>
     <file>pkpass_back_view.ui</file>
     <file>pkpass_field_row.ui</file>
     <file>pkpass_front_view_fallback.ui</file>
