@@ -23,9 +23,29 @@ class BarcodeContentEncoder():
 
     native_implementation = ctypes.CDLL('libbarcode-content-encoder.so')
 
+    # encode_aztec_code
+    native_implementation.encode_aztec_code.argtypes = [ctypes.POINTER(ctypes.c_ubyte)]
+    native_implementation.encode_aztec_code.restype = ctypes.c_char_p
+
     # encode_qr_code
     native_implementation.encode_qr_code.argtypes = [ctypes.POINTER(ctypes.c_ubyte)]
     native_implementation.encode_qr_code.restype = ctypes.c_char_p
+
+    @classmethod
+    def encode_aztec_code(this_class, text, encoding):
+        encoded_text = text.encode(encoding)
+        data = (ctypes.c_ubyte * len(encoded_text))\
+            .from_buffer_copy(encoded_text)
+
+        module_list = this_class.native_implementation\
+            .encode_aztec_code(data)\
+            .decode()
+
+        this_class.native_implementation.free_last_result()
+
+        qr_code_width = math.sqrt(len(module_list))
+
+        return module_list, int(qr_code_width)
 
     @classmethod
     def encode_qr_code(this_class, text, encoding):

@@ -61,19 +61,23 @@ class PassesWindow(Adw.ApplicationWindow):
         self.navigate_back()
 
     def _on_barcode_clicked(self, button):
-        selected_pass = self.selected_pass()
-        barcode = selected_pass.barcode()
-        barcodes = selected_pass.barcodes()
+        try:
+            selected_pass = self.selected_pass()
+            barcode = selected_pass.barcode()
+            barcodes = selected_pass.barcodes()
 
-        if not barcode and len(barcodes) > 0:
-            barcode = barcodes[0]
+            if not barcode and len(barcodes) > 0:
+                barcode = barcodes[0]
 
-        if barcode:
-            dialog = BarcodeDialog()
-            dialog.set_modal(True)
-            dialog.set_transient_for(self)
-            dialog.set_barcode(barcode)
-            dialog.show()
+            if barcode:
+                dialog = BarcodeDialog()
+                dialog.set_modal(True)
+                dialog.set_transient_for(self)
+                dialog.set_barcode(barcode)
+                dialog.show()
+
+        except Exception as error:
+            self.show_toast(str(error))
 
     def _on_row_activated(self, pass_list, pass_row):
         if self.__selected_row == pass_row:

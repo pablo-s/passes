@@ -69,10 +69,19 @@ class BarcodeWidget(Gtk.Widget):
                 rectangle.init(x, y, w, h)
                 snapshot.append_color(self.__foreground_color, rectangle)
 
-    def message(self, message, encoding):
+    def encode(self, format, message, encoding):
+        encoding_function = None
 
-        module_list, side = \
-            BarcodeContentEncoder.encode_qr_code(message, encoding)
+        if format == 'PKBarcodeFormatAztec':
+            encoding_function = BarcodeContentEncoder.encode_aztec_code
+
+        elif format == 'PKBarcodeFormatQR':
+            encoding_function = BarcodeContentEncoder.encode_qr_code
+
+        else:
+            raise BarcodeFormatNotSupported(format)
+
+        module_list, side = encoding_function(message, encoding)
 
         self.__data = module_list
         self.__data_width = side
@@ -81,3 +90,9 @@ class BarcodeWidget(Gtk.Widget):
         barcode_height = self.__data_height * self.__dot_size
         bottom_margin = 4 * self.__dot_size
         self.props.height_request = barcode_height + bottom_margin
+
+
+class BarcodeFormatNotSupported(Exception):
+    def __init__(self, format):
+        message = 'Barcode format not supported: %s' % (format)
+        super().__init__(message)
