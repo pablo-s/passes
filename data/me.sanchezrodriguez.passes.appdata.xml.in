@@ -8,31 +8,57 @@
 	<developer_name>Pablo Sánchez Rodríguez</developer_name>
 	<description>
 		<p>Passes is a simple tool that allows you to import and use your digital passes.</p>
-		<p>In its current version it can:</p>
+		<p>In its current version the application can:</p>
 		<ul>
-		  <li>Adapt its interface to different screen sizes.</li>
+			<li>Adapt its interface to different screen sizes.</li>
 			<li>Import PKPASS files.</li>
 			<li>Display pass fields.</li>
-			<li>Display QR codes.</li>
+			<li>Display Aztec and QR codes.</li>
 		</ul>
 	</description>
 
 	<releases>
+		<release date="2022-05-01" version="0.4">
+			<description>
+				<p>New features:</p>
+				<ul>
+					<li>Added support for Aztec codes.</li>
+					<li>Passes will now be recognized as mobile compatible by Phosh.</li>
+				</ul>
+				<p>Improvements:</p>
+				<ul>
+					<li>Replaced python3-qrcode with zint.</li>
+					<li>Decreased memory consumption of instances of PKPass.</li>
+					<li>In pass list, increased spacing between cards and descriptions.</li>
+				</ul>
+				<p>Bug fixes:</p>
+				<ul>
+					<li>Pass field rows can now be created even if their value is not text.</li>
+				</ul>
+			</description>
+		</release>
 	  <release date="2022-04-10" version="0.3">
 			<description>
+				<p>New features:</p>
 				<ul>
-				  <li>NEW: Included website and description in About dialogue.</li>
-				  <li>NEW: The selected pass will not be highlighted if the leaflet is folded.</li>
-				  <li>CHANGED: Corrected margins and spaces between widgets.</li>
-				  <li>CHANGED: Moved pass description in the right pane from title bar to pass view.</li>
-				  <li>CHANGED: Pass field rows can now wrap text if it is too long.</li>
-				  <li>CHANGED: Pass view now shows a bigger logo inside a colored row.</li>
-				  <li>FIXED: Capitalized application name in main menu.</li>
-				  <li>FIXED: Fixed a bug when displaying standard fields that do not have a label.</li>
-				  <li>FIXED: Fixed import of passes with images that are not PNG.</li>
-				  <li>FIXED: Fixed import of passes with text files encoded in UTF-16.</li>
-				  <li>FIXED: Fixed QR code icon color in dark mode.</li>
-				  <li>FIXED: Fixed the background of the barcode dialogue in dark mode.</li>
+					<li>Included website and description in About dialogue.</li>
+					<li>The selected pass will not be highlighted if the leaflet is folded.</li>
+				</ul>
+				<p>Improvements:</p>
+				<ul>
+					<li>Corrected margins and spaces between widgets.</li>
+					<li>Moved pass description in the right pane from title bar to pass view.</li>
+					<li>Pass field rows can now wrap text if it is too long.</li>
+					<li>Pass view now shows a bigger logo inside a colored row.</li>
+				</ul>
+				<p>Bug fixes:</p>
+				<ul>
+					<li>Capitalized application name in main menu.</li>
+					<li>Fixed a bug when displaying standard fields that do not have a label.</li>
+					<li>Fixed import of passes with images that are not PNG.</li>
+					<li>Fixed import of passes with text files encoded in UTF-16.</li>
+					<li>Fixed QR code icon color in dark mode.</li>
+					<li>Fixed the background of the barcode dialogue in dark mode.</li>
 				</ul>
 			</description>
 		</release>
