@@ -34,7 +34,7 @@ class PassFieldRow(Gtk.Box):
         else:
             self.label.hide()
 
-        self.value.set_text(value)
+        self.value.set_text(str(value))
 
     def set_halign(self, alignment):
         self.label.set_halign(alignment)
