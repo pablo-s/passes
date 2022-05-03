@@ -40,6 +40,6 @@ class PassBackView(Gtk.Box):
             label = header_field.label()
             value = header_field.value()
 
-            passFieldRow = PassFieldRow(label, value)
+            passFieldRow = PassFieldRow(label, value, create_links=True)
             passFieldRow.set_halign(Gtk.Align.START)
             self.back_fields.append(passFieldRow)

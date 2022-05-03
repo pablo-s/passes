@@ -15,7 +15,9 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from gi.repository import Gtk
+import re
+
+from gi.repository import GLib, Gtk
 
 
 @Gtk.Template(resource_path='/me/sanchezrodriguez/passes/pkpass_field_row.ui')
@@ -26,7 +28,7 @@ class PassFieldRow(Gtk.Box):
     label = Gtk.Template.Child()
     value = Gtk.Template.Child()
 
-    def __init__(self, label, value):
+    def __init__(self, label, value, create_links=False):
         super().__init__()
 
         if label:
@@ -34,7 +36,28 @@ class PassFieldRow(Gtk.Box):
         else:
             self.label.hide()
 
-        self.value.set_text(str(value))
+        value_as_string = str(value)
+
+        if create_links:
+            value_as_string = GLib.markup_escape_text(value_as_string)
+
+            # Create a link for URLs
+            value_as_string = re.sub('(https?://\S+)',
+                                     '<a href="\\1">\\1</a>',
+                                     value_as_string)
+
+            # Create a link for telephone numbers
+            value_as_string = re.sub('(\+\d+[\(\)\-\d\s\.]+\d)',
+                                     '<a href="tel:\\1">\\1</a>',
+                                     value_as_string)
+
+            # Create a link for e-mails
+            value_as_string = re.sub('(\S+\@[\w\-]+\.\w+)',
+                                     '<a href="mailto:\\1">\\1</a>',
+                                     value_as_string)
+
+        self.value.set_use_markup(create_links)
+        self.value.set_label(value_as_string)
 
     def set_halign(self, alignment):
         self.label.set_halign(alignment)
