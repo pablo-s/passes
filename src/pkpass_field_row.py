@@ -21,7 +21,7 @@ from gi.repository import GLib, Gtk
 
 
 @Gtk.Template(resource_path='/me/sanchezrodriguez/passes/pkpass_field_row.ui')
-class PassFieldRow(Gtk.Box):
+class PassFieldRow(Gtk.ListBoxRow):
 
     __gtype_name__ = 'PassFieldRow'
 
