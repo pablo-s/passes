@@ -20,7 +20,8 @@
 import os
 import sys
 import signal
-import gettext
+import locale
+import builtins
 
 VERSION = '@VERSION@'
 pkgdatadir = '@pkgdatadir@'
@@ -28,7 +29,10 @@ localedir = '@localedir@'
 
 sys.path.insert(1, pkgdatadir)
 signal.signal(signal.SIGINT, signal.SIG_DFL)
-gettext.install('passes', localedir)
+
+locale.bindtextdomain('passes', localedir)
+locale.textdomain('passes')
+builtins._ = locale.gettext
 
 if __name__ == '__main__':
     import gi
