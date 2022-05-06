@@ -1,7 +1,12 @@
 data/me.sanchezrodriguez.passes.desktop.in
 data/me.sanchezrodriguez.passes.appdata.xml.in
 data/me.sanchezrodriguez.passes.gschema.xml
-src/window.ui
-src/main.py
-src/window.py
 
+src/model/digital_pass_factory.py
+src/model/persistence.py
+src/barcode_widget.py
+src/main.py
+src/main.py
+src/pkpass_row_header.py
+src/window.py
+src/window.ui
