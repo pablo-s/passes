@@ -137,11 +137,18 @@ class PassFactory:
 
 
 class FileIsNotAPass(Exception):
-    pass
+    def __init__(self):
+        message = _('File is not a pass')
+        super().__init__(message)
 
 
 class FormatNotSupportedYet(Exception):
-    pass
+    def __init__(self):
+        message = _('Format not supported yet')
+        super().__init__(message)
+
 
 class UnknownEncoding(Exception):
-    pass
+    def __init__(self):
+        message = _('Unknown file encoding')
+        super().__init__(message)

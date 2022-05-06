@@ -95,10 +95,10 @@ class Application(Adw.Application):
         index_to_select = min(len(self.__pass_list) - 1, selected_pass_index)
         self.window().select_pass_at_index(index_to_select)
 
-    def on_import_action(self, widget, _):
+    def on_import_action(self, widget, __):
         if not self.__file_chooser:
             self.__file_chooser = Gtk.FileChooserNative.new(
-                'Import a digital pass',
+                _('Import a pass'),
                 self.window(),
                 Gtk.FileChooserAction.OPEN,
                 None,
@@ -119,7 +119,6 @@ class Application(Adw.Application):
 
     def _on_file_chosen(self, filechooser, response):
         if response != Gtk.ResponseType.ACCEPT:
-            print('Error')
             return
 
         try:
@@ -142,17 +141,8 @@ class Application(Adw.Application):
             if found:
                 self.window().select_pass_at_index(index)
 
-        except FormatNotSupportedYet as exception:
-            message = 'This format is not supported yet'
-            self.window().show_toast(message)
-
-        except FileIsNotAPass as exception:
-            message = 'The file was not imported because it is not a pass'
-            self.window().show_toast(message)
-
-        except FileAlreadyImported as exception:
-            message = 'The file was not imported because it already is'
-            self.window().show_toast(message)
+        except Exception as exception:
+            self.window().show_toast(str(exception))
 
     def window(self):
         return self.props.active_window

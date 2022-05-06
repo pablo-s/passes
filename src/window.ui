@@ -51,8 +51,8 @@
                                 <property name="child">
                                   <object class="AdwStatusPage">
                                     <property name="icon-name">me.sanchezrodriguez.passes</property>
-                                    <property name="title">You have no passes</property>
-                                    <property name="description">Use the button “+” to start importing your digital passes</property>
+                                    <property name="title" translatable="yes">You have no passes</property>
+                                    <property name="description" translatable="yes">Use the “+” button to import a pass</property>
                                   </object>
                                 </property>
                               </object>
@@ -142,7 +142,7 @@
         <attribute name="action">app.preferences</attribute>
       </item-->
       <item>
-        <attribute name="label" translatable="yes">_Keyboard Shortcuts</attribute>
+        <attribute name="label" translatable="yes">_Keyboard shortcuts</attribute>
         <attribute name="action">win.show-help-overlay</attribute>
       </item>
       <item>

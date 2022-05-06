@@ -64,5 +64,8 @@ class PersistenceManager:
 
         return destination_file
 
+
 class FileAlreadyImported(Exception):
-    pass
+    def __init__(self):
+        message = _('File already imported')
+        super().__init__(message)

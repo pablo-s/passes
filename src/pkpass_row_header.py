@@ -26,15 +26,15 @@ class PassRowHeader(Gtk.Label):
     def __init__(self, pass_style):
         super().__init__()
 
-        header_text = 'Other Passes'
+        header_text = _('Other passes')
 
         if pass_style == 'boardingPass':
-            header_text = 'Boarding Passes'
+            header_text = _('Boarding passes')
         elif pass_style == 'coupon':
-            header_text = 'Coupons'
+            header_text = _('Coupons')
         elif pass_style == 'eventTicket':
-            header_text = 'Event Tickets'
+            header_text = _('Event tickets')
         elif pass_style == 'storeCard':
-            header_text = 'Store Cards'
+            header_text = _('Store cards')
 
         self.set_text(header_text)

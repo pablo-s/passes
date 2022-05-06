@@ -141,15 +141,16 @@ class PassesWindow(Adw.ApplicationWindow):
         toast = Adw.Toast.new(message)
         self.toast_overlay.add_toast(toast)
 
+
 class AboutDialog(Gtk.AboutDialog):
 
     def __init__(self, parent):
         Gtk.AboutDialog.__init__(self)
-        self.props.program_name = 'Passes'
+        self.props.program_name = _('Passes')
         self.props.version = "0.4"
         self.props.authors = ['Pablo Sánchez Rodríguez']
         self.props.copyright = '(C) 2022 Pablo Sánchez Rodríguez'
         self.props.logo_icon_name = 'me.sanchezrodriguez.passes'
         self.props.website = "https://github.com/pablo-s/passes"
-        self.props.comments = "A digital pass manager"
+        self.props.comments = _("A digital pass manager")
         self.set_transient_for(parent)

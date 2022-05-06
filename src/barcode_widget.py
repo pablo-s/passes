@@ -79,7 +79,7 @@ class BarcodeWidget(Gtk.Widget):
             encoding_function = BarcodeContentEncoder.encode_qr_code
 
         else:
-            raise BarcodeFormatNotSupported(format)
+            raise BarcodeFormatNotSupported()
 
         module_list, side = encoding_function(message, encoding)
 
@@ -93,6 +93,6 @@ class BarcodeWidget(Gtk.Widget):
 
 
 class BarcodeFormatNotSupported(Exception):
-    def __init__(self, format):
-        message = 'Barcode format not supported: %s' % (format)
+    def __init__(self):
+        message = _('Barcode format not supported')
         super().__init__(message)
