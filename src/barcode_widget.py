@@ -41,18 +41,26 @@ class BarcodeWidget(Gtk.Widget):
         self.__foreground_color.green = 0.0
         self.__foreground_color.alpha = 1.0
 
-        # Amount of pixels used to draw each of the dots
-        # that compound the QR-code
-        self.__dot_size = 4
+        # Amount of barcode dots/modules that should fit in every margin (either
+        # horizontal or vertical)
+        self.__margin_size_in_dots = 4
 
     def do_snapshot(self, snapshot):
         canvas_width = self.get_allocated_width()
+        canvas_height = self.get_allocated_height()
 
-        # Center the qr-code horizontally in the canvas
+        # Calculate the biggest dot size that allows drawing the full barcode in
+        # the current canvas
+        horizontal_dot_size = canvas_width // (self.__data_width + 2 * self.__margin_size_in_dots)
+        vertical_dot_size = canvas_height // (self.__data_height + 2 * self.__margin_size_in_dots)
+        self.__dot_size = min(horizontal_dot_size, vertical_dot_size)
+
+        # Center the qr-code horizontal and vertically in the canvas
         offset_x = (canvas_width // 2) - (self.__data_width * self.__dot_size // 2)
+        offset_y = (canvas_height // 2) - (self.__data_height * self.__dot_size // 2)
 
-        for i in range(self.__data_width):
-            for j in range(self.__data_height):
+        for i in range(self.__data_height):
+            for j in range(self.__data_width):
 
                 is_foreground = \
                     self.__data[i * self.__data_width + j] == BarcodeWidget.FOREGROUND
@@ -60,8 +68,8 @@ class BarcodeWidget(Gtk.Widget):
                 if not is_foreground:
                     continue
 
-                x = i * self.__dot_size + offset_x
-                y = j * self.__dot_size
+                x = j * self.__dot_size + offset_x
+                y = i * self.__dot_size + offset_y
                 w = self.__dot_size
                 h = self.__dot_size
 
@@ -81,15 +89,11 @@ class BarcodeWidget(Gtk.Widget):
         else:
             raise BarcodeFormatNotSupported()
 
-        module_list, side = encoding_function(message, encoding)
+        module_list, width, height = encoding_function(message, encoding)
 
         self.__data = module_list
-        self.__data_width = side
-        self.__data_height = side
-
-        barcode_height = self.__data_height * self.__dot_size
-        bottom_margin = 4 * self.__dot_size
-        self.props.height_request = barcode_height + bottom_margin
+        self.__data_width = width
+        self.__data_height = height
 
 
 class BarcodeFormatNotSupported(Exception):
