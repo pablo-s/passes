@@ -83,6 +83,9 @@ class BarcodeWidget(Gtk.Widget):
         if format == 'PKBarcodeFormatAztec':
             encoding_function = BarcodeContentEncoder.encode_aztec_code
 
+        elif format == 'PKBarcodeFormatPDF417':
+            encoding_function = BarcodeContentEncoder.encode_pdf417_code
+
         elif format == 'PKBarcodeFormatQR':
             encoding_function = BarcodeContentEncoder.encode_qr_code
 

@@ -9,6 +9,7 @@ char * last_result = NULL;
 
 char * encode_2d_symbol(struct zint_symbol* symbol, unsigned char * data);
 char * encode_aztec_code(unsigned char * data);
+char * encode_pdf417_code(unsigned char * data, unsigned * out_width, unsigned * out_height);
 char * encode_qr_code(unsigned char * data);
 
 char * encode_2d_symbol(struct zint_symbol* symbol, unsigned char * data)
@@ -18,8 +19,7 @@ char * encode_2d_symbol(struct zint_symbol* symbol, unsigned char * data)
 
     ZBarcode_Encode_and_Buffer(symbol, data, 0, 0);
 
-    unsigned amount_of_rows = symbol->rows;
-    unsigned amount_of_modules = (amount_of_rows * amount_of_rows) + 1;
+    unsigned amount_of_modules = (symbol->height * symbol->width) + 1;
     unsigned module_size = symbol->bitmap_width / symbol->width;
 
     char* modules = malloc(amount_of_modules * sizeof(char));
@@ -54,6 +54,24 @@ char * encode_aztec_code(unsigned char * data)
     symbol = ZBarcode_Create();
     symbol->symbology = BARCODE_AZTEC;
     last_result = encode_2d_symbol(symbol, data);
+    ZBarcode_Delete(symbol);
+
+    return last_result;
+}
+
+char * encode_pdf417_code(unsigned char * data,
+                          unsigned * out_width,
+                          unsigned * out_height)
+{
+    struct zint_symbol* symbol;
+
+    symbol = ZBarcode_Create();
+    symbol->symbology = BARCODE_PDF417;
+
+    last_result = encode_2d_symbol(symbol, data);
+    *out_width = symbol->width;
+    *out_height = symbol->height;
+
     ZBarcode_Delete(symbol);
 
     return last_result;

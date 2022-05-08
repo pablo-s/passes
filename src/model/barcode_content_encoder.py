@@ -27,6 +27,10 @@ class BarcodeContentEncoder():
     native_implementation.encode_aztec_code.argtypes = [ctypes.POINTER(ctypes.c_ubyte)]
     native_implementation.encode_aztec_code.restype = ctypes.c_char_p
 
+    # encode_pdf417_code
+    native_implementation.encode_pdf417_code.argtypes = [ctypes.POINTER(ctypes.c_ubyte), ctypes.POINTER(ctypes.c_uint), ctypes.POINTER(ctypes.c_uint)]
+    native_implementation.encode_pdf417_code.restype = ctypes.c_char_p
+
     # encode_qr_code
     native_implementation.encode_qr_code.argtypes = [ctypes.POINTER(ctypes.c_ubyte)]
     native_implementation.encode_qr_code.restype = ctypes.c_char_p
@@ -46,6 +50,25 @@ class BarcodeContentEncoder():
         code_width = code_height = int(math.sqrt(len(module_list)))
 
         return module_list, code_width, code_height
+
+    @classmethod
+    def encode_pdf417_code(this_class, text, encoding):
+        encoded_text = text.encode(encoding)
+        data = (ctypes.c_ubyte * len(encoded_text))\
+            .from_buffer_copy(encoded_text)
+
+        code_width = ctypes.c_uint()
+        code_height = ctypes.c_uint()
+
+        module_list = this_class.native_implementation\
+            .encode_pdf417_code(data,
+                                ctypes.byref(code_width),
+                                ctypes.byref(code_height))\
+            .decode()
+
+        this_class.native_implementation.free_last_result()
+
+        return module_list, code_width.value, code_height.value
 
     @classmethod
     def encode_qr_code(this_class, text, encoding):
