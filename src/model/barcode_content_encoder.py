@@ -43,9 +43,9 @@ class BarcodeContentEncoder():
 
         this_class.native_implementation.free_last_result()
 
-        qr_code_width = math.sqrt(len(module_list))
+        code_width = code_height = int(math.sqrt(len(module_list)))
 
-        return module_list, int(qr_code_width)
+        return module_list, code_width, code_height
 
     @classmethod
     def encode_qr_code(this_class, text, encoding):
@@ -59,6 +59,6 @@ class BarcodeContentEncoder():
 
         this_class.native_implementation.free_last_result()
 
-        qr_code_width = math.sqrt(len(module_list))
+        code_width = code_height = int(math.sqrt(len(module_list)))
 
-        return module_list, int(qr_code_width)
+        return module_list, code_width, code_height
