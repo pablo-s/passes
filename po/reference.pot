@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-06 19:46+0200\n"
+"POT-Creation-Date: 2022-05-09 18:13+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/barcode_widget.py:97
+#: src/barcode_widget.py:104
 msgid "Barcode format not supported"
 msgstr ""
 
-#: src/main.py:101
+#: src/main.py:101 src/window.ui:28
 msgid "Import a pass"
 msgstr ""
 
@@ -69,26 +69,34 @@ msgstr ""
 msgid "A digital pass manager"
 msgstr ""
 
-#: src/window.ui:54
+#: src/window.ui:36
+msgid "Menu"
+msgstr ""
+
+#: src/window.ui:56
 msgid "You have no passes"
 msgstr ""
 
-#: src/window.ui:55
+#: src/window.ui:57
 msgid "Use the “+” button to import a pass"
 msgstr ""
 
-#: src/window.ui:102
+#: src/window.ui:104
 msgid "Back"
 msgstr ""
 
-#: src/window.ui:145
+#: src/window.ui:118
+msgid "Show barcode"
+msgstr ""
+
+#: src/window.ui:148
 msgid "_Keyboard shortcuts"
 msgstr ""
 
-#: src/window.ui:149
+#: src/window.ui:152
 msgid "_About Passes"
 msgstr ""
 
-#: src/window.ui:158
+#: src/window.ui:161
 msgid "_Delete"
 msgstr ""
