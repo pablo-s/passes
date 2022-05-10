@@ -23,12 +23,20 @@ cd ${project_root}
 # Extract all translatable strings from the source code and generate a reference
 # file.
 
+
+# Blueprint
+# Note: Although Blueprint is not C, it does the trick
+
 xgettext \
-    --package-name=passes \
-    --language=Glade \
+    --language=C \
+    --keyword=_ \
+    --from-code=UTF-8 \
     --sort-by-file \
     --output=po/reference.pot \
-    src/*.ui
+    $(find src -type f -name "*.blp")
+
+
+# Python files
 
 xgettext \
     --join-existing \
