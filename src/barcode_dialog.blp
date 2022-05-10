@@ -1,0 +1,33 @@
+using Gtk 4.0;
+using Adw 1;
+
+template BarcodeDialog : Adw.Window
+{
+	default-width: 294;
+    default-height: 400;
+    styles ["barcode-dialog"]
+
+    Gtk.Box
+    {
+        orientation: vertical;
+
+        Gtk.HeaderBar
+        {
+            title-widget: Adw.WindowTitle {title: "";};
+            styles ["flat"]
+        }
+
+        .BarcodeWidget barcode
+        {
+            vexpand: true;
+        }
+
+        Gtk.Label alternative_text
+        {
+            margin-start: 6;
+            margin-end: 6;
+            margin-bottom: 6;
+            styles ["heading"]
+        }
+    }
+}

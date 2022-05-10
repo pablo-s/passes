@@ -1,1 +1,3 @@
 *.json~
+
+/subprojects/blueprint-compiler

@@ -1,0 +1,44 @@
+using Gtk 4.0;
+using Adw 1;
+
+template PassRow : Gtk.ListBoxRow
+{
+    can-focus: true;
+    margin-top: 6;
+    selectable: true;
+
+    Gtk.Box box
+    {
+        can-focus: false;
+        margin-bottom: 0;
+        margin-end: 0;
+        margin-start: 0;
+        margin-top: 0;
+        spacing: 12;
+
+        // Card showing the icon of the pass
+        .ColoredBox colored_box
+        {
+            width-request: 52;
+            height-request: 0;
+            styles ["card", "digital-pass-boder-radius"]
+
+            Gtk.Image icon
+            {
+                can-focus: false;
+                margin-bottom: 2;
+                margin-start: 10;
+                margin-top: 2;
+                pixel-size: 32;
+            }
+        }
+
+        Gtk.Label name
+        {
+            hexpand: true;
+            wrap: true;
+            xalign: 0;
+        }
+    }
+}
+

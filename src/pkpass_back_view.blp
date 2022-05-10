@@ -1,0 +1,17 @@
+using Gtk 4.0;
+using Adw 1;
+
+template PassBackView : Gtk.Box
+{
+    margin-bottom: 6;
+    margin-top: 6;
+    orientation: vertical;
+    spacing: 12;
+    width-request: 294;
+
+    Gtk.ListBox back_fields
+    {
+        selection-mode: none;
+        styles ["boxed-list"]
+    }
+}

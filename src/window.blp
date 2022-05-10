@@ -1,0 +1,135 @@
+using Gtk 4.0;
+using Adw 1;
+
+template PassesWindow : Adw.ApplicationWindow
+{
+    title: _("Passes");
+    default-width: 1024;
+    default-height: 600;
+
+    Adw.ToastOverlay toast_overlay
+    {
+        Adw.Leaflet main_leaflet
+        {
+            // Left side of the leaflet
+            Gtk.Box
+            {
+                orientation: vertical;
+                width-request: 294;
+
+                Adw.HeaderBar main_header_bar
+                {
+                    show-end-title-buttons: bind main_leaflet.folded;
+
+                    [start]
+                    Gtk.Button
+                    {
+                        action-name: "app.import";
+                        can-focus: false;
+                        icon-name: "list-add-symbolic";
+                        tooltip-text: _("Import a pass");
+                        visible: true;
+                    }
+
+                    [end]
+                    Gtk.MenuButton
+                    {
+                        icon-name: "open-menu-symbolic";
+                        menu-model: primary_menu;
+                        tooltip-text: _("Menu");
+                    }
+                }
+
+                Gtk.ScrolledWindow
+                {
+                    hscrollbar-policy: never;
+                    vexpand: true;
+
+                    Gtk.Viewport
+                    {
+                        scroll-to-focus: true;
+
+                        Adw.ViewStack pass_list_stack
+                        {
+                            Adw.ViewStackPage
+                            {
+                                name: "empty-list-page";
+                                child: Adw.StatusPage
+                                {
+                                    icon-name: "me.sanchezrodriguez.passes";
+                                    title: _("You have no passes");
+                                    description: _("Use the “+” button to import a pass");
+                                };
+                            }
+
+                            Adw.ViewStackPage
+                            {
+                                name: "pass-list-page";
+                                child: Gtk.ListBox pass_list
+                                {
+                                    styles ["navigation-sidebar"]
+                                };
+                            }
+                        }
+                    }
+                }
+            }
+
+            Adw.LeafletPage
+            {
+                navigatable: false;
+                child: Gtk.Separator {};
+            }
+
+            // Right side of the leaflet
+            Gtk.Box
+            {
+                hexpand: true;
+                orientation: vertical;
+                width-request: 294;
+
+                Adw.HeaderBar
+                {
+                    title-widget: Adw.WindowTitle {title: "";};
+
+                    [start]
+                    Gtk.Button back_button
+                    {
+                        icon-name: "go-previous-symbolic";
+                        tooltip-text: _("Back");
+                        valign: center;
+                        visible: bind main_leaflet.folded;
+                    }
+
+                    [end]
+                    Gtk.MenuButton
+                    {
+                        icon-name: "view-more-symbolic";
+                        menu-model: secondary_menu;
+                    }
+
+                    [end]
+                    Gtk.Button barcode_button
+                    {
+                        icon-name: "qr-code-symbolic";
+                        tooltip-text: _("Show barcode");
+                    }
+                }
+
+                .PassView pass_view {}
+            }
+        }
+    }
+}
+
+menu primary_menu
+{
+    //item (_("Preferences"), "app.preferences", "copy-symbolic")
+    item (_("Keyboard shortcuts"), "win.show-help-overlay", "copy-symbolic")
+    item (_("About Passes"), "app.about", "copy-symbolic")
+}
+
+menu secondary_menu
+{
+    item (_("Delete"), "app.delete", "copy-symbolic")
+}

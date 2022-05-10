@@ -26,7 +26,6 @@ from .pkpass_view import PassView
 class PassesWindow(Adw.ApplicationWindow):
     __gtype_name__ = 'PassesWindow'
 
-    main_header_bar = Gtk.Template.Child()
     main_leaflet = Gtk.Template.Child()
 
     back_button = Gtk.Template.Child()
