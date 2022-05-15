@@ -24,9 +24,9 @@ gi.require_version('Adw', '1')
 
 from gi.repository import GLib, Gdk, Gio, Gtk, Adw
 
-from .persistence import FileAlreadyImported, PersistenceManager
-from .digital_pass import DigitalPass
 from .digital_pass_factory import FileIsNotAPass, FormatNotSupportedYet, PassFactory
+from .digital_pass_list_store import DigitalPassListStore
+from .persistence import FileAlreadyImported, PersistenceManager
 from .window import PassesWindow, AboutDialog
 
 
@@ -36,30 +36,28 @@ class Application(Adw.Application):
                          flags=Gio.ApplicationFlags.FLAGS_NONE)
 
         self.__file_chooser = None
-        self.__pass_list = Gio.ListStore.new(DigitalPass)
+        self.__pass_list = DigitalPassListStore()
         self.__persistence = PersistenceManager()
 
         passes = self.__persistence.load_passes()
         for each_pass in passes:
             pkpass = PassFactory.create(each_pass)
             pkpass.set_path(each_pass.get_path())
-
-            self.__pass_list.insert_sorted(pkpass,
-                                    lambda a1, a2: a1.style() > a2.style())
+            self.__pass_list.insert(pkpass)
 
     def do_activate(self):
         window = self.props.active_window
 
         if not window:
             window = PassesWindow(application=self,
-                                  pass_list_model=self.__pass_list)
+                                  pass_list_model=self.__pass_list.get_model())
 
         self.create_action('about', self.on_about_action)
         self.create_action('delete', self.on_delete_action)
         self.create_action('import', self.on_import_action)
         self.create_action('preferences', self.on_preferences_action)
 
-        pass_list_is_emtpy = len(self.__pass_list) == 0
+        pass_list_is_emtpy = self.__pass_list.is_empty()
         window.force_fold(pass_list_is_emtpy)
 
         if not pass_list_is_emtpy:
@@ -84,15 +82,13 @@ class Application(Adw.Application):
         self.__persistence.delete_pass_file(selected_pass)
         self.__pass_list.remove(selected_pass_index)
 
-        pass_list_is_emtpy = len(self.__pass_list) == 0
-
-        if pass_list_is_emtpy:
+        if self.__pass_list.is_empty():
             self.window().hide_pass_list()
             self.window().force_fold(True)
             self.window().navigate_back()
             return
 
-        index_to_select = min(len(self.__pass_list) - 1, selected_pass_index)
+        index_to_select = min(self.__pass_list.length() - 1, selected_pass_index)
         self.window().select_pass_at_index(index_to_select)
 
     def on_import_action(self, widget, __):
@@ -128,12 +124,9 @@ class Application(Adw.Application):
             stored_file = self.__persistence.save_pass_file(pkpass_file)
             pkpass.set_path(stored_file.get_path())
 
-            self.__pass_list.insert_sorted(pkpass,
-                                           lambda a1, a2: a1.style() > a2.style())
+            self.__pass_list.insert(pkpass)
 
-            pass_list_is_not_emtpy = len(self.__pass_list) > 0
-
-            if pass_list_is_not_emtpy:
+            if not self.__pass_list.is_emtpy():
                 self.window().show_pass_list()
                 self.window().force_fold(False)
 

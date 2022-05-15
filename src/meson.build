@@ -52,6 +52,7 @@ passes_sources = [
   'model/barcode_content_encoder.py',
   'model/digital_pass.py',
   'model/digital_pass_factory.py',
+  'model/digital_pass_list_store.py',
   'model/persistence.py',
   'model/pkpass.py',
   'barcode_dialog.py',
