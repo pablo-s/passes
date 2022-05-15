@@ -1,5 +1,8 @@
 [Desktop Entry]
 Name=Passes
+Name[it]=Biglietti
+Comment=A digital passes manager
+Comment[it]=Un gestore di biglietti digitali
 Exec=passes
 Icon=me.sanchezrodriguez.passes
 Terminal=false
