@@ -57,10 +57,10 @@ class Application(Adw.Application):
         self.create_action('import', self.on_import_action)
         self.create_action('preferences', self.on_preferences_action)
 
-        pass_list_is_emtpy = self.__pass_list.is_empty()
-        window.force_fold(pass_list_is_emtpy)
+        pass_list_is_empty = self.__pass_list.is_empty()
+        window.force_fold(pass_list_is_empty)
 
-        if not pass_list_is_emtpy:
+        if not pass_list_is_empty:
             window.show_pass_list()
 
         window.present()
@@ -126,7 +126,7 @@ class Application(Adw.Application):
 
             self.__pass_list.insert(pkpass)
 
-            if not self.__pass_list.is_emtpy():
+            if not self.__pass_list.is_empty():
                 self.window().show_pass_list()
                 self.window().force_fold(False)
 
