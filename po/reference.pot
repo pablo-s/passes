@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-10 21:11+0200\n"
+"POT-Creation-Date: 2022-05-17 19:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,8 +21,52 @@ msgstr ""
 msgid "Barcode format not supported"
 msgstr ""
 
-#: src/main.py:101 src/window.blp:30
+#: src/main.py:97 src/window.blp:30
 msgid "Import a pass"
+msgstr ""
+
+#: src/model/digital_pass.py:89
+msgid "Monday"
+msgstr ""
+
+#: src/model/digital_pass.py:89
+msgid "Tuesday"
+msgstr ""
+
+#: src/model/digital_pass.py:89
+msgid "Wednesday"
+msgstr ""
+
+#: src/model/digital_pass.py:90
+msgid "Friday"
+msgstr ""
+
+#: src/model/digital_pass.py:90
+msgid "Saturday"
+msgstr ""
+
+#: src/model/digital_pass.py:90
+msgid "Sunday"
+msgstr ""
+
+#: src/model/digital_pass.py:90
+msgid "Thursday"
+msgstr ""
+
+#: src/model/digital_pass.py:137
+msgid "Anytime"
+msgstr ""
+
+#: src/model/digital_pass.py:140
+msgid "Unknown date"
+msgstr ""
+
+#: src/model/digital_pass.py:146
+msgid "Today"
+msgstr ""
+
+#: src/model/digital_pass.py:149
+msgid "Tomorrow"
 msgstr ""
 
 #: src/model/digital_pass_factory.py:141
@@ -41,27 +85,7 @@ msgstr ""
 msgid "File already imported"
 msgstr ""
 
-#: src/pkpass_row_header.py:29
-msgid "Other passes"
-msgstr ""
-
-#: src/pkpass_row_header.py:32
-msgid "Boarding passes"
-msgstr ""
-
-#: src/pkpass_row_header.py:34
-msgid "Coupons"
-msgstr ""
-
-#: src/pkpass_row_header.py:36
-msgid "Event tickets"
-msgstr ""
-
-#: src/pkpass_row_header.py:38
-msgid "Store cards"
-msgstr ""
-
-#: src/window.blp:6 src/window.py:148
+#: src/window.blp:6 src/window.py:159
 msgid "Passes"
 msgstr ""
 
@@ -77,26 +101,26 @@ msgstr ""
 msgid "Use the “+” button to import a pass"
 msgstr ""
 
-#: src/window.blp:100
+#: src/window.blp:99
 msgid "Back"
 msgstr ""
 
-#: src/window.blp:116
+#: src/window.blp:115
 msgid "Show barcode"
 msgstr ""
 
-#: src/window.blp:129
+#: src/window.blp:128
 msgid "Keyboard shortcuts"
 msgstr ""
 
-#: src/window.blp:130
+#: src/window.blp:129
 msgid "About Passes"
 msgstr ""
 
-#: src/window.blp:135
+#: src/window.blp:134
 msgid "Delete"
 msgstr ""
 
-#: src/window.py:154
+#: src/window.py:165
 msgid "A digital pass manager"
 msgstr ""

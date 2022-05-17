@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: passes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-10 21:11+0200\n"
-"PO-Revision-Date: 2022-05-10 21:13+0200\n"
+"POT-Creation-Date: 2022-05-17 19:26+0200\n"
+"PO-Revision-Date: 2022-05-17 19:29+0200\n"
 "Last-Translator: Pablo Sánchez Rodríguez <>\n"
 "Language-Team: Spanish - Spain <>\n"
 "Language: es_ES\n"
@@ -23,9 +23,53 @@ msgstr ""
 msgid "Barcode format not supported"
 msgstr "Formato de código de barras no soportado"
 
-#: src/main.py:101 src/window.blp:30
+#: src/main.py:97 src/window.blp:30
 msgid "Import a pass"
 msgstr "Importa un pase"
+
+#: src/model/digital_pass.py:89
+msgid "Monday"
+msgstr "Lunes"
+
+#: src/model/digital_pass.py:89
+msgid "Tuesday"
+msgstr "Martes"
+
+#: src/model/digital_pass.py:89
+msgid "Wednesday"
+msgstr "Miércoles"
+
+#: src/model/digital_pass.py:90
+msgid "Friday"
+msgstr "Viernes"
+
+#: src/model/digital_pass.py:90
+msgid "Saturday"
+msgstr "Sábado"
+
+#: src/model/digital_pass.py:90
+msgid "Sunday"
+msgstr "Domingo"
+
+#: src/model/digital_pass.py:90
+msgid "Thursday"
+msgstr "Jueves"
+
+#: src/model/digital_pass.py:137
+msgid "Anytime"
+msgstr "Cualquier momento"
+
+#: src/model/digital_pass.py:140
+msgid "Unknown date"
+msgstr "Fecha desconocida"
+
+#: src/model/digital_pass.py:146
+msgid "Today"
+msgstr "Hoy"
+
+#: src/model/digital_pass.py:149
+msgid "Tomorrow"
+msgstr "Mañana"
 
 #: src/model/digital_pass_factory.py:141
 msgid "File is not a pass"
@@ -43,27 +87,7 @@ msgstr "Codificación de archivo desconocida"
 msgid "File already imported"
 msgstr "Archivo ya importado"
 
-#: src/pkpass_row_header.py:29
-msgid "Other passes"
-msgstr "Otros pases"
-
-#: src/pkpass_row_header.py:32
-msgid "Boarding passes"
-msgstr "Tarjetas de embarque"
-
-#: src/pkpass_row_header.py:34
-msgid "Coupons"
-msgstr "Cupones"
-
-#: src/pkpass_row_header.py:36
-msgid "Event tickets"
-msgstr "Entradas para eventos"
-
-#: src/pkpass_row_header.py:38
-msgid "Store cards"
-msgstr "Tarjetas de compra"
-
-#: src/window.blp:6 src/window.py:148
+#: src/window.blp:6 src/window.py:159
 msgid "Passes"
 msgstr "Pases"
 
@@ -79,29 +103,26 @@ msgstr "No tienes pases"
 msgid "Use the “+” button to import a pass"
 msgstr "Usa el botón “+” para importar un pase"
 
-#: src/window.blp:100
+#: src/window.blp:99
 msgid "Back"
 msgstr "Atrás"
 
-#: src/window.blp:116
+#: src/window.blp:115
 msgid "Show barcode"
 msgstr "Mostrar código de barras"
 
-#: src/window.blp:129
+#: src/window.blp:128
 msgid "Keyboard shortcuts"
 msgstr "Atajos de teclado"
 
-#: src/window.blp:130
+#: src/window.blp:129
 msgid "About Passes"
 msgstr "Acerca de Pases"
 
-#: src/window.blp:135
+#: src/window.blp:134
 msgid "Delete"
 msgstr "Eliminar"
 
-#: src/window.py:154
+#: src/window.py:165
 msgid "A digital pass manager"
 msgstr "Un gestor de pases digitales"
-
-#~ msgid "The file was not imported because it already is"
-#~ msgstr "El fichero no fue importado porque ya lo está"
