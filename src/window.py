@@ -90,7 +90,18 @@ class PassesWindow(Adw.ApplicationWindow):
         self.main_leaflet.navigate(Adw.NavigationDirection.FORWARD)
 
     def _on_update_header(self, row, row_above):
-        if not row_above or row.style() != row_above.style():
+        row_header = row\
+            .data()\
+            .relevant_date()\
+            .as_relative_pretty_string()
+
+        row_above_header = row_above\
+            .data()\
+            .relevant_date()\
+            .as_relative_pretty_string()\
+            if row_above else None
+
+        if not row_above or row_header != row_above_header:
             row.show_header()
         else:
             row.hide_header()

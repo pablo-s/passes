@@ -17,6 +17,8 @@
 
 import re
 
+from datetime import datetime
+
 from gi.repository import GdkPixbuf, GObject
 
 
@@ -82,6 +84,76 @@ class Color:
                      result.group(3))
 
 
+class Date:
+
+    days_of_the_week = (_('Monday'), _('Tuesday'), _('Wednesday'),
+                        _('Thursday'), _('Friday'), _('Saturday'), _('Sunday'))
+
+    def __init__(self, string):
+
+        # The date instances of this class will represent
+        self.__date = None
+
+        try:
+            if string:
+                if string.endswith('Z'):
+                    string = string[:-1]
+
+                date = datetime.fromisoformat(string)
+
+                # Make sure that times are not "naive"
+                if not date.utcoffset():
+                    date = date.astimezone()
+
+                self.__date = date
+
+        except:
+            self.__date = datetime.max
+            print(string, " -> ", self.__date)
+
+    def __eq__(self, other):
+
+        if not self.__date or not other.__date:
+            return False
+
+        return self.__date.timestamp() == other.__date.timestamp()
+
+    def __lt__(self, other):
+
+        if self.__date and not other.__date:
+            return True
+
+        if not self.__date and other.__date:
+            return False
+
+        if not self.__date and not other.__date:
+            return False
+
+        return self.__date < other.__date
+
+    def as_relative_pretty_string(self):
+
+        if not self.__date:
+            return _('Anytime')
+
+        if self.__date == datetime.max:
+            return _('Unknown date')
+
+        today = datetime.today().date()
+        time_difference = self.__date.date() - today
+
+        if time_difference.days == 0:
+            return _('Today')
+
+        if time_difference.days == 1:
+            return _('Tomorrow')
+
+        if 0 < time_difference.days < 7:
+            return Date.days_of_the_week[int(self.__date.strftime('%w')) - 1]
+
+        return self.__date.strftime('%x')
+
+
 class Image:
 
     def __init__(self, image_data):
@@ -117,7 +189,10 @@ class PassDataExtractor:
         that will be returned.
         """
         try:
-            value = self._dictionary[key]
+            value = None
+
+            if key in self._dictionary:
+                value = self._dictionary[key]
 
             if not type_constructor and type(value) == dict:
                 return PassDataExtractor(value)

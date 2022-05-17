@@ -17,7 +17,7 @@
 
 from gi.repository import Gdk, Gtk
 
-from .digital_pass import Barcode, Color, DigitalPass, Image, PassDataExtractor
+from .digital_pass import Barcode, Color, Date, DigitalPass, Image, PassDataExtractor
 
 
 class PKPass(DigitalPass):
@@ -110,7 +110,7 @@ class PKPass(DigitalPass):
         return self.__data.get('maxDistance')
 
     def relevant_date(self):
-        return self.__data.get('relevantDate')
+        return self.__data.get('relevantDate', Date)
 
 
     # Style

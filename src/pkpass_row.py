@@ -58,7 +58,7 @@ class PassRow(Gtk.ListBoxRow):
         self.set_header(None)
 
     def show_header(self):
-        header = PassRowHeader(self.__pass.style())
+        header = PassRowHeader(self.__pass)
         self.set_header(header)
 
     def style(self):
