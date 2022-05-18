@@ -11,13 +11,29 @@
 		<p>In its current version the application can:</p>
 		<ul>
 			<li>Adapt its interface to different screen sizes.</li>
-			<li>Import PKPASS files.</li>
-			<li>Display pass fields.</li>
-			<li>Display Aztec and QR codes.</li>
+			<li>Import and display PKPASS files.</li>
+			<li>Display Aztec, PDF417 and QR codes.</li>
 		</ul>
 	</description>
 
 	<releases>
+		<release date="2022-05-17" version="0.5">
+			<description>
+				<p>What is new?</p>
+				<ul>
+					<li>Pass fields can display links for URLs, (some) telephone numbers and e-mails.</li>
+					<li>Support for drawing PDF417 codes.</li>
+					<li>Spanish translation.</li>
+				</ul>
+				<p>What has been changed/improved?</p>
+				<ul>
+					<li>Pass list is now sorted by relevant date instead of style.</li>
+					<li>Pass fields were updated to be non-activatable.</li>
+					<li>Barcodes will not be drawn at a fixed size, but they will adapt to the available space.</li>
+					<li>Tooltips were added to the buttons that did not have them yet.</li>
+				</ul>
+			</description>
+		</release>
 		<release date="2022-05-01" version="0.4">
 			<description>
 				<p>New features:</p>
