@@ -23,6 +23,7 @@
         "*.a"
     ],
     "modules" : [
+        "modules/blueprint.json",
         "modules/zint.json",
         {
             "name" : "passes",
