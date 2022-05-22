@@ -22,6 +22,9 @@
         "*.la",
         "*.a"
     ],
+    "cleanup-commands" : [
+        "find /app -type d -name blueprintcompiler | xargs rm -fr"
+    ],
     "modules" : [
         "modules/blueprint.json",
         "modules/zint.json",
