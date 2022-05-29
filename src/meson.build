@@ -2,27 +2,34 @@ pkgdatadir = join_paths(get_option('prefix'), get_option('datadir'), meson.proje
 moduledir = join_paths(pkgdatadir, 'passes')
 gnome = import('gnome')
 
-blueprints = custom_target('blueprints',
+compile_blueprint_files = custom_target('compile_blueprint_files',
   input: files(
-    'auxiliary/colored_box.blp',
-    'barcode_dialog.blp',
-    'gtk/help-overlay.blp',
-    'pkpass_back_view.blp',
-    'pkpass_field_row.blp',
-    'pkpass_front_view_fallback.blp',
-    'pkpass_row.blp',
-    'pkpass_row_header.blp',
-    'pkpass_view.blp',
-    'window.blp'
+    'view/auxiliary/colored_box.blp',
+    'view/barcode_dialog.blp',
+    'view/help_overlay.blp',
+    'view/pass_list/pkpass_row.blp',
+    'view/pass_list/pkpass_row_header.blp',
+    'view/pass_viewer/pkpass_back_view.blp',
+    'view/pass_viewer/pkpass_field_row.blp',
+    'view/pass_viewer/pkpass_front_view_fallback.blp',
+    'view/pass_viewer/pkpass_view.blp',
+    'view/window.blp'
   ),
-  output: '.',
+  output: 'generated_ui_files',
   command: [find_program('blueprint-compiler'), 'batch-compile',
     '@OUTPUT@', '@CURRENT_SOURCE_DIR@', '@INPUT@'],
 )
 
+collect_ui_files = custom_target('collect_ui_files',
+  depends: compile_blueprint_files,
+  output: '.',
+  command: ['find', '@OUTDIR@/generated_ui_files',
+    '-type', 'f', '-name', '*.ui',
+    '-exec', 'cp', '-t', '@OUTPUT@', '{}', '+'])
+
 gnome.compile_resources('passes',
   'passes.gresource.xml',
-  dependencies: blueprints,
+  dependencies: collect_ui_files,
   gresource_bundle: true,
   install: true,
   install_dir: pkgdatadir,
@@ -48,23 +55,23 @@ configure_file(
 
 passes_sources = [
   '__init__.py',
-  'auxiliary/colored_box.py',
+  'view/auxiliary/colored_box.py',
+  'view/barcode_dialog.py',
+  'view/barcode_widget.py',
+  'view/pass_list/pkpass_row_header.py',
+  'view/pass_list/pkpass_row.py',
+  'view/pass_viewer/pkpass_back_view.py',
+  'view/pass_viewer/pkpass_field_row.py',
+  'view/pass_viewer/pkpass_front_view.py',
+  'view/pass_viewer/pkpass_view.py',
+  'view/window.py',
+  'main.py',
   'model/barcode_content_encoder.py',
-  'model/digital_pass.py',
   'model/digital_pass_factory.py',
   'model/digital_pass_list_store.py',
+  'model/digital_pass.py',
   'model/persistence.py',
   'model/pkpass.py',
-  'barcode_dialog.py',
-  'barcode_widget.py',
-  'main.py',
-  'pkpass_back_view.py',
-  'pkpass_field_row.py',
-  'pkpass_front_view.py',
-  'pkpass_row.py',
-  'pkpass_row_header.py',
-  'pkpass_view.py',
-  'window.py',
 ]
 
 install_data(passes_sources, install_dir: moduledir)

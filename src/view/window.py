@@ -43,8 +43,17 @@ class PassesWindow(Adw.ApplicationWindow):
 
         self.__selected_row = None
 
+        # Set help overlay
+        help_overlay = Gtk.Builder\
+            .new_from_resource('/me/sanchezrodriguez/passes/help_overlay.ui')\
+            .get_object('help_overlay')
+
+        self.set_help_overlay(help_overlay)
+
         # Bind GtkListBox with GioListStore
         self.pass_list.bind_model(pass_list_model, self._create_pass_widget)
+
+        # Connect callbacks
         self.back_button.connect('clicked', self._on_back_clicked)
         self.barcode_button.connect('clicked', self._on_barcode_clicked)
         self.pass_list.connect('row-activated', self._on_row_activated)
