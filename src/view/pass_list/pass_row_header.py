@@ -18,7 +18,7 @@
 from gi.repository import Gtk
 
 
-@Gtk.Template(resource_path='/me/sanchezrodriguez/passes/pkpass_row_header.ui')
+@Gtk.Template(resource_path='/me/sanchezrodriguez/passes/pass_row_header.ui')
 class PassRowHeader(Gtk.Label):
 
     __gtype_name__ = 'PassRowHeader'

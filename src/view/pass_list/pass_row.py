@@ -18,10 +18,10 @@
 from gi.repository import Gdk, Gtk
 
 from .colored_box import ColoredBox
-from .pkpass_row_header import PassRowHeader
+from .pass_row_header import PassRowHeader
 
 
-@Gtk.Template(resource_path='/me/sanchezrodriguez/passes/pkpass_row.ui')
+@Gtk.Template(resource_path='/me/sanchezrodriguez/passes/pass_row.ui')
 class PassRow(Gtk.ListBoxRow):
 
     __gtype_name__ = 'PassRow'

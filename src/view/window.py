@@ -18,7 +18,7 @@
 from gi.repository import Gio, GObject, Gtk, Adw
 
 from .barcode_dialog import BarcodeDialog
-from .pkpass_row import PassRow
+from .pass_row import PassRow
 from .pkpass_view import PassView
 
 
