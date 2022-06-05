@@ -89,27 +89,8 @@ class Date:
     days_of_the_week = (_('Monday'), _('Tuesday'), _('Wednesday'),
                         _('Thursday'), _('Friday'), _('Saturday'), _('Sunday'))
 
-    def __init__(self, string):
-
-        # The date instances of this class will represent
+    def __init__(self):
         self.__date = None
-
-        try:
-            if string:
-                if string.endswith('Z'):
-                    string = string[:-1]
-
-                date = datetime.fromisoformat(string)
-
-                # Make sure that times are not "naive"
-                if not date.utcoffset():
-                    date = date.astimezone()
-
-                self.__date = date
-
-        except:
-            self.__date = datetime.max
-            print(string, " -> ", self.__date)
 
     def __eq__(self, other):
 
@@ -131,13 +112,13 @@ class Date:
 
         return self.__date < other.__date
 
+    def __str__(self):
+        return 'Undefined' if self.is_undefined() else str(self.__date)
+
     def as_relative_pretty_string(self):
 
         if not self.__date:
             return _('Anytime')
-
-        if self.__date == datetime.max:
-            return _('Unknown date')
 
         today = datetime.today().date()
         time_difference = self.__date.date() - today
@@ -153,6 +134,35 @@ class Date:
 
         return self.__date.strftime('%x')
 
+    @classmethod
+    def from_iso_string(self, string):
+
+        instance = Date()
+
+        if not string:
+            return instance
+
+        if string.endswith('Z'):
+            string = string[:-1]
+
+        try:
+            # Create the date and make sure that it is not "naive"
+            date = None
+            date = datetime.fromisoformat(string).astimezone()
+
+        finally:
+            instance.__date = date
+
+        return instance
+
+    def is_undefined(self):
+        return self.__date == None
+
+    @classmethod
+    def now(self):
+        instance = Date()
+        instance.__date = datetime.now().astimezone()
+        return instance
 
 class Image:
 

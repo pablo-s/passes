@@ -95,7 +95,7 @@ class PKPass(DigitalPass):
     # Expiration
 
     def expiration_date(self):
-        return self.__data.get('expirationDate')
+        return self.__data.get('expirationDate', Date.from_iso_string)
 
     def voided(self):
         return self.__data.get('voided', bool)
@@ -110,7 +110,7 @@ class PKPass(DigitalPass):
         return self.__data.get('maxDistance')
 
     def relevant_date(self):
-        return self.__data.get('relevantDate', Date)
+        return self.__data.get('relevantDate', Date.from_iso_string)
 
 
     # Style
