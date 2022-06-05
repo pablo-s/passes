@@ -51,6 +51,10 @@ class PassRow(Gtk.ListBoxRow):
         self.icon.set_from_pixbuf(pixbuf)
         self.name.set_text(a_pass.description())
 
+        # Gray the label out if the pass has expired
+        if self.__pass.has_expired():
+            self.name.set_sensitive(False)
+
     def data(self):
         return self.__pass
 
