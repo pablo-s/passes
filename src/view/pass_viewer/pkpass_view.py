@@ -35,7 +35,7 @@ class PassView(Gtk.Box):
        self.__front_widget = None
 
     def content(self, a_pass):
-        if a_pass == a_pass:
+        if self.__pass == a_pass:
             return
 
         self.__pass = a_pass
