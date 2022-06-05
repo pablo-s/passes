@@ -30,10 +30,15 @@ class PassView(Gtk.Box):
 
     def __init__(self):
        super().__init__()
+       self.__pass = None
        self.__back_widget = None
        self.__front_widget = None
 
     def content(self, a_pass):
+        if a_pass == a_pass:
+            return
+
+        self.__pass = a_pass
         self.empty()
 
         self.__front_widget = PassFrontView.new(a_pass)

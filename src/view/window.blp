@@ -65,10 +65,7 @@ template PassesWindow : Adw.ApplicationWindow
                             Adw.ViewStackPage
                             {
                                 name: "pass-list-page";
-                                child: Gtk.ListBox pass_list
-                                {
-                                    styles ["navigation-sidebar"]
-                                };
+                                child: .PassList pass_list {};
                             }
                         }
                     }

@@ -18,7 +18,7 @@
 from gi.repository import Gio, GObject, Gtk, Adw
 
 from .barcode_dialog import BarcodeDialog
-from .pass_row import PassRow
+from .pass_list import PassList
 from .pkpass_view import PassView
 
 
@@ -41,8 +41,6 @@ class PassesWindow(Adw.ApplicationWindow):
     def __init__(self, pass_list_model, **kwargs):
         super().__init__(**kwargs)
 
-        self.__selected_row = None
-
         # Set help overlay
         help_overlay = Gtk.Builder\
             .new_from_resource('/me/sanchezrodriguez/passes/help_overlay.ui')\
@@ -51,19 +49,15 @@ class PassesWindow(Adw.ApplicationWindow):
         self.set_help_overlay(help_overlay)
 
         # Bind GtkListBox with GioListStore
-        self.pass_list.bind_model(pass_list_model, self._create_pass_widget)
+        self.pass_list.bind_model(pass_list_model)
 
         # Connect callbacks
         self.back_button.connect('clicked', self._on_back_clicked)
         self.barcode_button.connect('clicked', self._on_barcode_clicked)
         self.pass_list.connect('row-activated', self._on_row_activated)
 
-        self.pass_list.set_header_func(self._on_update_header)
-
-        self.select_pass_at_index(0)
-
-    def _create_pass_widget(self, a_pass):
-        return PassRow(a_pass)
+        # Select the first pass in the list
+        self.pass_list.select_pass_at_index(0)
 
     def _on_back_clicked(self, button):
         self.navigate_back()
@@ -88,32 +82,9 @@ class PassesWindow(Adw.ApplicationWindow):
             self.show_toast(str(error))
 
     def _on_row_activated(self, pass_list, pass_row):
-        if self.__selected_row == pass_row:
-            self.main_leaflet.navigate(Adw.NavigationDirection.FORWARD)
-            return
-
-        self.__selected_row = pass_row
-
         row_data = pass_row.data()
         self.pass_view.content(row_data)
         self.main_leaflet.navigate(Adw.NavigationDirection.FORWARD)
-
-    def _on_update_header(self, row, row_above):
-        row_header = row\
-            .data()\
-            .relevant_date()\
-            .as_relative_pretty_string()
-
-        row_above_header = row_above\
-            .data()\
-            .relevant_date()\
-            .as_relative_pretty_string()\
-            if row_above else None
-
-        if not row_above or row_header != row_above_header:
-            row.show_header()
-        else:
-            row.hide_header()
 
     def force_fold(self, force):
         self.main_leaflet.set_can_unfold(not force)
@@ -128,30 +99,13 @@ class PassesWindow(Adw.ApplicationWindow):
         self.main_leaflet.navigate(Adw.NavigationDirection.BACK)
 
     def select_pass_at_index(self, index):
-        selected_row = self.pass_list.get_row_at_index(index)
-
-        if not selected_row:
-            selected_row = self.pass_list.get_row_at_index(0)
-
-        if selected_row:
-            self.pass_list.select_row(selected_row)
-            self.pass_list.emit('row-activated', selected_row)
+        self.pass_list.select_pass_at_index(index)
 
     def selected_pass(self):
-        selected_pass = None
-
-        if self.__selected_row:
-            selected_pass = self.__selected_row.data()
-
-        return selected_pass
+        return self.pass_list.selected_pass()
 
     def selected_pass_index(self):
-        index = None
-
-        if self.__selected_row:
-            index = self.__selected_row.get_index()
-
-        return index
+        return self.pass_list.selected_pass_index()
 
     def show_pass_list(self):
         self.pass_list_stack.set_visible_child_name('pass-list-page')
