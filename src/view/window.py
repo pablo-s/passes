@@ -41,6 +41,9 @@ class PassesWindow(Adw.ApplicationWindow):
     def __init__(self, pass_list_model, **kwargs):
         super().__init__(**kwargs)
 
+        # Whether or not the leaflet is allowed to navigate
+        self.main_leaflet_can_navigate = False
+
         # Set help overlay
         help_overlay = Gtk.Builder\
             .new_from_resource('/me/sanchezrodriguez/passes/help_overlay.ui')\
@@ -58,6 +61,7 @@ class PassesWindow(Adw.ApplicationWindow):
 
         # Select the first pass in the list
         self.pass_list.select_pass_at_index(0)
+        self.main_leaflet_can_navigate = True
 
     def _on_back_clicked(self, button):
         self.navigate_back()
@@ -84,7 +88,9 @@ class PassesWindow(Adw.ApplicationWindow):
     def _on_row_activated(self, pass_list, pass_row):
         row_data = pass_row.data()
         self.pass_view.content(row_data)
-        self.main_leaflet.navigate(Adw.NavigationDirection.FORWARD)
+
+        if self.main_leaflet_can_navigate:
+            self.main_leaflet.navigate(Adw.NavigationDirection.FORWARD)
 
     def force_fold(self, force):
         self.main_leaflet.set_can_unfold(not force)
