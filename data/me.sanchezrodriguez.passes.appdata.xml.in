@@ -17,6 +17,20 @@
 	</description>
 
 	<releases>
+		<release date="2022-06-05" version="0.6">
+			<description>
+				<p>What is new?</p>
+				<ul>
+					<li>In pass list, pass description is now grayed out if the pass has expired.</li>
+				</ul>
+				<p>What has been changed/improved?</p>
+				<ul>
+					<li>After application startup, the pass list will be shown (instead of automatically navigating to the first pass in the list).</li>
+					<li>Removed unnecessary files and dependencies from the Flatpak container.</li>
+					<li>Code changes toward supporting other pass formats in the future.</li>
+				</ul>
+			</description>
+		</release>
 		<release date="2022-05-17" version="0.5">
 			<description>
 				<p>What is new?</p>
