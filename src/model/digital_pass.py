@@ -30,11 +30,23 @@ class DigitalPass(GObject.GObject):
         super().__init__()
         self.__path = None
 
+    def expiration_date(self):
+        raise NotImplementedError()
+
     def get_path(self):
         return self.__path
 
+    def has_expired(self):
+        expiration_date = self.expiration_date()
+        return (not expiration_date.is_undefined() \
+                and Date.now() > expiration_date) \
+                or self.voided()
+
     def set_path(self, new_path: str):
         self.__path = new_path
+
+    def voided(self):
+        raise NotImplementedError()
 
 
 class Barcode:
