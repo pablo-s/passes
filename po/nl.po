@@ -1,0 +1,126 @@
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Heimen Stoffels <vistausss@fastmail.com>, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-05-17 19:26+0200\n"
+"PO-Revision-Date: 2022-06-12 14:19+0200\n"
+"Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
+"Language-Team: Dutch <kde-i18n-nl@kde.org>\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 22.04.1\n"
+
+#: src/barcode_widget.py:104
+msgid "Barcode format not supported"
+msgstr "Dit barcodeformaat wordt niet ondersteund"
+
+#: src/main.py:97 src/window.blp:30
+msgid "Import a pass"
+msgstr "Kaart importeren"
+
+#: src/model/digital_pass.py:89
+msgid "Monday"
+msgstr "maandag"
+
+#: src/model/digital_pass.py:89
+msgid "Tuesday"
+msgstr "dinsdag"
+
+#: src/model/digital_pass.py:89
+msgid "Wednesday"
+msgstr "woensdag"
+
+#: src/model/digital_pass.py:90
+msgid "Friday"
+msgstr "vrijdag"
+
+#: src/model/digital_pass.py:90
+msgid "Saturday"
+msgstr "zaterdag"
+
+#: src/model/digital_pass.py:90
+msgid "Sunday"
+msgstr "zondag"
+
+#: src/model/digital_pass.py:90
+msgid "Thursday"
+msgstr "donderdag"
+
+#: src/model/digital_pass.py:137
+msgid "Anytime"
+msgstr "Geen specifieke datum"
+
+#: src/model/digital_pass.py:140
+msgid "Unknown date"
+msgstr "Onbekende datum"
+
+#: src/model/digital_pass.py:146
+msgid "Today"
+msgstr "Vandaag"
+
+#: src/model/digital_pass.py:149
+msgid "Tomorrow"
+msgstr "Morgen"
+
+#: src/model/digital_pass_factory.py:141
+msgid "File is not a pass"
+msgstr "Dit bestand is geen kaart"
+
+#: src/model/digital_pass_factory.py:147
+msgid "Format not supported yet"
+msgstr "Dit formaat wordt nog niet ondersteund"
+
+#: src/model/digital_pass_factory.py:153
+msgid "Unknown file encoding"
+msgstr "Onbekende tekenset in bestand"
+
+#: src/model/persistence.py:70
+msgid "File already imported"
+msgstr "Dit bestand is al geïmporteerd"
+
+#: src/window.blp:6 src/window.py:159
+msgid "Passes"
+msgstr "Kaarten"
+
+#: src/window.blp:39
+msgid "Menu"
+msgstr "Menu"
+
+#: src/window.blp:60
+msgid "You have no passes"
+msgstr "U heeft nog geen kaarten toegevoegd"
+
+#: src/window.blp:61
+msgid "Use the “+” button to import a pass"
+msgstr "Klik op ‘+’ om een kaart te importeren"
+
+#: src/window.blp:99
+msgid "Back"
+msgstr "Terug"
+
+#: src/window.blp:115
+msgid "Show barcode"
+msgstr "Barcode tonen"
+
+#: src/window.blp:128
+msgid "Keyboard shortcuts"
+msgstr "Sneltoetsen"
+
+#: src/window.blp:129
+msgid "About Passes"
+msgstr "Over Kaarten"
+
+#: src/window.blp:134
+msgid "Delete"
+msgstr "Verwijderen"
+
+#: src/window.py:165
+msgid "A digital pass manager"
+msgstr "Een digitale kaartenbeheerder"
