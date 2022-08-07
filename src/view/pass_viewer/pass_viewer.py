@@ -17,22 +17,26 @@
 
 from gi.repository import Gtk
 
+from .espass import EsPass
+from .espass_front_view import EsPassFrontView
+
+from .pkpass import PKPass
 from .pkpass_back_view import PassBackView
-from .pkpass_front_view import PassFrontView
+from .pkpass_front_view import PKPassFrontView
 
 
-@Gtk.Template(resource_path='/me/sanchezrodriguez/passes/pkpass_view.ui')
-class PassView(Gtk.Box):
+@Gtk.Template(resource_path='/me/sanchezrodriguez/passes/pass_viewer.ui')
+class PassViewer(Gtk.Box):
 
-    __gtype_name__ = 'PassView'
+    __gtype_name__ = 'PassViewer'
 
     pass_content = Gtk.Template.Child()
 
     def __init__(self):
        super().__init__()
        self.__pass = None
-       self.__back_widget = None
-       self.__front_widget = None
+       self.__back_view = None
+       self.__front_view = None
 
     def content(self, a_pass):
         if self.__pass == a_pass:
@@ -41,14 +45,18 @@ class PassView(Gtk.Box):
         self.__pass = a_pass
         self.empty()
 
-        self.__front_widget = PassFrontView.new(a_pass)
-        self.__back_widget = PassBackView(a_pass)
+        if type(a_pass) == PKPass:
+            self.__front_view = PKPassFrontView.new(a_pass)
+        else:
+            self.__front_view = EsPassFrontView.new(a_pass)
 
-        self.pass_content.append(self.__front_widget)
-        self.pass_content.append(self.__back_widget)
+        self.__back_view = PassBackView(a_pass)
+
+        self.pass_content.append(self.__front_view)
+        self.pass_content.append(self.__back_view)
 
     def empty(self):
-        if self.__back_widget:
-            self.pass_content.remove(self.__back_widget)
-        if self.__front_widget:
-            self.pass_content.remove(self.__front_widget)
+        if self.__back_view:
+            self.pass_content.remove(self.__back_view)
+        if self.__front_view:
+            self.pass_content.remove(self.__front_view)

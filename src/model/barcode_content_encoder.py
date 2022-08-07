@@ -37,6 +37,9 @@ class BarcodeContentEncoder():
 
     @classmethod
     def encode_aztec_code(this_class, text, encoding):
+        if not encoding:
+            encoding = 'iso-8859-1'
+
         encoded_text = text.encode(encoding)
 
         module_list = this_class.native_implementation\
@@ -51,6 +54,9 @@ class BarcodeContentEncoder():
 
     @classmethod
     def encode_pdf417_code(this_class, text, encoding):
+        if not encoding:
+            encoding = 'iso-8859-1'
+
         encoded_text = text.encode(encoding)
 
         code_width = ctypes.c_uint()
@@ -68,6 +74,9 @@ class BarcodeContentEncoder():
 
     @classmethod
     def encode_qr_code(this_class, text, encoding):
+        if not encoding:
+            encoding = 'iso-8859-1'
+
         encoded_text = text.encode(encoding)
 
         module_list = this_class.native_implementation\

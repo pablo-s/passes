@@ -29,7 +29,7 @@ class DigitalPassListStore(GObject.GObject):
     def __init__(self):
         super().__init__()
         self.__list_store = Gio.ListStore.new(DigitalPass)
-        self.__sorting_criteria = lambda a1, a2: a1.relevant_date() > a2.relevant_date()
+        self.__sorting_criteria = lambda a1, a2: a1.expiration_date() > a2.expiration_date()
 
     def find(self, digital_pass):
         return self.__list_store.find(digital_pass)

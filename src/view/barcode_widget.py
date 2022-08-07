@@ -80,13 +80,13 @@ class BarcodeWidget(Gtk.Widget):
     def encode(self, format, message, encoding):
         encoding_function = None
 
-        if format == 'PKBarcodeFormatAztec':
+        if format in ['AZTEC', 'PKBarcodeFormatAztec']:
             encoding_function = BarcodeContentEncoder.encode_aztec_code
 
-        elif format == 'PKBarcodeFormatPDF417':
+        elif format in ['PDF_417', 'PKBarcodeFormatPDF417']:
             encoding_function = BarcodeContentEncoder.encode_pdf417_code
 
-        elif format == 'PKBarcodeFormatQR':
+        elif format in ['PKBarcodeFormatQR', 'QR_CODE']:
             encoding_function = BarcodeContentEncoder.encode_qr_code
 
         else:

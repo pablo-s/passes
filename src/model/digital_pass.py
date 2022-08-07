@@ -30,8 +30,17 @@ class DigitalPass(GObject.GObject):
         super().__init__()
         self.__path = None
 
+    def description(self):
+        raise NotImplementedError()
+
+    def background_color(self):
+        raise NotImplementedError()
+
     def expiration_date(self):
         raise NotImplementedError()
+
+    def format(self):
+        return type(self).__name__.lower()
 
     def get_path(self):
         return self.__path
@@ -51,14 +60,17 @@ class DigitalPass(GObject.GObject):
 
 class Barcode:
 
-    def __init__(self, pkpass_barcode_dictionary):
-        self.__format = pkpass_barcode_dictionary['format']
-        self.__message = pkpass_barcode_dictionary['message']
-        self.__message_encoding = pkpass_barcode_dictionary['messageEncoding']
+    def __init__(self, barcode_dictionary):
+        self.__format = barcode_dictionary['format']
+        self.__message = barcode_dictionary['message']
+
+        self.__message_encoding = None
+        if 'messageEncoding' in barcode_dictionary.keys():
+            self.__message_encoding = barcode_dictionary['messageEncoding']
 
         self.__alt_text = None
-        if 'altText' in pkpass_barcode_dictionary.keys():
-            self.__alt_text = pkpass_barcode_dictionary['altText']
+        if 'altText' in barcode_dictionary.keys():
+            self.__alt_text = barcode_dictionary['altText']
 
     def alternative_text(self):
         return self.__alt_text
@@ -85,21 +97,46 @@ class Color:
 
     @classmethod
     def from_css(this_class, css_string):
-        result = re.search('rgb\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)',
-                           css_string)
+        if css_string.startswith('rgb'):
+            result = re.search('rgb\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)',
+                               css_string)
 
-        if not result or len(result.groups()) != 3:
+            if not result or len(result.groups()) != 3:
+                raise BadColor()
+
+            r = result.group(1)
+            g = result.group(2)
+            b = result.group(3)
+
+        elif css_string.startswith('#'):
+            result = re.search('\#(\S{2})(\S{2})(\S{2})(\S{2})',
+                               css_string)
+
+            if not result or len(result.groups()) != 4:
+                raise BadColor()
+
+            r = int(result.group(2), 16)
+            g = int(result.group(3), 16)
+            b = int(result.group(4), 16)
+
+        else:
             raise BadColor()
 
-        return Color(result.group(1),
-                     result.group(2),
-                     result.group(3))
+        return Color(r, g, b)
+
+    def invert(self):
+        self.__r = 255 - self.__r
+        self.__g = 255 - self.__g
+        self.__b = 255 - self.__b
 
 
 class Date:
 
     days_of_the_week = (_('Monday'), _('Tuesday'), _('Wednesday'),
                         _('Thursday'), _('Friday'), _('Saturday'), _('Sunday'))
+
+    MAX = datetime(9000, 12, 31).astimezone()
+    MIN = datetime(1970,  1,  1).astimezone()
 
     def __init__(self):
         self.__date = None
@@ -156,6 +193,11 @@ class Date:
 
         if string.endswith('Z'):
             string = string[:-1]
+
+        # Make sure that milliseconds is represented using 3 digits
+        match = re.match('^(.+)(\d{2})(\+.+$)', string)
+        if match:
+            string = match.group(1) + match.group(2) + '0' + match.group(3)
 
         try:
             # Create the date and make sure that it is not "naive"
@@ -231,7 +273,7 @@ class PassDataExtractor:
         except:
             return None
 
-    def get_list(self, key, item_constructor, extra_arguments=None):
+    def get_list(self, key, item_constructor=None, extra_arguments=None):
         """
         Return a list of elements from the dictionary using the provided key.
 
@@ -242,7 +284,7 @@ class PassDataExtractor:
         data_list = self.get(key)
 
         if not data_list:
-            return None
+            return []
 
         if not extra_arguments:
             extra_arguments = ()
@@ -253,7 +295,12 @@ class PassDataExtractor:
         result = list()
         for item_data in data_list:
             arguments = (item_data,) + extra_arguments
-            instance = item_constructor(*arguments)
+
+            if item_constructor:
+                instance = item_constructor(*arguments)
+            else:
+                instance = item_data
+
             result.append(instance)
 
         return result
@@ -263,6 +310,28 @@ class PassDataExtractor:
         Return the set of keys
         """
         return self._dictionary.keys()
+
+
+class TimeInterval:
+    def __init__(self, start_time, end_time):
+        self.__start_time = start_time
+        self.__end_time = end_time
+
+    def __contains__(self, time):
+        if (self.__start_time and time < self.__start_time) or \
+           (self.__end_time and time > self.__end_time):
+            return False
+
+        return True
+
+    @classmethod
+    def from_iso_strings(cls, start_time, end_time):
+        start_time = Date.from_iso_string(start_time) if start_time else Date.MIN
+        end_time = Date.from_iso_string(end_time) if end_time else Date.MAX
+        return TimeInterval(start_time, end_time)
+
+    def end_time(self):
+        return self.__end_time
 
 
 class BadColor(Exception):

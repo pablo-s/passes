@@ -3,14 +3,15 @@
   <gresource prefix="/me/sanchezrodriguez/passes">
     <file>barcode_dialog.ui</file>
     <file>colored_box.ui</file>
+    <file>espass_front_view_fallback.ui</file>
     <file>help_overlay.ui</file>
     <file>pass_list.ui</file>
     <file>pass_row_header.ui</file>
     <file>pass_row.ui</file>
+    <file>pass_viewer.ui</file>
     <file>pkpass_back_view.ui</file>
     <file>pkpass_field_row.ui</file>
     <file>pkpass_front_view_fallback.ui</file>
-    <file>pkpass_view.ui</file>
     <file>style.css</file>
     <file>window.ui</file>
   </gresource>

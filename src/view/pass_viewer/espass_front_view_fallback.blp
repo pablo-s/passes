@@ -1,14 +1,14 @@
 using Gtk 4.0;
 using Adw 1;
 
-template PKPassFallbackView : Gtk.Box
+template EsPassFallbackView : Gtk.Box
 {
     margin-bottom: 6;
     margin-top: 6;
     orientation: vertical;
     spacing: 12;
 
-    .ColoredBox logo_row
+    .ColoredBox icon_row
     {
         orientation: vertical;
         styles ["card"]
@@ -18,7 +18,7 @@ template PKPassFallbackView : Gtk.Box
             orientation: vertical;
             maximum-size: 0;
 
-            Gtk.Picture logo
+            Gtk.Picture icon
             {
                 margin-start: 6;
                 margin-end: 6;
@@ -36,25 +36,7 @@ template PKPassFallbackView : Gtk.Box
         styles ["title-2"]
     }
 
-    Gtk.ListBox header_fields
-    {
-        selection-mode: none;
-        styles ["boxed-list"]
-    }
-
-    Gtk.ListBox primary_fields
-    {
-        selection-mode: none;
-        styles ["boxed-list"]
-    }
-
-    Gtk.ListBox secondary_fields
-    {
-        selection-mode: none;
-        styles ["boxed-list"]
-    }
-
-    Gtk.ListBox auxiliary_fields
+    Gtk.ListBox fields
     {
         selection-mode: none;
         styles ["boxed-list"]

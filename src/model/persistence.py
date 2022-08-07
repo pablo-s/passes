@@ -27,30 +27,30 @@ class PersistenceManager:
     def __init__(self):
         self.__data_dir = GLib.get_user_data_dir()
 
-    def load_passes(self):
+    def load_pass_files(self):
         file_names = os.listdir(self.__data_dir)
-        passes = list()
+        pass_files = list()
 
         for file_name in file_names:
-            if not file_name.endswith('.pkpass'):
+            basename, extension = os.path.splitext(file_name)
+
+            if extension not in ['.espass','.pkpass']:
                 continue
 
-            pkpass_file_path = self.__data_dir + '/' + file_name
-            pkpass_file = Gio.File.new_for_path(pkpass_file_path)
-            passes.append(pkpass_file)
+            pass_file_path = os.path.join(self.__data_dir, file_name)
+            pass_file = Gio.File.new_for_path(pass_file_path)
+            pass_files.append(pass_file)
 
-        return passes
+        return pass_files
 
     def delete_pass_file(self, a_pass):
         target_path = a_pass.get_path()
         target_file = Gio.File.new_for_path(target_path)
         target_file.delete()
 
-    def save_pass_file(self, pass_file):
-        print("Saving file...")
-
-        destination_file_name = str(pass_file.hash()) + '.pkpass'
-        destination_file_path = self.__data_dir + '/' + destination_file_name
+    def save_pass_file(self, pass_file, pass_format):
+        destination_file_name = str(pass_file.hash()) + '.' + pass_format
+        destination_file_path = os.path.join(self.__data_dir, destination_file_name)
         destination_file = Gio.File.new_for_path(destination_file_path)
 
         if Gio.File.query_exists(destination_file):

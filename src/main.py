@@ -39,11 +39,11 @@ class Application(Adw.Application):
         self.__pass_list = DigitalPassListStore()
         self.__persistence = PersistenceManager()
 
-        passes = self.__persistence.load_passes()
-        for each_pass in passes:
-            pkpass = PassFactory.create(each_pass)
-            pkpass.set_path(each_pass.get_path())
-            self.__pass_list.insert(pkpass)
+        pass_files = self.__persistence.load_pass_files()
+        for pass_file in pass_files:
+            digital_pass = PassFactory.create(pass_file)
+            digital_pass.set_path(pass_file.get_path())
+            self.__pass_list.insert(digital_pass)
 
     def do_activate(self):
         window = self.props.active_window
@@ -118,19 +118,20 @@ class Application(Adw.Application):
             return
 
         try:
-            pkpass_file = filechooser.get_file()
-            pkpass = PassFactory.create(pkpass_file)
+            pass_file = filechooser.get_file()
+            digital_pass = PassFactory.create(pass_file)
 
-            stored_file = self.__persistence.save_pass_file(pkpass_file)
-            pkpass.set_path(stored_file.get_path())
+            stored_file = self.__persistence\
+                .save_pass_file(pass_file, digital_pass.format())
 
-            self.__pass_list.insert(pkpass)
+            digital_pass.set_path(stored_file.get_path())
+            self.__pass_list.insert(digital_pass)
 
             if not self.__pass_list.is_empty():
                 self.window().show_pass_list()
                 self.window().force_fold(False)
 
-            found, index = self.__pass_list.find(pkpass)
+            found, index = self.__pass_list.find(digital_pass)
             if found:
                 self.window().select_pass_at_index(index)
 

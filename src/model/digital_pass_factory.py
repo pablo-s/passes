@@ -21,6 +21,7 @@ import zipfile
 
 from gi.repository import Gdk, GObject, Gtk
 
+from .espass import EsPass
 from .pkpass import PKPass
 
 
@@ -65,7 +66,23 @@ class PassFactory:
 
     @classmethod
     def create_espass(this_class, archive):
-        raise FormatNotSupportedYet()
+        """
+        Create an EsPass object from a compressed file
+        """
+
+        pass_data = dict()
+        pass_images = dict()
+
+        for file_name in archive.namelist():
+            if file_name.endswith('.png'):
+                image = archive.read(file_name)
+                pass_images[file_name] = image
+
+            if file_name.endswith('main.json'):
+                json_content = archive.read(file_name)
+                pass_data = json.loads(json_content)
+
+        return EsPass(pass_data, pass_images)
 
     @classmethod
     def create_pkpass(thisClass, archive):

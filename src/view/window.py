@@ -19,7 +19,7 @@ from gi.repository import Gio, GObject, Gtk, Adw
 
 from .barcode_dialog import BarcodeDialog
 from .pass_list import PassList
-from .pkpass_view import PassView
+from .pass_viewer import PassViewer
 
 
 @Gtk.Template(resource_path='/me/sanchezrodriguez/passes/window.ui')
@@ -32,7 +32,7 @@ class PassesWindow(Adw.ApplicationWindow):
     barcode_button = Gtk.Template.Child()
 
     pass_list = Gtk.Template.Child()
-    pass_view = Gtk.Template.Child()
+    pass_viewer = Gtk.Template.Child()
 
     pass_list_stack = Gtk.Template.Child()
 
@@ -70,10 +70,11 @@ class PassesWindow(Adw.ApplicationWindow):
         try:
             selected_pass = self.selected_pass()
             barcode = selected_pass.barcode()
-            barcodes = selected_pass.barcodes()
 
-            if not barcode and len(barcodes) > 0:
-                barcode = barcodes[0]
+            if not barcode:
+                barcodes = selected_pass.barcodes()
+                if len(barcodes) > 0:
+                    barcode = barcodes[0]
 
             if barcode:
                 dialog = BarcodeDialog()
@@ -87,7 +88,7 @@ class PassesWindow(Adw.ApplicationWindow):
 
     def _on_row_activated(self, pass_list, pass_row):
         row_data = pass_row.data()
-        self.pass_view.content(row_data)
+        self.pass_viewer.content(row_data)
 
         if self.main_leaflet_can_navigate:
             self.main_leaflet.navigate(Adw.NavigationDirection.FORWARD)

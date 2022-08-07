@@ -27,7 +27,7 @@ class PassRowHeader(Gtk.Label):
         super().__init__()
 
         header_text = a_pass\
-            .relevant_date()\
+            .expiration_date()\
             .as_relative_pretty_string()
 
         self.set_text(header_text)

@@ -21,19 +21,19 @@ from .barcode_widget import BarcodeWidget
 from .pkpass_field_row import PassFieldRow
 
 
-class PassFrontView:
+class PKPassFrontView:
     """
     A factory to instance the appropriate view
     """
     @staticmethod
     def new(a_pass):
-        return FallbackView(a_pass)
+        return PKPassFallbackView(a_pass)
 
 
 @Gtk.Template(resource_path='/me/sanchezrodriguez/passes/pkpass_front_view_fallback.ui')
-class FallbackView(Gtk.Box):
+class PKPassFallbackView(Gtk.Box):
 
-    __gtype_name__ = 'FallbackView'
+    __gtype_name__ = 'PKPassFallbackView'
 
     logo = Gtk.Template.Child()
     logo_row = Gtk.Template.Child()
@@ -71,3 +71,4 @@ class FallbackView(Gtk.Box):
                 value = field.value()
                 pass_field_row = PassFieldRow(label, value)
                 gtk_list.append(pass_field_row)
+

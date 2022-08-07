@@ -41,12 +41,12 @@ class PassList(Gtk.ListBox):
     def on_update_header(self, row, row_above):
         row_header = row\
             .data()\
-            .relevant_date()\
+            .expiration_date()\
             .as_relative_pretty_string()
 
         row_above_header = row_above\
             .data()\
-            .relevant_date()\
+            .expiration_date()\
             .as_relative_pretty_string()\
             if row_above else None
 
