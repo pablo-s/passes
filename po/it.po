@@ -1,0 +1,127 @@
+# ITALIAN TRANSLATION OF PASSES.
+# Copyright (C) 2022 PASSES'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the passes package.
+# Michael Moroni <michaelmoroni@disroot.org>, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-05-17 19:26+0200\n"
+"PO-Revision-Date: 2022-08-10 16:23+0100\n"
+"Last-Translator: Michael Moroni <michaelmoroni@disroot.org>\n"
+"Language-Team: Italian <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/barcode_widget.py:104
+msgid "Barcode format not supported"
+msgstr "Formato del codice non supportato"
+
+#: src/main.py:97 src/window.blp:30
+msgid "Import a pass"
+msgstr "Importa un biglietto"
+
+#: src/model/digital_pass.py:89
+msgid "Monday"
+msgstr "Lunedì"
+
+#: src/model/digital_pass.py:89
+msgid "Tuesday"
+msgstr "Martedì"
+
+#: src/model/digital_pass.py:89
+msgid "Wednesday"
+msgstr "Mercoledì"
+
+#: src/model/digital_pass.py:90
+msgid "Friday"
+msgstr "Venerdì"
+
+#: src/model/digital_pass.py:90
+msgid "Saturday"
+msgstr "Sabato"
+
+#: src/model/digital_pass.py:90
+msgid "Sunday"
+msgstr "Domenica"
+
+#: src/model/digital_pass.py:90
+msgid "Thursday"
+msgstr "Giovedì"
+
+#: src/model/digital_pass.py:137
+msgid "Anytime"
+msgstr "Qualsiasi momento"
+
+#: src/model/digital_pass.py:140
+msgid "Unknown date"
+msgstr "Data sconosciuta"
+
+#: src/model/digital_pass.py:146
+msgid "Today"
+msgstr "Oggi"
+
+#: src/model/digital_pass.py:149
+msgid "Tomorrow"
+msgstr "Domani"
+
+#: src/model/digital_pass_factory.py:141
+msgid "File is not a pass"
+msgstr "Il file non è un biglietto"
+
+#: src/model/digital_pass_factory.py:147
+msgid "Format not supported yet"
+msgstr "Formato non ancora supportato"
+
+#: src/model/digital_pass_factory.py:153
+msgid "Unknown file encoding"
+msgstr "Sistema di codifica del file sconosciuto"
+
+#: src/model/persistence.py:70
+msgid "File already imported"
+msgstr "File già importato"
+
+#: src/window.blp:6 src/window.py:159
+msgid "Passes"
+msgstr "Biglietti"
+
+#: src/window.blp:39
+msgid "Menu"
+msgstr "Menù"
+
+#: src/window.blp:60
+msgid "You have no passes"
+msgstr "Non hai biglietti"
+
+#: src/window.blp:61
+msgid "Use the “+” button to import a pass"
+msgstr "Usa il tasto + per importare un biglietto"
+
+#: src/window.blp:99
+msgid "Back"
+msgstr "Indietro"
+
+#: src/window.blp:115
+msgid "Show barcode"
+msgstr "Mostra codice"
+
+#: src/window.blp:128
+msgid "Keyboard shortcuts"
+msgstr "Scorciatoie da tastiera"
+
+#: src/window.blp:129
+msgid "About Passes"
+msgstr "Informazioni"
+
+#: src/window.blp:134
+msgid "Delete"
+msgstr "Elimina"
+
+#: src/window.py:165
+msgid "A digital pass manager"
+msgstr "Un gestore di biglietti digitale"
