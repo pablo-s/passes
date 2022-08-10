@@ -1,5 +1,6 @@
 [Desktop Entry]
 Name=Passes
+Comment=A digital pass manager
 Exec=passes
 Icon=me.sanchezrodriguez.passes
 Terminal=false
