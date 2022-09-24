@@ -27,7 +27,7 @@ from gi.repository import GLib, Gdk, Gio, Gtk, Adw
 from .digital_pass_factory import FileIsNotAPass, FormatNotSupportedYet, PassFactory
 from .digital_pass_list_store import DigitalPassListStore
 from .persistence import FileAlreadyImported, PersistenceManager
-from .window import PassesWindow, AboutDialog
+from .window import PassesWindow
 
 
 class Application(Adw.Application):
@@ -68,9 +68,18 @@ class Application(Adw.Application):
     def do_startup(self):
         Adw.Application.do_startup(self)
 
-    def on_about_action(self, widget, _):
-        about = AboutDialog(self.window())
-        about.present()
+    def on_about_action(self, widget, __):
+        about = Adw.AboutWindow()
+        about.set_application_icon('me.sanchezrodriguez.passes')
+        about.set_application_name(_('Passes'))
+        about.set_comments(_('A digital pass manager'))
+        about.set_copyright('© 2022 Pablo Sánchez Rodríguez')
+        about.set_developer_name('Pablo Sánchez Rodríguez')
+        about.set_issue_url('https://github.com/pablo-s/passes/issues')
+        about.set_version('0.6')
+        about.set_website('https://github.com/pablo-s/passes')
+        about.set_transient_for(self.window())
+        about.show()
 
     def on_delete_action(self, widget, _):
         if not self.window():

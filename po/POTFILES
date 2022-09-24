@@ -6,7 +6,6 @@ src/model/digital_pass_factory.py
 src/model/persistence.py
 src/barcode_widget.py
 src/main.py
-src/main.py
 src/pkpass_row_header.py
 src/window.py
 src/window.ui
