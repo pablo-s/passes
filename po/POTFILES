@@ -1,5 +1,5 @@
 data/me.sanchezrodriguez.passes.desktop.in
-data/me.sanchezrodriguez.passes.appdata.xml.in
+data/me.sanchezrodriguez.passes.metainfo.xml.in
 data/me.sanchezrodriguez.passes.gschema.xml
 
 src/model/digital_pass_factory.py

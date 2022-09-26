@@ -1,4 +1,5 @@
 pkgdatadir = join_paths(get_option('prefix'), get_option('datadir'), meson.project_name())
+plugindir = join_paths(get_option('prefix'), get_option('libdir'), meson.project_name())
 moduledir = join_paths(pkgdatadir, 'passes')
 gnome = import('gnome')
 
@@ -70,7 +71,6 @@ passes_sources = [
   'view/pass_viewer/pkpass_front_view.py',
   'view/window.py',
   'main.py',
-  'model/barcode_content_encoder.py',
   'model/digital_pass_factory.py',
   'model/digital_pass_list_store.py',
   'model/digital_pass.py',

@@ -21,7 +21,7 @@ import math
 
 class BarcodeContentEncoder():
 
-    native_implementation = ctypes.CDLL('libbarcode-content-encoder.so')
+    native_implementation = ctypes.CDLL('@plugindir@/libbarcode-content-encoder.so')
 
     # encode_aztec_code
     native_implementation.encode_aztec_code.argtypes = [ctypes.c_char_p]
