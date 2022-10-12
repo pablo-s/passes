@@ -1,0 +1,50 @@
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the forgetpass package.
+#
+# Albano Battistella <albano_battistella@hotmail.com>, 2022.
+# Sergio Varela <sergiovg01@outlook.com>, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: forgetpass\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-05-01 14:21+0200\n"
+"PO-Revision-Date: 2022-09-24 17:47+0200\n"
+"Last-Translator: Sergio Varela <sergiovg01@outlook.com>\n"
+"Language-Team: Spanish - Spain <sergiovg01@outlook.com>\n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"X-Generator: Gtranslator 40.0\n"
+
+#: data/com.github.alexkdeveloper.forgetpass.desktop.in:3
+#: data/com.github.alexkdeveloper.forgetpass.appdata.xml.in:6
+msgid "Forgetpass"
+msgstr "Forgetpass"
+
+#: data/com.github.alexkdeveloper.forgetpass.desktop.in:4
+#: data/com.github.alexkdeveloper.forgetpass.appdata.xml.in:7
+msgid "Simple password generator for websites"
+msgstr "Pasahitzen sorgailu erraz bat webguneetarako"
+
+#: data/com.github.alexkdeveloper.forgetpass.desktop.in:11
+msgid "password;generator;security;keyword;"
+msgstr "pasahitza;sorgailua;segurtasuna;gako-hitza;"
+
+#: data/com.github.alexkdeveloper.forgetpass.appdata.xml.in:9
+msgid ""
+"You don't need to remember passwords anymore! All you need is a website name "
+"and a keyword that is easy to remember. The program will generate a strong "
+"password, and if you need it again, just enter the above data and you will "
+"get the same password."
+msgstr ""
+"Ez da beharrezkoa pasahitzak gogoratzea! Behar duzun guztia webgunearen izen "
+"bat eta gogoratzeko erraza den hitz gako bat da. Programak pasahitz sendo "
+"bat sortuko du, eta berriro behar baduzu, aurreko datuak sartu eta pasahitz "
+"bera lortuko duzu."
+
+#: data/com.github.alexkdeveloper.forgetpass.appdata.xml.in:14
+msgid "Alex Kryuchkov"
+msgstr "Alex Kryuchkov"
