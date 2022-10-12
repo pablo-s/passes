@@ -1,0 +1,128 @@
+# Basque translation for passes.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the passes package.
+# See file COPYING or go to <http://www.gnu.org/licenses/> for full license details.
+# Sergio Varela <>, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: passes\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-05-17 19:26+0200\n"
+"PO-Revision-Date: 2022-10-12 16:04+0200\n"
+"Last-Translator: Sergio Varela <>\n"
+"Language-Team: Basque - Spain <>\n"
+"Language: eu_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"X-Generator: Gtranslator 40.0\n"
+
+#: src/barcode_widget.py:104
+msgid "Barcode format not supported"
+msgstr "Barra-kodearen formatua ez da onartzen"
+
+#: src/main.py:97 src/window.blp:30
+msgid "Import a pass"
+msgstr "Emanaldi bat inportatu"
+
+#: src/model/digital_pass.py:89
+msgid "Monday"
+msgstr "Astelehena"
+
+#: src/model/digital_pass.py:89
+msgid "Tuesday"
+msgstr "Asteartea"
+
+#: src/model/digital_pass.py:89
+msgid "Wednesday"
+msgstr "Asteazkena"
+
+#: src/model/digital_pass.py:90
+msgid "Friday"
+msgstr "Ostirala"
+
+#: src/model/digital_pass.py:90
+msgid "Saturday"
+msgstr "Larunbata"
+
+#: src/model/digital_pass.py:90
+msgid "Sunday"
+msgstr "Igandea"
+
+#: src/model/digital_pass.py:90
+msgid "Thursday"
+msgstr "Osteguna"
+
+#: src/model/digital_pass.py:137
+msgid "Anytime"
+msgstr "Edozein unetan"
+
+#: src/model/digital_pass.py:140
+msgid "Unknown date"
+msgstr "Data ezezaguna"
+
+#: src/model/digital_pass.py:146
+msgid "Today"
+msgstr "Gaur"
+
+#: src/model/digital_pass.py:149
+msgid "Tomorrow"
+msgstr "Bihar"
+
+#: src/model/digital_pass_factory.py:141
+msgid "File is not a pass"
+msgstr "Fitxategi hau ez da emanaldi bat"
+
+#: src/model/digital_pass_factory.py:147
+msgid "Format not supported yet"
+msgstr "Formatu hau ez da oraindik onartzen"
+
+#: src/model/digital_pass_factory.py:153
+msgid "Unknown file encoding"
+msgstr "Artxiboaren kodifikazioa ezezaguna da"
+
+#: src/model/persistence.py:70
+msgid "File already imported"
+msgstr "Fitxategia inportatuta"
+
+#: src/window.blp:6 src/window.py:159
+msgid "Passes"
+msgstr "Emanaldiak"
+
+#: src/window.blp:39
+msgid "Menu"
+msgstr "Menua"
+
+#: src/window.blp:60
+msgid "You have no passes"
+msgstr "Ez duzu emanaldirik"
+
+#: src/window.blp:61
+msgid "Use the “+” button to import a pass"
+msgstr "Erabili “+” botoia emanaldi bat inportatzeko"
+
+#: src/window.blp:99
+msgid "Back"
+msgstr "Atzera"
+
+#: src/window.blp:115
+msgid "Show barcode"
+msgstr "Erakutsi barra-kodea"
+
+#: src/window.blp:128
+msgid "Keyboard shortcuts"
+msgstr "Teklatuko lasterbideak"
+
+#: src/window.blp:129
+msgid "About Passes"
+msgstr "Emanaldiak-ri buruz"
+
+#: src/window.blp:134
+msgid "Delete"
+msgstr "Ezabatu"
+
+#: src/window.py:165
+msgid "A digital pass manager"
+msgstr "Emanaldi digitalen kudeatzaile bat"
