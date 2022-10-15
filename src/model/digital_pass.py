@@ -19,7 +19,7 @@ import re
 
 from datetime import datetime
 
-from gi.repository import GdkPixbuf, GObject
+from gi.repository import Gdk, GdkPixbuf, GLib, GObject
 
 
 class DigitalPass(GObject.GObject):
@@ -88,9 +88,18 @@ class Barcode:
 class Color:
 
     def __init__(self, r, g, b):
-        self.__r = r
-        self.__g = g
-        self.__b = b
+        self.__r = int(r)
+        self.__g = int(g)
+        self.__b = int(b)
+
+    def red(self):
+        return self.__r
+
+    def green(self):
+        return self.__g
+
+    def blue(self):
+        return self.__b
 
     def as_tuple(self):
         return (self.__r, self.__g, self.__b)
@@ -228,6 +237,9 @@ class Image:
         loader.write(self.__data)
         loader.close()
         return loader.get_pixbuf()
+
+    def as_texture(self):
+        return Gdk.Texture.new_from_bytes(GLib.Bytes(self.__data))
 
 
 class PassDataExtractor:

@@ -191,6 +191,10 @@ class StandardField:
             if translation_dictionary and self.__label in translation_dictionary.keys():
                 self.__label = translation_dictionary[self.__label]
 
+        self.__text_alignment = None
+        if 'textAlignment' in pkpass_field_dictionary.keys():
+            self.__text_alignment = pkpass_field_dictionary['textAlignment']
+
     def key(self):
         return self.__key
 
@@ -199,3 +203,6 @@ class StandardField:
 
     def value(self):
         return self.__value
+
+    def text_alignment(self):
+        return self.__text_alignment

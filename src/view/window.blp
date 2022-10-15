@@ -106,6 +106,14 @@ template PassesWindow : Adw.ApplicationWindow
                     }
 
                     [end]
+                    Gtk.ToggleButton info_button
+                    {
+                        active: bind info_panel.reveal_flap;
+                        icon-name: "info-symbolic";
+                        tooltip-text: _("Show additional information");
+                    }
+
+                    [end]
                     Gtk.Button barcode_button
                     {
                         icon-name: "qr-code-symbolic";
@@ -113,7 +121,25 @@ template PassesWindow : Adw.ApplicationWindow
                     }
                 }
 
-                .PassViewer pass_viewer {}
+                Adw.Flap info_panel
+                {
+                    flap-position: end;
+                    reveal-flap: bind info_button.active;
+
+                    content: Gtk.Box
+                    {
+                        halign: center;
+                        margin-start: 6;
+                        margin-end: 6;
+
+                        .PassWidget pass_widget {}
+                    };
+                    separator: Gtk.Separator {};
+                    flap: .PassBackView pass_additional_info
+                    {
+                        styles ["background"]
+                    };
+                }
             }
         }
     }

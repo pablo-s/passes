@@ -27,18 +27,25 @@ class PassBackView(Gtk.Box):
 
     back_fields = Gtk.Template.Child()
 
-    def __init__(self, a_pass):
+    def __init__(self):
         super().__init__()
 
+    def clean(self):
+        row = self.back_fields.get_row_at_index(0)
+        while row:
+            self.back_fields.remove(row)
+            row = self.back_fields.get_row_at_index(0)
+
+    def content(self, a_pass):
+        self.clean()
         back_fields = a_pass.back_fields()
 
-        if not back_fields:
-            self.back_fields.set_visible(False)
-            return
+        # Make the field list invisible if we do not have back fields
+        self.back_fields.set_visible(back_fields)
 
-        for header_field in back_fields:
-            label = header_field.label()
-            value = header_field.value()
+        for field in back_fields:
+            label = field.label()
+            value = field.value()
 
             passFieldRow = PassFieldRow(label, value, create_links=True)
             passFieldRow.set_halign(Gtk.Align.START)

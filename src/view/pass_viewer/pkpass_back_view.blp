@@ -3,15 +3,30 @@ using Adw 1;
 
 template PassBackView : Gtk.Box
 {
-    margin-bottom: 6;
-    margin-top: 6;
-    orientation: vertical;
-    spacing: 12;
-    width-request: 294;
-
-    Gtk.ListBox back_fields
+    Gtk.ScrolledWindow scrolled_window
     {
-        selection-mode: none;
-        styles ["boxed-list"]
+        hscrollbar-policy: never;
+        vexpand: true;
+
+        Gtk.Viewport
+        {
+            scroll-to-focus: true;
+
+            Gtk.Box
+            {
+                margin-bottom: 6;
+                margin-top: 6;
+                margin-start: 6;
+                margin-end: 6;
+                orientation: vertical;
+                spacing: 6;
+                width-request: 294;
+
+                Gtk.ListBox back_fields
+                {
+                    selection-mode: none;
+                }
+            }
+        }
     }
 }
