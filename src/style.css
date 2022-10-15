@@ -5,13 +5,13 @@
   background-color: white;
 }
 
-.digital-pass-boder-radius
-{
-  border-radius: 4px;
-}
-
 /* Do not highlight the selected menu row when the leaflet is folded. */
 .folded row:selected:not(:hover):not(:active)
 {
   background-color: transparent;
+}
+
+.rounded
+{
+  border-radius: 100%;
 }

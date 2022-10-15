@@ -19,17 +19,20 @@ template PassRow : Gtk.ListBoxRow
         // Card showing the icon of the pass
         .ColoredBox colored_box
         {
-            width-request: 52;
-            height-request: 0;
-            styles ["card", "digital-pass-boder-radius"]
+            height-request: 50;
+            hexpand: false;
+            vexpand: false;
+            width-request: 50;
+            styles ["card", "rounded"]
 
             Gtk.Image icon
             {
                 can-focus: false;
-                margin-bottom: 2;
-                margin-start: 10;
-                margin-top: 2;
+                halign: center;
+                hexpand: true;
                 pixel-size: 32;
+                valign: center;
+                vexpand: true;
             }
         }
 
