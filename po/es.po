@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: passes\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-16 13:55+0200\n"
-"PO-Revision-Date: 2022-05-17 19:29+0200\n"
+"PO-Revision-Date: 2022-10-16 15:35+0200\n"
 "Last-Translator: Pablo Sánchez Rodríguez <>\n"
 "Language-Team: Spanish - Spain <>\n"
 "Language: es_ES\n"
@@ -109,7 +109,7 @@ msgstr "Atrás"
 
 #: src/view/window.blp:113
 msgid "Show additional information"
-msgstr ""
+msgstr "Mostrar información adicional"
 
 #: src/view/window.blp:120
 msgid "Show barcode"
