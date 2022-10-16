@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: passes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-17 19:26+0200\n"
+"POT-Creation-Date: 2022-10-16 13:55+0200\n"
 "PO-Revision-Date: 2022-10-12 16:04+0200\n"
 "Last-Translator: Sergio Varela <>\n"
 "Language-Team: Basque - Spain <>\n"
@@ -19,67 +19,67 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "X-Generator: Gtranslator 40.0\n"
 
-#: src/barcode_widget.py:104
-msgid "Barcode format not supported"
-msgstr "Barra-kodearen formatua ez da onartzen"
+#: src/main.py:74 src/view/window.blp:6
+msgid "Passes"
+msgstr "Emanaldiak"
 
-#: src/main.py:97 src/window.blp:30
+#: src/main.py:75
+msgid "A digital pass manager"
+msgstr "Emanaldi digitalen kudeatzaile bat"
+
+#: src/main.py:106 src/view/window.blp:30
 msgid "Import a pass"
 msgstr "Emanaldi bat inportatu"
 
-#: src/model/digital_pass.py:89
+#: src/model/digital_pass.py:144
 msgid "Monday"
 msgstr "Astelehena"
 
-#: src/model/digital_pass.py:89
+#: src/model/digital_pass.py:144
 msgid "Tuesday"
 msgstr "Asteartea"
 
-#: src/model/digital_pass.py:89
+#: src/model/digital_pass.py:144
 msgid "Wednesday"
 msgstr "Asteazkena"
 
-#: src/model/digital_pass.py:90
+#: src/model/digital_pass.py:145
 msgid "Friday"
 msgstr "Ostirala"
 
-#: src/model/digital_pass.py:90
+#: src/model/digital_pass.py:145
 msgid "Saturday"
 msgstr "Larunbata"
 
-#: src/model/digital_pass.py:90
+#: src/model/digital_pass.py:145
 msgid "Sunday"
 msgstr "Igandea"
 
-#: src/model/digital_pass.py:90
+#: src/model/digital_pass.py:145
 msgid "Thursday"
 msgstr "Osteguna"
 
-#: src/model/digital_pass.py:137
+#: src/model/digital_pass.py:179
 msgid "Anytime"
 msgstr "Edozein unetan"
 
-#: src/model/digital_pass.py:140
-msgid "Unknown date"
-msgstr "Data ezezaguna"
-
-#: src/model/digital_pass.py:146
+#: src/model/digital_pass.py:185
 msgid "Today"
 msgstr "Gaur"
 
-#: src/model/digital_pass.py:149
+#: src/model/digital_pass.py:188
 msgid "Tomorrow"
 msgstr "Bihar"
 
-#: src/model/digital_pass_factory.py:141
+#: src/model/digital_pass_factory.py:158
 msgid "File is not a pass"
 msgstr "Fitxategi hau ez da emanaldi bat"
 
-#: src/model/digital_pass_factory.py:147
+#: src/model/digital_pass_factory.py:164
 msgid "Format not supported yet"
 msgstr "Formatu hau ez da oraindik onartzen"
 
-#: src/model/digital_pass_factory.py:153
+#: src/model/digital_pass_factory.py:170
 msgid "Unknown file encoding"
 msgstr "Artxiboaren kodifikazioa ezezaguna da"
 
@@ -87,42 +87,45 @@ msgstr "Artxiboaren kodifikazioa ezezaguna da"
 msgid "File already imported"
 msgstr "Fitxategia inportatuta"
 
-#: src/window.blp:6 src/window.py:159
-msgid "Passes"
-msgstr "Emanaldiak"
+#: src/view/barcode_widget.py:104
+msgid "Barcode format not supported"
+msgstr "Barra-kodearen formatua ez da onartzen"
 
-#: src/window.blp:39
+#: src/view/window.blp:39
 msgid "Menu"
 msgstr "Menua"
 
-#: src/window.blp:60
+#: src/view/window.blp:60
 msgid "You have no passes"
 msgstr "Ez duzu emanaldirik"
 
-#: src/window.blp:61
+#: src/view/window.blp:61
 msgid "Use the “+” button to import a pass"
 msgstr "Erabili “+” botoia emanaldi bat inportatzeko"
 
-#: src/window.blp:99
+#: src/view/window.blp:96
 msgid "Back"
 msgstr "Atzera"
 
-#: src/window.blp:115
+#: src/view/window.blp:113
+msgid "Show additional information"
+msgstr ""
+
+#: src/view/window.blp:120
 msgid "Show barcode"
 msgstr "Erakutsi barra-kodea"
 
-#: src/window.blp:128
+#: src/view/window.blp:151
 msgid "Keyboard shortcuts"
 msgstr "Teklatuko lasterbideak"
 
-#: src/window.blp:129
+#: src/view/window.blp:152
 msgid "About Passes"
 msgstr "Emanaldiak-ri buruz"
 
-#: src/window.blp:134
+#: src/view/window.blp:157
 msgid "Delete"
 msgstr "Ezabatu"
 
-#: src/window.py:165
-msgid "A digital pass manager"
-msgstr "Emanaldi digitalen kudeatzaile bat"
+#~ msgid "Unknown date"
+#~ msgstr "Data ezezaguna"

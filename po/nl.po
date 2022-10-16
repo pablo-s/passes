@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-17 19:26+0200\n"
+"POT-Creation-Date: 2022-10-16 13:55+0200\n"
 "PO-Revision-Date: 2022-06-12 14:19+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch <kde-i18n-nl@kde.org>\n"
@@ -17,67 +17,67 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 22.04.1\n"
 
-#: src/barcode_widget.py:104
-msgid "Barcode format not supported"
-msgstr "Dit barcodeformaat wordt niet ondersteund"
+#: src/main.py:74 src/view/window.blp:6
+msgid "Passes"
+msgstr "Kaarten"
 
-#: src/main.py:97 src/window.blp:30
+#: src/main.py:75
+msgid "A digital pass manager"
+msgstr "Een digitale kaartenbeheerder"
+
+#: src/main.py:106 src/view/window.blp:30
 msgid "Import a pass"
 msgstr "Kaart importeren"
 
-#: src/model/digital_pass.py:89
+#: src/model/digital_pass.py:144
 msgid "Monday"
 msgstr "maandag"
 
-#: src/model/digital_pass.py:89
+#: src/model/digital_pass.py:144
 msgid "Tuesday"
 msgstr "dinsdag"
 
-#: src/model/digital_pass.py:89
+#: src/model/digital_pass.py:144
 msgid "Wednesday"
 msgstr "woensdag"
 
-#: src/model/digital_pass.py:90
+#: src/model/digital_pass.py:145
 msgid "Friday"
 msgstr "vrijdag"
 
-#: src/model/digital_pass.py:90
+#: src/model/digital_pass.py:145
 msgid "Saturday"
 msgstr "zaterdag"
 
-#: src/model/digital_pass.py:90
+#: src/model/digital_pass.py:145
 msgid "Sunday"
 msgstr "zondag"
 
-#: src/model/digital_pass.py:90
+#: src/model/digital_pass.py:145
 msgid "Thursday"
 msgstr "donderdag"
 
-#: src/model/digital_pass.py:137
+#: src/model/digital_pass.py:179
 msgid "Anytime"
 msgstr "Geen specifieke datum"
 
-#: src/model/digital_pass.py:140
-msgid "Unknown date"
-msgstr "Onbekende datum"
-
-#: src/model/digital_pass.py:146
+#: src/model/digital_pass.py:185
 msgid "Today"
 msgstr "Vandaag"
 
-#: src/model/digital_pass.py:149
+#: src/model/digital_pass.py:188
 msgid "Tomorrow"
 msgstr "Morgen"
 
-#: src/model/digital_pass_factory.py:141
+#: src/model/digital_pass_factory.py:158
 msgid "File is not a pass"
 msgstr "Dit bestand is geen kaart"
 
-#: src/model/digital_pass_factory.py:147
+#: src/model/digital_pass_factory.py:164
 msgid "Format not supported yet"
 msgstr "Dit formaat wordt nog niet ondersteund"
 
-#: src/model/digital_pass_factory.py:153
+#: src/model/digital_pass_factory.py:170
 msgid "Unknown file encoding"
 msgstr "Onbekende tekenset in bestand"
 
@@ -85,42 +85,45 @@ msgstr "Onbekende tekenset in bestand"
 msgid "File already imported"
 msgstr "Dit bestand is al geïmporteerd"
 
-#: src/window.blp:6 src/window.py:159
-msgid "Passes"
-msgstr "Kaarten"
+#: src/view/barcode_widget.py:104
+msgid "Barcode format not supported"
+msgstr "Dit barcodeformaat wordt niet ondersteund"
 
-#: src/window.blp:39
+#: src/view/window.blp:39
 msgid "Menu"
 msgstr "Menu"
 
-#: src/window.blp:60
+#: src/view/window.blp:60
 msgid "You have no passes"
 msgstr "U heeft nog geen kaarten toegevoegd"
 
-#: src/window.blp:61
+#: src/view/window.blp:61
 msgid "Use the “+” button to import a pass"
 msgstr "Klik op ‘+’ om een kaart te importeren"
 
-#: src/window.blp:99
+#: src/view/window.blp:96
 msgid "Back"
 msgstr "Terug"
 
-#: src/window.blp:115
+#: src/view/window.blp:113
+msgid "Show additional information"
+msgstr ""
+
+#: src/view/window.blp:120
 msgid "Show barcode"
 msgstr "Barcode tonen"
 
-#: src/window.blp:128
+#: src/view/window.blp:151
 msgid "Keyboard shortcuts"
 msgstr "Sneltoetsen"
 
-#: src/window.blp:129
+#: src/view/window.blp:152
 msgid "About Passes"
 msgstr "Over Kaarten"
 
-#: src/window.blp:134
+#: src/view/window.blp:157
 msgid "Delete"
 msgstr "Verwijderen"
 
-#: src/window.py:165
-msgid "A digital pass manager"
-msgstr "Een digitale kaartenbeheerder"
+#~ msgid "Unknown date"
+#~ msgstr "Onbekende datum"
