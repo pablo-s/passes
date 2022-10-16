@@ -94,6 +94,7 @@
 		</release>
 		<release date="2022-03-27" version="0.2.1">
 			<description>
+				<p>Bug fixes:</p>
 				<ul>
 					<li>Fix 'Add' icon.</li>
 					<li>Hide Settings entry from primary menu.</li>
