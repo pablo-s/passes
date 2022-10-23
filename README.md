@@ -7,8 +7,8 @@
 
 ## Features
 
-- Mobile friendly
-- Import PKPASS files
+- Mobile friendly.
+- Import *.espass and *.pkpass files.
 
 ## Build
 
@@ -16,9 +16,19 @@ You can build *Passes* using GNOME Builder: import the project and press the Pla
 
 ## Install
 
-| Distro/Platform | Link |
-|:----:|:----:|
-| Flathub |[`me.sanchezrodriguez.passes`](https://flathub.org/apps/details/me.sanchezrodriguez.passes)
+The recommended way of installing *Passes* is via Flatpak:
+
+<a href='https://flathub.org/apps/details/me.sanchezrodriguez.passes'>
+  <img width='190px' alt='Download on Flathub' 
+       src='https://flathub.org/assets/badges/flathub-badge-en.png'/>
+</a>
+<br/>
+<br/>
+
+Alternatively, it can also be obtained from the following packages:
+
+| Distribution | Package |
+|:-------------|:--------|
 | Arch Linux (AUR) | [`passes`](https://aur.archlinux.org/packages/passes) |
 | Arch Linux (AUR, git version) | [`passes-git`](https://aur.archlinux.org/packages/passes-git) |
 
