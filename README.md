@@ -3,7 +3,7 @@
 
 *Passes* is a digital pass manager made with libadwaita for the GNOME desktop.
 
-![Screenshot](/data/screenshots/passes_with_shadow.png)
+![Screenshot](/data/screenshots/passes.png)
 
 ## Features
 
