@@ -55,7 +55,7 @@ class Application(Adw.Application):
         self.create_action('about', self.on_about_action)
         self.create_action('delete', self.on_delete_action)
         self.create_action('import', self.on_import_action)
-        self.create_action('preferences', self.on_preferences_action)
+        self.create_action('quit', self.on_quit_action, ['<Control>q'])
 
         pass_list_is_empty = self.__pass_list.is_empty()
         window.force_fold(pass_list_is_empty)
@@ -116,11 +116,18 @@ class Application(Adw.Application):
     def on_preferences_action(self, widget, _):
         print('app.preferences action activated')
 
-    def create_action(self, name, callback):
+    def on_quit_action(self, widget, _):
+        self.window().close()
+
+    def create_action(self, name, callback, shortcuts=None):
         """ Add an Action and connect to a callback """
         action = Gio.SimpleAction.new(name, None)
         action.connect("activate", callback)
         self.add_action(action)
+
+        if shortcuts:
+            self.set_accels_for_action(f'app.{name}',
+                                       shortcuts)
 
     def _on_file_chosen(self, filechooser, response):
         if response != Gtk.ResponseType.ACCEPT:

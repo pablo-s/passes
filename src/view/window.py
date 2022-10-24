@@ -53,6 +53,10 @@ class PassesWindow(Adw.ApplicationWindow):
 
         self.set_help_overlay(help_overlay)
 
+        self.get_application()\
+            .set_accels_for_action('win.show-help-overlay',
+                                   ['<Control>question'])
+
         # Bind GtkListBox with GioListStore
         self.pass_list.bind_model(pass_list_model)
 
