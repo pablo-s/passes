@@ -30,6 +30,7 @@ cd ${project_root}
 xgettext \
     --language=C \
     --keyword=_ \
+    --keyword=C_:1c,2 \
     --from-code=UTF-8 \
     --sort-by-file \
     --output=po/reference.pot \
