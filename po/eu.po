@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: passes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-16 13:55+0200\n"
+"POT-Creation-Date: 2022-10-24 20:50+0200\n"
 "PO-Revision-Date: 2022-10-12 16:04+0200\n"
 "Last-Translator: Sergio Varela <>\n"
 "Language-Team: Basque - Spain <>\n"
@@ -90,6 +90,22 @@ msgstr "Fitxategia inportatuta"
 #: src/view/barcode_widget.py:104
 msgid "Barcode format not supported"
 msgstr "Barra-kodearen formatua ez da onartzen"
+
+#: src/view/help_overlay.blp:14
+msgctxt "shortcut window"
+msgid "General"
+msgstr ""
+
+#: src/view/help_overlay.blp:18
+#, fuzzy
+msgctxt "shortcut window"
+msgid "Show shortcuts"
+msgstr "Teklatuko lasterbideak"
+
+#: src/view/help_overlay.blp:24
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr ""
 
 #: src/view/window.blp:39
 msgid "Menu"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: passes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-16 13:55+0200\n"
+"POT-Creation-Date: 2022-10-24 20:50+0200\n"
 "PO-Revision-Date: 2022-10-16 15:35+0200\n"
 "Last-Translator: Pablo Sánchez Rodríguez <>\n"
 "Language-Team: Spanish - Spain <>\n"
@@ -90,6 +90,22 @@ msgstr "Archivo ya importado"
 #: src/view/barcode_widget.py:104
 msgid "Barcode format not supported"
 msgstr "Formato de código de barras no soportado"
+
+#: src/view/help_overlay.blp:14
+msgctxt "shortcut window"
+msgid "General"
+msgstr ""
+
+#: src/view/help_overlay.blp:18
+#, fuzzy
+msgctxt "shortcut window"
+msgid "Show shortcuts"
+msgstr "Atajos de teclado"
+
+#: src/view/help_overlay.blp:24
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr ""
 
 #: src/view/window.blp:39
 msgid "Menu"
