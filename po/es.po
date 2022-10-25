@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: passes\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-24 20:50+0200\n"
-"PO-Revision-Date: 2022-10-16 15:35+0200\n"
+"PO-Revision-Date: 2022-10-25 20:29+0200\n"
 "Last-Translator: Pablo Sánchez Rodríguez <>\n"
 "Language-Team: Spanish - Spain <>\n"
 "Language: es_ES\n"
@@ -94,18 +94,17 @@ msgstr "Formato de código de barras no soportado"
 #: src/view/help_overlay.blp:14
 msgctxt "shortcut window"
 msgid "General"
-msgstr ""
+msgstr "General"
 
 #: src/view/help_overlay.blp:18
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Show shortcuts"
-msgstr "Atajos de teclado"
+msgstr "Mostrar atajos de teclado"
 
 #: src/view/help_overlay.blp:24
 msgctxt "shortcut window"
 msgid "Quit"
-msgstr ""
+msgstr "Salir"
 
 #: src/view/window.blp:39
 msgid "Menu"
