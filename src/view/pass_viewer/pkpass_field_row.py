@@ -43,8 +43,8 @@ class PassFieldRow(Gtk.ListBoxRow):
             value_as_string = GLib.markup_escape_text(value_as_string)
 
             # Create a link for URLs
-            value_as_string = re.sub('(https?://\S+)',
-                                     '<a href="\\1">\\1</a>',
+            value_as_string = re.sub('(?:(https?://)|(www))(\S+)',
+                                     '<a href="https://\\2\\3">\\1\\2\\3</a>',
                                      value_as_string)
 
             # Create a link for telephone numbers
