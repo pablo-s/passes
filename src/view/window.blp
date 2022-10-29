@@ -126,13 +126,24 @@ template PassesWindow : Adw.ApplicationWindow
                     flap-position: end;
                     reveal-flap: bind info_button.active;
 
-                    content: Gtk.Box
+                    content: Gtk.ScrolledWindow scrolled_window
                     {
-                        halign: center;
-                        margin-start: 6;
-                        margin-end: 6;
+                        hscrollbar-policy: never;
+                        vexpand: true;
 
-                        .PassWidget pass_widget {}
+                        Gtk.Viewport
+                        {
+                            scroll-to-focus: true;
+                            halign: center;
+
+                            .PassWidget pass_widget
+                            {
+                                margin-start: 6;
+                                margin-end: 6;
+                                margin-top: 6;
+                                margin-bottom: 6;
+                            }
+                        }
                     };
                     separator: Gtk.Separator {};
                     flap: .PassBackView pass_additional_info
