@@ -9,6 +9,7 @@ char * last_result = NULL;
 
 char * encode_2d_symbol(struct zint_symbol* symbol, unsigned char * data);
 char * encode_aztec_code(unsigned char * data);
+char * encode_code128_code(unsigned char * data, unsigned * out_width, unsigned * out_height);
 char * encode_pdf417_code(unsigned char * data, unsigned * out_width, unsigned * out_height);
 char * encode_qr_code(unsigned char * data);
 
@@ -54,6 +55,23 @@ char * encode_aztec_code(unsigned char * data)
     symbol = ZBarcode_Create();
     symbol->symbology = BARCODE_AZTEC;
     last_result = encode_2d_symbol(symbol, data);
+    ZBarcode_Delete(symbol);
+
+    return last_result;
+}
+
+char * encode_code128_code(unsigned char * data,
+                           unsigned * out_width,
+                           unsigned * out_height)
+{
+    struct zint_symbol* symbol;
+
+    symbol = ZBarcode_Create();
+    symbol->symbology = BARCODE_CODE128;
+    last_result = encode_2d_symbol(symbol, data);
+    *out_width = symbol->width;
+    *out_height = symbol->height;
+
     ZBarcode_Delete(symbol);
 
     return last_result;
