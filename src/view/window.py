@@ -75,12 +75,7 @@ class PassesWindow(Adw.ApplicationWindow):
     def _on_barcode_clicked(self, button):
         try:
             selected_pass = self.selected_pass()
-            barcode = selected_pass.barcode()
-
-            if not barcode:
-                barcodes = selected_pass.barcodes()
-                if len(barcodes) > 0:
-                    barcode = barcodes[0]
+            barcode = selected_pass.barcodes()[0]
 
             if barcode:
                 dialog = BarcodeDialog()
@@ -93,9 +88,9 @@ class PassesWindow(Adw.ApplicationWindow):
             self.show_toast(str(error))
 
     def _on_row_activated(self, pass_list, pass_row):
-        row_data = pass_row.data()
-        self.pass_widget.content(row_data)
-        self.pass_additional_info.content(row_data)
+        a_pass = pass_row.data()
+        self.pass_widget.content(a_pass)
+        self.pass_additional_info.content(a_pass)
 
         if self.main_leaflet_can_navigate:
             self.main_leaflet.navigate(Adw.NavigationDirection.FORWARD)

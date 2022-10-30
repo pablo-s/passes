@@ -119,11 +119,13 @@ class PassPlotter:
 
         # Barcode
         self._barcode = BarcodeWidget()
-        barcode = a_pass.barcode()
-        if barcode:
+        barcodes = a_pass.barcodes()
+        if barcodes:
             self._barcode.props.width_request = PASS_WIDTH
             self._barcode.props.height_request = 110
             self._pass_widget.put(self._barcode, 0, PASS_HEIGHT - PASS_MARGIN - self._barcode.props.height_request)
+
+            barcode = barcodes[0]
             self._barcode.encode(barcode.format(),
                                  barcode.message(),
                                  barcode.message_encoding())
@@ -233,12 +235,13 @@ class PassPlotter:
 
 class EsPassPlotter(PassPlotter):
 
-    def __init__(self, espass, pass_widget):
-        super().__init__(espass, pass_widget)
+    def __init__(self, a_pass, pass_widget):
+        super().__init__(a_pass, pass_widget)
+        espass = a_pass.adaptee()
 
         # Accent color
         self._accent_color = Gdk.RGBA()
-        accent_color = espass.background_color()
+        accent_color = espass.accent_color()
         if accent_color:
             self._accent_color.red = accent_color.red() / 255
             self._accent_color.blue = accent_color.blue() / 255
@@ -302,8 +305,11 @@ class EsPassPlotter(PassPlotter):
 
 class PkPassPlotter(PassPlotter):
 
-    def __init__(self, pkpass, pass_widget):
-        super().__init__(pkpass, pass_widget)
+    def __init__(self, a_pass, pass_widget):
+        super().__init__(a_pass, pass_widget)
+
+        # At this point we know we are going to plot a PKPass
+        pkpass = a_pass.adaptee()
 
         # Background color
         bg_color = pkpass.background_color()
@@ -341,17 +347,18 @@ class PkPassPlotter(PassPlotter):
         self._auxiliary_fields = pkpass.auxiliary_fields()
 
     @classmethod
-    def new(clss, pkpass, pkpass_widget):
+    def new(clss, a_pass, pass_widget):
+        pkpass = a_pass.adaptee()
         style = pkpass.style()
 
         if style == 'boardingPass':
-            return BoardingPassPlotter(pkpass, pkpass_widget)
+            return BoardingPassPlotter(a_pass, pass_widget)
         elif style in ['coupon', 'storeCard']:
-            return CouponPlotter(pkpass, pkpass_widget)
+            return CouponPlotter(a_pass, pass_widget)
         elif style == 'eventTicket':
-            return EventTicketPlotter(pkpass, pkpass_widget)
+            return EventTicketPlotter(a_pass, pass_widget)
         elif style == 'generic':
-            return GenericPlotter(pkpass, pkpass_widget)
+            return GenericPlotter(a_pass, pass_widget)
 
     def plot(self, snapshot):
         self._snapshot = snapshot

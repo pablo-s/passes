@@ -30,17 +30,23 @@ class DigitalPass(GObject.GObject):
         super().__init__()
         self.__path = None
 
-    def description(self):
+    def additional_information(self):
         raise NotImplementedError()
 
     def background_color(self):
+        raise NotImplementedError()
+
+    def barcodes(self):
+        raise NotImplementedError()
+
+    def description(self):
         raise NotImplementedError()
 
     def expiration_date(self):
         raise NotImplementedError()
 
     def format(self):
-        return type(self).__name__.lower()
+        raise NotImplementedError()
 
     def get_path(self):
         return self.__path
@@ -50,6 +56,9 @@ class DigitalPass(GObject.GObject):
         return (not expiration_date.is_undefined() \
                 and Date.now() > expiration_date) \
                 or self.voided()
+
+    def icon(self):
+        raise NotImplementedError()
 
     def set_path(self, new_path: str):
         self.__path = new_path

@@ -19,33 +19,31 @@ from .digital_pass import Barcode, Color, Date, DigitalPass, Image, \
                           PassDataExtractor, Date, TimeInterval
 
 
-class EsPass(DigitalPass):
+class EsPass():
     """
     A representation of an esPass pass
     """
 
-    styles = ['BOARDING',
+    types = ['BOARDING',
               'COUPON',
               'EVENT',
               'LOYALTY',
               'VOUCHER']
 
     def __init__(self, pass_data, pass_images):
-        super().__init__()
-
         self.__data = PassDataExtractor(pass_data)
         self.__images = pass_images
 
-        self.__style = self.__data.get('type')
+        self.__type = self.__data.get('type')
 
         self.__front_fields = []
-        self.__back_fields = []
+        self.__hidden_fields = []
         fields = self.__data\
             .get_list('fields', EsPassField)
 
         for field in fields:
             if field.is_hidden():
-                self.__back_fields.append(field)
+                self.__hidden_fields.append(field)
             else:
                 self.__front_fields.append(field)
 
@@ -57,37 +55,94 @@ class EsPass(DigitalPass):
             timespan = TimeInterval.from_iso_strings(dict['from'], dict['to'])
             self.__validity_time_intervals.append(timespan)
 
-    def barcode(self):
-        return self.__data.get('barCode', Barcode)
 
-    def back_fields(self):
-        return self.__back_fields
+    # Container
 
-    def background_color(self):
-        return self.__data.get('accentColor', Color.from_css)
+    def icon(self):
+        return Image(self.__images['icon.png'])
+
+
+    # Mandatory fields
+
+    def type(self):
+        return self.__type
 
     def description(self):
         return self.__data.get('description')
+
+    def id(self):
+        return self.__data.get('id')
+
+
+    # Time info
+
+    def valid_timespans(self):
+        return self.__validity_time_intervals
+
+
+    # Metadata
+
+    def creator(self):
+        return self.__data.get('creator')
+
+
+    # Fields
+
+    def front_fields(self):
+        return self.__front_fields
+
+    def hidden_fields(self):
+        return self.__hidden_fields
+
+
+    # Color
+
+    def accent_color(self):
+        return self.__data.get('accentColor', Color.from_css)
+
+
+    # Barcode
+
+    def barcode(self):
+        return self.__data.get('barCode', Barcode)
+
+
+class EsPassAdapter(DigitalPass):
+    def __init__(self, pkpass):
+        super().__init__()
+        self.__adaptee = pkpass
+
+    def adaptee(self):
+        return self.__adaptee
+
+    def additional_information(self):
+        return self.__adaptee.hidden_fields()
+
+    def background_color(self):
+        return self.__adaptee.accent_color()
+
+    def barcodes(self):
+        return [self.__adaptee.barcode()]
+
+    def description(self):
+        return self.__adaptee.description()
 
     def expiration_date(self):
         now = Date.now()
         latest_expiration_date = Date()
 
-        for interval in self.__validity_time_intervals:
+        for interval in self.__adaptee.valid_timespans():
             latest_expiration_date = interval.end_time()
             if now in interval:
                 break
 
         return latest_expiration_date
 
-    def front_fields(self):
-        return self.__front_fields
+    def format(self):
+        return 'espass'
 
     def icon(self):
-        return Image(self.__images['icon.png'])
-
-    def relevant_date(self):
-        return self.__data.get('', Date.from_iso_string)
+        return self.__adaptee.icon()
 
     def voided(self):
         return False

@@ -20,7 +20,7 @@ from gi.repository import Gdk, Gtk
 from .digital_pass import Barcode, Color, Date, DigitalPass, Image, PassDataExtractor
 
 
-class PKPass(DigitalPass):
+class PKPass:
     """
     A representation of a PassKit pass
     """
@@ -32,8 +32,6 @@ class PKPass(DigitalPass):
               'storeCard']
 
     def __init__(self, pass_data, pass_translation, pass_images):
-        super().__init__()
-
         self.__data = PassDataExtractor(pass_data)
         self.__translation = pass_translation
         self.__images = pass_images
@@ -171,6 +169,44 @@ class PKPass(DigitalPass):
 
     def logo_text(self):
         return self.__data.get('logoText')
+
+
+class PKPassAdapter(DigitalPass):
+    def __init__(self, pkpass):
+        super().__init__()
+        self.__adaptee = pkpass
+
+    def adaptee(self):
+        return self.__adaptee
+
+    def additional_information(self):
+        return self.__adaptee.back_fields()
+
+    def background_color(self):
+        return self.__adaptee.background_color()
+
+    def barcodes(self):
+        barcodes = self.__adaptee.barcodes()
+
+        if not barcodes:
+            barcodes = [self.__adaptee.barcode()]
+
+        return barcodes
+
+    def description(self):
+        return self.__adaptee.description()
+
+    def expiration_date(self):
+        return self.__adaptee.expiration_date()
+
+    def format(self):
+        return 'pkpass'
+
+    def icon(self):
+        return self.__adaptee.icon()
+
+    def voided(self):
+        return self.__adaptee.voided()
 
 
 class StandardField:

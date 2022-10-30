@@ -21,8 +21,8 @@ import zipfile
 
 from gi.repository import Gdk, GObject, Gtk
 
-from .espass import EsPass
-from .pkpass import PKPass
+from .espass import EsPass, EsPassAdapter
+from .pkpass import PKPass, PKPassAdapter
 
 
 def decode_string(string):
@@ -82,7 +82,8 @@ class PassFactory:
                 json_content = archive.read(file_name)
                 pass_data = json.loads(json_content)
 
-        return EsPass(pass_data, pass_images)
+        espass = EsPass(pass_data, pass_images)
+        return EsPassAdapter(espass)
 
     @classmethod
     def create_pkpass(thisClass, archive):
@@ -131,7 +132,8 @@ class PassFactory:
         if language_to_import:
             pass_translation = pass_translations[language_to_import]
 
-        return PKPass(pass_data, pass_translation, pass_images)
+        pkpass = PKPass(pass_data, pass_translation, pass_images)
+        return PKPassAdapter(pkpass)
 
     @classmethod
     def create_translation_dict(thisClass, translation_file_content):
