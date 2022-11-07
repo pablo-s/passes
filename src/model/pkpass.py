@@ -165,7 +165,9 @@ class PKPass:
         return self.__data.get('labelColor', Color.from_css).as_tuple()
 
     def logo(self):
-        return Image(self.__images['logo.png'])
+        return Image(self.__images['logo.png']) \
+            if 'logo.png' in self.__images \
+            else None
 
     def logo_text(self):
         return self.__data.get('logoText')

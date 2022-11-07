@@ -259,7 +259,10 @@ class EsPassPlotter(PassPlotter):
         self._label_color.alpha = 0.5
 
         # Logo
-        self._logo_texture = espass.icon().as_texture()
+        self._logo_texture  = None
+
+        if espass.icon():
+            self._logo_texture  = espass.icon().as_texture()
 
         # Fields
         self._fields = espass.front_fields()
@@ -279,12 +282,14 @@ class EsPassPlotter(PassPlotter):
         rectangle.init(0, 0, PASS_WIDTH, header_height + 2 * PASS_MARGIN)
         self._snapshot.append_color(self._accent_color, rectangle)
 
-        logo_scale = header_height / self._logo_texture.get_height()
-        logo_width = self._logo_texture.get_width() * logo_scale
+        # Draw the logo if it exists
+        if self._logo_texture:
+            logo_scale = header_height / self._logo_texture.get_height()
+            logo_width = self._logo_texture.get_width() * logo_scale
 
-        rectangle = Graphene.Rect()
-        rectangle.init(PASS_MARGIN, PASS_MARGIN, logo_width, header_height)
-        self._snapshot.append_texture(self._logo_texture, rectangle)
+            rectangle = Graphene.Rect()
+            rectangle.init(PASS_MARGIN, PASS_MARGIN, logo_width, header_height)
+            self._snapshot.append_texture(self._logo_texture, rectangle)
 
         # Perform a translation so that the next drawing starts below this one
         point = Graphene.Point()
@@ -338,7 +343,10 @@ class PkPassPlotter(PassPlotter):
         self._label_color.alpha = 0.5
 
         # Logo
-        self._logo_texture = pkpass.logo().as_texture()
+        self._logo_texture = None
+
+        if pkpass.logo():
+            self._logo_texture = pkpass.logo().as_texture()
 
         # Fields
         self._header_fields = pkpass.header_fields()
@@ -375,12 +383,14 @@ class PkPassPlotter(PassPlotter):
     def _plot_header(self):
         header_height = 32
 
-        logo_scale = header_height / self._logo_texture.get_height()
-        logo_width = self._logo_texture.get_width() * logo_scale
+        # Draw the logo if it exists
+        if self._logo_texture:
+            logo_scale = header_height / self._logo_texture.get_height()
+            logo_width = self._logo_texture.get_width() * logo_scale
 
-        rectangle = Graphene.Rect()
-        rectangle.init(PASS_MARGIN, PASS_MARGIN, logo_width, header_height)
-        self._snapshot.append_texture(self._logo_texture, rectangle)
+            rectangle = Graphene.Rect()
+            rectangle.init(PASS_MARGIN, PASS_MARGIN, logo_width, header_height)
+            self._snapshot.append_texture(self._logo_texture, rectangle)
 
         point = Graphene.Point()
         point.y = PASS_MARGIN
