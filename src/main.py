@@ -76,7 +76,7 @@ class Application(Adw.Application):
         about.set_copyright('© 2022 Pablo Sánchez Rodríguez')
         about.set_developer_name('Pablo Sánchez Rodríguez')
         about.set_issue_url('https://github.com/pablo-s/passes/issues')
-        about.set_version('0.6')
+        about.set_version('0.7')
         about.set_website('https://github.com/pablo-s/passes')
         about.set_transient_for(self.window())
         about.show()

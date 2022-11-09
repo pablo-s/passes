@@ -17,6 +17,37 @@
 	</description>
 
 	<releases>
+			<release date="2022-11-10" version="0.7">
+			<description>
+				<p>What is new?</p>
+				<ul>
+					<li>Initial support for esPass format.</li>
+					<li>Dutch translation.</li>
+					<li>Italian translation.</li>
+					<li>Basque translation.</li>
+					<li>Support for CODE128 codes.</li>
+				</ul>
+				<p>What has been changed/improved?</p>
+				<ul>
+					<li>Pass information is now displayed inside a card/pass widget.</li>
+					<li>Updated version of application dependencies.</li>
+					<li>In pass list, pass icon is now rounded.</li>
+					<li>Spanish translation.</li>
+					<li>Default size of barcode dialogue.</li>
+					<li>Improved URL recognition inside back fields</li>
+					<li>Other minor improvements.</li>
+				</ul>
+				<p>What has been fixed?</p>
+				<ul>
+					<li>Fixed how encoded strings are passed to the barcode library.</li>
+					<li>Avoid adding links to back fields if they already have them.</li>
+					<li>Fixed shorcuts.</li>
+					<li>Fixed drawing of passes without logo.</li>
+					<li>Other small fixes.</li>
+				</ul>
+			</description>
+		</release>
+
 		<release date="2022-06-05" version="0.6">
 			<description>
 				<p>What is new?</p>
