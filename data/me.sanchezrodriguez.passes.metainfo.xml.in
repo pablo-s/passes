@@ -2,17 +2,17 @@
 <component type="desktop">
 	<id>me.sanchezrodriguez.passes.desktop</id>
 	<name>Passes</name>
-	<summary>A digital pass manager</summary>
+	<summary>Import and use your digital passes</summary>
 	<metadata_license>CC0-1.0</metadata_license>
 	<project_license>GPL-3.0-or-later</project_license>
 	<developer_name>Pablo Sánchez Rodríguez</developer_name>
 	<description>
-		<p>Passes is a simple tool that allows you to import and use your digital passes.</p>
-		<p>In its current version the application can:</p>
+		<p>Passes is a tool that allows you to import and use your digital passes, such as boarding passes, coupons, loyalty cards, event tickets, etc.</p>
+		<p>Current features:</p>
 		<ul>
-			<li>Adapt its interface to different screen sizes.</li>
-			<li>Import and display PKPASS files.</li>
-			<li>Display Aztec, PDF417 and QR codes.</li>
+			<li>Adaptive user interface.</li>
+			<li>Import espass and pkpass files.</li>
+			<li>Display Aztec, CODE128, PDF417 and QR codes.</li>
 		</ul>
 	</description>
 

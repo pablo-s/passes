@@ -7,8 +7,9 @@
 
 ## Features
 
-- Mobile friendly.
-- Import *.espass and *.pkpass files.
+- Adaptive user interface.
+- Import espass and pkpass files.
+- Aztec, CODE128, PDF417 and QR codes.
 
 ## Build
 
