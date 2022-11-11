@@ -34,13 +34,10 @@
             "buildsystem" : "meson",
             "sources" : [
                 {
-                    "type" : "git",
-                    "url" : "https://github.com/pablo-s/passes.git"
+                    "type" : "dir",
+                    "path" : "."
                 }
             ]
         }
-    ],
-    "build-options" : {
-        "env" : {        }
-    }
+    ]
 }
