@@ -1,0 +1,142 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-24 20:50+0200\n"
+"PO-Revision-Date: 2022-11-11 11:36+0100\n"
+"Last-Translator: Irénée Thirion <irenee.thirion@e.email>\n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.1.1\n"
+
+#: src/main.py:74 src/view/window.blp:6
+msgid "Passes"
+msgstr "Passes"
+
+#: src/main.py:75
+msgid "A digital pass manager"
+msgstr "Un gestionnaire de passes numériques"
+
+#: src/main.py:106 src/view/window.blp:30
+msgid "Import a pass"
+msgstr "Importer un passe"
+
+#: src/model/digital_pass.py:144
+msgid "Monday"
+msgstr "Lundi"
+
+#: src/model/digital_pass.py:144
+msgid "Tuesday"
+msgstr "Mardi"
+
+#: src/model/digital_pass.py:144
+msgid "Wednesday"
+msgstr "Mercredi"
+
+#: src/model/digital_pass.py:145
+msgid "Friday"
+msgstr "Vendredi"
+
+#: src/model/digital_pass.py:145
+msgid "Saturday"
+msgstr "Samedi"
+
+#: src/model/digital_pass.py:145
+msgid "Sunday"
+msgstr "Dimanche"
+
+#: src/model/digital_pass.py:145
+msgid "Thursday"
+msgstr "Jeudi"
+
+#: src/model/digital_pass.py:179
+msgid "Anytime"
+msgstr "N’importe quand"
+
+#: src/model/digital_pass.py:185
+msgid "Today"
+msgstr "Aujourd’hui"
+
+#: src/model/digital_pass.py:188
+msgid "Tomorrow"
+msgstr "Demain"
+
+#: src/model/digital_pass_factory.py:158
+msgid "File is not a pass"
+msgstr "Le fichier n’est pas un passe"
+
+#: src/model/digital_pass_factory.py:164
+msgid "Format not supported yet"
+msgstr "Format pas encore pris en charge"
+
+#: src/model/digital_pass_factory.py:170
+msgid "Unknown file encoding"
+msgstr "Encodage du fichier inconnu"
+
+#: src/model/persistence.py:70
+msgid "File already imported"
+msgstr "Fichier déjà importé"
+
+#: src/view/barcode_widget.py:104
+msgid "Barcode format not supported"
+msgstr "Format de code-barres non pris en charge"
+
+#: src/view/help_overlay.blp:14
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Général"
+
+#: src/view/help_overlay.blp:18
+msgctxt "shortcut window"
+msgid "Show shortcuts"
+msgstr "Afficher les raccourcis"
+
+#: src/view/help_overlay.blp:24
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Quitter"
+
+#: src/view/window.blp:39
+msgid "Menu"
+msgstr "Menu"
+
+#: src/view/window.blp:60
+msgid "You have no passes"
+msgstr "Vous n’avez aucun passe"
+
+#: src/view/window.blp:61
+msgid "Use the “+” button to import a pass"
+msgstr "Utilisez le bouton « + » pour importer un passe"
+
+#: src/view/window.blp:96
+msgid "Back"
+msgstr "Retour"
+
+#: src/view/window.blp:113
+msgid "Show additional information"
+msgstr "Afficher les informations supplémentaires"
+
+#: src/view/window.blp:120
+msgid "Show barcode"
+msgstr "Afficher le code-barres"
+
+#: src/view/window.blp:151
+msgid "Keyboard shortcuts"
+msgstr "Raccourcis clavier"
+
+#: src/view/window.blp:152
+msgid "About Passes"
+msgstr "À propos de Passes"
+
+#: src/view/window.blp:157
+msgid "Delete"
+msgstr "Supprimer"
