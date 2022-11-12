@@ -18,6 +18,7 @@
 import os
 
 from gi.repository import Gio, GLib
+from .digital_pass import DigitalPass
 
 
 class PersistenceManager:
@@ -26,6 +27,7 @@ class PersistenceManager:
 
     def __init__(self):
         self.__data_dir = GLib.get_user_data_dir()
+        self.__supported_file_extensions = DigitalPass.supported_file_extensions()
 
     def load_pass_files(self):
         file_names = os.listdir(self.__data_dir)
@@ -34,7 +36,7 @@ class PersistenceManager:
         for file_name in file_names:
             basename, extension = os.path.splitext(file_name)
 
-            if extension not in ['.espass','.pkpass']:
+            if extension not in self.__supported_file_extensions:
                 continue
 
             pass_file_path = os.path.join(self.__data_dir, file_name)

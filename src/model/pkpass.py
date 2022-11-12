@@ -201,11 +201,17 @@ class PKPassAdapter(DigitalPass):
     def expiration_date(self):
         return self.__adaptee.expiration_date()
 
+    def file_extension():
+        return '.pkpass'
+
     def format(self):
         return 'pkpass'
 
     def icon(self):
         return self.__adaptee.icon()
+
+    def mime_type():
+        return 'application/vnd.apple.pkpass'
 
     def voided(self):
         return self.__adaptee.voided()

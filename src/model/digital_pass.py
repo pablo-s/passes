@@ -45,6 +45,9 @@ class DigitalPass(GObject.GObject):
     def expiration_date(self):
         raise NotImplementedError()
 
+    def file_extension(self):
+        raise NotImplementedError()
+
     def format(self):
         raise NotImplementedError()
 
@@ -60,11 +63,22 @@ class DigitalPass(GObject.GObject):
     def icon(self):
         raise NotImplementedError()
 
+    def mime_type():
+        raise NotImplementedError()
+
     def set_path(self, new_path: str):
         self.__path = new_path
 
     def voided(self):
         raise NotImplementedError()
+
+    @classmethod
+    def supported_mime_types(cls):
+        return [pass_type.mime_type() for pass_type in cls.__subclasses__()]
+
+    @classmethod
+    def supported_file_extensions(cls):
+        return [pass_type.file_extension() for pass_type in cls.__subclasses__()]
 
 
 class Barcode:

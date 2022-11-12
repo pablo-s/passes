@@ -41,3 +41,10 @@ if compile_schemas.found()
 endif
 
 subdir('icons')
+
+mimedir = join_paths(get_option('prefix'), get_option('datadir'), 'mime/packages')
+mime_sources = [
+  'mime/me.sanchezrodriguez.passes.espass.xml',
+]
+
+install_data(mime_sources, install_dir: mimedir)
