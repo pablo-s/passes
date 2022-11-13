@@ -40,15 +40,17 @@ class PassRow(Gtk.ListBoxRow):
         except:
             background_color = (0,0,0)
 
-        pixbuf = self.__pass.icon().as_pixbuf()
+        if self.__pass.icon():
+            pixbuf = self.__pass.icon().as_pixbuf()
 
-        # Find out the background color of the icon
-        pixbuf_data = pixbuf.read_pixel_bytes().get_data()
-        if not pixbuf.get_has_alpha() or pixbuf_data[3] > 0:
-            background_color = pixbuf_data[0:3]
+            # Find out the background color of the icon
+            pixbuf_data = pixbuf.read_pixel_bytes().get_data()
+            if not pixbuf.get_has_alpha() or pixbuf_data[3] > 0:
+                background_color = pixbuf_data[0:3]
+
+            self.icon.set_from_pixbuf(pixbuf)
 
         self.colored_box.color(*background_color)
-        self.icon.set_from_pixbuf(pixbuf)
         self.name.set_text(a_pass.description())
 
         # Gray the label out if the pass has expired
