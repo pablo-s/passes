@@ -7,6 +7,15 @@ template BarcodeDialog : Adw.Window
     default-height: 529;
     styles ["barcode-dialog"]
 
+    ShortcutController
+    {
+      Shortcut
+      {
+        trigger: "Escape";
+        action: "action(window.close)";
+      }
+    }
+
     Gtk.Box
     {
         orientation: vertical;
