@@ -118,14 +118,14 @@ class PassPlotter:
         self._pango_context = pass_widget.get_pango_context()
 
         # Barcode
-        self._barcode = BarcodeWidget()
-        barcodes = a_pass.barcodes()
-        if barcodes:
+        self._barcode = None
+        barcode = a_pass.barcodes()[0]
+        if barcode:
+            self._barcode = BarcodeWidget()
             self._barcode.props.width_request = PASS_WIDTH
             self._barcode.props.height_request = 110
             self._pass_widget.put(self._barcode, 0, PASS_HEIGHT - PASS_MARGIN - self._barcode.props.height_request)
 
-            barcode = barcodes[0]
             self._barcode.encode(barcode.format(),
                                  barcode.message(),
                                  barcode.message_encoding())
@@ -430,6 +430,9 @@ class PkPassPlotter(PassPlotter):
         raise NotImplementedError
 
     def _plot_barcode(self):
+        if not self._barcode:
+            return
+
         rectangle = Graphene.Rect()
         rectangle.init(0,
                        PASS_HEIGHT - PASS_MARGIN - self._barcode.props.height_request,
