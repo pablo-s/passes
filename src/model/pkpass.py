@@ -159,14 +159,16 @@ class PKPass:
             return None
 
     def icon(self):
-        return Image(self.__images['icon.png'])
+        return Image(self.__images['icon']) \
+            if 'icon' in self.__images \
+            else None
 
     def label_color(self):
         return self.__data.get('labelColor', Color.from_css).as_tuple()
 
     def logo(self):
-        return Image(self.__images['logo.png']) \
-            if 'logo.png' in self.__images \
+        return Image(self.__images['logo']) \
+            if 'logo' in self.__images \
             else None
 
     def logo_text(self):

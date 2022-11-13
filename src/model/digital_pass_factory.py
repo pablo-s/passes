@@ -98,11 +98,19 @@ class PassFactory:
         pass_translations = dict()
         pass_images = dict()
 
-        for file_name in manifest.keys():
-            if file_name.endswith('.png') and not file_name.endswith('x.png'):
-                # Process only images with lowest resolution
+        for file_name in sorted(manifest.keys()):
+            if file_name.endswith('.png'):
                 image = archive.read(file_name)
-                pass_images[file_name] = image
+
+                # For every type of image (background, footer, icon, logo, strip
+                # and thumbnail), only load the image with lowest resolution
+
+                image_type = re.split('\.|@', file_name)[0]
+
+                if image_type in pass_images.keys():
+                    continue
+
+                pass_images[image_type] = image
 
             if file_name.endswith('pass.strings'):
                 language = file_name.split('.')[0]
