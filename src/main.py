@@ -39,7 +39,6 @@ class Application(Adw.Application):
         self.__file_chooser = None
         self.__pass_list = DigitalPassListStore()
         self.__persistence = PersistenceManager()
-        self.__supported_mime_types = DigitalPass.supported_mime_types()
 
         pass_files = self.__persistence.load_pass_files()
         for pass_file in pass_files:
@@ -103,15 +102,6 @@ class Application(Adw.Application):
         self.window().select_pass_at_index(index_to_select)
 
     def on_import_action(self, widget, __):
-        filter = Gtk.FileFilter()
-        for mime_type in self.__supported_mime_types:
-            filter.add_mime_type(mime_type)
-        filter.set_name(_('Supported passes'))
-
-        none_filter = Gtk.FileFilter()
-        none_filter.set_name(_('All files'))
-        none_filter.add_pattern('*')
-
         if not self.__file_chooser:
             self.__file_chooser = Gtk.FileChooserNative.new(
                 title=_('Import a pass'),
@@ -119,8 +109,17 @@ class Application(Adw.Application):
                 action=Gtk.FileChooserAction.OPEN,
                 )
 
-            self.__file_chooser.add_filter(filter)
-            self.__file_chooser.add_filter(none_filter)
+            filter = Gtk.FileFilter()
+            filter.set_name(_('Supported passes'))
+            for mime_type in DigitalPass.supported_mime_types():
+                filter.add_mime_type(mime_type)
+            self.__file_chooser.add_filter(filter)                
+
+            all_filter = Gtk.FileFilter()
+            all_filter.set_name(_('All files'))
+            all_filter.add_pattern('*')
+            self.__file_chooser.add_filter(all_filter)
+
             self.__file_chooser.set_modal(True)
             self.__file_chooser.connect('response', self._on_file_chosen)
 
