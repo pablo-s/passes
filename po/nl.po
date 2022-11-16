@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-24 20:50+0200\n"
+"POT-Creation-Date: 2022-11-16 17:56+0100\n"
 "PO-Revision-Date: 2022-06-12 14:19+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch <kde-i18n-nl@kde.org>\n"
@@ -17,75 +17,80 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 22.04.1\n"
 
-#: src/main.py:74 src/view/window.blp:6
+#: src/main.py:75 src/view/window.blp:6
 msgid "Passes"
 msgstr "Kaarten"
 
-#: src/main.py:75
-msgid "A digital pass manager"
-msgstr "Een digitale kaartenbeheerder"
-
-#: src/main.py:106 src/view/window.blp:30
+#: src/main.py:107 src/view/window.blp:30
 msgid "Import a pass"
 msgstr "Kaart importeren"
 
-#: src/model/digital_pass.py:144
+#: src/main.py:113
+#, fuzzy
+msgid "Supported passes"
+msgstr "Kaart importeren"
+
+#: src/main.py:119
+msgid "All files"
+msgstr ""
+
+#: src/model/digital_pass.py:167
 msgid "Monday"
 msgstr "maandag"
 
-#: src/model/digital_pass.py:144
+#: src/model/digital_pass.py:167
 msgid "Tuesday"
 msgstr "dinsdag"
 
-#: src/model/digital_pass.py:144
+#: src/model/digital_pass.py:167
 msgid "Wednesday"
 msgstr "woensdag"
 
-#: src/model/digital_pass.py:145
+#: src/model/digital_pass.py:168
 msgid "Friday"
 msgstr "vrijdag"
 
-#: src/model/digital_pass.py:145
+#: src/model/digital_pass.py:168
 msgid "Saturday"
 msgstr "zaterdag"
 
-#: src/model/digital_pass.py:145
+#: src/model/digital_pass.py:168
 msgid "Sunday"
 msgstr "zondag"
 
-#: src/model/digital_pass.py:145
+#: src/model/digital_pass.py:168
 msgid "Thursday"
 msgstr "donderdag"
 
-#: src/model/digital_pass.py:179
+#: src/model/digital_pass.py:202
 msgid "Anytime"
 msgstr "Geen specifieke datum"
 
-#: src/model/digital_pass.py:185
+#: src/model/digital_pass.py:208
 msgid "Today"
 msgstr "Vandaag"
 
-#: src/model/digital_pass.py:188
+#: src/model/digital_pass.py:211
 msgid "Tomorrow"
 msgstr "Morgen"
 
-#: src/model/digital_pass_factory.py:158
+#: src/model/digital_pass_factory.py:168
 msgid "File is not a pass"
 msgstr "Dit bestand is geen kaart"
 
-#: src/model/digital_pass_factory.py:164
+#: src/model/digital_pass_factory.py:174
 msgid "Format not supported yet"
 msgstr "Dit formaat wordt nog niet ondersteund"
 
-#: src/model/digital_pass_factory.py:170
+#: src/model/digital_pass_factory.py:180
 msgid "Unknown file encoding"
 msgstr "Onbekende tekenset in bestand"
 
-#: src/model/persistence.py:70
+#: src/model/persistence.py:72
 msgid "File already imported"
 msgstr "Dit bestand is al geïmporteerd"
 
-#: src/view/barcode_widget.py:104
+#: src/view/barcode_widget.py:107
 msgid "Barcode format not supported"
 msgstr "Dit barcodeformaat wordt niet ondersteund"
 
@@ -103,6 +108,11 @@ msgstr "Sneltoetsen"
 #: src/view/help_overlay.blp:24
 msgctxt "shortcut window"
 msgid "Quit"
+msgstr ""
+
+#: src/view/help_overlay.blp:30
+msgctxt "shortcut window"
+msgid "Open file"
 msgstr ""
 
 #: src/view/window.blp:39
@@ -129,17 +139,20 @@ msgstr ""
 msgid "Show barcode"
 msgstr "Barcode tonen"
 
-#: src/view/window.blp:151
+#: src/view/window.blp:162
 msgid "Keyboard shortcuts"
 msgstr "Sneltoetsen"
 
-#: src/view/window.blp:152
+#: src/view/window.blp:163
 msgid "About Passes"
 msgstr "Over Kaarten"
 
-#: src/view/window.blp:157
+#: src/view/window.blp:168
 msgid "Delete"
 msgstr "Verwijderen"
+
+#~ msgid "A digital pass manager"
+#~ msgstr "Een digitale kaartenbeheerder"
 
 #~ msgid "Unknown date"
 #~ msgstr "Onbekende datum"

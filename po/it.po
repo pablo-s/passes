@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-24 20:50+0200\n"
+"POT-Creation-Date: 2022-11-16 17:56+0100\n"
 "PO-Revision-Date: 2022-08-10 16:23+0100\n"
 "Last-Translator: Michael Moroni <michaelmoroni@disroot.org>\n"
 "Language-Team: Italian <LL@li.org>\n"
@@ -17,75 +17,80 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: src/main.py:74 src/view/window.blp:6
+#: src/main.py:75 src/view/window.blp:6
 msgid "Passes"
 msgstr "Biglietti"
 
-#: src/main.py:75
-msgid "A digital pass manager"
-msgstr "Un gestore di biglietti digitale"
-
-#: src/main.py:106 src/view/window.blp:30
+#: src/main.py:107 src/view/window.blp:30
 msgid "Import a pass"
 msgstr "Importa un biglietto"
 
-#: src/model/digital_pass.py:144
+#: src/main.py:113
+#, fuzzy
+msgid "Supported passes"
+msgstr "Importa un biglietto"
+
+#: src/main.py:119
+msgid "All files"
+msgstr ""
+
+#: src/model/digital_pass.py:167
 msgid "Monday"
 msgstr "Lunedì"
 
-#: src/model/digital_pass.py:144
+#: src/model/digital_pass.py:167
 msgid "Tuesday"
 msgstr "Martedì"
 
-#: src/model/digital_pass.py:144
+#: src/model/digital_pass.py:167
 msgid "Wednesday"
 msgstr "Mercoledì"
 
-#: src/model/digital_pass.py:145
+#: src/model/digital_pass.py:168
 msgid "Friday"
 msgstr "Venerdì"
 
-#: src/model/digital_pass.py:145
+#: src/model/digital_pass.py:168
 msgid "Saturday"
 msgstr "Sabato"
 
-#: src/model/digital_pass.py:145
+#: src/model/digital_pass.py:168
 msgid "Sunday"
 msgstr "Domenica"
 
-#: src/model/digital_pass.py:145
+#: src/model/digital_pass.py:168
 msgid "Thursday"
 msgstr "Giovedì"
 
-#: src/model/digital_pass.py:179
+#: src/model/digital_pass.py:202
 msgid "Anytime"
 msgstr "Qualsiasi momento"
 
-#: src/model/digital_pass.py:185
+#: src/model/digital_pass.py:208
 msgid "Today"
 msgstr "Oggi"
 
-#: src/model/digital_pass.py:188
+#: src/model/digital_pass.py:211
 msgid "Tomorrow"
 msgstr "Domani"
 
-#: src/model/digital_pass_factory.py:158
+#: src/model/digital_pass_factory.py:168
 msgid "File is not a pass"
 msgstr "Il file non è un biglietto"
 
-#: src/model/digital_pass_factory.py:164
+#: src/model/digital_pass_factory.py:174
 msgid "Format not supported yet"
 msgstr "Formato non ancora supportato"
 
-#: src/model/digital_pass_factory.py:170
+#: src/model/digital_pass_factory.py:180
 msgid "Unknown file encoding"
 msgstr "Sistema di codifica del file sconosciuto"
 
-#: src/model/persistence.py:70
+#: src/model/persistence.py:72
 msgid "File already imported"
 msgstr "File già importato"
 
-#: src/view/barcode_widget.py:104
+#: src/view/barcode_widget.py:107
 msgid "Barcode format not supported"
 msgstr "Formato del codice non supportato"
 
@@ -103,6 +108,11 @@ msgstr "Scorciatoie da tastiera"
 #: src/view/help_overlay.blp:24
 msgctxt "shortcut window"
 msgid "Quit"
+msgstr ""
+
+#: src/view/help_overlay.blp:30
+msgctxt "shortcut window"
+msgid "Open file"
 msgstr ""
 
 #: src/view/window.blp:39
@@ -129,17 +139,20 @@ msgstr ""
 msgid "Show barcode"
 msgstr "Mostra codice"
 
-#: src/view/window.blp:151
+#: src/view/window.blp:162
 msgid "Keyboard shortcuts"
 msgstr "Scorciatoie da tastiera"
 
-#: src/view/window.blp:152
+#: src/view/window.blp:163
 msgid "About Passes"
 msgstr "Informazioni"
 
-#: src/view/window.blp:157
+#: src/view/window.blp:168
 msgid "Delete"
 msgstr "Elimina"
+
+#~ msgid "A digital pass manager"
+#~ msgstr "Un gestore di biglietti digitale"
 
 #~ msgid "Unknown date"
 #~ msgstr "Data sconosciuta"
