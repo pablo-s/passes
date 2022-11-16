@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: passes\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-16 17:56+0100\n"
-"PO-Revision-Date: 2022-10-25 20:29+0200\n"
+"PO-Revision-Date: 2022-11-16 18:07+0100\n"
 "Last-Translator: Pablo Sánchez Rodríguez <>\n"
 "Language-Team: Spanish - Spain <>\n"
 "Language: es_ES\n"
@@ -28,13 +28,12 @@ msgid "Import a pass"
 msgstr "Importa un pase"
 
 #: src/main.py:113
-#, fuzzy
 msgid "Supported passes"
-msgstr "Importa un pase"
+msgstr "Pases compatibles"
 
 #: src/main.py:119
 msgid "All files"
-msgstr ""
+msgstr "Todos los archivos"
 
 #: src/model/digital_pass.py:167
 msgid "Monday"
@@ -82,7 +81,7 @@ msgstr "El fichero no es un pase"
 
 #: src/model/digital_pass_factory.py:174
 msgid "Format not supported yet"
-msgstr "Formato no soportado aún"
+msgstr "Formato no compatible aún"
 
 #: src/model/digital_pass_factory.py:180
 msgid "Unknown file encoding"
@@ -114,7 +113,7 @@ msgstr "Salir"
 #: src/view/help_overlay.blp:30
 msgctxt "shortcut window"
 msgid "Open file"
-msgstr ""
+msgstr "Abrir archivo"
 
 #: src/view/window.blp:39
 msgid "Menu"
