@@ -24,6 +24,7 @@ gi.require_version('Adw', '1')
 
 from gi.repository import GLib, Gdk, Gio, Gtk, Adw
 
+from .digital_pass import DigitalPass
 from .digital_pass_factory import FileIsNotAPass, FormatNotSupportedYet, PassFactory
 from .digital_pass_list_store import DigitalPassListStore
 from .persistence import FileAlreadyImported, PersistenceManager
@@ -54,7 +55,7 @@ class Application(Adw.Application):
 
         self.create_action('about', self.on_about_action)
         self.create_action('delete', self.on_delete_action)
-        self.create_action('import', self.on_import_action)
+        self.create_action('import', self.on_import_action, ['<Control>o'])
         self.create_action('quit', self.on_quit_action, ['<Control>q'])
 
         pass_list_is_empty = self.__pass_list.is_empty()
@@ -103,12 +104,23 @@ class Application(Adw.Application):
     def on_import_action(self, widget, __):
         if not self.__file_chooser:
             self.__file_chooser = Gtk.FileChooserNative.new(
-                _('Import a pass'),
-                self.window(),
-                Gtk.FileChooserAction.OPEN,
-                None,
-                None)
+                title=_('Import a pass'),
+                parent=self.window(),
+                action=Gtk.FileChooserAction.OPEN,
+                )
 
+            filter = Gtk.FileFilter()
+            filter.set_name(_('Supported passes'))
+            for mime_type in DigitalPass.supported_mime_types():
+                filter.add_mime_type(mime_type)
+            self.__file_chooser.add_filter(filter)                
+
+            all_filter = Gtk.FileFilter()
+            all_filter.set_name(_('All files'))
+            all_filter.add_pattern('*')
+            self.__file_chooser.add_filter(all_filter)
+
+            self.__file_chooser.set_modal(True)
             self.__file_chooser.connect('response', self._on_file_chosen)
 
         self.__file_chooser.show()

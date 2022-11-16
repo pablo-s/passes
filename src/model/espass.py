@@ -138,11 +138,17 @@ class EsPassAdapter(DigitalPass):
 
         return latest_expiration_date
 
+    def file_extension():
+        return '.espass'
+
     def format(self):
         return 'espass'
 
     def icon(self):
         return self.__adaptee.icon()
+
+    def mime_type():
+        return 'application/vnd.espass-espass+zip'
 
     def voided(self):
         return False

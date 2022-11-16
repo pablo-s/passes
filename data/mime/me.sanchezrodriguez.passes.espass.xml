@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="application/vnd.espass-espass+zip">
+    <comment>esPass pass</comment>
+    <glob pattern="*.espass"/>
+  </mime-type>
+</mime-info>
