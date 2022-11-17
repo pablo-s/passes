@@ -17,7 +17,7 @@
 
 from gi.repository import Gdk, Gtk
 
-from .colored_box import ColoredBox
+from .pass_icon import PassIcon
 from .pass_row_header import PassRowHeader
 
 
@@ -26,8 +26,6 @@ class PassRow(Gtk.ListBoxRow):
 
     __gtype_name__ = 'PassRow'
 
-    colored_box = Gtk.Template.Child()
-
     icon = Gtk.Template.Child()
     name = Gtk.Template.Child()
 
@@ -35,22 +33,12 @@ class PassRow(Gtk.ListBoxRow):
         super().__init__()
         self.__pass = a_pass
 
-        try:
-            background_color = self.__pass.background_color().as_tuple()
-        except:
-            background_color = (0,0,0)
+        if a_pass.background_color():
+            self.icon.set_background_color(a_pass.background_color())
 
-        if self.__pass.icon():
-            pixbuf = self.__pass.icon().as_pixbuf()
+        if a_pass.icon():
+            self.icon.set_image(a_pass.icon())
 
-            # Find out the background color of the icon
-            pixbuf_data = pixbuf.read_pixel_bytes().get_data()
-            if not pixbuf.get_has_alpha() or pixbuf_data[3] > 0:
-                background_color = pixbuf_data[0:3]
-
-            self.icon.set_from_pixbuf(pixbuf)
-
-        self.colored_box.color(*background_color)
         self.name.set_text(a_pass.description())
 
         # Gray the label out if the pass has expired

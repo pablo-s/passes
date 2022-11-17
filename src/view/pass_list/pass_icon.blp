@@ -1,0 +1,24 @@
+using Gtk 4.0;
+using Adw 1;
+
+template PassIcon : Gtk.Box
+{
+    .ColoredBox colored_box
+    {
+        height-request: 50;
+        hexpand: false;
+        vexpand: false;
+        width-request: 50;
+        styles ["card", "rounded"]
+
+        Gtk.Image icon
+        {
+            can-focus: false;
+            halign: center;
+            hexpand: true;
+            pixel-size: 32;
+            valign: center;
+            vexpand: true;
+        }
+    }
+}

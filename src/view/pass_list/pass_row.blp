@@ -16,25 +16,7 @@ template PassRow : Gtk.ListBoxRow
         margin-top: 0;
         spacing: 12;
 
-        // Card showing the icon of the pass
-        .ColoredBox colored_box
-        {
-            height-request: 50;
-            hexpand: false;
-            vexpand: false;
-            width-request: 50;
-            styles ["card", "rounded"]
-
-            Gtk.Image icon
-            {
-                can-focus: false;
-                halign: center;
-                hexpand: true;
-                pixel-size: 32;
-                valign: center;
-                vexpand: true;
-            }
-        }
+        .PassIcon icon {}
 
         Gtk.Label name
         {
