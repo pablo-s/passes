@@ -63,6 +63,9 @@ class DigitalPass(GObject.GObject):
     def icon(self):
         raise NotImplementedError()
 
+    def is_updatable(self):
+        raise NotImplementedError()
+
     def mime_type():
         raise NotImplementedError()
 

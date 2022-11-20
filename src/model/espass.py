@@ -147,6 +147,9 @@ class EsPassAdapter(DigitalPass):
     def icon(self):
         return self.__adaptee.icon()
 
+    def is_updatable(self):
+        return False
+
     def mime_type():
         return 'application/vnd.espass-espass+zip'
 

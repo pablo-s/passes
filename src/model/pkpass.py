@@ -175,6 +175,15 @@ class PKPass:
         return self.__data.get('logoText')
 
 
+    # Web Service
+
+    def authentication_token(self):
+        return self.__data.get('authenticationToken')
+
+    def web_service_url(self):
+        return self.__data.get('webServiceURL')
+
+
 class PKPassAdapter(DigitalPass):
     def __init__(self, pkpass):
         super().__init__()
@@ -211,6 +220,9 @@ class PKPassAdapter(DigitalPass):
 
     def icon(self):
         return self.__adaptee.icon()
+
+    def is_updatable(self):
+        return self.__adaptee.web_service_url() and not self.has_expired()
 
     def mime_type():
         return 'application/vnd.apple.pkpass'

@@ -27,6 +27,7 @@ from gi.repository import GLib, Gdk, Gio, Gtk, Adw
 from .digital_pass import DigitalPass
 from .digital_pass_factory import FileIsNotAPass, FormatNotSupportedYet, PassFactory
 from .digital_pass_list_store import DigitalPassListStore
+from .digital_pass_updater import PassUpdater
 from .persistence import FileAlreadyImported, PersistenceManager
 from .window import PassesWindow
 
@@ -57,12 +58,14 @@ class Application(Adw.Application):
         self.create_action('delete', self.on_delete_action)
         self.create_action('import', self.on_import_action, ['<Control>o'])
         self.create_action('quit', self.on_quit_action, ['<Control>q'])
+        self.create_action('update', self.on_update_action, ['<Control>u'])
 
         pass_list_is_empty = self.__pass_list.is_empty()
         window.force_fold(pass_list_is_empty)
 
         if not pass_list_is_empty:
             window.show_pass_list()
+            window.select_pass_at_index(0)
 
         window.present()
 
@@ -130,6 +133,41 @@ class Application(Adw.Application):
 
     def on_quit_action(self, widget, _):
         self.window().close()
+
+    def on_update_action(self, widget, __):
+        """ Update currently selected pass """
+        selected_pass = self.window().selected_pass()
+
+        if not selected_pass:
+            return
+
+        try:
+            # Download and save the latest version of the pass file
+            latest_pass_data = PassUpdater.update(selected_pass)
+            stored_file = self.__persistence\
+                .save_pass_data(latest_pass_data, selected_pass.format())
+
+            # Create a new pass from the saved file
+            digital_pass = PassFactory.create(stored_file)
+            digital_pass.set_path(stored_file.get_path())
+
+            # Replace the old pass with the new one
+            self.__pass_list.insert(digital_pass)
+            selected_pass_index = self.window().selected_pass_index()
+            self.__pass_list.remove(selected_pass_index)
+
+            # Delete old pass file
+            self.__persistence.delete_pass_file(selected_pass)
+
+            # Select the new pass in the pass list
+            found, updated_pass_index = self.__pass_list.find(digital_pass)
+            self.window().select_pass_at_index(updated_pass_index)
+
+            # Notify user
+            self.window().show_toast(_('Pass updated'))
+
+        except Exception as exception:
+            self.window().show_toast(str(exception))
 
     def create_action(self, name, callback, shortcuts=None):
         """ Add an Action and connect to a callback """

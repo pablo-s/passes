@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import os
+import os, tempfile
 
 from gi.repository import Gio, GLib
 from .digital_pass import DigitalPass
@@ -49,6 +49,14 @@ class PersistenceManager:
         target_path = a_pass.get_path()
         target_file = Gio.File.new_for_path(target_path)
         target_file.delete()
+
+    def save_pass_data(self, pass_data, pass_format):
+        with tempfile.NamedTemporaryFile() as temp_pass_file:
+            temp_pass_file.write(pass_data)
+
+            pass_file_path = os.path.join(tempfile.gettempdir(), str(temp_pass_file.name))
+            pass_file = Gio.File.new_for_path(pass_file_path)
+            return self.save_pass_file(pass_file, pass_format)
 
     def save_pass_file(self, pass_file, pass_format):
         destination_file_name = str(pass_file.hash()) + '.' + pass_format

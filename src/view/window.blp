@@ -114,6 +114,14 @@ template PassesWindow : Adw.ApplicationWindow
                     }
 
                     [end]
+                    Gtk.Button update_button
+                    {
+                        action-name: "app.update";
+                        icon-name: "view-refresh-symbolic";
+                        tooltip-text: _("Update pass");
+                    }
+
+                    [end]
                     Gtk.Button barcode_button
                     {
                         icon-name: "qr-code-symbolic";

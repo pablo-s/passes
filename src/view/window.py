@@ -31,6 +31,7 @@ class PassesWindow(Adw.ApplicationWindow):
 
     back_button = Gtk.Template.Child()
     barcode_button = Gtk.Template.Child()
+    update_button = Gtk.Template.Child()
 
     pass_list = Gtk.Template.Child()
     pass_widget = Gtk.Template.Child()
@@ -65,8 +66,6 @@ class PassesWindow(Adw.ApplicationWindow):
         self.barcode_button.connect('clicked', self._on_barcode_clicked)
         self.pass_list.connect('row-activated', self._on_row_activated)
 
-        # Select the first pass in the list
-        self.pass_list.select_pass_at_index(0)
         self.main_leaflet_can_navigate = True
 
     def _on_back_clicked(self, button):
@@ -89,6 +88,10 @@ class PassesWindow(Adw.ApplicationWindow):
 
     def _on_row_activated(self, pass_list, pass_row):
         a_pass = pass_row.data()
+
+        self.barcode_button.set_sensitive(a_pass.barcodes()[0])
+        self.update_button.set_sensitive(a_pass.is_updatable())
+
         self.pass_widget.content(a_pass)
         self.pass_additional_info.content(a_pass)
 

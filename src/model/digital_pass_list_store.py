@@ -46,5 +46,5 @@ class DigitalPassListStore(GObject.GObject):
     def length(self):
         return len(self.__list_store)
 
-    def remove(self, digital_pass):
-        self.__list_store.remove(digital_pass)
+    def remove(self, index):
+        self.__list_store.remove(index)

@@ -70,6 +70,7 @@ passes_sources = [
   'main.py',
   'model/digital_pass_factory.py',
   'model/digital_pass_list_store.py',
+  'model/digital_pass_updater.py',
   'model/digital_pass.py',
   'model/espass.py',
   'model/persistence.py',
