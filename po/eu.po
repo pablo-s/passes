@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: passes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-16 17:56+0100\n"
+"POT-Creation-Date: 2022-11-20 17:49+0100\n"
 "PO-Revision-Date: 2022-10-12 16:04+0200\n"
 "Last-Translator: Sergio Varela <>\n"
 "Language-Team: Basque - Spain <>\n"
@@ -19,60 +19,64 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "X-Generator: Gtranslator 40.0\n"
 
-#: src/main.py:75 src/view/window.blp:6
+#: src/main.py:78 src/view/window.blp:6
 msgid "Passes"
 msgstr "Emanaldiak"
 
-#: src/main.py:107 src/view/window.blp:30
+#: src/main.py:110 src/view/window.blp:30
 msgid "Import a pass"
 msgstr "Emanaldi bat inportatu"
 
-#: src/main.py:113
+#: src/main.py:116
 #, fuzzy
 msgid "Supported passes"
 msgstr "Emanaldi bat inportatu"
 
-#: src/main.py:119
+#: src/main.py:122
 msgid "All files"
 msgstr ""
 
-#: src/model/digital_pass.py:167
+#: src/main.py:167
+msgid "Pass updated"
+msgstr ""
+
+#: src/model/digital_pass.py:170
 msgid "Monday"
 msgstr "Astelehena"
 
-#: src/model/digital_pass.py:167
+#: src/model/digital_pass.py:170
 msgid "Tuesday"
 msgstr "Asteartea"
 
-#: src/model/digital_pass.py:167
+#: src/model/digital_pass.py:170
 msgid "Wednesday"
 msgstr "Asteazkena"
 
-#: src/model/digital_pass.py:168
+#: src/model/digital_pass.py:171
 msgid "Friday"
 msgstr "Ostirala"
 
-#: src/model/digital_pass.py:168
+#: src/model/digital_pass.py:171
 msgid "Saturday"
 msgstr "Larunbata"
 
-#: src/model/digital_pass.py:168
+#: src/model/digital_pass.py:171
 msgid "Sunday"
 msgstr "Igandea"
 
-#: src/model/digital_pass.py:168
+#: src/model/digital_pass.py:171
 msgid "Thursday"
 msgstr "Osteguna"
 
-#: src/model/digital_pass.py:202
+#: src/model/digital_pass.py:205
 msgid "Anytime"
 msgstr "Edozein unetan"
 
-#: src/model/digital_pass.py:208
+#: src/model/digital_pass.py:211
 msgid "Today"
 msgstr "Gaur"
 
-#: src/model/digital_pass.py:211
+#: src/model/digital_pass.py:214
 msgid "Tomorrow"
 msgstr "Bihar"
 
@@ -88,7 +92,20 @@ msgstr "Formatu hau ez da oraindik onartzen"
 msgid "Unknown file encoding"
 msgstr "Artxiboaren kodifikazioa ezezaguna da"
 
-#: src/model/persistence.py:72
+#: src/model/digital_pass_updater.py:101
+#, fuzzy
+msgid "Pass already updated"
+msgstr "Fitxategia inportatuta"
+
+#: src/model/digital_pass_updater.py:107
+msgid "Pass not updatable"
+msgstr ""
+
+#: src/model/digital_pass_updater.py:113
+msgid "Pass update error: {} {}"
+msgstr ""
+
+#: src/model/persistence.py:80
 msgid "File already imported"
 msgstr "Fitxategia inportatuta"
 
@@ -112,9 +129,21 @@ msgctxt "shortcut window"
 msgid "Quit"
 msgstr ""
 
-#: src/view/help_overlay.blp:30
+#: src/view/help_overlay.blp:31
+#, fuzzy
 msgctxt "shortcut window"
-msgid "Open file"
+msgid "Passes"
+msgstr "Emanaldiak"
+
+#: src/view/help_overlay.blp:35
+#, fuzzy
+msgctxt "shortcut window"
+msgid "Import a pass"
+msgstr "Emanaldi bat inportatu"
+
+#: src/view/help_overlay.blp:41
+msgctxt "shortcut window"
+msgid "Update selected pass"
 msgstr ""
 
 #: src/view/window.blp:39
@@ -137,19 +166,23 @@ msgstr "Atzera"
 msgid "Show additional information"
 msgstr ""
 
-#: src/view/window.blp:120
+#: src/view/window.blp:121
+msgid "Update pass"
+msgstr ""
+
+#: src/view/window.blp:128
 msgid "Show barcode"
 msgstr "Erakutsi barra-kodea"
 
-#: src/view/window.blp:162
+#: src/view/window.blp:170
 msgid "Keyboard shortcuts"
 msgstr "Teklatuko lasterbideak"
 
-#: src/view/window.blp:163
+#: src/view/window.blp:171
 msgid "About Passes"
 msgstr "Emanaldiak-ri buruz"
 
-#: src/view/window.blp:168
+#: src/view/window.blp:176
 msgid "Delete"
 msgstr "Ezabatu"
 

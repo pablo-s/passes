@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-16 17:56+0100\n"
+"POT-Creation-Date: 2022-11-20 17:49+0100\n"
 "PO-Revision-Date: 2022-11-11 11:36+0100\n"
 "Last-Translator: Irénée Thirion <irenee.thirion@e.email>\n"
 "Language-Team: \n"
@@ -18,60 +18,64 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 3.1.1\n"
 
-#: src/main.py:75 src/view/window.blp:6
+#: src/main.py:78 src/view/window.blp:6
 msgid "Passes"
 msgstr "Passes"
 
-#: src/main.py:107 src/view/window.blp:30
+#: src/main.py:110 src/view/window.blp:30
 msgid "Import a pass"
 msgstr "Importer un passe"
 
-#: src/main.py:113
+#: src/main.py:116
 #, fuzzy
 msgid "Supported passes"
 msgstr "Importer un passe"
 
-#: src/main.py:119
+#: src/main.py:122
 msgid "All files"
 msgstr ""
 
-#: src/model/digital_pass.py:167
+#: src/main.py:167
+msgid "Pass updated"
+msgstr ""
+
+#: src/model/digital_pass.py:170
 msgid "Monday"
 msgstr "Lundi"
 
-#: src/model/digital_pass.py:167
+#: src/model/digital_pass.py:170
 msgid "Tuesday"
 msgstr "Mardi"
 
-#: src/model/digital_pass.py:167
+#: src/model/digital_pass.py:170
 msgid "Wednesday"
 msgstr "Mercredi"
 
-#: src/model/digital_pass.py:168
+#: src/model/digital_pass.py:171
 msgid "Friday"
 msgstr "Vendredi"
 
-#: src/model/digital_pass.py:168
+#: src/model/digital_pass.py:171
 msgid "Saturday"
 msgstr "Samedi"
 
-#: src/model/digital_pass.py:168
+#: src/model/digital_pass.py:171
 msgid "Sunday"
 msgstr "Dimanche"
 
-#: src/model/digital_pass.py:168
+#: src/model/digital_pass.py:171
 msgid "Thursday"
 msgstr "Jeudi"
 
-#: src/model/digital_pass.py:202
+#: src/model/digital_pass.py:205
 msgid "Anytime"
 msgstr "N’importe quand"
 
-#: src/model/digital_pass.py:208
+#: src/model/digital_pass.py:211
 msgid "Today"
 msgstr "Aujourd’hui"
 
-#: src/model/digital_pass.py:211
+#: src/model/digital_pass.py:214
 msgid "Tomorrow"
 msgstr "Demain"
 
@@ -87,7 +91,20 @@ msgstr "Format pas encore pris en charge"
 msgid "Unknown file encoding"
 msgstr "Encodage du fichier inconnu"
 
-#: src/model/persistence.py:72
+#: src/model/digital_pass_updater.py:101
+#, fuzzy
+msgid "Pass already updated"
+msgstr "Fichier déjà importé"
+
+#: src/model/digital_pass_updater.py:107
+msgid "Pass not updatable"
+msgstr ""
+
+#: src/model/digital_pass_updater.py:113
+msgid "Pass update error: {} {}"
+msgstr ""
+
+#: src/model/persistence.py:80
 msgid "File already imported"
 msgstr "Fichier déjà importé"
 
@@ -110,9 +127,21 @@ msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Quitter"
 
-#: src/view/help_overlay.blp:30
+#: src/view/help_overlay.blp:31
+#, fuzzy
 msgctxt "shortcut window"
-msgid "Open file"
+msgid "Passes"
+msgstr "Passes"
+
+#: src/view/help_overlay.blp:35
+#, fuzzy
+msgctxt "shortcut window"
+msgid "Import a pass"
+msgstr "Importer un passe"
+
+#: src/view/help_overlay.blp:41
+msgctxt "shortcut window"
+msgid "Update selected pass"
 msgstr ""
 
 #: src/view/window.blp:39
@@ -135,19 +164,23 @@ msgstr "Retour"
 msgid "Show additional information"
 msgstr "Afficher les informations supplémentaires"
 
-#: src/view/window.blp:120
+#: src/view/window.blp:121
+msgid "Update pass"
+msgstr ""
+
+#: src/view/window.blp:128
 msgid "Show barcode"
 msgstr "Afficher le code-barres"
 
-#: src/view/window.blp:162
+#: src/view/window.blp:170
 msgid "Keyboard shortcuts"
 msgstr "Raccourcis clavier"
 
-#: src/view/window.blp:163
+#: src/view/window.blp:171
 msgid "About Passes"
 msgstr "À propos de Passes"
 
-#: src/view/window.blp:168
+#: src/view/window.blp:176
 msgid "Delete"
 msgstr "Supprimer"
 

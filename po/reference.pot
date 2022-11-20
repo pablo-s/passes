@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-16 17:56+0100\n"
+"POT-Creation-Date: 2022-11-20 17:49+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,59 +17,63 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/main.py:75 src/view/window.blp:6
+#: src/main.py:78 src/view/window.blp:6
 msgid "Passes"
 msgstr ""
 
-#: src/main.py:107 src/view/window.blp:30
+#: src/main.py:110 src/view/window.blp:30
 msgid "Import a pass"
 msgstr ""
 
-#: src/main.py:113
+#: src/main.py:116
 msgid "Supported passes"
 msgstr ""
 
-#: src/main.py:119
+#: src/main.py:122
 msgid "All files"
 msgstr ""
 
-#: src/model/digital_pass.py:167
+#: src/main.py:167
+msgid "Pass updated"
+msgstr ""
+
+#: src/model/digital_pass.py:170
 msgid "Monday"
 msgstr ""
 
-#: src/model/digital_pass.py:167
+#: src/model/digital_pass.py:170
 msgid "Tuesday"
 msgstr ""
 
-#: src/model/digital_pass.py:167
+#: src/model/digital_pass.py:170
 msgid "Wednesday"
 msgstr ""
 
-#: src/model/digital_pass.py:168
+#: src/model/digital_pass.py:171
 msgid "Friday"
 msgstr ""
 
-#: src/model/digital_pass.py:168
+#: src/model/digital_pass.py:171
 msgid "Saturday"
 msgstr ""
 
-#: src/model/digital_pass.py:168
+#: src/model/digital_pass.py:171
 msgid "Sunday"
 msgstr ""
 
-#: src/model/digital_pass.py:168
+#: src/model/digital_pass.py:171
 msgid "Thursday"
 msgstr ""
 
-#: src/model/digital_pass.py:202
+#: src/model/digital_pass.py:205
 msgid "Anytime"
 msgstr ""
 
-#: src/model/digital_pass.py:208
+#: src/model/digital_pass.py:211
 msgid "Today"
 msgstr ""
 
-#: src/model/digital_pass.py:211
+#: src/model/digital_pass.py:214
 msgid "Tomorrow"
 msgstr ""
 
@@ -85,7 +89,19 @@ msgstr ""
 msgid "Unknown file encoding"
 msgstr ""
 
-#: src/model/persistence.py:72
+#: src/model/digital_pass_updater.py:101
+msgid "Pass already updated"
+msgstr ""
+
+#: src/model/digital_pass_updater.py:107
+msgid "Pass not updatable"
+msgstr ""
+
+#: src/model/digital_pass_updater.py:113
+msgid "Pass update error: {} {}"
+msgstr ""
+
+#: src/model/persistence.py:80
 msgid "File already imported"
 msgstr ""
 
@@ -108,9 +124,19 @@ msgctxt "shortcut window"
 msgid "Quit"
 msgstr ""
 
-#: src/view/help_overlay.blp:30
+#: src/view/help_overlay.blp:31
 msgctxt "shortcut window"
-msgid "Open file"
+msgid "Passes"
+msgstr ""
+
+#: src/view/help_overlay.blp:35
+msgctxt "shortcut window"
+msgid "Import a pass"
+msgstr ""
+
+#: src/view/help_overlay.blp:41
+msgctxt "shortcut window"
+msgid "Update selected pass"
 msgstr ""
 
 #: src/view/window.blp:39
@@ -133,18 +159,22 @@ msgstr ""
 msgid "Show additional information"
 msgstr ""
 
-#: src/view/window.blp:120
+#: src/view/window.blp:121
+msgid "Update pass"
+msgstr ""
+
+#: src/view/window.blp:128
 msgid "Show barcode"
 msgstr ""
 
-#: src/view/window.blp:162
+#: src/view/window.blp:170
 msgid "Keyboard shortcuts"
 msgstr ""
 
-#: src/view/window.blp:163
+#: src/view/window.blp:171
 msgid "About Passes"
 msgstr ""
 
-#: src/view/window.blp:168
+#: src/view/window.blp:176
 msgid "Delete"
 msgstr ""
