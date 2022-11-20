@@ -24,11 +24,22 @@ ShortcutsWindow help_overlay
                 title: C_("shortcut window", "Quit");
                 action-name: "app.quit";
             }
+        }
+
+        ShortcutsGroup
+        {
+            title: C_("shortcut window", "Passes");
 
             ShortcutsShortcut
             {
-                title: C_("shortcut window", "Open file");
+                title: C_("shortcut window", "Import a pass");
                 action-name: "app.import";
+            }
+
+            ShortcutsShortcut
+            {
+                title: C_("shortcut window", "Update selected pass");
+                action-name: "app.update";
             }
         }
     }
