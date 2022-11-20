@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: passes\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-20 17:49+0100\n"
-"PO-Revision-Date: 2022-11-16 18:07+0100\n"
+"PO-Revision-Date: 2022-11-20 18:00+0100\n"
 "Last-Translator: Pablo Sánchez Rodríguez <>\n"
 "Language-Team: Spanish - Spain <>\n"
 "Language: es_ES\n"
@@ -37,7 +37,7 @@ msgstr "Todos los archivos"
 
 #: src/main.py:167
 msgid "Pass updated"
-msgstr ""
+msgstr "Pase actualizado"
 
 #: src/model/digital_pass.py:170
 msgid "Monday"
@@ -92,17 +92,16 @@ msgid "Unknown file encoding"
 msgstr "Codificación de archivo desconocida"
 
 #: src/model/digital_pass_updater.py:101
-#, fuzzy
 msgid "Pass already updated"
-msgstr "Archivo ya importado"
+msgstr "Pase ya actualizado"
 
 #: src/model/digital_pass_updater.py:107
 msgid "Pass not updatable"
-msgstr ""
+msgstr "Pase no actualizable"
 
 #: src/model/digital_pass_updater.py:113
 msgid "Pass update error: {} {}"
-msgstr ""
+msgstr "Error de actualización del pase: {} {}"
 
 #: src/model/persistence.py:80
 msgid "File already imported"
@@ -128,13 +127,11 @@ msgid "Quit"
 msgstr "Salir"
 
 #: src/view/help_overlay.blp:31
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Passes"
 msgstr "Pases"
 
 #: src/view/help_overlay.blp:35
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Import a pass"
 msgstr "Importa un pase"
@@ -142,7 +139,7 @@ msgstr "Importa un pase"
 #: src/view/help_overlay.blp:41
 msgctxt "shortcut window"
 msgid "Update selected pass"
-msgstr ""
+msgstr "Actualizar el pase seleccionado"
 
 #: src/view/window.blp:39
 msgid "Menu"
@@ -166,7 +163,7 @@ msgstr "Mostrar información adicional"
 
 #: src/view/window.blp:121
 msgid "Update pass"
-msgstr ""
+msgstr "Actualizar pase"
 
 #: src/view/window.blp:128
 msgid "Show barcode"
