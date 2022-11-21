@@ -1,0 +1,49 @@
+using Gtk 4.0;
+using Adw 1;
+
+template AdditionalInformationPane : Gtk.Box
+{
+    Gtk.ScrolledWindow scrolled_window
+    {
+        hscrollbar-policy: never;
+        vexpand: true;
+
+        Gtk.Viewport
+        {
+            scroll-to-focus: true;
+
+            Adw.ViewStack stack
+            {
+                Adw.ViewStackPage
+                {
+                    name: "empty-page";
+                    child: Adw.StatusPage
+                    {
+                        icon-name: "info-symbolic";
+                        title: _("No additional information");
+                    };
+                }
+
+                Adw.ViewStackPage
+                {
+                    name: "fields-page";
+                    child: Gtk.Box
+                    {
+                        margin-bottom: 6;
+                        margin-top: 6;
+                        margin-start: 6;
+                        margin-end: 6;
+                        orientation: vertical;
+                        spacing: 6;
+                        width-request: 294;
+
+                        Gtk.ListBox fields
+                        {
+                            selection-mode: none;
+                        }
+                    };
+                }
+            }
+        }
+    }
+}

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
   <gresource prefix="/me/sanchezrodriguez/passes">
+    <file>additional_information_pane.ui</file>
     <file>barcode_dialog.ui</file>
     <file>colored_box.ui</file>
     <file>help_overlay.ui</file>
@@ -8,7 +9,6 @@
     <file>pass_list.ui</file>
     <file>pass_row_header.ui</file>
     <file>pass_row.ui</file>
-    <file>pkpass_back_view.ui</file>
     <file>pkpass_field_row.ui</file>
     <file>style.css</file>
     <file>window.ui</file>

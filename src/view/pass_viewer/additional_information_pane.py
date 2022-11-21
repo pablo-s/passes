@@ -20,11 +20,12 @@ from gi.repository import Gtk
 from .pkpass_field_row import PassFieldRow
 
 
-@Gtk.Template(resource_path='/me/sanchezrodriguez/passes/pkpass_back_view.ui')
-class PassBackView(Gtk.Box):
+@Gtk.Template(resource_path='/me/sanchezrodriguez/passes/additional_information_pane.ui')
+class AdditionalInformationPane(Gtk.Box):
 
-    __gtype_name__ = 'PassBackView'
+    __gtype_name__ = 'AdditionalInformationPane'
 
+    stack = Gtk.Template.Child()
     fields = Gtk.Template.Child()
 
     def __init__(self):
@@ -40,8 +41,12 @@ class PassBackView(Gtk.Box):
         self.clean()
         fields = a_pass.additional_information()
 
-        # Make the field list invisible if we do not have back fields
-        self.fields.set_visible(fields)
+        # Hide field list if we do not have anything to show
+        if not fields:
+            self.stack.set_visible_child_name('empty-page')
+            return
+
+        self.stack.set_visible_child_name('fields-page')
 
         for field in fields:
             label = field.label()

@@ -17,10 +17,10 @@
 
 from gi.repository import Gio, GObject, Gtk, Adw
 
+from .additional_information_pane import AdditionalInformationPane
 from .barcode_dialog import BarcodeDialog
 from .pass_list import PassList
 from .pass_widget import PassWidget
-from .pkpass_back_view import PassBackView
 
 
 @Gtk.Template(resource_path='/me/sanchezrodriguez/passes/window.ui')
