@@ -43,6 +43,7 @@ class PassRow(Gtk.ListBoxRow):
 
         # Gray the label out if the pass has expired
         if self.__pass.has_expired():
+            self.icon.set_enabled(False)
             self.name.set_sensitive(False)
 
     def data(self):

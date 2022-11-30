@@ -30,6 +30,8 @@ class PassIcon(Gtk.Box):
 
     def __init__(self):
         super().__init__()
+        self.__pixbuf = None
+        self.__saturation = 1.0
 
     def __guess_background_color(self, pixel_buffer):
         data = pixel_buffer.read_pixel_bytes().get_data()
@@ -43,14 +45,42 @@ class PassIcon(Gtk.Box):
 
         return background_color
 
-    def set_background_color(self, color):
-        self.colored_box.color(*color.as_tuple())
+    def __update(self):
+        if not self.__pixbuf:
+            return
 
-    def set_image(self, image):
-        pixbuf = image.as_pixbuf()
+        pixbuf = self.__pixbuf
+
+        if self.__saturation != 1.0:
+            # When the saturation changes, a copy of the pixbuf is made so that
+            # the original image is not modified.
+
+            pixbuf = self.__pixbuf.copy()
+            pixbuf.saturate_and_pixelate(pixbuf,
+                                         saturation=self.__saturation,
+                                         pixelate=False)
+
         self.icon.set_from_pixbuf(pixbuf)
 
         color = self.__guess_background_color(pixbuf)
         if color:
             self.colored_box.color(*color)
+
+    def set_background_color(self, color):
+        self.colored_box.color(*color.as_tuple())
+
+    def set_enabled(self, enabled):
+        opacity = 1.0
+        self.__saturation = 1.0
+
+        if not enabled:
+            opacity = 0.6
+            self.__saturation = 0.0
+
+        self.colored_box.set_opacity(opacity)
+        self.__update()
+
+    def set_image(self, image):
+        self.__pixbuf = image.as_pixbuf()
+        self.__update()
 
