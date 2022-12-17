@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-20 17:49+0100\n"
-"PO-Revision-Date: 2022-11-11 11:36+0100\n"
+"PO-Revision-Date: 2022-12-17 12:03+0100\n"
 "Last-Translator: Irénée Thirion <irenee.thirion@e.email>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #: src/main.py:78 src/view/window.blp:6
 msgid "Passes"
@@ -27,17 +27,16 @@ msgid "Import a pass"
 msgstr "Importer un passe"
 
 #: src/main.py:116
-#, fuzzy
 msgid "Supported passes"
-msgstr "Importer un passe"
+msgstr "Passes pris en charge"
 
 #: src/main.py:122
 msgid "All files"
-msgstr ""
+msgstr "Tous les fichiers"
 
 #: src/main.py:167
 msgid "Pass updated"
-msgstr ""
+msgstr "Passe mis à  jour"
 
 #: src/model/digital_pass.py:170
 msgid "Monday"
@@ -92,17 +91,16 @@ msgid "Unknown file encoding"
 msgstr "Encodage du fichier inconnu"
 
 #: src/model/digital_pass_updater.py:101
-#, fuzzy
 msgid "Pass already updated"
-msgstr "Fichier déjà importé"
+msgstr "Passe déjà importé"
 
 #: src/model/digital_pass_updater.py:107
 msgid "Pass not updatable"
-msgstr ""
+msgstr "Ce passe ne peut être mis à jour"
 
 #: src/model/digital_pass_updater.py:113
 msgid "Pass update error: {} {}"
-msgstr ""
+msgstr "Erreur de mise à jour du passe : {} {}"
 
 #: src/model/persistence.py:80
 msgid "File already imported"
@@ -128,13 +126,11 @@ msgid "Quit"
 msgstr "Quitter"
 
 #: src/view/help_overlay.blp:31
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Passes"
 msgstr "Passes"
 
 #: src/view/help_overlay.blp:35
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Import a pass"
 msgstr "Importer un passe"
@@ -142,7 +138,7 @@ msgstr "Importer un passe"
 #: src/view/help_overlay.blp:41
 msgctxt "shortcut window"
 msgid "Update selected pass"
-msgstr ""
+msgstr "Mettre à jour le passe sélectionné"
 
 #: src/view/window.blp:39
 msgid "Menu"
@@ -166,7 +162,7 @@ msgstr "Afficher les informations supplémentaires"
 
 #: src/view/window.blp:121
 msgid "Update pass"
-msgstr ""
+msgstr "Mettre à jour le passe"
 
 #: src/view/window.blp:128
 msgid "Show barcode"
