@@ -64,7 +64,6 @@ class Application(Adw.Application):
         window.force_fold(pass_list_is_empty)
 
         if not pass_list_is_empty:
-            window.show_pass_list()
             window.select_pass_at_index(0)
 
         window.present()
@@ -96,7 +95,6 @@ class Application(Adw.Application):
         self.__pass_list.remove(selected_pass_index)
 
         if self.__pass_list.is_empty():
-            self.window().hide_pass_list()
             self.window().force_fold(True)
             self.window().navigate_back()
             return
@@ -194,7 +192,6 @@ class Application(Adw.Application):
             self.__pass_list.insert(digital_pass)
 
             if not self.__pass_list.is_empty():
-                self.window().show_pass_list()
                 self.window().force_fold(False)
 
             found, index = self.__pass_list.find(digital_pass)

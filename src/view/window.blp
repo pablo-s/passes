@@ -48,26 +48,7 @@ template PassesWindow : Adw.ApplicationWindow
                     Gtk.Viewport
                     {
                         scroll-to-focus: true;
-
-                        Adw.ViewStack pass_list_stack
-                        {
-                            Adw.ViewStackPage
-                            {
-                                name: "empty-list-page";
-                                child: Adw.StatusPage
-                                {
-                                    icon-name: "me.sanchezrodriguez.passes";
-                                    title: _("You have no passes");
-                                    description: _("Use the “+” button to import a pass");
-                                };
-                            }
-
-                            Adw.ViewStackPage
-                            {
-                                name: "pass-list-page";
-                                child: .PassList pass_list {};
-                            }
-                        }
+                        .PassList pass_list {}
                     }
                 }
             }

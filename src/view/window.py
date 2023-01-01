@@ -37,8 +37,6 @@ class PassesWindow(Adw.ApplicationWindow):
     pass_widget = Gtk.Template.Child()
     pass_additional_info  = Gtk.Template.Child()
 
-    pass_list_stack = Gtk.Template.Child()
-
     toast_overlay = Gtk.Template.Child()
 
     def __init__(self, pass_list_model, **kwargs):
@@ -101,9 +99,6 @@ class PassesWindow(Adw.ApplicationWindow):
     def force_fold(self, force):
         self.main_leaflet.set_can_unfold(not force)
 
-    def hide_pass_list(self):
-        self.pass_list_stack.set_visible_child_name('empty-list-page')
-
     def is_folded(self):
         return self.main_leaflet.get_folded()
 
@@ -118,9 +113,6 @@ class PassesWindow(Adw.ApplicationWindow):
 
     def selected_pass_index(self):
         return self.pass_list.selected_pass_index()
-
-    def show_pass_list(self):
-        self.pass_list_stack.set_visible_child_name('pass-list-page')
 
     def show_toast(self, message):
         toast = Adw.Toast.new(message)

@@ -1,6 +1,6 @@
 # pass_list.py
 #
-# Copyright 2022 Pablo Sánchez Rodríguez
+# Copyright 2022-2023 Pablo Sánchez Rodríguez
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from gi.repository import Gtk
+from gi.repository import Adw, Gtk
 
 from .pass_row import PassRow
 
@@ -30,6 +30,14 @@ class PassList(Gtk.ListBox):
 
         self.__selected_row = None
         self.set_header_func(self.on_update_header)
+
+        # Create a placeholder widget to be displayed when the list is empty
+        placeholder = Adw.StatusPage.new()
+        placeholder.set_icon_name('me.sanchezrodriguez.passes')
+        placeholder.set_title(_('You have no passes'))
+        placeholder.set_description(_('Use the “+” button to import a pass'))
+        self.set_placeholder(placeholder)
+
         self.connect('row-activated', self.on_row_activated)
 
     def bind_model(self, model):

@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from gi.repository import Gtk
+from gi.repository import Adw, Gtk
 
 from .pkpass_field_row import PassFieldRow
 
@@ -25,11 +25,17 @@ class AdditionalInformationPane(Gtk.Box):
 
     __gtype_name__ = 'AdditionalInformationPane'
 
-    stack = Gtk.Template.Child()
     fields = Gtk.Template.Child()
 
     def __init__(self):
         super().__init__()
+
+        # Create a placeholder widget to be displayed when the pane is empty
+        placeholder = Adw.StatusPage.new()
+        placeholder.set_icon_name('info-symbolic')
+        placeholder.set_title(_('No additional information'))
+        placeholder.add_css_class('compact')
+        self.fields.set_placeholder(placeholder)
 
     def clean(self):
         row = self.fields.get_row_at_index(0)
@@ -40,13 +46,6 @@ class AdditionalInformationPane(Gtk.Box):
     def content(self, a_pass):
         self.clean()
         fields = a_pass.additional_information()
-
-        # Hide field list if we do not have anything to show
-        if not fields:
-            self.stack.set_visible_child_name('empty-page')
-            return
-
-        self.stack.set_visible_child_name('fields-page')
 
         for field in fields:
             label = field.label()
