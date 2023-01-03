@@ -1,6 +1,6 @@
 # barcode_content_encoder.py
 #
-# Copyright 2022 Pablo Sánchez Rodríguez
+# Copyright 2022-2023 Pablo Sánchez Rodríguez
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -18,97 +18,63 @@
 import ctypes
 import math
 
+from enum import IntEnum
+
+
+class BarcodeType(IntEnum):
+    AZTEC = 0
+    CODE128 = 1
+    PDF417 = 2
+    QRCODE = 3
+
 
 class BarcodeContentEncoder():
 
     native_implementation = ctypes.CDLL('@plugindir@/libbarcode-content-encoder.so')
 
-    # encode_aztec_code
-    native_implementation.encode_aztec_code.argtypes = [ctypes.c_char_p]
-    native_implementation.encode_aztec_code.restype = ctypes.c_char_p
+    # arguments to encode_a_barcode
+    native_implementation.encode_barcode.argtypes = [ctypes.c_char_p,
+                                                     ctypes.c_uint,
+                                                     ctypes.POINTER(ctypes.c_uint),
+                                                     ctypes.POINTER(ctypes.c_uint)]
 
-    # encode_code128_code
-    native_implementation.encode_code128_code.argtypes = [ctypes.c_char_p, ctypes.POINTER(ctypes.c_uint), ctypes.POINTER(ctypes.c_uint)]
-    native_implementation.encode_code128_code.restype = ctypes.c_char_p
+    # return type after encoding a barcode
+    native_implementation.encode_barcode.restype = ctypes.c_char_p
 
-    # encode_pdf417_code
-    native_implementation.encode_pdf417_code.argtypes = [ctypes.c_char_p, ctypes.POINTER(ctypes.c_uint), ctypes.POINTER(ctypes.c_uint)]
-    native_implementation.encode_pdf417_code.restype = ctypes.c_char_p
+    @classmethod
+    def encode_barcode(this_class, text, barcode_type, encoding):
+        if not encoding:
+            encoding = 'iso-8859-1'
 
-    # encode_qr_code
-    native_implementation.encode_qr_code.argtypes = [ctypes.c_char_p]
-    native_implementation.encode_qr_code.restype = ctypes.c_char_p
+        encoded_text = text.encode(encoding)
+
+        code_width = ctypes.c_uint()
+        code_height = ctypes.c_uint()
+
+        module_list = this_class.native_implementation\
+            .encode_barcode(encoded_text,
+                            barcode_type,
+                            ctypes.byref(code_width),
+                            ctypes.byref(code_height))\
+            .decode()
+
+        this_class.native_implementation.free_last_result()
+
+        return module_list, code_width.value, code_height.value
 
     @classmethod
     def encode_aztec_code(this_class, text, encoding):
-        if not encoding:
-            encoding = 'iso-8859-1'
-
-        encoded_text = text.encode(encoding)
-
-        module_list = this_class.native_implementation\
-            .encode_aztec_code(encoded_text)\
-            .decode()
-
-        this_class.native_implementation.free_last_result()
-
-        code_width = code_height = int(math.sqrt(len(module_list)))
-
-        return module_list, code_width, code_height
+        return this_class.encode_barcode(text, BarcodeType.AZTEC, encoding)
 
     @classmethod
     def encode_code128_code(this_class, text, encoding):
-        if not encoding:
-            encoding = 'iso-8859-1'
-
-        encoded_text = text.encode(encoding)
-
-        code_width = ctypes.c_uint()
-        code_height = ctypes.c_uint()
-
-        module_list = this_class.native_implementation\
-            .encode_code128_code(encoded_text,
-                                ctypes.byref(code_width),
-                                ctypes.byref(code_height))\
-            .decode()
-
-        this_class.native_implementation.free_last_result()
-
-        return module_list, code_width.value, code_height.value
+        return this_class.encode_barcode(text, BarcodeType.CODE128, encoding)
 
     @classmethod
     def encode_pdf417_code(this_class, text, encoding):
-        if not encoding:
-            encoding = 'iso-8859-1'
-
-        encoded_text = text.encode(encoding)
-
-        code_width = ctypes.c_uint()
-        code_height = ctypes.c_uint()
-
-        module_list = this_class.native_implementation\
-            .encode_pdf417_code(encoded_text,
-                                ctypes.byref(code_width),
-                                ctypes.byref(code_height))\
-            .decode()
-
-        this_class.native_implementation.free_last_result()
-
-        return module_list, code_width.value, code_height.value
+        return this_class.encode_barcode(text, BarcodeType.PDF417, encoding)
 
     @classmethod
     def encode_qr_code(this_class, text, encoding):
-        if not encoding:
-            encoding = 'iso-8859-1'
+        return this_class.encode_barcode(text, BarcodeType.QRCODE, encoding)
 
-        encoded_text = text.encode(encoding)
-
-        module_list = this_class.native_implementation\
-            .encode_qr_code(encoded_text)\
-            .decode()
-
-        this_class.native_implementation.free_last_result()
-
-        code_width = code_height = int(math.sqrt(len(module_list)))
-
-        return module_list, code_width, code_height

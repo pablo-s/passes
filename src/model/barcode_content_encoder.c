@@ -4,14 +4,18 @@
 
 const char FOREGROUND = '1';
 const char BACKGROUND = '2';
-
 char * last_result = NULL;
 
+enum BarcodeType
+{
+    AZTEC = 0,
+    CODE128,
+    PDF417,
+    QRCODE
+};
+
 char * encode_2d_symbol(struct zint_symbol* symbol, unsigned char * data);
-char * encode_aztec_code(unsigned char * data);
-char * encode_code128_code(unsigned char * data, unsigned * out_width, unsigned * out_height);
-char * encode_pdf417_code(unsigned char * data, unsigned * out_width, unsigned * out_height);
-char * encode_qr_code(unsigned char * data);
+char * encode_barcode(unsigned char * data, unsigned symbology, unsigned * out_width, unsigned * out_height);
 
 char * encode_2d_symbol(struct zint_symbol* symbol, unsigned char * data)
 {
@@ -48,61 +52,39 @@ char * encode_2d_symbol(struct zint_symbol* symbol, unsigned char * data)
     return modules;
 }
 
-char * encode_aztec_code(unsigned char * data)
+char * encode_barcode(unsigned char * data,
+                      unsigned symbology,
+                      unsigned * out_width,
+                      unsigned * out_height)
 {
     struct zint_symbol* symbol;
 
     symbol = ZBarcode_Create();
-    symbol->symbology = BARCODE_AZTEC;
-    last_result = encode_2d_symbol(symbol, data);
-    ZBarcode_Delete(symbol);
 
-    return last_result;
-}
+    switch (symbology)
+    {
+        case AZTEC:
+            symbol->symbology = BARCODE_AZTEC;
+            break;
 
-char * encode_code128_code(unsigned char * data,
-                           unsigned * out_width,
-                           unsigned * out_height)
-{
-    struct zint_symbol* symbol;
+        case CODE128:
+            symbol->symbology = BARCODE_CODE128;
+            break;
 
-    symbol = ZBarcode_Create();
-    symbol->symbology = BARCODE_CODE128;
-    last_result = encode_2d_symbol(symbol, data);
-    *out_width = symbol->width;
-    *out_height = symbol->height;
+        case PDF417:
+            symbol->symbology = BARCODE_PDF417;
+            break;
 
-    ZBarcode_Delete(symbol);
-
-    return last_result;
-}
-
-char * encode_pdf417_code(unsigned char * data,
-                          unsigned * out_width,
-                          unsigned * out_height)
-{
-    struct zint_symbol* symbol;
-
-    symbol = ZBarcode_Create();
-    symbol->symbology = BARCODE_PDF417;
+        case QRCODE:
+            symbol->symbology = BARCODE_QRCODE;
+            symbol->option_1 = 1; // Error Correction Level L=1 M=2 Q=3 H=4
+            break;
+    }
 
     last_result = encode_2d_symbol(symbol, data);
     *out_width = symbol->width;
     *out_height = symbol->height;
 
-    ZBarcode_Delete(symbol);
-
-    return last_result;
-}
-
-char * encode_qr_code(unsigned char * data)
-{
-    struct zint_symbol* symbol;
-
-    symbol = ZBarcode_Create();
-    symbol->symbology = BARCODE_QRCODE;
-    symbol->option_1 = 1; // Error Correction Level L=1 M=2 Q=3 H=4
-    last_result = encode_2d_symbol(symbol, data);
     ZBarcode_Delete(symbol);
 
     return last_result;
