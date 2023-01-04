@@ -1,6 +1,6 @@
 # digital_pass_list_store.py
 #
-# Copyright 2022 Pablo Sánchez Rodríguez
+# Copyright 2022-2023 Pablo Sánchez Rodríguez
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -29,7 +29,13 @@ class DigitalPassListStore(GObject.GObject):
     def __init__(self):
         super().__init__()
         self.__list_store = Gio.ListStore.new(DigitalPass)
-        self.__sorting_criteria = lambda a1, a2: a1.expiration_date() > a2.expiration_date()
+
+        # Sort passes by expiration date. In the event that two passes have the
+        # same expiration date then they will be sorted by description.
+        self.__sorting_criteria = lambda a1, a2: \
+            a1.expiration_date() > a2.expiration_date() \
+            or a1.expiration_date() == a2.expiration_date() \
+            and a1.description() > a2.description()
 
     def find(self, digital_pass):
         return self.__list_store.find(digital_pass)

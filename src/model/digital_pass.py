@@ -1,6 +1,6 @@
 # digital_pass.py
 #
-# Copyright 2022 Pablo Sánchez Rodríguez
+# Copyright 2022-2023 Pablo Sánchez Rodríguez
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -177,6 +177,9 @@ class Date:
         self.__date = None
 
     def __eq__(self, other):
+
+        if not self.__date and not other.__date:
+            return True
 
         if not self.__date or not other.__date:
             return False
