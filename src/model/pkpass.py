@@ -1,6 +1,6 @@
 # pkpass.py
 #
-# Copyright 2022 Pablo Sánchez Rodríguez
+# Copyright 2022-2023 Pablo Sánchez Rodríguez
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -239,9 +239,14 @@ class StandardField:
     def __init__(self, pkpass_field_dictionary, translation_dictionary = None):
         self.__key = pkpass_field_dictionary['key']
 
-        self.__value = pkpass_field_dictionary['value']
-        if translation_dictionary and self.__value in translation_dictionary.keys():
-            self.__value = translation_dictionary[self.__value]
+        try:
+            # A localizable string, a number, or a ISO 8601 date as a string
+            self.__value = pkpass_field_dictionary['value']
+            self.__value = Date.from_iso_string(self.__value)
+        except:
+            # The value is only translated if it is not a date
+            if translation_dictionary and self.__value in translation_dictionary.keys():
+                self.__value = translation_dictionary[self.__value]
 
         self.__label = None
         if 'label' in pkpass_field_dictionary.keys():
