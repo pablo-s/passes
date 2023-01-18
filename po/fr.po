@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-20 17:49+0100\n"
+"POT-Creation-Date: 2023-01-18 07:33+0100\n"
 "PO-Revision-Date: 2022-12-17 12:03+0100\n"
 "Last-Translator: Irénée Thirion <irenee.thirion@e.email>\n"
 "Language-Team: \n"
@@ -18,63 +18,59 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 3.2.2\n"
 
-#: src/main.py:78 src/view/window.blp:6
+#: src/main.py:77 src/view/window.blp:6
 msgid "Passes"
 msgstr "Passes"
 
-#: src/main.py:110 src/view/window.blp:30
+#: src/main.py:108 src/view/window.blp:30
 msgid "Import a pass"
 msgstr "Importer un passe"
 
-#: src/main.py:116
+#: src/main.py:114
 msgid "Supported passes"
 msgstr "Passes pris en charge"
 
-#: src/main.py:122
+#: src/main.py:120
 msgid "All files"
 msgstr "Tous les fichiers"
 
-#: src/main.py:167
+#: src/main.py:165
 msgid "Pass updated"
 msgstr "Passe mis à  jour"
 
-#: src/model/digital_pass.py:170
+#: src/model/digital_pass.py:167
 msgid "Monday"
 msgstr "Lundi"
 
-#: src/model/digital_pass.py:170
+#: src/model/digital_pass.py:167
 msgid "Tuesday"
 msgstr "Mardi"
 
-#: src/model/digital_pass.py:170
+#: src/model/digital_pass.py:167
 msgid "Wednesday"
 msgstr "Mercredi"
 
-#: src/model/digital_pass.py:171
+#: src/model/digital_pass.py:168
 msgid "Friday"
 msgstr "Vendredi"
 
-#: src/model/digital_pass.py:171
+#: src/model/digital_pass.py:168
 msgid "Saturday"
 msgstr "Samedi"
 
-#: src/model/digital_pass.py:171
+#: src/model/digital_pass.py:168
 msgid "Sunday"
 msgstr "Dimanche"
 
-#: src/model/digital_pass.py:171
+#: src/model/digital_pass.py:168
 msgid "Thursday"
 msgstr "Jeudi"
 
-#: src/model/digital_pass.py:205
-msgid "Anytime"
-msgstr "N’importe quand"
-
-#: src/model/digital_pass.py:211
+#: src/model/digital_pass.py:202
 msgid "Today"
 msgstr "Aujourd’hui"
 
-#: src/model/digital_pass.py:214
+#: src/model/digital_pass.py:205
 msgid "Tomorrow"
 msgstr "Demain"
 
@@ -140,45 +136,57 @@ msgctxt "shortcut window"
 msgid "Update selected pass"
 msgstr "Mettre à jour le passe sélectionné"
 
+#: src/view/pass_list/pass_list.py:37
+msgid "You have no passes"
+msgstr "Vous n’avez aucun passe"
+
+#: src/view/pass_list/pass_list.py:38
+msgid "Use the “+” button to import a pass"
+msgstr "Utilisez le bouton « + » pour importer un passe"
+
+#: src/view/pass_list/pass_row_header.py:32
+msgid "Without expiration date"
+msgstr ""
+
+#: src/view/pass_viewer/additional_information_pane.py:36
+#, fuzzy
+msgid "No additional information"
+msgstr "Afficher les informations supplémentaires"
+
 #: src/view/window.blp:39
 msgid "Menu"
 msgstr "Menu"
 
-#: src/view/window.blp:60
-msgid "You have no passes"
-msgstr "Vous n’avez aucun passe"
-
-#: src/view/window.blp:61
-msgid "Use the “+” button to import a pass"
-msgstr "Utilisez le bouton « + » pour importer un passe"
-
-#: src/view/window.blp:96
+#: src/view/window.blp:77
 msgid "Back"
 msgstr "Retour"
 
-#: src/view/window.blp:113
+#: src/view/window.blp:94
 msgid "Show additional information"
 msgstr "Afficher les informations supplémentaires"
 
-#: src/view/window.blp:121
+#: src/view/window.blp:102
 msgid "Update pass"
 msgstr "Mettre à jour le passe"
 
-#: src/view/window.blp:128
+#: src/view/window.blp:109
 msgid "Show barcode"
 msgstr "Afficher le code-barres"
 
-#: src/view/window.blp:170
+#: src/view/window.blp:151
 msgid "Keyboard shortcuts"
 msgstr "Raccourcis clavier"
 
-#: src/view/window.blp:171
+#: src/view/window.blp:152
 msgid "About Passes"
 msgstr "À propos de Passes"
 
-#: src/view/window.blp:176
+#: src/view/window.blp:157
 msgid "Delete"
 msgstr "Supprimer"
+
+#~ msgid "Anytime"
+#~ msgstr "N’importe quand"
 
 #~ msgid "A digital pass manager"
 #~ msgstr "Un gestionnaire de passes numériques"
