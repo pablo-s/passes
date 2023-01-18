@@ -1,6 +1,6 @@
 # pkpass_row_header.py
 #
-# Copyright 2022 Pablo Sánchez Rodríguez
+# Copyright 2022-2023 Pablo Sánchez Rodríguez
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -26,8 +26,9 @@ class PassRowHeader(Gtk.Label):
     def __init__(self, a_pass):
         super().__init__()
 
-        header_text = a_pass\
-            .expiration_date()\
-            .as_relative_pretty_string()
+        expiration_date = a_pass.expiration_date()
+
+        header_text = expiration_date.as_relative_pretty_string() \
+            if expiration_date else _('Without expiration date')
 
         self.set_text(header_text)

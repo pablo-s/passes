@@ -47,16 +47,12 @@ class PassList(Gtk.ListBox):
         self.__selected_row = pass_row
 
     def on_update_header(self, row, row_above):
-        row_header = row\
-            .data()\
-            .expiration_date()\
-            .as_relative_pretty_string()
+        row_date = row.data().expiration_date()
+        row_header = row_date.as_relative_pretty_string() if row_date else None
 
-        row_above_header = row_above\
-            .data()\
-            .expiration_date()\
-            .as_relative_pretty_string()\
-            if row_above else None
+        row_above_date = row_above.data().expiration_date() if row_above else None
+        row_above_header = row_above_date.as_relative_pretty_string()\
+            if row_above and row_above_date else None
 
         if not row_above or row_header != row_above_header:
             row.show_header()

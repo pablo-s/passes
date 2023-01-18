@@ -17,8 +17,6 @@
 
 import re
 
-from datetime import datetime
-
 from gi.repository import Gdk, GdkPixbuf, GLib, GObject
 
 
@@ -56,8 +54,7 @@ class DigitalPass(GObject.GObject):
 
     def has_expired(self):
         expiration_date = self.expiration_date()
-        return (not expiration_date.is_undefined() \
-                and Date.now() > expiration_date) \
+        return (expiration_date and Date.now() > expiration_date) \
                 or self.voided()
 
     def icon(self):
@@ -170,91 +167,73 @@ class Date:
     days_of_the_week = (_('Monday'), _('Tuesday'), _('Wednesday'),
                         _('Thursday'), _('Friday'), _('Saturday'), _('Sunday'))
 
-    MAX = datetime(9000, 12, 31).astimezone()
-    MIN = datetime(1970,  1,  1).astimezone()
+    MAX = GLib.DateTime.new_utc(9999, 12, 31, 23, 59, 59)
+    MIN = GLib.DateTime.new_utc(1, 1, 1, 0, 0, 0)
 
-    def __init__(self):
-        self.__date = None
+    def __init__(self, date):
+        self.__date = date
 
     def __eq__(self, other):
+        return self.compare(other) == 0
 
-        if not self.__date and not other.__date:
-            return True
-
-        if not self.__date or not other.__date:
-            return False
-
-        return self.__date.timestamp() == other.__date.timestamp()
+    def __gt__(self, other):
+        return self.compare(other) > 0
 
     def __lt__(self, other):
-
-        if self.__date and not other.__date:
-            return True
-
-        if not self.__date and other.__date:
-            return False
-
-        if not self.__date and not other.__date:
-            return False
-
-        return self.__date < other.__date
+        return self.compare(other) < 0
 
     def __str__(self):
-        return 'Undefined' if self.is_undefined() else str(self.__date)
+        return self.__date.format('%c')
 
     def as_relative_pretty_string(self):
 
-        if not self.__date:
-            return _('Anytime')
+        now = GLib.DateTime.new_now_local()
+        today = GLib.Date.new_dmy(now.get_day_of_month(),
+                                  now.get_month(),
+                                  now.get_year())
 
-        today = datetime.today().date()
-        time_difference = self.__date.date() - today
+        this = GLib.Date.new_dmy(self.__date.get_day_of_month(),
+                                 self.__date.get_month(),
+                                 self.__date.get_year())
 
-        if time_difference.days == 0:
+        difference_in_days = GLib.Date.days_between(today, this)
+
+        if difference_in_days == 0:
             return _('Today')
 
-        if time_difference.days == 1:
+        if difference_in_days == 1:
             return _('Tomorrow')
 
-        if 0 < time_difference.days < 7:
-            return Date.days_of_the_week[int(self.__date.strftime('%w')) - 1]
+        if 0 < difference_in_days < 7:
+            return Date.days_of_the_week[self.__date.get_day_of_week() - 1]
 
-        return self.__date.strftime('%x')
+        return self.__date.format('%x')
+
+    def compare(self, other):
+        return self.__date.compare(other.__date)
+
+    @classmethod
+    def compare_dates(this_class, date1, date2):
+        if not date1 and not date2:
+            return 0
+
+        if date1 and not date2:
+            return -1
+
+        if not date1 and date2:
+            return 1
+
+        return date1.compare(date2)
 
     @classmethod
     def from_iso_string(self, string):
-
-        instance = Date()
-
-        if not string:
-            return instance
-
-        if string.endswith('Z'):
-            string = string[:-1]
-
-        # Make sure that milliseconds is represented using 3 digits
-        match = re.match('^(.+)(\d{2})(\+.+$)', string)
-        if match:
-            string = match.group(1) + match.group(2) + '0' + match.group(3)
-
-        try:
-            # Create the date and make sure that it is not "naive"
-            date = None
-            date = datetime.fromisoformat(string).astimezone()
-
-        finally:
-            instance.__date = date
-
-        return instance
-
-    def is_undefined(self):
-        return self.__date == None
+        date = GLib.DateTime.new_from_iso8601(string)
+        return Date(date)
 
     @classmethod
     def now(self):
-        instance = Date()
-        instance.__date = datetime.now().astimezone()
-        return instance
+        date = GLib.DateTime.new_now_local()
+        return Date(date)
 
 class Image:
 
