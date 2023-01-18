@@ -19,7 +19,7 @@ import re
 
 from gi.repository import Gio, GObject
 
-from .digital_pass import DigitalPass
+from .digital_pass import Date, DigitalPass
 
 
 class DigitalPassListStore(GObject.GObject):
@@ -30,13 +30,6 @@ class DigitalPassListStore(GObject.GObject):
         super().__init__()
         self.__list_store = Gio.ListStore.new(DigitalPass)
 
-        # Sort passes by expiration date. In the event that two passes have the
-        # same expiration date then they will be sorted by description.
-        self.__sorting_criteria = lambda a1, a2: \
-            a1.expiration_date() > a2.expiration_date() \
-            or a1.expiration_date() == a2.expiration_date() \
-            and a1.description() > a2.description()
-
     def find(self, digital_pass):
         return self.__list_store.find(digital_pass)
 
@@ -44,7 +37,8 @@ class DigitalPassListStore(GObject.GObject):
         return self.__list_store
 
     def insert(self, digital_pass):
-        self.__list_store.insert_sorted(digital_pass, self.__sorting_criteria)
+        self.__list_store.insert_sorted(digital_pass,
+                                        SortPassesBy.expiration_date)
 
     def is_empty(self):
         return self.length() == 0
@@ -54,3 +48,21 @@ class DigitalPassListStore(GObject.GObject):
 
     def remove(self, index):
         self.__list_store.remove(index)
+
+
+class SortPassesBy:
+
+    @classmethod
+    def expiration_date(cls, d1, d2):
+        """
+        Sort passes by expiration date. In the event that two passes have the
+        same expiration date then they will be sorted by description.
+        """
+        dates_comparison = Date.compare_dates(d1.expiration_date(),
+                                              d2.expiration_date())
+
+        d1_is_later_than_d2 = dates_comparison > 0
+        dates_are_equal = dates_comparison == 0
+
+        return  d1_is_later_than_d2 or \
+                (dates_are_equal and d1.description() > d2.description())
