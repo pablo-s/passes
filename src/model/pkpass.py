@@ -164,7 +164,7 @@ class PKPass:
             else None
 
     def label_color(self):
-        return self.__data.get('labelColor', Color.from_css).as_tuple()
+        return self.__data.get('labelColor', Color.from_css)
 
     def logo(self):
         return Image(self.__images['logo']) \

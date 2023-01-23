@@ -1,6 +1,6 @@
 # pass_widget.py
 #
-# Copyright 2022 Pablo Sánchez Rodríguez
+# Copyright 2022-2023 Pablo Sánchez Rodríguez
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -339,8 +339,16 @@ class PkPassPlotter(PassPlotter):
             self._fg_color = PassColor.black
 
         # Label color
-        self._label_color = self._fg_color.copy()
-        self._label_color.alpha = 0.5
+        label_color = pkpass.label_color()
+        if label_color:
+            self._label_color = Gdk.RGBA()
+            self._label_color.red = label_color.red() / 255
+            self._label_color.blue = label_color.blue() / 255
+            self._label_color.green = label_color.green() / 255
+            self._label_color.alpha = 1.0
+        else:
+            self._label_color = self._fg_color.copy()
+            self._label_color.alpha = 0.5
 
         # Logo
         self._logo_texture = None
