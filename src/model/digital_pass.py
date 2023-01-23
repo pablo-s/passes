@@ -213,7 +213,7 @@ class Date:
         return self.__date.compare(other.__date)
 
     @classmethod
-    def compare_dates(this_class, date1, date2):
+    def compare_dates(cls, date1, date2):
         if not date1 and not date2:
             return 0
 
@@ -226,14 +226,15 @@ class Date:
         return date1.compare(date2)
 
     @classmethod
-    def from_iso_string(self, string):
+    def from_iso_string(cls, string):
         date = GLib.DateTime.new_from_iso8601(string)
         return Date(date)
 
     @classmethod
-    def now(self):
+    def now(cls):
         date = GLib.DateTime.new_now_local()
         return Date(date)
+
 
 class Image:
 
