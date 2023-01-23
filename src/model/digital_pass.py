@@ -183,11 +183,11 @@ class Date:
         return self.compare(other) < 0
 
     def __str__(self):
-        return self.__date.format('%c')
+        return self.__date.to_local().format('%c')
 
     def as_relative_pretty_string(self):
 
-        now = GLib.DateTime.new_now_local()
+        now = GLib.DateTime.new_now_utc()
         today = GLib.Date.new_dmy(now.get_day_of_month(),
                                   now.get_month(),
                                   now.get_year())
@@ -207,7 +207,7 @@ class Date:
         if 0 < difference_in_days < 7:
             return Date.days_of_the_week[self.__date.get_day_of_week() - 1]
 
-        return self.__date.format('%x')
+        return self.__date.to_local().format('%x')
 
     def compare(self, other):
         return self.__date.compare(other.__date)
