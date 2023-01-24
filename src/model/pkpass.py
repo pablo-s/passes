@@ -146,6 +146,11 @@ class PKPass:
     def barcodes(self):
         return self.__data.get_list('barcodes', Barcode)
 
+    def background(self):
+        return Image(self.__images['background']) \
+            if 'background' in self.__images \
+            else None
+
     def background_color(self):
         return self.__data.get('backgroundColor', Color.from_css)
 
@@ -174,6 +179,10 @@ class PKPass:
     def logo_text(self):
         return self.__data.get('logoText')
 
+    def strip(self):
+        return Image(self.__images['strip']) \
+            if 'strip' in self.__images \
+            else None
 
     # Web Service
 

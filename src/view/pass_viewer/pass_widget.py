@@ -23,7 +23,7 @@ from .barcode_widget import BarcodeWidget
 PASS_WIDTH = 320
 PASS_HEIGHT = 420
 PASS_MARGIN = 12
-
+BACKGROUND_BLUR_RADIUS = 30
 
 class PassColor:
     white = Gdk.RGBA()
@@ -350,11 +350,19 @@ class PkPassPlotter(PassPlotter):
             self._label_color = self._fg_color.copy()
             self._label_color.alpha = 0.5
 
-        # Logo
+        # Images
+        self._background_texture = None
         self._logo_texture = None
+        self._strip_texture = None
+
+        if pkpass.background():
+            self._background_texture = pkpass.background().as_texture()
 
         if pkpass.logo():
             self._logo_texture = pkpass.logo().as_texture()
+
+        if pkpass.strip():
+            self._strip_texture = pkpass.strip().as_texture()
 
         # Fields
         self._header_fields = pkpass.header_fields()
@@ -531,6 +539,22 @@ class EventTicketPlotter(PkPassPlotter):
 
     def __init__(self, pkpass, pkpass_widget):
         super().__init__(pkpass, pkpass_widget)
+
+    def _plot_background(self):
+
+        if not self._strip_texture and self._background_texture:
+            rectangle = Graphene.Rect()
+            rectangle.init(-BACKGROUND_BLUR_RADIUS,
+                           -BACKGROUND_BLUR_RADIUS,
+                           PASS_WIDTH + 2 * BACKGROUND_BLUR_RADIUS,
+                           PASS_HEIGHT + 2 * BACKGROUND_BLUR_RADIUS)
+
+            self._snapshot.push_blur(BACKGROUND_BLUR_RADIUS)
+            self._snapshot.append_texture(self._background_texture, rectangle)
+            self._snapshot.pop()
+
+        else:
+            super()._plot_background()
 
     def _plot_primary_fields(self):
         if not self._primary_fields:
