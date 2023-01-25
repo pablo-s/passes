@@ -1,6 +1,6 @@
 # barcode_widget.py
 #
-# Copyright 2022 Pablo Sánchez Rodríguez
+# Copyright 2022-2023 Pablo Sánchez Rodríguez
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from gi.repository import Adw, Gdk, Graphene, Gtk
+from gi.repository import Adw, Gdk, Graphene, Gsk, Gtk
 
 from .barcode_content_encoder import BarcodeContentEncoder
 
@@ -33,6 +33,13 @@ class BarcodeWidget(Gtk.Widget):
         self.__data = []
         self.__data_width = 0
         self.__data_height = 0
+
+        # Set background color to black
+        self.__background_color = Gdk.RGBA()
+        self.__background_color.red = 1.0
+        self.__background_color.blue = 1.0
+        self.__background_color.green = 1.0
+        self.__background_color.alpha = 1.0
 
         # Set foreground color to black
         self.__foreground_color = Gdk.RGBA()
@@ -59,6 +66,25 @@ class BarcodeWidget(Gtk.Widget):
         offset_x = (canvas_width // 2) - (self.__data_width * self.__dot_size // 2)
         offset_y = (canvas_height // 2) - (self.__data_height * self.__dot_size // 2)
 
+        # Draw the background
+        margin_size = self.__margin_size_in_dots * self.__dot_size
+        rectangle = Graphene.Rect()
+        rectangle.init(offset_x - margin_size,
+                       offset_y - margin_size,
+                       self.__data_width * self.__dot_size + 2 * margin_size,
+                       self.__data_height * self.__dot_size + 2 * margin_size)
+
+        radius = Graphene.Size()
+        radius.init(margin_size, margin_size)
+
+        rounded_rectangle = Gsk.RoundedRect()
+        rounded_rectangle.init(rectangle, radius, radius, radius, radius)
+
+        snapshot.push_rounded_clip(rounded_rectangle)
+        snapshot.append_color(self.__background_color, rectangle)
+        snapshot.pop()
+
+        # Draw the barcode
         for i in range(self.__data_height):
             for j in range(self.__data_width):
 

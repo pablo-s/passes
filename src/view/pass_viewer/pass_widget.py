@@ -305,8 +305,6 @@ class EsPassPlotter(PassPlotter):
         self._plot_fields()
         self._snapshot.restore()
 
-        #self._plot_barcode()
-
 
 class PkPassPlotter(PassPlotter):
 
@@ -394,8 +392,6 @@ class PkPassPlotter(PassPlotter):
         self._plot_secondary_and_axiliary_fields()
         self._snapshot.restore()
 
-        self._plot_barcode()
-
     def _plot_header(self):
         header_height = 32
 
@@ -444,18 +440,6 @@ class PkPassPlotter(PassPlotter):
 
     def _plot_footer(self):
         raise NotImplementedError
-
-    def _plot_barcode(self):
-        if not self._barcode:
-            return
-
-        rectangle = Graphene.Rect()
-        rectangle.init(0,
-                       PASS_HEIGHT - PASS_MARGIN - self._barcode.props.height_request,
-                       PASS_WIDTH,
-                       self._barcode.props.height_request)
-
-        self._snapshot.append_color(PassColor.white, rectangle)
 
 
 class BoardingPassPlotter(PkPassPlotter):
