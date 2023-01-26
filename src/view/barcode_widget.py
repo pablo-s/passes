@@ -18,6 +18,7 @@
 from gi.repository import Adw, Gdk, Graphene, Gsk, Gtk
 
 from .barcode_content_encoder import BarcodeContentEncoder
+from .digital_pass import Color
 
 
 class BarcodeWidget(Gtk.Widget):
@@ -34,19 +35,11 @@ class BarcodeWidget(Gtk.Widget):
         self.__data_width = 0
         self.__data_height = 0
 
-        # Set background color to black
-        self.__background_color = Gdk.RGBA()
-        self.__background_color.red = 1.0
-        self.__background_color.blue = 1.0
-        self.__background_color.green = 1.0
-        self.__background_color.alpha = 1.0
+        # Set background color to white
+        self.__background_color = Color.named('white').as_gdk_rgba()
 
         # Set foreground color to black
-        self.__foreground_color = Gdk.RGBA()
-        self.__foreground_color.red = 0.0
-        self.__foreground_color.blue = 0.0
-        self.__foreground_color.green = 0.0
-        self.__foreground_color.alpha = 1.0
+        self.__foreground_color = Color.named('black').as_gdk_rgba()
 
         # Amount of barcode dots/modules that should fit in every margin (either
         # horizontal or vertical)

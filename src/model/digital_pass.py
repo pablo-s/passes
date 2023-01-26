@@ -110,10 +110,11 @@ class Barcode:
 
 class Color:
 
-    def __init__(self, r, g, b):
+    def __init__(self, r, g, b, a = 255):
         self.__r = int(r)
         self.__g = int(g)
         self.__b = int(b)
+        self.__a = int(a)
 
     def red(self):
         return self.__r
@@ -123,6 +124,14 @@ class Color:
 
     def blue(self):
         return self.__b
+
+    def as_gdk_rgba(self):
+        rgba = Gdk.RGBA()
+        rgba.red = self.__r / 255
+        rgba.green = self.__g / 255
+        rgba.blue = self.__b / 255
+        rgba.alpha = self.__a / 255
+        return rgba
 
     def as_tuple(self):
         return (self.__r, self.__g, self.__b)
@@ -160,6 +169,15 @@ class Color:
         self.__r = 255 - self.__r
         self.__g = 255 - self.__g
         self.__b = 255 - self.__b
+
+    @classmethod
+    def named(cls, color_name):
+        if color_name == 'black':
+            return Color(0, 0, 0, 255)
+        elif color_name == 'white':
+            return Color(255, 255, 255, 255)
+        else:
+            raise BadColor()
 
 
 class Date:

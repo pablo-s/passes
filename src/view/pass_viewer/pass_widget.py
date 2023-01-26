@@ -18,25 +18,13 @@
 from gi.repository import Adw, Gdk, Graphene, Gsk, Gtk, Pango
 
 from .barcode_widget import BarcodeWidget
+from .digital_pass import Color
 
 
 PASS_WIDTH = 320
 PASS_HEIGHT = 420
 PASS_MARGIN = 12
 BACKGROUND_BLUR_RADIUS = 30
-
-class PassColor:
-    white = Gdk.RGBA()
-    white.red = 1
-    white.blue = 1
-    white.green = 1
-    white.alpha = 1
-
-    black = Gdk.RGBA()
-    black.red = 0
-    black.blue = 0
-    black.green = 0
-    black.alpha = 1
 
 
 class PassFont:
@@ -240,19 +228,15 @@ class EsPassPlotter(PassPlotter):
         espass = a_pass.adaptee()
 
         # Accent color
-        self._accent_color = Gdk.RGBA()
         accent_color = espass.accent_color()
-        if accent_color:
-            self._accent_color.red = accent_color.red() / 255
-            self._accent_color.blue = accent_color.blue() / 255
-            self._accent_color.green = accent_color.green() / 255
-            self._accent_color.alpha = 1.0
+        self._accent_color = accent_color.as_gdk_rgba() \
+            if accent_color else Gdk.RGBA()
 
         # Background color
-        self._bg_color = PassColor.white
+        self._bg_color = Color.named('white').as_gdk_rgba()
 
         # Foreground color
-        self._fg_color = PassColor.black
+        self._fg_color = Color.named('black').as_gdk_rgba()
 
         # Label color
         self._label_color = self._fg_color.copy()
@@ -270,7 +254,7 @@ class EsPassPlotter(PassPlotter):
     def _plot_background(self):
         rectangle = Graphene.Rect()
         rectangle.init(0, 0, PASS_WIDTH, PASS_HEIGHT)
-        self._snapshot.append_color(PassColor.white, rectangle)
+        self._snapshot.append_color(self._bg_color, rectangle)
 
     def _plot_fields(self):
         self._plot_fields_layouts(self._fields)
@@ -316,34 +300,18 @@ class PkPassPlotter(PassPlotter):
 
         # Background color
         bg_color = pkpass.background_color()
-        if bg_color:
-            self._bg_color = Gdk.RGBA()
-            self._bg_color.red = bg_color.red() / 255
-            self._bg_color.blue = bg_color.blue() / 255
-            self._bg_color.green = bg_color.green() / 255
-            self._bg_color.alpha = 1.0
-        else:
-            self._bg_color = PassColor.white
+        self._bg_color = bg_color.as_gdk_rgba() \
+            if bg_color else Color.named('white').as_gdk_rgba()
 
         # Foreground color
         fg_color = pkpass.foreground_color()
-        if fg_color:
-            self._fg_color = Gdk.RGBA()
-            self._fg_color.red = fg_color.red() / 255
-            self._fg_color.blue = fg_color.blue() / 255
-            self._fg_color.green = fg_color.green() / 255
-            self._fg_color.alpha = 1.0
-        else:
-            self._fg_color = PassColor.black
+        self._fg_color = fg_color.as_gdk_rgba() \
+            if fg_color else Color.named('black').as_gdk_rgba()
 
         # Label color
         label_color = pkpass.label_color()
         if label_color:
-            self._label_color = Gdk.RGBA()
-            self._label_color.red = label_color.red() / 255
-            self._label_color.blue = label_color.blue() / 255
-            self._label_color.green = label_color.green() / 255
-            self._label_color.alpha = 1.0
+            self._label_color = label_color.as_gdk_rgba()
         else:
             self._label_color = self._fg_color.copy()
             self._label_color.alpha = 0.5
