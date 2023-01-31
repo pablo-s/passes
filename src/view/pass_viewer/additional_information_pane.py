@@ -1,6 +1,6 @@
 # pkpass_back_view.py
 #
-# Copyright 2022 Pablo Sánchez Rodríguez
+# Copyright 2022-2023 Pablo Sánchez Rodríguez
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -35,6 +35,7 @@ class AdditionalInformationPane(Gtk.Box):
         placeholder.set_icon_name('info-symbolic')
         placeholder.set_title(_('No additional information'))
         placeholder.add_css_class('compact')
+        placeholder.add_css_class('background')
         self.fields.set_placeholder(placeholder)
 
     def clean(self):
@@ -46,6 +47,17 @@ class AdditionalInformationPane(Gtk.Box):
     def content(self, a_pass):
         self.clean()
         fields = a_pass.additional_information()
+
+        if len(fields) == 0:
+            alignment = Gtk.Align.FILL
+            if self.fields.has_css_class('boxed-list'):
+                self.fields.remove_css_class('boxed-list')
+        else:
+            alignment = Gtk.Align.START
+            if not self.fields.has_css_class('boxed-list'):
+                self.fields.add_css_class('boxed-list')
+
+        self.fields.set_valign(alignment)
 
         for field in fields:
             label = field.label()
