@@ -1,6 +1,6 @@
 # pkpass_field_row.py
 #
-# Copyright 2022 Pablo Sánchez Rodríguez
+# Copyright 2022-2023 Pablo Sánchez Rodríguez
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -28,7 +28,7 @@ class PassFieldRow(Gtk.ListBoxRow):
     label = Gtk.Template.Child()
     value = Gtk.Template.Child()
 
-    def __init__(self, label, value, create_links=False):
+    def __init__(self, label, value):
         super().__init__()
 
         if label:
@@ -39,7 +39,7 @@ class PassFieldRow(Gtk.ListBoxRow):
         value_as_string = str(value)
         value_has_links = re.search('</a>', value_as_string)
 
-        if create_links and not value_has_links:
+        if not value_has_links:
             value_as_string = GLib.markup_escape_text(value_as_string)
 
             # Create a link for URLs
@@ -57,9 +57,5 @@ class PassFieldRow(Gtk.ListBoxRow):
                                      '<a href="mailto:\\1">\\1</a>',
                                      value_as_string)
 
-        self.value.set_use_markup(create_links)
+        self.value.set_use_markup(True)
         self.value.set_label(value_as_string)
-
-    def set_halign(self, alignment):
-        self.label.set_halign(alignment)
-        self.value.set_halign(alignment)

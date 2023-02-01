@@ -63,6 +63,5 @@ class AdditionalInformationPane(Gtk.Box):
             label = field.label()
             value = field.value()
 
-            passFieldRow = PassFieldRow(label, value, create_links=True)
-            passFieldRow.set_halign(Gtk.Align.START)
+            passFieldRow = PassFieldRow(label, value)
             self.fields.append(passFieldRow)
