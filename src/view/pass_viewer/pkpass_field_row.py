@@ -28,34 +28,37 @@ class PassFieldRow(Gtk.ListBoxRow):
     label = Gtk.Template.Child()
     value = Gtk.Template.Child()
 
-    def __init__(self, label, value):
+    def __init__(self):
         super().__init__()
+        self.value.set_use_markup(True)
 
-        if label:
+    def set_label(self, label):
+        if label and label.strip():
             self.label.set_text(label)
+            self.label.show()
         else:
             self.label.hide()
 
-        value_as_string = str(value)
-        value_has_links = re.search('</a>', value_as_string)
+    def set_value(self, value):
+        value = str(value)
+        value_has_links = re.search('</a>', value)
 
         if not value_has_links:
-            value_as_string = GLib.markup_escape_text(value_as_string)
+            value = GLib.markup_escape_text(value)
 
             # Create a link for URLs
-            value_as_string = re.sub('(?:(https?://)|(www))(\S+)',
-                                     '<a href="https://\\2\\3">\\1\\2\\3</a>',
-                                     value_as_string)
+            value = re.sub('(?:(https?://)|(www))(\S+)',
+                           '<a href="https://\\2\\3">\\1\\2\\3</a>',
+                           value)
 
             # Create a link for telephone numbers
-            value_as_string = re.sub('(\+\d+[\(\)\-\d\s\.]+\d)',
-                                     '<a href="tel:\\1">\\1</a>',
-                                     value_as_string)
+            value = re.sub('(\+\d+[\(\)\-\d\s\.]+\d)',
+                           '<a href="tel:\\1">\\1</a>',
+                           value)
 
             # Create a link for e-mails
-            value_as_string = re.sub('(\S+\@[\w\-]+\.\w+)',
-                                     '<a href="mailto:\\1">\\1</a>',
-                                     value_as_string)
+            value = re.sub('(\S+\@[\w\-]+\.\w+)',
+                           '<a href="mailto:\\1">\\1</a>',
+                           value)
 
-        self.value.set_use_markup(True)
-        self.value.set_label(value_as_string)
+        self.value.set_label(value)
