@@ -1,6 +1,6 @@
 # main.py
 #
-# Copyright 2022 Pablo Sánchez Rodríguez
+# Copyright 2022-2023 Pablo Sánchez Rodríguez
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -44,7 +44,6 @@ class Application(Adw.Application):
         pass_files = self.__persistence.load_pass_files()
         for pass_file in pass_files:
             digital_pass = PassFactory.create(pass_file)
-            digital_pass.set_path(pass_file.get_path())
             self.__pass_list.insert(digital_pass)
 
     def do_activate(self):
@@ -75,7 +74,7 @@ class Application(Adw.Application):
         about = Adw.AboutWindow()
         about.set_application_icon('me.sanchezrodriguez.passes')
         about.set_application_name(_('Passes'))
-        about.set_copyright('Copyright © 2022 Pablo Sánchez Rodríguez')
+        about.set_copyright('Copyright © 2022-2023 Pablo Sánchez Rodríguez')
         about.set_license_type(Gtk.License.GPL_3_0)
         about.set_developer_name('Pablo Sánchez Rodríguez')
         about.set_issue_url('https://github.com/pablo-s/passes/issues')
@@ -147,7 +146,6 @@ class Application(Adw.Application):
 
             # Create a new pass from the saved file
             digital_pass = PassFactory.create(stored_file)
-            digital_pass.set_path(stored_file.get_path())
 
             # Replace the old pass with the new one
             self.__pass_list.insert(digital_pass)

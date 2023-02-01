@@ -47,25 +47,26 @@ class PassFactory:
     """
 
     @classmethod
-    def create(this_class, pass_file):
+    def create(cls, pass_file):
         try:
             path = pass_file.get_path()
             archive = zipfile.ZipFile(path, 'r')
 
             if 'main.json' in archive.namelist():
-                digital_pass = this_class.create_espass(archive)
+                digital_pass = cls.__create_espass(archive)
             elif 'pass.json' in archive.namelist():
-                digital_pass = this_class.create_pkpass(archive)
+                digital_pass = cls.__create_pkpass(archive)
             else:
                 raise FileIsNotAPass()
 
+            digital_pass.set_path(path)
             return digital_pass
 
         except zipfile.BadZipFile as exception:
             raise FileIsNotAPass()
 
     @classmethod
-    def create_espass(this_class, archive):
+    def __create_espass(cls, archive):
         """
         Create an EsPass object from a compressed file
         """
@@ -86,7 +87,7 @@ class PassFactory:
         return EsPassAdapter(espass)
 
     @classmethod
-    def create_pkpass(thisClass, archive):
+    def __create_pkpass(cls, archive):
         """
         Create a PKPass object from a compressed file
         """
@@ -115,7 +116,7 @@ class PassFactory:
             if file_name.endswith('pass.strings'):
                 language = file_name.split('.')[0]
                 file_content = archive.read(file_name)
-                translation_dict = thisClass.create_translation_dict(file_content)
+                translation_dict = cls.__create_translation_dict(file_content)
                 pass_translations[language] = translation_dict
 
             if file_name.endswith('pass.json'):
@@ -144,7 +145,7 @@ class PassFactory:
         return PKPassAdapter(pkpass)
 
     @classmethod
-    def create_translation_dict(thisClass, translation_file_content):
+    def __create_translation_dict(cls, translation_file_content):
         content = decode_string(translation_file_content)
         entries = content.split('\n')
 
