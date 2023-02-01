@@ -17,7 +17,7 @@
 
 from gi.repository import Adw, Gtk
 
-from .pkpass_field_row import PassFieldRow
+from .pass_field_row import PassFieldRow
 
 
 @Gtk.Template(resource_path='/me/sanchezrodriguez/passes/additional_information_pane.ui')
