@@ -8,8 +8,8 @@ template PassFieldRow : Gtk.ListBoxRow
     Gtk.Box
     {
         margin-bottom: 6;
-        margin-end: 12;
-        margin-start: 12;
+        margin-end: 6;
+        margin-start: 6;
         margin-top: 6;
         orientation: vertical;
         spacing: 6;
@@ -17,10 +17,12 @@ template PassFieldRow : Gtk.ListBoxRow
         Gtk.Label label
         {
             styles ["caption-heading"]
+            halign: start;
         }
 
         Gtk.Label value
         {
+            halign: start;
             wrap: true;
             wrap-mode: word_char;
         }

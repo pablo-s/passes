@@ -3,6 +3,10 @@ using Adw 1;
 
 template AdditionalInformationPane : Gtk.Box
 {
+    styles ["background"]
+    hexpand: false;
+    width-request: 294;
+
     Gtk.ScrolledWindow scrolled_window
     {
         hscrollbar-policy: never;
@@ -13,14 +17,12 @@ template AdditionalInformationPane : Gtk.Box
 
             Gtk.ListBox fields
             {
-                styles ["boxed-list"]
-
+                hexpand: true;
                 margin-bottom: 6;
                 margin-top: 6;
                 margin-start: 6;
                 margin-end: 6;
                 selection-mode: none;
-                width-request: 294;
             }
         }
     }
