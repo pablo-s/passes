@@ -51,7 +51,7 @@ class Application(Adw.Application):
 
         if not window:
             window = PassesWindow(application=self,
-                                  pass_list_model=self.__pass_list.get_model())
+                                  pass_list_model=self.__pass_list)
 
         self.create_action('about', self.on_about_action)
         self.create_action('delete', self.on_delete_action)

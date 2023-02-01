@@ -40,8 +40,8 @@ class PassList(Gtk.ListBox):
 
         self.connect('row-activated', self.on_row_activated)
 
-    def bind_model(self, model):
-        super().bind_model(model, PassRow)
+    def bind_model(self, pass_list_model):
+        super().bind_model(pass_list_model.get_model(), PassRow)
 
     def on_row_activated(self, pass_list, pass_row):
         self.__selected_row = pass_row
