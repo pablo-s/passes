@@ -240,7 +240,6 @@ class EsPassPlotter(PassPlotter):
 
         # Label color
         self._label_color = self._fg_color.copy()
-        self._label_color.alpha = 0.5
 
         # Logo
         self._logo_texture  = None
@@ -314,7 +313,6 @@ class PkPassPlotter(PassPlotter):
             self._label_color = label_color.as_gdk_rgba()
         else:
             self._label_color = self._fg_color.copy()
-            self._label_color.alpha = 0.5
 
         # Images
         self._background_texture = None
