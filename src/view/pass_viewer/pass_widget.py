@@ -291,6 +291,9 @@ class EsPassPlotter(PassPlotter):
 
 class PkPassPlotter(PassPlotter):
 
+    PRIMARY_FIELD_LABEL_FONT = PassFont.label
+    PRIMARY_FIELD_VALUE_FONT = PassFont.biggest_value
+
     def __init__(self, a_pass, pass_widget):
         super().__init__(a_pass, pass_widget)
 
@@ -408,6 +411,67 @@ class PkPassPlotter(PassPlotter):
         raise NotImplementedError
 
 
+class PkPassWithStripPlotter(PkPassPlotter):
+    """
+    PkPassWithStripPlotter is a PkPassPlotter for PKPasses that may contain a
+    strip image.
+    """
+
+    STRIP_IMAGE_MAX_HEIGHT = 123
+
+    def __init__(self, pkpass, pkpass_widget):
+        super().__init__(pkpass, pkpass_widget)
+
+    def _plot_primary_fields(self):
+
+        # Draw the strip
+
+        strip_height = 0
+
+        if self._strip_texture and not self._background_texture:
+            strip_scale = PASS_WIDTH / self._strip_texture.get_width()
+            strip_height = self._strip_texture.get_height() * strip_scale
+
+            rectangle = Graphene.Rect()
+            rectangle.init(0, -PASS_MARGIN, PASS_WIDTH, strip_height)
+
+
+            strip_area_height = min(self.STRIP_IMAGE_MAX_HEIGHT, strip_height)
+            strip_area = Graphene.Rect()
+            strip_area.init(0, -PASS_MARGIN, PASS_WIDTH, strip_area_height)
+
+            self._snapshot.push_clip(strip_area)
+            self._snapshot.append_texture(self._strip_texture, rectangle)
+            self._snapshot.pop()
+
+        # Draw the primary fields
+
+        point = Graphene.Point()
+        field_layout_height = 0
+
+        if self._primary_fields:
+            field_layout = FieldLayout(self._pango_context,
+                                       self._primary_fields[0],
+                                       value_font = self.PRIMARY_FIELD_VALUE_FONT)
+
+            field_layout_height = field_layout.get_height()
+            self._snapshot.save()
+
+            point.x = PASS_MARGIN
+            point.y = 0
+            self._snapshot.translate(point)
+
+            field_layout.append(self._snapshot, self._label_color, self._fg_color)
+
+            self._snapshot.restore()
+
+        # Perform a translation so that the next drawing starts below this one
+        point.x = 0
+        point.y = strip_height if strip_height > field_layout_height \
+                               else field_layout_height + 2 * PASS_MARGIN
+        self._snapshot.translate(point)
+
+
 class BoardingPassPlotter(PkPassPlotter):
 
     def __init__(self, pkpass, pkpass_widget):
@@ -450,42 +514,22 @@ class BoardingPassPlotter(PkPassPlotter):
         self._plot_fields_layouts(self._secondary_fields)
 
 
-class CouponPlotter(PkPassPlotter):
+class CouponPlotter(PkPassWithStripPlotter):
+
+    STRIP_IMAGE_MAX_HEIGHT = 144
 
     def __init__(self, pkpass, pkpass_widget):
         super().__init__(pkpass, pkpass_widget)
-
-    def _plot_primary_fields(self):
-        if not self._primary_fields:
-            return
-
-        field_layout = FieldLayout(self._pango_context,
-                                   self._primary_fields[0],
-                                   value_font = PassFont.biggest_value,
-                                   alignment = Pango.Alignment.LEFT)
-
-        self._snapshot.save()
-
-        point = Graphene.Point()
-        point.x = PASS_MARGIN
-        point.y = 0
-        self._snapshot.translate(point)
-
-        field_layout.append(self._snapshot, self._label_color, self._fg_color)
-
-        self._snapshot.restore()
-
-        # Perform a translation so that the next drawing starts below this one
-        point.x = 0
-        point.y = field_layout.get_height() + 2 * PASS_MARGIN
-        self._snapshot.translate(point)
 
     def _plot_secondary_and_axiliary_fields(self):
         self._plot_fields_layouts(self._secondary_fields + \
                                   self._auxiliary_fields)
 
 
-class EventTicketPlotter(PkPassPlotter):
+class EventTicketPlotter(PkPassWithStripPlotter):
+
+    PRIMARY_FIELD_VALUE_FONT = PassFont.big_value
+    STRIP_IMAGE_MAX_HEIGHT = 98
 
     def __init__(self, pkpass, pkpass_widget):
         super().__init__(pkpass, pkpass_widget)
@@ -505,30 +549,6 @@ class EventTicketPlotter(PkPassPlotter):
 
         else:
             super()._plot_background()
-
-    def _plot_primary_fields(self):
-        if not self._primary_fields:
-            return
-
-        field_layout = FieldLayout(self._pango_context,
-                                   self._primary_fields[0],
-                                   value_font = PassFont.big_value)
-
-        self._snapshot.save()
-
-        point = Graphene.Point()
-        point.x = PASS_MARGIN
-        point.y = 0
-        self._snapshot.translate(point)
-
-        field_layout.append(self._snapshot, self._label_color, self._fg_color)
-
-        self._snapshot.restore()
-
-        # Perform a translation so that the next drawing starts below this one
-        point.x = 0
-        point.y = field_layout.get_height() + 2 * PASS_MARGIN
-        self._snapshot.translate(point)
 
     def _plot_secondary_and_axiliary_fields(self):
         self._plot_fields_layouts(self._secondary_fields + \
