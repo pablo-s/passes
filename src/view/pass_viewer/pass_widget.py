@@ -435,10 +435,9 @@ class PkPassWithStripPlotter(PkPassPlotter):
             rectangle = Graphene.Rect()
             rectangle.init(0, -PASS_MARGIN, PASS_WIDTH, strip_height)
 
-
-            strip_area_height = min(self.STRIP_IMAGE_MAX_HEIGHT, strip_height)
+            strip_height = min(self.STRIP_IMAGE_MAX_HEIGHT, strip_height)
             strip_area = Graphene.Rect()
-            strip_area.init(0, -PASS_MARGIN, PASS_WIDTH, strip_area_height)
+            strip_area.init(0, -PASS_MARGIN, PASS_WIDTH, strip_height)
 
             self._snapshot.push_clip(strip_area)
             self._snapshot.append_texture(self._strip_texture, rectangle)
