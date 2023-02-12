@@ -70,6 +70,27 @@ class Application(Adw.Application):
     def do_startup(self):
         Adw.Application.do_startup(self)
 
+    def import_pass(self, pass_file):
+        try:
+            digital_pass = PassFactory.create(pass_file)
+
+            stored_file = self.__persistence\
+                .save_pass_file(pass_file, digital_pass.format())
+
+            digital_pass.set_path(stored_file.get_path())
+            self.__pass_list.insert(digital_pass)
+
+            if self.window():
+                if not self.__pass_list.is_empty():
+                    self.window().force_fold(False)
+
+                found, index = self.__pass_list.find(digital_pass)
+                if found:
+                    self.window().select_pass_at_index(index)
+
+        except Exception as exception:
+            self.window().show_toast(str(exception))
+
     def on_about_action(self, widget, __):
         about = Adw.AboutWindow()
         about.set_application_icon('me.sanchezrodriguez.passes')
@@ -179,25 +200,8 @@ class Application(Adw.Application):
         if response != Gtk.ResponseType.ACCEPT:
             return
 
-        try:
-            pass_file = filechooser.get_file()
-            digital_pass = PassFactory.create(pass_file)
-
-            stored_file = self.__persistence\
-                .save_pass_file(pass_file, digital_pass.format())
-
-            digital_pass.set_path(stored_file.get_path())
-            self.__pass_list.insert(digital_pass)
-
-            if not self.__pass_list.is_empty():
-                self.window().force_fold(False)
-
-            found, index = self.__pass_list.find(digital_pass)
-            if found:
-                self.window().select_pass_at_index(index)
-
-        except Exception as exception:
-            self.window().show_toast(str(exception))
+        pass_file = filechooser.get_file()
+        self.import_pass(pass_file)
 
     def window(self):
         return self.props.active_window
