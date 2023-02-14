@@ -69,6 +69,9 @@ class DigitalPass(GObject.GObject):
     def set_path(self, new_path: str):
         self.__path = new_path
 
+    def unique_identifier(self):
+        raise NotImplementedError()
+
     def voided(self):
         raise NotImplementedError()
 
