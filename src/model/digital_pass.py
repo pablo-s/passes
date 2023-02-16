@@ -15,6 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import locale
 import re
 
 from gi.repository import Gdk, GdkPixbuf, GLib, GObject
@@ -181,6 +182,39 @@ class Color:
             return Color(255, 255, 255, 255)
         else:
             raise BadColor()
+
+
+class Currency:
+
+    SYMBOLS = {'CNY': '¥‎', 'EUR': '€', 'GBP': '£', 'INR': '₹', 'JPY': '¥',
+               'KRW': '₩', 'RUB': '₽‎', 'USD': '$'}
+
+    @classmethod
+    def format(cls, amount, international_code):
+        symbol_to_show = cls.get_symbol_from_code(international_code)
+        output = locale.currency(amount, symbol=symbol_to_show, grouping=True)
+
+        if symbol_to_show:
+            localeconv = locale.localeconv()
+            symbol_to_replace = localeconv['currency_symbol']
+
+            if symbol_to_replace != symbol_to_show:
+                output = output.replace(symbol_to_replace, symbol_to_show)
+
+        return output
+
+    @classmethod
+    def get_symbol_from_code(cls, code):
+        localeconv = locale.localeconv()
+        local_currency_code = localeconv['int_curr_symbol']
+
+        if code == local_currency_code:
+            return localeconv['currency_symbol']
+
+        if code in cls.SYMBOLS:
+            return cls.SYMBOLS[code]
+
+        return None
 
 
 class Date:

@@ -17,7 +17,7 @@
 
 from gi.repository import Gdk, Gtk
 
-from .digital_pass import Barcode, Color, Date, DigitalPass, Image, PassDataExtractor
+from .digital_pass import Barcode, Color, Currency, Date, DigitalPass, Image, PassDataExtractor
 
 
 class PKPass:
@@ -255,12 +255,20 @@ class StandardField:
 
         try:
             # A localizable string, a number, or a ISO 8601 date as a string
-            self.__value = pkpass_field_dictionary['value']
-            self.__value = Date.from_iso_string(self.__value)
-        except:
-            # The value is only translated if it is not a date
-            if translation_dictionary and self.__value in translation_dictionary.keys():
-                self.__value = translation_dictionary[self.__value]
+            value = pkpass_field_dictionary['value']
+
+            if 'dateStyle' in pkpass_field_dictionary:
+                value = Date.from_iso_string(value)
+
+            elif 'currencyCode' in pkpass_field_dictionary:
+                value = Currency.format(value, pkpass_field_dictionary['currencyCode'])
+
+            elif translation_dictionary and value in translation_dictionary.keys():
+                # The value is neither a date nor a currency
+                value = translation_dictionary[value]
+
+        finally:
+            self.__value = value
 
         self.__label = None
         if 'label' in pkpass_field_dictionary.keys():
