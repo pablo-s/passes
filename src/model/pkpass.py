@@ -254,7 +254,10 @@ class StandardField:
         self.__key = pkpass_field_dictionary['key']
 
         try:
-            # A localizable string, a number, or a ISO 8601 date as a string
+            # Pass field values contain information, provided as a string, that
+            # may have to be parsed and formatted. This is the case of numbers,
+            # currencies and dates.
+
             value = pkpass_field_dictionary['value']
 
             if 'dateStyle' in pkpass_field_dictionary:
@@ -266,6 +269,12 @@ class StandardField:
             elif translation_dictionary and value in translation_dictionary.keys():
                 # The value is neither a date nor a currency
                 value = translation_dictionary[value]
+
+        except Exception:
+            # If any error occur during the processing of the provided value,
+            # this software will show the original text (as is). Because of
+            # this, all exceptions produced in this block will be ignored.
+            pass
 
         finally:
             self.__value = value
