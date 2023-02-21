@@ -1,33 +1,31 @@
-# Spanish translation for passes.
+# SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the passes package.
-# See file COPYING or go to <http://www.gnu.org/licenses/> for full license details.
-# Pablo Sánchez Rodríguez <>, 2022-2023.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: passes\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-21 19:59+0100\n"
-"PO-Revision-Date: 2023-01-18 07:38+0100\n"
-"Last-Translator: Pablo Sánchez Rodríguez <>\n"
-"Language-Team: Spanish - Spain <>\n"
-"Language: es_ES\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"X-Generator: Gtranslator 42.0\n"
 
 #: data/me.sanchezrodriguez.passes.desktop.in:3
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:4 src/main.py:97
 #: src/view/window.blp:6
 msgid "Passes"
-msgstr "Pases"
+msgstr ""
 
 #: data/me.sanchezrodriguez.passes.desktop.in:4
 msgid "A digital pass manager"
-msgstr "Un gestor de pases digitales"
+msgstr ""
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:5
 msgid "Import and use your digital passes"
@@ -133,9 +131,8 @@ msgid "Avoid adding links to back fields if they already have them."
 msgstr ""
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:44
-#, fuzzy
 msgid "Fixed shorcuts."
-msgstr "Atajos de teclado"
+msgstr ""
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:45
 msgid "Fixed drawing of passes without logo."
@@ -293,175 +290,164 @@ msgstr ""
 
 #: src/main.py:128 src/view/window.blp:30
 msgid "Import a pass"
-msgstr "Importa un pase"
+msgstr ""
 
 #: src/main.py:134
 msgid "Supported passes"
-msgstr "Pases compatibles"
+msgstr ""
 
 #: src/main.py:140
 msgid "All files"
-msgstr "Todos los archivos"
+msgstr ""
 
 #. Notify user
 #: src/main.py:184
 msgid "Pass updated"
-msgstr "Pase actualizado"
+msgstr ""
 
 #: src/model/digital_pass_factory.py:169
 msgid "File is not a pass"
-msgstr "El fichero no es un pase"
+msgstr ""
 
 #: src/model/digital_pass_factory.py:175
 msgid "Format not supported yet"
-msgstr "Formato no compatible aún"
+msgstr ""
 
 #: src/model/digital_pass_factory.py:181
 msgid "Unknown file encoding"
-msgstr "Codificación de archivo desconocida"
+msgstr ""
 
 #: src/model/digital_pass.py:222
 msgid "Monday"
-msgstr "Lunes"
+msgstr ""
 
 #: src/model/digital_pass.py:222
 msgid "Tuesday"
-msgstr "Martes"
+msgstr ""
 
 #: src/model/digital_pass.py:222
 msgid "Wednesday"
-msgstr "Miércoles"
+msgstr ""
 
 #: src/model/digital_pass.py:223
 msgid "Thursday"
-msgstr "Jueves"
+msgstr ""
 
 #: src/model/digital_pass.py:223
 msgid "Friday"
-msgstr "Viernes"
+msgstr ""
 
 #: src/model/digital_pass.py:223
 msgid "Saturday"
-msgstr "Sábado"
+msgstr ""
 
 #: src/model/digital_pass.py:223
 msgid "Sunday"
-msgstr "Domingo"
+msgstr ""
 
 #: src/model/digital_pass.py:257
 msgid "Today"
-msgstr "Hoy"
+msgstr ""
 
 #: src/model/digital_pass.py:260
 msgid "Tomorrow"
-msgstr "Mañana"
+msgstr ""
 
 #: src/model/digital_pass_updater.py:101
 msgid "Pass already updated"
-msgstr "Pase ya actualizado"
+msgstr ""
 
 #: src/model/digital_pass_updater.py:107
 msgid "Pass not updatable"
-msgstr "Pase no actualizable"
+msgstr ""
 
 #: src/model/digital_pass_updater.py:113
 msgid "Pass update error: {} {}"
-msgstr "Error de actualización del pase: {} {}"
+msgstr ""
 
 #: src/model/persistence.py:80
 msgid "File already imported"
-msgstr "Archivo ya importado"
+msgstr ""
 
 #: src/view/barcode_widget.py:126
 msgid "Barcode format not supported"
-msgstr "Formato de código de barras no soportado"
+msgstr ""
 
 #: src/view/pass_list/pass_list.py:37
 msgid "You have no passes"
-msgstr "No tienes pases"
+msgstr ""
 
 #: src/view/pass_list/pass_list.py:38
 msgid "Use the “+” button to import a pass"
-msgstr "Usa el botón “+” para importar un pase"
+msgstr ""
 
 #: src/view/pass_list/pass_row_header.py:32
 msgid "Without expiration date"
-msgstr "Sin fecha de expiración"
+msgstr ""
 
 #: src/view/pass_viewer/additional_information_pane.py:36
 msgid "No additional information"
-msgstr "Sin información adicional"
+msgstr ""
 
 #: src/view/help_overlay.blp:14
 msgctxt "shortcut window"
 msgid "General"
-msgstr "General"
+msgstr ""
 
 #: src/view/help_overlay.blp:18
 msgctxt "shortcut window"
 msgid "Show shortcuts"
-msgstr "Mostrar atajos de teclado"
+msgstr ""
 
 #: src/view/help_overlay.blp:24
 msgctxt "shortcut window"
 msgid "Quit"
-msgstr "Salir"
+msgstr ""
 
 #: src/view/help_overlay.blp:31
 msgctxt "shortcut window"
 msgid "Passes"
-msgstr "Pases"
+msgstr ""
 
 #: src/view/help_overlay.blp:35
 msgctxt "shortcut window"
 msgid "Import a pass"
-msgstr "Importa un pase"
+msgstr ""
 
 #: src/view/help_overlay.blp:41
 msgctxt "shortcut window"
 msgid "Update selected pass"
-msgstr "Actualizar el pase seleccionado"
+msgstr ""
 
 #: src/view/window.blp:39
 msgid "Menu"
-msgstr "Menú"
+msgstr ""
 
 #: src/view/window.blp:77
 msgid "Back"
-msgstr "Atrás"
+msgstr ""
 
 #: src/view/window.blp:94
 msgid "Show additional information"
-msgstr "Mostrar información adicional"
+msgstr ""
 
 #: src/view/window.blp:102
 msgid "Update pass"
-msgstr "Actualizar pase"
+msgstr ""
 
 #: src/view/window.blp:109
 msgid "Show barcode"
-msgstr "Mostrar código de barras"
+msgstr ""
 
 #. item (_("Preferences"), "app.preferences")
 #: src/view/window.blp:148
-#, fuzzy
 msgid "Keyboard shortcuts"
-msgstr "Mostrar atajos de teclado"
+msgstr ""
 
 #: src/view/window.blp:149
 msgid "About Passes"
-msgstr "Acerca de Pases"
+msgstr ""
 
 #: src/view/window.blp:154
 msgid "Delete"
-msgstr "Eliminar"
-
-#~ msgid "Anytime"
-#~ msgstr "Cualquier momento"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Open file"
-#~ msgstr "Abrir archivo"
-
-#~ msgid "Unknown date"
-#~ msgstr "Fecha desconocida"
+msgstr ""

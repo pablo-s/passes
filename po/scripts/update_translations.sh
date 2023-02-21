@@ -1,8 +1,8 @@
 #!/bin/sh
 #
-# update_translations.sh
+# generate_reference.sh
 #
-# Copyright 2022 Pablo Sánchez Rodríguez
+# Copyright 2022-2023 Pablo Sánchez Rodríguez
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -18,15 +18,27 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 readonly project_root=$(dirname $(dirname $(dirname $(realpath $0))))
+readonly meson_build=translation-build
+
+function cleanup
+{
+    if [[ -d ${meson_build} ]]
+    then
+	    rm -r ${project_root}/${meson_build}
+    fi
+}
+
+trap cleanup EXIT
 cd ${project_root}
 
-# Update all translation files
 
-for po_file in po/*.po
-do
-    msgmerge \
-        --backup none \
-        --update \
-        ${po_file} \
-        po/reference.pot
-done
+# Extract all translatable strings from files listed in POTFILES and generate a
+# template (pot) file
+
+meson setup ${meson_build}
+meson compile -C ${meson_build} passes-pot
+
+
+# Update all translation files (po) listed in LINGUAS files
+
+meson compile -C translation-build passes-update-po
