@@ -171,6 +171,16 @@
 		<content_attribute id="money-gambling">none</content_attribute>
 	</content_rating>
 
+	<recommends>
+		<control>keyboard</control>
+		<control>pointing</control>
+		<control>touch</control>
+	</recommends>
+
+	<requires>
+		<display_length compare="ge">332</display_length>
+	</requires>
+
 	<url type="homepage">https://github.com/pablo-s/passes</url>
 	<url type="bugtracker">https://github.com/pablo-s/passes/issues</url>
 	<launchable type="desktop-id">me.sanchezrodriguez.passes.desktop</launchable>
