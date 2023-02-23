@@ -11,6 +11,13 @@
   background-color: transparent;
 }
 
+/* This is a workaround for the following issue: "Placeholder causes additional
+   divider on boxed list" (https://gitlab.gnome.org/GNOME/gtk/-/issues/5309). */
+.list-box-with-placeholder > row:nth-last-child(2)
+{
+  border-bottom: 0;
+}
+
 .rounded
 {
   border-radius: 100%;
