@@ -12,6 +12,11 @@
 		<p>Don't waste any more time searching through your email or printing out your digital passes. Download Passes now and have all your passes in one place.</p>
 	</description>
 
+	<provides>
+		<mediatype>application/vnd.apple.pkpass</mediatype>
+		<mediatype>application/vnd.espass-espass+zip</mediatype>
+	</provides>
+
 	<releases>
 			<release date="2022-11-10" version="0.7">
 			<description>
