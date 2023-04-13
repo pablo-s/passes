@@ -124,27 +124,26 @@ class Application(Adw.Application):
 
     def on_import_action(self, widget, __):
         if not self.__file_chooser:
-            self.__file_chooser = Gtk.FileChooserNative.new(
-                title=_('Import a pass'),
-                parent=self.window(),
-                action=Gtk.FileChooserAction.OPEN,
-                )
+            self.__file_chooser = Gtk.FileDialog.new()
 
-            filter = Gtk.FileFilter()
-            filter.set_name(_('Supported passes'))
+            supported_types_filter = Gtk.FileFilter()
+            supported_types_filter.set_name(_('Supported passes'))
             for mime_type in DigitalPass.supported_mime_types():
-                filter.add_mime_type(mime_type)
-            self.__file_chooser.add_filter(filter)                
+                supported_types_filter.add_mime_type(mime_type)
 
-            all_filter = Gtk.FileFilter()
-            all_filter.set_name(_('All files'))
-            all_filter.add_pattern('*')
-            self.__file_chooser.add_filter(all_filter)
+            all_files_filter = Gtk.FileFilter()
+            all_files_filter.set_name(_('All files'))
+            all_files_filter.add_pattern('*')
+
+            filter_list = Gio.ListStore.new(Gtk.FileFilter)
+            filter_list.append(supported_types_filter)
+            filter_list.append(all_files_filter)
+            self.__file_chooser.set_filters(filter_list)
 
             self.__file_chooser.set_modal(True)
-            self.__file_chooser.connect('response', self._on_file_chosen)
 
-        self.__file_chooser.show()
+        self.__file_chooser.open(parent = self.window(),
+                                 callback = self._on_file_chosen)
 
     def on_preferences_action(self, widget, _):
         print('app.preferences action activated')
@@ -196,12 +195,18 @@ class Application(Adw.Application):
             self.set_accels_for_action(f'app.{name}',
                                        shortcuts)
 
-    def _on_file_chosen(self, filechooser, response):
-        if response != Gtk.ResponseType.ACCEPT:
-            return
+    def _on_file_chosen(self, file_chooser, result):
+        try:
+            pass_file = file_chooser.open_finish(result)
 
-        pass_file = filechooser.get_file()
-        self.import_pass(pass_file)
+            if not pass_file:
+                return
+
+            self.import_pass(pass_file)
+
+        except Exception as exception:
+            self.window().show_toast(exception.message)
+
 
     def window(self):
         return self.props.active_window
