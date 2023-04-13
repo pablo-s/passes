@@ -606,6 +606,8 @@ class PassWidget(Gtk.Fixed):
         self.props.halign = Gtk.Align.CENTER
         self.props.valign = Gtk.Align.CENTER
 
+        self.props.focusable = True
+
         self.add_css_class('card')
 
     def do_snapshot(self, snapshot):
