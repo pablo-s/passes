@@ -1,6 +1,6 @@
 # colored_box.py
 #
-# Copyright 2022 Pablo Sánchez Rodríguez
+# Copyright 2022-2023 Pablo Sánchez Rodríguez
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -36,4 +36,4 @@ class ColoredBox(Gtk.Box):
     def color(self, r, g, b):
         rgb_color = 'rgb({},{},{})'.format(r, g, b)
         css_code = '.customclass{ background-color: ' + rgb_color + ';}'
-        self.__css_provider.load_from_data(bytes(css_code, 'utf-8'))
+        self.__css_provider.load_from_data(css_code, len(css_code))
