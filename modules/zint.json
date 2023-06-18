@@ -4,8 +4,9 @@
     "sources": [
         {
             "type": "git",
-            "url": "https://git.code.sf.net/p/zint/code",
-            "sha256": "9cfc2a85b03da0a7879422e2bd085f3772fcd914"
+            "tag" : "2.12.0",
+            "commit" : "9cfc2a85b03da0a7879422e2bd085f3772fcd914",
+            "url": "https://github.com/zint/zint.git"
         }
     ],
     "cleanup": [
