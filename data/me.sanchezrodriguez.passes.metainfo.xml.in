@@ -18,124 +18,47 @@
 	</provides>
 
 	<releases>
-			<release date="2022-11-10" version="0.7">
+			<release date="2023-06-18" version="0.8">
 			<description>
-				<p>What is new?</p>
+				<p>Passes has undergone many improvements since its last release. The main changes include the following:</p>
+				<h4>Pass widget</h4>
 				<ul>
-					<li>Initial support for esPass format.</li>
-					<li>Dutch translation.</li>
-					<li>Italian translation.</li>
-					<li>Basque translation.</li>
-					<li>Support for CODE128 codes.</li>
+					<li>Pass widget is now focusable, allowing better user navigation with keyboard.</li>
+					<li>Currencies are formatted when the international code is specified.</li>
+					<li>Strip image is placed below primary fields of coupons, events, and store cards.</li>
+					<li>Background image now appears in the background of event tickets.</li>
+					<li>Improved barcode area design.</li>
+					<li>Consideration of defined label color.</li>
+					<li>Dates are shown in the local time zone.</li>
 				</ul>
-				<p>What has been changed/improved?</p>
+				<h4>Pass list</h4>
 				<ul>
-					<li>Pass information is now displayed inside a card/pass widget.</li>
-					<li>Updated version of application dependencies.</li>
-					<li>In pass list, pass icon is now rounded.</li>
-					<li>Spanish translation.</li>
-					<li>Default size of barcode dialogue.</li>
-					<li>Improved URL recognition inside back fields</li>
-					<li>Other minor improvements.</li>
+					<li>Passes are now sorted based on two criteria: expiration date and description.</li>
+					<li>Pass icon will now be displayed in a grayed-out state to visually indicate that the pass has expired.</li>
 				</ul>
-				<p>What has been fixed?</p>
+				<h4>Addition information pane</h4>
 				<ul>
-					<li>Fixed how encoded strings are passed to the barcode library.</li>
-					<li>Avoid adding links to back fields if they already have them.</li>
-					<li>Fixed shorcuts.</li>
-					<li>Fixed drawing of passes without logo.</li>
-					<li>Other small fixes.</li>
+					<li>Fields are now displayed within a boxed list.</li>
+					<li>An icon and a message are displayed when the pane is empty.</li>
 				</ul>
-			</description>
-		</release>
-
-		<release date="2022-06-05" version="0.6">
-			<description>
-				<p>What is new?</p>
+				<h4>File chooser (thanks to TheEvilSkeleton)</h4>
 				<ul>
-					<li>In pass list, pass description is now grayed out if the pass has expired.</li>
+					<li>File chooser window is now modal, so it connects and follow the main window.</li>
+					<li>Filter for supported formats (PKPass and esPass) have been added.</li>
+					<li>File chooser window can now be open with Ctrl+O.</li>
 				</ul>
-				<p>What has been changed/improved?</p>
+				<h4>Translations</h4>
 				<ul>
-					<li>After application startup, the pass list will be shown (instead of automatically navigating to the first pass in the list).</li>
-					<li>Removed unnecessary files and dependencies from the Flatpak container.</li>
-					<li>Code changes toward supporting other pass formats in the future.</li>
+					<li>French translation has been added (thanks to rene-coty).</li>
+					<li>Spanish translation has been improved.</li>
 				</ul>
-			</description>
-		</release>
-		<release date="2022-05-17" version="0.5">
-			<description>
-				<p>What is new?</p>
+				<h4>Others</h4>
 				<ul>
-					<li>Pass fields can display links for URLs, (some) telephone numbers and e-mails.</li>
-					<li>Support for drawing PDF417 codes.</li>
-					<li>Spanish translation.</li>
+					<li>License type and copyright fields have been updated (thanks to TheEvilSkeleton).</li>
+					<li>Media types have been included in appstream file (thanks to TheEvilSkeleton).</li>
+					<li>Escape shortcut can now be used to close the barcode dialog (thanks to TheEvilSkeleton).</li>
+					<li>"Info" icon has been included in the application.</li>
 				</ul>
-				<p>What has been changed/improved?</p>
-				<ul>
-					<li>Pass list is now sorted by relevant date instead of style.</li>
-					<li>Pass fields were updated to be non-activatable.</li>
-					<li>Barcodes will not be drawn at a fixed size, but they will adapt to the available space.</li>
-					<li>Tooltips were added to the buttons that did not have them yet.</li>
-				</ul>
-			</description>
-		</release>
-		<release date="2022-05-01" version="0.4">
-			<description>
-				<p>New features:</p>
-				<ul>
-					<li>Added support for Aztec codes.</li>
-					<li>Passes will now be recognized as mobile compatible by Phosh.</li>
-				</ul>
-				<p>Improvements:</p>
-				<ul>
-					<li>Replaced python3-qrcode with zint.</li>
-					<li>Decreased memory consumption of instances of PKPass.</li>
-					<li>In pass list, increased spacing between cards and descriptions.</li>
-				</ul>
-				<p>Bug fixes:</p>
-				<ul>
-					<li>Pass field rows can now be created even if their value is not text.</li>
-				</ul>
-			</description>
-		</release>
-	  <release date="2022-04-10" version="0.3">
-			<description>
-				<p>New features:</p>
-				<ul>
-					<li>Included website and description in About dialogue.</li>
-					<li>The selected pass will not be highlighted if the leaflet is folded.</li>
-				</ul>
-				<p>Improvements:</p>
-				<ul>
-					<li>Corrected margins and spaces between widgets.</li>
-					<li>Moved pass description in the right pane from title bar to pass view.</li>
-					<li>Pass field rows can now wrap text if it is too long.</li>
-					<li>Pass view now shows a bigger logo inside a colored row.</li>
-				</ul>
-				<p>Bug fixes:</p>
-				<ul>
-					<li>Capitalized application name in main menu.</li>
-					<li>Fixed a bug when displaying standard fields that do not have a label.</li>
-					<li>Fixed import of passes with images that are not PNG.</li>
-					<li>Fixed import of passes with text files encoded in UTF-16.</li>
-					<li>Fixed QR code icon color in dark mode.</li>
-					<li>Fixed the background of the barcode dialogue in dark mode.</li>
-				</ul>
-			</description>
-		</release>
-		<release date="2022-03-27" version="0.2.1">
-			<description>
-				<p>Bug fixes:</p>
-				<ul>
-					<li>Fix 'Add' icon.</li>
-					<li>Hide Settings entry from primary menu.</li>
-				</ul>
-			</description>
-		</release>
-		<release date="2022-03-23" version="0.2">
-			<description>
-				<p>Initial release</p>
 			</description>
 		</release>
 	</releases>
