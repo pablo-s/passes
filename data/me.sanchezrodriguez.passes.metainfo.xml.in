@@ -54,6 +54,7 @@
 				</ul>
 				<h4>Others</h4>
 				<ul>
+					<li>PKPass passes can now be updated (if they are updatable).</li>
 					<li>License type and copyright fields have been updated (thanks to TheEvilSkeleton).</li>
 					<li>Media types have been included in appstream file (thanks to TheEvilSkeleton).</li>
 					<li>Escape shortcut can now be used to close the barcode dialog (thanks to TheEvilSkeleton).</li>
