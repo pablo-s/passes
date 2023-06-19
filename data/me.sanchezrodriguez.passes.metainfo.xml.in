@@ -21,7 +21,7 @@
 			<release date="2023-06-18" version="0.8">
 			<description>
 				<p>Passes has undergone many improvements since its last release. The main changes include the following:</p>
-				<h4>Pass widget</h4>
+				<p>Pass widget:</p>
 				<ul>
 					<li>Pass widget is now focusable, allowing better user navigation with keyboard.</li>
 					<li>Currencies are formatted when the international code is specified.</li>
@@ -31,28 +31,28 @@
 					<li>Consideration of defined label color.</li>
 					<li>Dates are shown in the local time zone.</li>
 				</ul>
-				<h4>Pass list</h4>
+				<p>Pass list:</p>
 				<ul>
 					<li>Passes are now sorted based on two criteria: expiration date and description.</li>
 					<li>Pass icon will now be displayed in a grayed-out state to visually indicate that the pass has expired.</li>
 				</ul>
-				<h4>Addition information pane</h4>
+				<p>Addition information pane:</p>
 				<ul>
 					<li>Fields are now displayed within a boxed list.</li>
 					<li>An icon and a message are displayed when the pane is empty.</li>
 				</ul>
-				<h4>File chooser (thanks to TheEvilSkeleton)</h4>
+				<p>File chooser (thanks to TheEvilSkeleton):</p>
 				<ul>
 					<li>File chooser window is now modal, so it connects and follow the main window.</li>
 					<li>Filter for supported formats (PKPass and esPass) have been added.</li>
 					<li>File chooser window can now be open with Ctrl+O.</li>
 				</ul>
-				<h4>Translations</h4>
+				<p>Translations</p>
 				<ul>
 					<li>French translation has been added (thanks to rene-coty).</li>
 					<li>Spanish translation has been improved.</li>
 				</ul>
-				<h4>Others</h4>
+				<p>Others:</p>
 				<ul>
 					<li>PKPass passes can now be updated (if they are updatable).</li>
 					<li>License type and copyright fields have been updated (thanks to TheEvilSkeleton).</li>
