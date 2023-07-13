@@ -215,7 +215,16 @@ class PKPassAdapter(DigitalPass):
 
         return barcodes
 
+    def creator(self):
+        return self.__adaptee.organization_name()
+
     def description(self):
+        pass_style = self.__adaptee.style()
+        fields = self.__adaptee.primary_fields()
+
+        if pass_style == 'boardingPass' and len(fields) == 2:
+            return '%s → %s' % (fields[0].label(), fields[1].label())
+
         return self.__adaptee.description()
 
     def expiration_date(self):
