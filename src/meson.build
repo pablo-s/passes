@@ -5,7 +5,6 @@ gnome = import('gnome')
 
 compile_blueprint_files = custom_target('compile_blueprint_files',
   input: files(
-    'view/auxiliary/colored_box.blp',
     'view/barcode_dialog.blp',
     'view/help_overlay.blp',
     'view/pass_list/pass_icon.blp',
@@ -56,7 +55,6 @@ configure_file(
 
 passes_sources = [
   '__init__.py',
-  'view/auxiliary/colored_box.py',
   'view/barcode_dialog.py',
   'view/barcode_widget.py',
   'view/pass_list/pass_icon.py',

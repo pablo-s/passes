@@ -3,7 +3,6 @@
   <gresource prefix="/me/sanchezrodriguez/passes">
     <file>additional_information_pane.ui</file>
     <file>barcode_dialog.ui</file>
-    <file>colored_box.ui</file>
     <file>help_overlay.ui</file>
     <file>pass_field_row.ui</file>
     <file>pass_icon.ui</file>

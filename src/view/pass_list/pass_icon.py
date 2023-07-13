@@ -17,7 +17,6 @@
 
 from gi.repository import Gdk, Graphene, Gsk, Gtk
 
-from .colored_box import ColoredBox
 from .digital_pass import Color
 
 

@@ -14,7 +14,6 @@ src/view/pass_list/pass_row_header.py
 src/view/pass_viewer/additional_information_pane.py
 src/view/window.py
 
-src/view/auxiliary/colored_box.blp
 src/view/barcode_dialog.blp
 src/view/help_overlay.blp
 src/view/pass_list/pass_icon.blp
