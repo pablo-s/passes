@@ -131,7 +131,7 @@ class PassPlotter:
             field_layout = FieldLayout(self._pango_context, field)
             field_width = field_layout.get_width()
 
-            if (accumulated_width + field_width) < max_row_width:
+            if (accumulated_width + field_width) + len(current_row) * PASS_MARGIN < max_row_width:
                 current_row.append(field_layout)
                 accumulated_width += field_width
                 continue
