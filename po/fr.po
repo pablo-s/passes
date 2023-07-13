@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-13 16:44+0200\n"
+"POT-Creation-Date: 2023-07-13 17:48+0200\n"
 "PO-Revision-Date: 2022-12-17 12:03+0100\n"
 "Last-Translator: Irénée Thirion <irenee.thirion@e.email>\n"
 "Language-Team: \n"
@@ -32,157 +32,26 @@ msgstr "Un gestionnaire de passes numériques"
 msgid "Manage your digital passes"
 msgstr ""
 
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:8
-msgid "Pablo Sánchez Rodríguez"
-msgstr ""
-
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:10
 msgid ""
-"Passes is a useful application for managing all your digital passes. With "
-"Passes, you can easily and conveniently store your boarding passes, coupons, "
-"loyalty cards, event tickets and more provided to you in PKPass or esPass "
+"Passes is a handy app that helps you manage all your digital passes "
+"effortlessly. With Passes, you can conveniently store your boarding passes, "
+"coupons, loyalty cards, event tickets, and more, all in PKPass or esPass "
 "format."
 msgstr ""
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:11
 msgid ""
-"In addition, the application seamlessly adapts to various screen sizes, "
-"meaning you can access your passes on multiple devices, whether it be a "
-"desktop computer or a mobile phone."
+"Moreover, the app seamlessly adjusts to different screen sizes, allowing you "
+"to access your passes on various devices, whether it's a desktop computer or "
+"a mobile phone."
 msgstr ""
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:12
 msgid ""
-"Don't waste any more time searching through your email or printing out your "
-"digital passes. Download Passes now and have all your passes in one place."
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:23
-msgid ""
-"Passes has undergone many improvements since its last release. The main "
-"changes include the following:"
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:24
-msgid "Pass widget:"
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:26
-msgid ""
-"Pass widget is now focusable, allowing better user navigation with keyboard."
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:27
-msgid "Currencies are formatted when the international code is specified."
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:28
-msgid ""
-"Strip image is placed below primary fields of coupons, events, and store "
-"cards."
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:29
-msgid "Background image now appears in the background of event tickets."
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:30
-msgid "Improved barcode area design."
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:31
-msgid "Consideration of defined label color."
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:32
-msgid "Dates are shown in the local time zone."
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:34
-#, fuzzy
-msgid "Pass list:"
-msgstr "Passes"
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:36
-msgid ""
-"Passes are now sorted based on two criteria: expiration date and description."
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:37
-msgid ""
-"Pass icon will now be displayed in a grayed-out state to visually indicate "
-"that the pass has expired."
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:39
-#, fuzzy
-msgid "Addition information pane:"
-msgstr "Afficher les informations supplémentaires"
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:41
-msgid "Fields are now displayed within a boxed list."
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:42
-msgid "An icon and a message are displayed when the pane is empty."
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:44
-msgid "File chooser (thanks to TheEvilSkeleton):"
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:46
-msgid ""
-"File chooser window is now modal, so it connects and follow the main window."
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:47
-msgid "Filter for supported formats (PKPass and esPass) have been added."
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:48
-msgid "File chooser window can now be open with Ctrl+O."
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:50
-msgid "Translations"
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:52
-msgid "French translation has been added (thanks to rene-coty)."
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:53
-msgid "Spanish translation has been improved."
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:55
-msgid "Others:"
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:57
-msgid "PKPass passes can now be updated (if they are updatable)."
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:58
-msgid ""
-"License type and copyright fields have been updated (thanks to "
-"TheEvilSkeleton)."
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:59
-msgid ""
-"Media types have been included in appstream file (thanks to TheEvilSkeleton)."
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:60
-msgid ""
-"Escape shortcut can now be used to close the barcode dialog (thanks to "
-"TheEvilSkeleton)."
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:61
-msgid "\"Info\" icon has been included in the application."
+"Stop wasting time searching through your email or printing out your digital "
+"passes. Download Passes now and keep all your passes in one convenient "
+"location."
 msgstr ""
 
 #: src/main.py:130
@@ -350,6 +219,14 @@ msgstr "À propos de Passes"
 #: src/view/window.blp:154
 msgid "Delete"
 msgstr "Supprimer"
+
+#, fuzzy
+#~ msgid "Pass list:"
+#~ msgstr "Passes"
+
+#, fuzzy
+#~ msgid "Addition information pane:"
+#~ msgstr "Afficher les informations supplémentaires"
 
 #, fuzzy
 #~ msgid "Fixed shorcuts."

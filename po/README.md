@@ -1,8 +1,8 @@
 <!-- This file is auto-generated. Do not edit manually. -->
 | File | Translated | Fuzzy | Untranslated | Progress |
 |:-----|-----------:|------:|-------------:|---------:|
-| es.po | 40 | 3 | 31  | 54.05% |
-| eu.po | 24 | 7 | 43  | 32.43% |
-| fr.po | 38 | 4 | 32  | 51.35% |
-| it.po | 41 | 5 | 28  | 55.40% |
-| nl.po | 24 | 7 | 43  | 32.43% |
+| es.po | 40 | 1 | 4  | 88.88% |
+| eu.po | 24 | 6 | 15  | 53.33% |
+| fr.po | 38 | 2 | 5  | 84.44% |
+| it.po | 41 | 2 | 2  | 91.11% |
+| nl.po | 24 | 6 | 15  | 53.33% |
