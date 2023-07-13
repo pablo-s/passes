@@ -10,20 +10,36 @@ template PassRow : Gtk.ListBoxRow
     Gtk.Box box
     {
         can-focus: false;
-        margin-bottom: 0;
+        margin-bottom: 6;
         margin-end: 0;
         margin-start: 0;
-        margin-top: 0;
+        margin-top: 6;
         spacing: 12;
 
         .PassIcon icon {}
 
-        Gtk.Label name
+        Gtk.Box
         {
-            hexpand: true;
-            wrap: true;
-            xalign: 0;
+            orientation: vertical;
+            spacing: 3;
+            valign: center;
+
+            Gtk.Label title
+            {
+                ellipsize: end;
+                hexpand: true;
+                use-markup: true;
+                xalign: 0;
+            }
+
+            Gtk.Label subtitle
+            {
+                styles ["subtitle"]
+                hexpand: true;
+                xalign: 0;
+            }
         }
+
     }
 }
 

@@ -83,7 +83,7 @@ class EsPass():
     # Metadata
 
     def creator(self):
-        return self.__data.get('creator')
+        return self.__data.get('creator') or _('Unknown')
 
 
     # Fields
@@ -123,6 +123,9 @@ class EsPassAdapter(DigitalPass):
 
     def barcodes(self):
         return [self.__adaptee.barcode()]
+
+    def creator(self):
+        return self.__adaptee.creator()
 
     def description(self):
         return self.__adaptee.description()

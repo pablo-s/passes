@@ -1,6 +1,6 @@
 # pkpass_row.py
 #
-# Copyright 2022 Pablo Sánchez Rodríguez
+# Copyright 2022-2023 Pablo Sánchez Rodríguez
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from gi.repository import Gdk, Gtk
+from gi.repository import Gdk, GLib, Gtk
 
 from .pass_icon import PassIcon
 from .pass_row_header import PassRowHeader
@@ -27,24 +27,27 @@ class PassRow(Gtk.ListBoxRow):
     __gtype_name__ = 'PassRow'
 
     icon = Gtk.Template.Child()
-    name = Gtk.Template.Child()
+    title = Gtk.Template.Child()
+    subtitle = Gtk.Template.Child()
 
     def __init__(self, a_pass):
         super().__init__()
         self.__pass = a_pass
 
-        if a_pass.background_color():
-            self.icon.set_background_color(a_pass.background_color())
-
         if a_pass.icon():
             self.icon.set_image(a_pass.icon())
 
-        self.name.set_text(a_pass.description())
+        if a_pass.background_color():
+            self.icon.set_background_color(a_pass.background_color())
 
-        # Gray the label out if the pass has expired
+
+        description = GLib.markup_escape_text(a_pass.description())
+
         if self.__pass.has_expired():
-            self.icon.set_enabled(False)
-            self.name.set_sensitive(False)
+            description = '<s>%s</s>' % description
+
+        self.title.set_label(description)
+        self.subtitle.set_label(a_pass.creator())
 
     def data(self):
         return self.__pass

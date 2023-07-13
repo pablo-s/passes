@@ -38,6 +38,9 @@ class DigitalPass(GObject.GObject):
     def barcodes(self):
         raise NotImplementedError()
 
+    def creator(self):
+        raise NotImplementedError()
+
     def description(self):
         raise NotImplementedError()
 
