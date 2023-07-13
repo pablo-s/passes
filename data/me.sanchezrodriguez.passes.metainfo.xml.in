@@ -5,7 +5,7 @@
 	<summary>Manage your digital passes</summary>
 	<metadata_license>CC0-1.0</metadata_license>
 	<project_license>GPL-3.0-or-later</project_license>
-	<developer_name>Pablo Sánchez Rodríguez</developer_name>
+	<developer_name translate="no">Pablo Sánchez Rodríguez</developer_name>
 	<description>
 		<p>Passes is a useful application for managing all your digital passes. With Passes, you can easily and conveniently store your boarding passes, coupons, loyalty cards, event tickets and more provided to you in PKPass or esPass format.</p>
 		<p>In addition, the application seamlessly adapts to various screen sizes, meaning you can access your passes on multiple devices, whether it be a desktop computer or a mobile phone.</p>
@@ -19,7 +19,7 @@
 
 	<releases>
 			<release date="2023-06-18" version="0.8">
-			<description>
+			<description translate="no">
 				<p>Passes has undergone many improvements since its last release. The main changes include the following:</p>
 				<p>Pass widget:</p>
 				<ul>
