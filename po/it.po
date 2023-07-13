@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-21 19:59+0100\n"
+"POT-Creation-Date: 2023-07-13 16:44+0200\n"
 "PO-Revision-Date: 2023-06-19 07:23+0100\n"
 "Last-Translator: Albano Battistella <albanobattistella@gmail.com>\n"
 "Language-Team: Italian <LL@li.org>\n"
@@ -29,7 +29,8 @@ msgid "A digital pass manager"
 msgstr "Un gestore di biglietti digitali"
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:5
-msgid "Import and use your digital passes"
+#, fuzzy
+msgid "Manage your digital passes"
 msgstr "Importa e usa i tuoi biglietti digitali"
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:8
@@ -38,279 +39,165 @@ msgstr ""
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:10
 msgid ""
-"Passes is a tool that allows you to import and use your digital passes, such "
-"as boarding passes, coupons, loyalty cards, event tickets, etc."
+"Passes is a useful application for managing all your digital passes. With "
+"Passes, you can easily and conveniently store your boarding passes, coupons, "
+"loyalty cards, event tickets and more provided to you in PKPass or esPass "
+"format."
 msgstr ""
-"Passes è uno strumento che ti permette di importare e utilizzare i tuoi biglietti digitali, come "
-"carte d'imbarco, coupon, carte fedeltà, biglietti per eventi, ecc."
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:11
-msgid "Current features:"
-msgstr "Funzionalità correnti:"
+msgid ""
+"In addition, the application seamlessly adapts to various screen sizes, "
+"meaning you can access your passes on multiple devices, whether it be a "
+"desktop computer or a mobile phone."
+msgstr ""
 
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:13
-msgid "Adaptive user interface."
-msgstr "Interfaccia utente adattiva."
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:12
+msgid ""
+"Don't waste any more time searching through your email or printing out your "
+"digital passes. Download Passes now and have all your passes in one place."
+msgstr ""
 
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:14
-msgid "Import espass and pkpass files."
-msgstr "Importa file espass e pkpass."
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:15
-msgid "Display Aztec, CODE128, PDF417 and QR codes."
-msgstr "Display Aztec, CODE128, PDF417 e QR code."
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:22
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:53
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:67
-msgid "What is new?"
-msgstr "Cosa c'è di nuovo?"
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:23
+msgid ""
+"Passes has undergone many improvements since its last release. The main "
+"changes include the following:"
+msgstr ""
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:24
-msgid "Initial support for esPass format."
-msgstr "Supporto iniziale per il formato esPass."
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:25
-msgid "Dutch translation."
-msgstr "Traduzione olandese."
+msgid "Pass widget:"
+msgstr ""
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:26
-msgid "Italian translation."
-msgstr "Traduzione italiana."
+msgid ""
+"Pass widget is now focusable, allowing better user navigation with keyboard."
+msgstr ""
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:27
-msgid "Basque translation."
-msgstr "Traduzione in basco."
+msgid "Currencies are formatted when the international code is specified."
+msgstr ""
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:28
-msgid "Support for CODE128 codes."
-msgstr "Supporto per codici CODE128."
+msgid ""
+"Strip image is placed below primary fields of coupons, events, and store "
+"cards."
+msgstr ""
+
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:29
+msgid "Background image now appears in the background of event tickets."
+msgstr ""
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:30
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:57
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:73
-msgid "What has been changed/improved?"
-msgstr ""Cosa è stato cambiato/migliorato?"
+msgid "Improved barcode area design."
+msgstr ""
+
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:31
+msgid "Consideration of defined label color."
+msgstr ""
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:32
-msgid "Pass information is now displayed inside a card/pass widget."
-msgstr "Le informazioni sul biglietto ora vengono visualizzate all'interno di un widget tessera/pass."
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:33
-msgid "Updated version of application dependencies."
-msgstr "Versione aggiornata delle dipendenze dell'applicazione."
+msgid "Dates are shown in the local time zone."
+msgstr ""
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:34
-msgid "In pass list, pass icon is now rounded."
-msgstr "Nell'elenco dei biglietti, l'icona è ora arrotondata."
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:35
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:71
-msgid "Spanish translation."
-msgstr "Traduzione in spagnolo"
+#, fuzzy
+msgid "Pass list:"
+msgstr "Biglietti"
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:36
-msgid "Default size of barcode dialogue."
-msgstr "Dimensione predefinita della finestra di dialogo del codice a barre."
+msgid ""
+"Passes are now sorted based on two criteria: expiration date and description."
+msgstr ""
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:37
-msgid "Improved URL recognition inside back fields"
-msgstr "Migliorato il riconoscimento dell'URL all'interno dei campi posteriori"
+msgid ""
+"Pass icon will now be displayed in a grayed-out state to visually indicate "
+"that the pass has expired."
+msgstr ""
 
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:38
-msgid "Other minor improvements."
-msgstr "Altri miglioramenti minori."
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:39
+#, fuzzy
+msgid "Addition information pane:"
+msgstr "Nessuna informazione aggiuntiva"
 
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:40
-msgid "What has been fixed?"
-msgstr "Cosa è stato risolto?"
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:41
+msgid "Fields are now displayed within a boxed list."
+msgstr ""
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:42
-msgid "Fixed how encoded strings are passed to the barcode library."
-msgstr "Corretto il modo in cui le stringhe codificate vengono passate alla libreria dei codici a barre."
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:43
-msgid "Avoid adding links to back fields if they already have them."
-msgstr "Evita di aggiungere collegamenti ai campi posteriori se li hanno già."
+msgid "An icon and a message are displayed when the pane is empty."
+msgstr ""
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:44
-msgid "Fixed shorcuts."
-msgstr "Corretto le scorciatoie."
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:45
-msgid "Fixed drawing of passes without logo."
-msgstr "Corretto l'estrazione dei biglietti senza logo."
+msgid "File chooser (thanks to TheEvilSkeleton):"
+msgstr ""
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:46
-msgid "Other small fixes."
-msgstr "Altre piccole correzioni."
+msgid ""
+"File chooser window is now modal, so it connects and follow the main window."
+msgstr ""
+
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:47
+msgid "Filter for supported formats (PKPass and esPass) have been added."
+msgstr ""
+
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:48
+msgid "File chooser window can now be open with Ctrl+O."
+msgstr ""
+
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:50
+#, fuzzy
+msgid "Translations"
+msgstr "Traduzione olandese."
+
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:52
+msgid "French translation has been added (thanks to rene-coty)."
+msgstr ""
+
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:53
+#, fuzzy
+msgid "Spanish translation has been improved."
+msgstr "Traduzione in spagnolo"
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:55
-msgid ""
-"In pass list, pass description is now grayed out if the pass has expired."
+msgid "Others:"
 msgstr ""
-"Nell'elenco dei biglietti, la descrizione  ora è disattivata se il biglietto è scaduto."
+
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:57
+msgid "PKPass passes can now be updated (if they are updatable)."
+msgstr ""
+
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:58
+msgid ""
+"License type and copyright fields have been updated (thanks to "
+"TheEvilSkeleton)."
+msgstr ""
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:59
 msgid ""
-"After application startup, the pass list will be shown (instead of "
-"automatically navigating to the first pass in the list)."
+"Media types have been included in appstream file (thanks to TheEvilSkeleton)."
 msgstr ""
-"Dopo l'avvio dell'applicazione, verrà mostrato l'elenco dei biglietti (invece di "
-"navigazione automatica al primo biglietto nell'elenco)."
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:60
-msgid "Removed unnecessary files and dependencies from the Flatpak container."
-msgstr "File e dipendenze non necessarie rimosse dal container Flatpak."
+msgid ""
+"Escape shortcut can now be used to close the barcode dialog (thanks to "
+"TheEvilSkeleton)."
+msgstr ""
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:61
-msgid "Code changes toward supporting other pass formats in the future."
-msgstr "Il codice cambia per supportare altri formati di biglietti in futuro."
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:69
-msgid ""
-"Pass fields can display links for URLs, (some) telephone numbers and e-mails."
+msgid "\"Info\" icon has been included in the application."
 msgstr ""
-"I campi del biglietto possono visualizzare collegamenti per URL, (alcuni) numeri di telefono ed e-mail.
 
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:70
-msgid "Support for drawing PDF417 codes."
-msgstr "Supporto per il disegno di codici PDF417."
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:75
-msgid "Pass list is now sorted by relevant date instead of style."
-msgstr "L'elenco dei biglietti è ora ordinato per data rilevante invece che per stile."
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:76
-msgid "Pass fields were updated to be non-activatable."
-msgstr "I campi dei biglietti sono stati aggiornati per essere non attivabili."
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:77
-msgid ""
-"Barcodes will not be drawn at a fixed size, but they will adapt to the "
-"available space."
-msgstr ""
-"I codici a barre non verranno disegnati con una dimensione fissa, ma si adatteranno al "
-"spazio disponibile."
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:78
-msgid "Tooltips were added to the buttons that did not have them yet."
-msgstr "Le descrizioni comandi sono state aggiunte ai pulsanti che ancora non le avevano."
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:84
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:103
-msgid "New features:"
-msgstr "Nuove funzionalità:"
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:86
-msgid "Added support for Aztec codes."
-msgstr "Aggiunto il supporto per i codici aztechi."
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:87
-msgid "Passes will now be recognized as mobile compatible by Phosh."
-msgstr "I biglietti saranno ora riconosciuti come compatibili con dispositivi mobili da Phosh."
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:89
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:108
-msgid "Improvements:"
-msgstr "Miglioramenti:"
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:91
-msgid "Replaced python3-qrcode with zint."
-msgstr "Sostituito python3-qrcode con zint."
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:92
-msgid "Decreased memory consumption of instances of PKPass."
-msgstr "Diminuzione del consumo di memoria delle istanze di PKPass."
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:93
-msgid "In pass list, increased spacing between cards and descriptions."
-msgstr "Nella lista dei biglietti, maggiore spaziatura tra schede e descrizioni."
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:95
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:115
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:128
-msgid "Bug fixes:"
-msgstr "Correzioni di bug:"
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:97
-msgid "Pass field rows can now be created even if their value is not text."
-msgstr "Le righe del campo del biglietto ora possono essere create anche se il loro valore non è testo."
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:105
-msgid "Included website and description in About dialogue."
-msgstr "Sito Web e descrizione inclusi nella finestra di dialogo delle informazioni."
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:106
-msgid "The selected pass will not be highlighted if the leaflet is folded."
-msgstr "Il bilgietto selezionato non sarà evidenziato se il foglio illustrativo è piegato."
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:110
-msgid "Corrected margins and spaces between widgets."
-msgstr "Margini e spazi corretti tra i widget."
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:111
-msgid "Moved pass description in the right pane from title bar to pass view."
-msgstr "Descrizione del biglietto spostata nel riquadro destro dalla barra del titolo alla vista biglietto."
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:112
-msgid "Pass field rows can now wrap text if it is too long."
-msgstr "Le righe del campo del biglietto ora possono mandare a capo il testo se è troppo lungo."
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:113
-msgid "Pass view now shows a bigger logo inside a colored row."
-msgstr "La vista del biglietto ora mostra un logo più grande all'interno di una riga colorata."
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:117
-msgid "Capitalized application name in main menu."
-msgstr "Nome dell'applicazione in maiuscolo nel menu principale."
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:118
-msgid "Fixed a bug when displaying standard fields that do not have a label."
-msgstr "Risolto un bug durante la visualizzazione di campi standard che non hanno un'etichetta."
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:119
-msgid "Fixed import of passes with images that are not PNG."
-msgstr "Corretto l'importazione dei biglietti con immagini che non sono PNG."
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:120
-msgid "Fixed import of passes with text files encoded in UTF-16."
-msgstr "Corretta l'importazione dei biglietti con file di testo codificati in UTF-16."
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:121
-msgid "Fixed QR code icon color in dark mode."
-msgstr "Risolto il problema con il colore dell'icona del codice QR in modalità scura."
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:122
-msgid "Fixed the background of the barcode dialogue in dark mode."
-msgstr "Risolto lo sfondo del dialogo del codice a barre in modalità scura."
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:130
-msgid "Fix 'Add' icon."
-msgstr "Corretto l'icona 'Aggiungi'."
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:131
-msgid "Hide Settings entry from primary menu."
-msgstr "Nascondi la voce impostazioni dal menu principale."
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:137
-msgid "Initial release"
-msgstr "Versione iniziale"
-
-#: src/main.py:128 src/view/window.blp:30
-msgid "Import a pass"
-msgstr "Importa un biglietto"
-
-#: src/main.py:134
+#: src/main.py:130
 msgid "Supported passes"
 msgstr "Biglietti supportati"
 
-#: src/main.py:140
+#: src/main.py:135
 msgid "All files"
 msgstr "Tutti i file"
 
 #. Notify user
-#: src/main.py:184
+#: src/main.py:183
 msgid "Pass updated"
 msgstr "Biglietto aggiornato"
 
@@ -326,39 +213,39 @@ msgstr "Formato non ancora supportato"
 msgid "Unknown file encoding"
 msgstr "Sistema di codifica del file sconosciuto"
 
-#: src/model/digital_pass.py:222
+#: src/model/digital_pass.py:225
 msgid "Monday"
 msgstr "Lunedì"
 
-#: src/model/digital_pass.py:222
+#: src/model/digital_pass.py:225
 msgid "Tuesday"
 msgstr "Martedì"
 
-#: src/model/digital_pass.py:222
+#: src/model/digital_pass.py:225
 msgid "Wednesday"
 msgstr "Mercoledì"
 
-#: src/model/digital_pass.py:223
+#: src/model/digital_pass.py:226
 msgid "Thursday"
 msgstr "Giovedì"
 
-#: src/model/digital_pass.py:223
+#: src/model/digital_pass.py:226
 msgid "Friday"
 msgstr "Venerdì"
 
-#: src/model/digital_pass.py:223
+#: src/model/digital_pass.py:226
 msgid "Saturday"
 msgstr "Sabato"
 
-#: src/model/digital_pass.py:223
+#: src/model/digital_pass.py:226
 msgid "Sunday"
 msgstr "Domenica"
 
-#: src/model/digital_pass.py:257
+#: src/model/digital_pass.py:260
 msgid "Today"
 msgstr "Oggi"
 
-#: src/model/digital_pass.py:260
+#: src/model/digital_pass.py:263
 msgid "Tomorrow"
 msgstr "Domani"
 
@@ -428,6 +315,10 @@ msgctxt "shortcut window"
 msgid "Update selected pass"
 msgstr "Aggiorna biglietto selezionato"
 
+#: src/view/window.blp:30
+msgid "Import a pass"
+msgstr "Importa un biglietto"
+
 #: src/view/window.blp:39
 msgid "Menu"
 msgstr "Menù"
@@ -460,6 +351,235 @@ msgstr "Informazioni"
 #: src/view/window.blp:154
 msgid "Delete"
 msgstr "Elimina"
+
+#~ msgid ""
+#~ "Passes is a tool that allows you to import and use your digital passes, "
+#~ "such as boarding passes, coupons, loyalty cards, event tickets, etc."
+#~ msgstr ""
+#~ "Passes è uno strumento che ti permette di importare e utilizzare i tuoi "
+#~ "biglietti digitali, come carte d'imbarco, coupon, carte fedeltà, "
+#~ "biglietti per eventi, ecc."
+
+#~ msgid "Current features:"
+#~ msgstr "Funzionalità correnti:"
+
+#~ msgid "Adaptive user interface."
+#~ msgstr "Interfaccia utente adattiva."
+
+#~ msgid "Import espass and pkpass files."
+#~ msgstr "Importa file espass e pkpass."
+
+#~ msgid "Display Aztec, CODE128, PDF417 and QR codes."
+#~ msgstr "Display Aztec, CODE128, PDF417 e QR code."
+
+#~ msgid "What is new?"
+#~ msgstr "Cosa c'è di nuovo?"
+
+#~ msgid "Initial support for esPass format."
+#~ msgstr "Supporto iniziale per il formato esPass."
+
+#~ msgid "Italian translation."
+#~ msgstr "Traduzione italiana."
+
+#~ msgid "Basque translation."
+#~ msgstr "Traduzione in basco."
+
+#~ msgid "Support for CODE128 codes."
+#~ msgstr "Supporto per codici CODE128."
+
+#~ msgid "What has been changed/improved?"
+#~ msgstr "Cosa è stato cambiato/migliorato?"
+
+#~ msgid "Pass information is now displayed inside a card/pass widget."
+#~ msgstr ""
+#~ "Le informazioni sul biglietto ora vengono visualizzate all'interno di un "
+#~ "widget tessera/pass."
+
+#~ msgid "Updated version of application dependencies."
+#~ msgstr "Versione aggiornata delle dipendenze dell'applicazione."
+
+#~ msgid "In pass list, pass icon is now rounded."
+#~ msgstr "Nell'elenco dei biglietti, l'icona è ora arrotondata."
+
+#~ msgid "Default size of barcode dialogue."
+#~ msgstr ""
+#~ "Dimensione predefinita della finestra di dialogo del codice a barre."
+
+#~ msgid "Improved URL recognition inside back fields"
+#~ msgstr ""
+#~ "Migliorato il riconoscimento dell'URL all'interno dei campi posteriori"
+
+#~ msgid "Other minor improvements."
+#~ msgstr "Altri miglioramenti minori."
+
+#~ msgid "What has been fixed?"
+#~ msgstr "Cosa è stato risolto?"
+
+#~ msgid "Fixed how encoded strings are passed to the barcode library."
+#~ msgstr ""
+#~ "Corretto il modo in cui le stringhe codificate vengono passate alla "
+#~ "libreria dei codici a barre."
+
+#~ msgid "Avoid adding links to back fields if they already have them."
+#~ msgstr ""
+#~ "Evita di aggiungere collegamenti ai campi posteriori se li hanno già."
+
+#~ msgid "Fixed shorcuts."
+#~ msgstr "Corretto le scorciatoie."
+
+#~ msgid "Fixed drawing of passes without logo."
+#~ msgstr "Corretto l'estrazione dei biglietti senza logo."
+
+#~ msgid "Other small fixes."
+#~ msgstr "Altre piccole correzioni."
+
+#~ msgid ""
+#~ "In pass list, pass description is now grayed out if the pass has expired."
+#~ msgstr ""
+#~ "Nell'elenco dei biglietti, la descrizione  ora è disattivata se il "
+#~ "biglietto è scaduto."
+
+#~ msgid ""
+#~ "After application startup, the pass list will be shown (instead of "
+#~ "automatically navigating to the first pass in the list)."
+#~ msgstr ""
+#~ "Dopo l'avvio dell'applicazione, verrà mostrato l'elenco dei biglietti "
+#~ "(invece di navigazione automatica al primo biglietto nell'elenco)."
+
+#~ msgid ""
+#~ "Removed unnecessary files and dependencies from the Flatpak container."
+#~ msgstr "File e dipendenze non necessarie rimosse dal container Flatpak."
+
+#~ msgid "Code changes toward supporting other pass formats in the future."
+#~ msgstr ""
+#~ "Il codice cambia per supportare altri formati di biglietti in futuro."
+
+#~ msgid ""
+#~ "Pass fields can display links for URLs, (some) telephone numbers and e-"
+#~ "mails."
+#~ msgstr ""
+#~ "I campi del biglietto possono visualizzare collegamenti per URL, (alcuni) "
+#~ "numeri di telefono ed e-mail."
+
+#~ msgid "Support for drawing PDF417 codes."
+#~ msgstr "Supporto per il disegno di codici PDF417."
+
+#~ msgid "Pass list is now sorted by relevant date instead of style."
+#~ msgstr ""
+#~ "L'elenco dei biglietti è ora ordinato per data rilevante invece che per "
+#~ "stile."
+
+#~ msgid "Pass fields were updated to be non-activatable."
+#~ msgstr ""
+#~ "I campi dei biglietti sono stati aggiornati per essere non attivabili."
+
+#~ msgid ""
+#~ "Barcodes will not be drawn at a fixed size, but they will adapt to the "
+#~ "available space."
+#~ msgstr ""
+#~ "I codici a barre non verranno disegnati con una dimensione fissa, ma si "
+#~ "adatteranno al spazio disponibile."
+
+#~ msgid "Tooltips were added to the buttons that did not have them yet."
+#~ msgstr ""
+#~ "Le descrizioni comandi sono state aggiunte ai pulsanti che ancora non le "
+#~ "avevano."
+
+#~ msgid "New features:"
+#~ msgstr "Nuove funzionalità:"
+
+#~ msgid "Added support for Aztec codes."
+#~ msgstr "Aggiunto il supporto per i codici aztechi."
+
+#~ msgid "Passes will now be recognized as mobile compatible by Phosh."
+#~ msgstr ""
+#~ "I biglietti saranno ora riconosciuti come compatibili con dispositivi "
+#~ "mobili da Phosh."
+
+#~ msgid "Improvements:"
+#~ msgstr "Miglioramenti:"
+
+#~ msgid "Replaced python3-qrcode with zint."
+#~ msgstr "Sostituito python3-qrcode con zint."
+
+#~ msgid "Decreased memory consumption of instances of PKPass."
+#~ msgstr "Diminuzione del consumo di memoria delle istanze di PKPass."
+
+#~ msgid "In pass list, increased spacing between cards and descriptions."
+#~ msgstr ""
+#~ "Nella lista dei biglietti, maggiore spaziatura tra schede e descrizioni."
+
+#~ msgid "Bug fixes:"
+#~ msgstr "Correzioni di bug:"
+
+#~ msgid "Pass field rows can now be created even if their value is not text."
+#~ msgstr ""
+#~ "Le righe del campo del biglietto ora possono essere create anche se il "
+#~ "loro valore non è testo."
+
+#~ msgid "Included website and description in About dialogue."
+#~ msgstr ""
+#~ "Sito Web e descrizione inclusi nella finestra di dialogo delle "
+#~ "informazioni."
+
+#~ msgid "The selected pass will not be highlighted if the leaflet is folded."
+#~ msgstr ""
+#~ "Il bilgietto selezionato non sarà evidenziato se il foglio illustrativo è "
+#~ "piegato."
+
+#~ msgid "Corrected margins and spaces between widgets."
+#~ msgstr "Margini e spazi corretti tra i widget."
+
+#~ msgid ""
+#~ "Moved pass description in the right pane from title bar to pass view."
+#~ msgstr ""
+#~ "Descrizione del biglietto spostata nel riquadro destro dalla barra del "
+#~ "titolo alla vista biglietto."
+
+#~ msgid "Pass field rows can now wrap text if it is too long."
+#~ msgstr ""
+#~ "Le righe del campo del biglietto ora possono mandare a capo il testo se è "
+#~ "troppo lungo."
+
+#~ msgid "Pass view now shows a bigger logo inside a colored row."
+#~ msgstr ""
+#~ "La vista del biglietto ora mostra un logo più grande all'interno di una "
+#~ "riga colorata."
+
+#~ msgid "Capitalized application name in main menu."
+#~ msgstr "Nome dell'applicazione in maiuscolo nel menu principale."
+
+#~ msgid ""
+#~ "Fixed a bug when displaying standard fields that do not have a label."
+#~ msgstr ""
+#~ "Risolto un bug durante la visualizzazione di campi standard che non hanno "
+#~ "un'etichetta."
+
+#~ msgid "Fixed import of passes with images that are not PNG."
+#~ msgstr ""
+#~ "Corretto l'importazione dei biglietti con immagini che non sono PNG."
+
+#~ msgid "Fixed import of passes with text files encoded in UTF-16."
+#~ msgstr ""
+#~ "Corretta l'importazione dei biglietti con file di testo codificati in "
+#~ "UTF-16."
+
+#~ msgid "Fixed QR code icon color in dark mode."
+#~ msgstr ""
+#~ "Risolto il problema con il colore dell'icona del codice QR in modalità "
+#~ "scura."
+
+#~ msgid "Fixed the background of the barcode dialogue in dark mode."
+#~ msgstr "Risolto lo sfondo del dialogo del codice a barre in modalità scura."
+
+#~ msgid "Fix 'Add' icon."
+#~ msgstr "Corretto l'icona 'Aggiungi'."
+
+#~ msgid "Hide Settings entry from primary menu."
+#~ msgstr "Nascondi la voce impostazioni dal menu principale."
+
+#~ msgid "Initial release"
+#~ msgstr "Versione iniziale"
 
 #~ msgid "Anytime"
 #~ msgstr "Qualsiasi momento"

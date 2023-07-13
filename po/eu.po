@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: passes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-21 19:59+0100\n"
+"POT-Creation-Date: 2023-07-13 16:44+0200\n"
 "PO-Revision-Date: 2022-10-12 16:04+0200\n"
 "Last-Translator: Sergio Varela <>\n"
 "Language-Team: Basque - Spain <>\n"
@@ -30,7 +30,7 @@ msgid "A digital pass manager"
 msgstr "Emanaldi digitalen kudeatzaile bat"
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:5
-msgid "Import and use your digital passes"
+msgid "Manage your digital passes"
 msgstr ""
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:8
@@ -39,273 +39,163 @@ msgstr ""
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:10
 msgid ""
-"Passes is a tool that allows you to import and use your digital passes, such "
-"as boarding passes, coupons, loyalty cards, event tickets, etc."
+"Passes is a useful application for managing all your digital passes. With "
+"Passes, you can easily and conveniently store your boarding passes, coupons, "
+"loyalty cards, event tickets and more provided to you in PKPass or esPass "
+"format."
 msgstr ""
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:11
-msgid "Current features:"
+msgid ""
+"In addition, the application seamlessly adapts to various screen sizes, "
+"meaning you can access your passes on multiple devices, whether it be a "
+"desktop computer or a mobile phone."
 msgstr ""
 
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:13
-msgid "Adaptive user interface."
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:12
+msgid ""
+"Don't waste any more time searching through your email or printing out your "
+"digital passes. Download Passes now and have all your passes in one place."
 msgstr ""
 
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:14
-msgid "Import espass and pkpass files."
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:15
-msgid "Display Aztec, CODE128, PDF417 and QR codes."
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:22
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:53
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:67
-msgid "What is new?"
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:23
+msgid ""
+"Passes has undergone many improvements since its last release. The main "
+"changes include the following:"
 msgstr ""
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:24
-msgid "Initial support for esPass format."
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:25
-msgid "Dutch translation."
+msgid "Pass widget:"
 msgstr ""
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:26
-msgid "Italian translation."
+msgid ""
+"Pass widget is now focusable, allowing better user navigation with keyboard."
 msgstr ""
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:27
-msgid "Basque translation."
+msgid "Currencies are formatted when the international code is specified."
 msgstr ""
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:28
-msgid "Support for CODE128 codes."
+msgid ""
+"Strip image is placed below primary fields of coupons, events, and store "
+"cards."
+msgstr ""
+
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:29
+msgid "Background image now appears in the background of event tickets."
 msgstr ""
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:30
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:57
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:73
-msgid "What has been changed/improved?"
+msgid "Improved barcode area design."
+msgstr ""
+
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:31
+msgid "Consideration of defined label color."
 msgstr ""
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:32
-msgid "Pass information is now displayed inside a card/pass widget."
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:33
-msgid "Updated version of application dependencies."
+msgid "Dates are shown in the local time zone."
 msgstr ""
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:34
-msgid "In pass list, pass icon is now rounded."
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:35
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:71
-msgid "Spanish translation."
-msgstr ""
+#, fuzzy
+msgid "Pass list:"
+msgstr "Emanaldiak"
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:36
-msgid "Default size of barcode dialogue."
+msgid ""
+"Passes are now sorted based on two criteria: expiration date and description."
 msgstr ""
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:37
-msgid "Improved URL recognition inside back fields"
+msgid ""
+"Pass icon will now be displayed in a grayed-out state to visually indicate "
+"that the pass has expired."
 msgstr ""
 
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:38
-msgid "Other minor improvements."
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:39
+msgid "Addition information pane:"
 msgstr ""
 
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:40
-msgid "What has been fixed?"
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:41
+msgid "Fields are now displayed within a boxed list."
 msgstr ""
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:42
-msgid "Fixed how encoded strings are passed to the barcode library."
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:43
-msgid "Avoid adding links to back fields if they already have them."
+msgid "An icon and a message are displayed when the pane is empty."
 msgstr ""
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:44
-#, fuzzy
-msgid "Fixed shorcuts."
-msgstr "Teklatuko lasterbideak"
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:45
-msgid "Fixed drawing of passes without logo."
+msgid "File chooser (thanks to TheEvilSkeleton):"
 msgstr ""
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:46
-msgid "Other small fixes."
+msgid ""
+"File chooser window is now modal, so it connects and follow the main window."
+msgstr ""
+
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:47
+msgid "Filter for supported formats (PKPass and esPass) have been added."
+msgstr ""
+
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:48
+msgid "File chooser window can now be open with Ctrl+O."
+msgstr ""
+
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:50
+msgid "Translations"
+msgstr ""
+
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:52
+msgid "French translation has been added (thanks to rene-coty)."
+msgstr ""
+
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:53
+msgid "Spanish translation has been improved."
 msgstr ""
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:55
+msgid "Others:"
+msgstr ""
+
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:57
+msgid "PKPass passes can now be updated (if they are updatable)."
+msgstr ""
+
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:58
 msgid ""
-"In pass list, pass description is now grayed out if the pass has expired."
+"License type and copyright fields have been updated (thanks to "
+"TheEvilSkeleton)."
 msgstr ""
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:59
 msgid ""
-"After application startup, the pass list will be shown (instead of "
-"automatically navigating to the first pass in the list)."
+"Media types have been included in appstream file (thanks to TheEvilSkeleton)."
 msgstr ""
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:60
-msgid "Removed unnecessary files and dependencies from the Flatpak container."
+msgid ""
+"Escape shortcut can now be used to close the barcode dialog (thanks to "
+"TheEvilSkeleton)."
 msgstr ""
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:61
-msgid "Code changes toward supporting other pass formats in the future."
+msgid "\"Info\" icon has been included in the application."
 msgstr ""
 
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:69
-msgid ""
-"Pass fields can display links for URLs, (some) telephone numbers and e-mails."
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:70
-msgid "Support for drawing PDF417 codes."
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:75
-msgid "Pass list is now sorted by relevant date instead of style."
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:76
-msgid "Pass fields were updated to be non-activatable."
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:77
-msgid ""
-"Barcodes will not be drawn at a fixed size, but they will adapt to the "
-"available space."
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:78
-msgid "Tooltips were added to the buttons that did not have them yet."
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:84
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:103
-msgid "New features:"
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:86
-msgid "Added support for Aztec codes."
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:87
-msgid "Passes will now be recognized as mobile compatible by Phosh."
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:89
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:108
-msgid "Improvements:"
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:91
-msgid "Replaced python3-qrcode with zint."
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:92
-msgid "Decreased memory consumption of instances of PKPass."
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:93
-msgid "In pass list, increased spacing between cards and descriptions."
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:95
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:115
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:128
-msgid "Bug fixes:"
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:97
-msgid "Pass field rows can now be created even if their value is not text."
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:105
-msgid "Included website and description in About dialogue."
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:106
-msgid "The selected pass will not be highlighted if the leaflet is folded."
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:110
-msgid "Corrected margins and spaces between widgets."
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:111
-msgid "Moved pass description in the right pane from title bar to pass view."
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:112
-msgid "Pass field rows can now wrap text if it is too long."
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:113
-msgid "Pass view now shows a bigger logo inside a colored row."
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:117
-msgid "Capitalized application name in main menu."
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:118
-msgid "Fixed a bug when displaying standard fields that do not have a label."
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:119
-msgid "Fixed import of passes with images that are not PNG."
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:120
-msgid "Fixed import of passes with text files encoded in UTF-16."
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:121
-msgid "Fixed QR code icon color in dark mode."
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:122
-msgid "Fixed the background of the barcode dialogue in dark mode."
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:130
-msgid "Fix 'Add' icon."
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:131
-msgid "Hide Settings entry from primary menu."
-msgstr ""
-
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:137
-msgid "Initial release"
-msgstr ""
-
-#: src/main.py:128 src/view/window.blp:30
-msgid "Import a pass"
-msgstr "Emanaldi bat inportatu"
-
-#: src/main.py:134
+#: src/main.py:130
 #, fuzzy
 msgid "Supported passes"
 msgstr "Emanaldi bat inportatu"
 
-#: src/main.py:140
+#: src/main.py:135
 msgid "All files"
 msgstr ""
 
 #. Notify user
-#: src/main.py:184
+#: src/main.py:183
 msgid "Pass updated"
 msgstr ""
 
@@ -321,39 +211,39 @@ msgstr "Formatu hau ez da oraindik onartzen"
 msgid "Unknown file encoding"
 msgstr "Artxiboaren kodifikazioa ezezaguna da"
 
-#: src/model/digital_pass.py:222
+#: src/model/digital_pass.py:225
 msgid "Monday"
 msgstr "Astelehena"
 
-#: src/model/digital_pass.py:222
+#: src/model/digital_pass.py:225
 msgid "Tuesday"
 msgstr "Asteartea"
 
-#: src/model/digital_pass.py:222
+#: src/model/digital_pass.py:225
 msgid "Wednesday"
 msgstr "Asteazkena"
 
-#: src/model/digital_pass.py:223
+#: src/model/digital_pass.py:226
 msgid "Thursday"
 msgstr "Osteguna"
 
-#: src/model/digital_pass.py:223
+#: src/model/digital_pass.py:226
 msgid "Friday"
 msgstr "Ostirala"
 
-#: src/model/digital_pass.py:223
+#: src/model/digital_pass.py:226
 msgid "Saturday"
 msgstr "Larunbata"
 
-#: src/model/digital_pass.py:223
+#: src/model/digital_pass.py:226
 msgid "Sunday"
 msgstr "Igandea"
 
-#: src/model/digital_pass.py:257
+#: src/model/digital_pass.py:260
 msgid "Today"
 msgstr "Gaur"
 
-#: src/model/digital_pass.py:260
+#: src/model/digital_pass.py:263
 msgid "Tomorrow"
 msgstr "Bihar"
 
@@ -427,6 +317,10 @@ msgctxt "shortcut window"
 msgid "Update selected pass"
 msgstr ""
 
+#: src/view/window.blp:30
+msgid "Import a pass"
+msgstr "Emanaldi bat inportatu"
+
 #: src/view/window.blp:39
 msgid "Menu"
 msgstr "Menua"
@@ -460,6 +354,10 @@ msgstr "Emanaldiak-ri buruz"
 #: src/view/window.blp:154
 msgid "Delete"
 msgstr "Ezabatu"
+
+#, fuzzy
+#~ msgid "Fixed shorcuts."
+#~ msgstr "Teklatuko lasterbideak"
 
 #~ msgid "Anytime"
 #~ msgstr "Edozein unetan"
