@@ -3,8 +3,7 @@ plugindir = join_paths(get_option('prefix'), get_option('libdir'), meson.project
 moduledir = join_paths(pkgdatadir, 'passes')
 gnome = import('gnome')
 
-compile_blueprint_files = custom_target('compile_blueprint_files',
-  input: files(
+blueprint_files = files(
     'view/barcode_dialog.blp',
     'view/help_overlay.blp',
     'view/pass_list/pass_icon.blp',
@@ -13,23 +12,26 @@ compile_blueprint_files = custom_target('compile_blueprint_files',
     'view/pass_list/pass_row_header.blp',
     'view/pass_viewer/additional_information_pane.blp',
     'view/pass_viewer/pass_field_row.blp',
-    'view/window.blp'
-  ),
-  output: 'generated_ui_files',
-  command: [find_program('blueprint-compiler'), 'batch-compile',
-    '@OUTPUT@', '@CURRENT_SOURCE_DIR@', '@INPUT@'],
-)
+    'view/window.blp')
 
-collect_ui_files = custom_target('collect_ui_files',
-  depends: compile_blueprint_files,
-  output: '.',
-  command: ['find', '@OUTDIR@/generated_ui_files',
-    '-type', 'f', '-name', '*.ui',
-    '-exec', 'cp', '-t', '@OUTPUT@', '{}', '+'])
+blueprint_compiler = find_program('blueprint-compiler')
+ui_files = []
+
+foreach blueprint_file : blueprint_files
+  path_as_string = '@0@'.format(blueprint_file)
+  filename = path_as_string.split('/')[-1]
+
+  ui_file = custom_target(path_as_string.underscorify(),
+    input: blueprint_file,
+    output: filename.replace('.blp', '.ui'),
+    command: [blueprint_compiler, 'compile', '--output', '@OUTPUT@', '@INPUT@'])
+
+  ui_files += ui_file
+endforeach
 
 gnome.compile_resources('passes',
   'passes.gresource.xml',
-  dependencies: collect_ui_files,
+  dependencies: ui_files,
   gresource_bundle: true,
   install: true,
   install_dir: pkgdatadir,
