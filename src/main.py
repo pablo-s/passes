@@ -75,7 +75,7 @@ class Application(Adw.Application):
             digital_pass = PassFactory.create(pass_file)
 
             stored_file = self.__persistence\
-                .save_pass_file(pass_file, digital_pass.format())
+                .save_pass_file(pass_file, digital_pass.unique_identifier())
 
             digital_pass.set_path(stored_file.get_path())
             self.__pass_list.insert(digital_pass)
@@ -162,7 +162,8 @@ class Application(Adw.Application):
             # Download and save the latest version of the pass file
             latest_pass_data = PassUpdater.update(selected_pass)
             stored_file = self.__persistence\
-                .save_pass_data(latest_pass_data, selected_pass.format())
+                .save_pass_data(latest_pass_data,
+                                selected_pass.unique_identifier())
 
             # Create a new pass from the saved file
             digital_pass = PassFactory.create(stored_file)

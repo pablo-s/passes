@@ -157,8 +157,7 @@ class EsPassAdapter(DigitalPass):
         return 'application/vnd.espass-espass+zip'
 
     def unique_identifier(self):
-        return '.'.join([self.format(),
-                         self.__adaptee.id()])
+        return '.'.join([self.__adaptee.id(), self.format()])
 
     def voided(self):
         return False

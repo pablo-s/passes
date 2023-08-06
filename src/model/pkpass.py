@@ -246,9 +246,9 @@ class PKPassAdapter(DigitalPass):
         return 'application/vnd.apple.pkpass'
 
     def unique_identifier(self):
-        return '.'.join([self.format(),
-                         self.__adaptee.pass_type_identifier(),
-                         self.__adaptee.serial_number()])
+        return '.'.join([self.__adaptee.pass_type_identifier(),
+                         self.__adaptee.serial_number(),
+                         self.format()])
 
     def voided(self):
         return self.__adaptee.voided()

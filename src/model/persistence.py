@@ -1,6 +1,6 @@
 # persistence.py
 #
-# Copyright 2022 Pablo Sánchez Rodríguez
+# Copyright 2022-2023 Pablo Sánchez Rodríguez
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -50,17 +50,16 @@ class PersistenceManager:
         target_file = Gio.File.new_for_path(target_path)
         target_file.delete()
 
-    def save_pass_data(self, pass_data, pass_format):
+    def save_pass_data(self, pass_data, file_name):
         with tempfile.NamedTemporaryFile() as temp_pass_file:
             temp_pass_file.write(pass_data)
 
             pass_file_path = os.path.join(tempfile.gettempdir(), str(temp_pass_file.name))
             pass_file = Gio.File.new_for_path(pass_file_path)
-            return self.save_pass_file(pass_file, pass_format)
+            return self.save_pass_file(pass_file, file_name)
 
-    def save_pass_file(self, pass_file, pass_format):
-        destination_file_name = str(pass_file.hash()) + '.' + pass_format
-        destination_file_path = os.path.join(self.__data_dir, destination_file_name)
+    def save_pass_file(self, pass_file, file_name):
+        destination_file_path = os.path.join(self.__data_dir, file_name)
         destination_file = Gio.File.new_for_path(destination_file_path)
 
         if Gio.File.query_exists(destination_file):
