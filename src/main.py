@@ -74,6 +74,10 @@ class Application(Adw.Application):
         try:
             digital_pass = PassFactory.create(pass_file)
 
+            if digital_pass in self.__pass_list:
+                self.window().show_toast("Pass already imported")
+                return
+
             stored_file = self.__persistence\
                 .save_pass_file(pass_file, digital_pass.unique_identifier())
 

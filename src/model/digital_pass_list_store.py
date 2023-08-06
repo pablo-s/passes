@@ -30,8 +30,21 @@ class DigitalPassListStore(GObject.GObject):
         super().__init__()
         self.__list_store = Gio.ListStore.new(DigitalPass)
 
+    def __contains__(self, digital_pass):
+        return self.find(digital_pass)[0]
+
     def find(self, digital_pass):
-        return self.__list_store.find(digital_pass)
+        # The implementation of this method should use
+        # Gio.ListStore.find_with_equal_func() instead of get_item(). However,
+        # the method is broken and the fix has not been merged yet.
+        # https://gitlab.gnome.org/GNOME/pygobject/-/merge_requests/218
+
+        for position in range(self.length()):
+            item = self.__list_store.get_item(position)
+            if item.unique_identifier() == digital_pass.unique_identifier():
+                return True, position
+
+        return False, 0
 
     def get_model(self):
         return self.__list_store
