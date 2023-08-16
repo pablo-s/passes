@@ -89,12 +89,15 @@ class BarcodeWidget(Gtk.Widget):
 
         if format in ['AZTEC', 'PKBarcodeFormatAztec']:
             encoding_function = BarcodeContentEncoder.encode_aztec_code
+            self.__margin_size = 2
 
         elif format in ['CODE_128', 'PKBarcodeFormatCode128']:
             encoding_function = BarcodeContentEncoder.encode_code128_code
+            self.__margin_size = 7
 
         elif format in ['PDF_417', 'PKBarcodeFormatPDF417']:
             encoding_function = BarcodeContentEncoder.encode_pdf417_code
+            self.__margin_size = 2
 
         elif format in ['PKBarcodeFormatQR', 'QR_CODE']:
             encoding_function = BarcodeContentEncoder.encode_qr_code
