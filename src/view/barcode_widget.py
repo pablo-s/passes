@@ -43,39 +43,29 @@ class BarcodeWidget(Gtk.Widget):
 
         # Amount of barcode dots/modules that should fit in every margin (either
         # horizontal or vertical)
-        self.__margin_size_in_dots = 4
+        self.__margin_size = 4
+
+    def aspect_ratio(self):
+        return (self.__data_width + self.__margin_size) / (self.__data_height + self.__margin_size)
 
     def do_snapshot(self, snapshot):
         canvas_width = self.get_allocated_width()
         canvas_height = self.get_allocated_height()
 
-        # Calculate the biggest dot size that allows drawing the full barcode in
-        # the current canvas
-        horizontal_dot_size = canvas_width // (self.__data_width + 2 * self.__margin_size_in_dots)
-        vertical_dot_size = canvas_height // (self.__data_height + 2 * self.__margin_size_in_dots)
-        self.__dot_size = min(horizontal_dot_size, vertical_dot_size)
+        barcode_width = self.__data_width + 2 * self.__margin_size
+        barcode_height = self.__data_height + 2 * self.__margin_size
 
-        # Center the qr-code horizontal and vertically in the canvas
-        offset_x = (canvas_width // 2) - (self.__data_width * self.__dot_size // 2)
-        offset_y = (canvas_height // 2) - (self.__data_height * self.__dot_size // 2)
+        h_scaling = canvas_width / barcode_width
+        v_scaling = canvas_height / barcode_height
+        scaling_factor = int(min(h_scaling, v_scaling))
 
-        # Draw the background
-        margin_size = self.__margin_size_in_dots * self.__dot_size
-        rectangle = Graphene.Rect()
-        rectangle.init(offset_x - margin_size,
-                       offset_y - margin_size,
-                       self.__data_width * self.__dot_size + 2 * margin_size,
-                       self.__data_height * self.__dot_size + 2 * margin_size)
+        translation = Graphene.Point()
+        translation.x = (canvas_width - barcode_width * scaling_factor) / 2
+        translation.y = (canvas_height - barcode_height * scaling_factor) / 2
+        snapshot.translate(translation)
 
-        radius = Graphene.Size()
-        radius.init(margin_size, margin_size)
+        snapshot.scale(scaling_factor, scaling_factor)
 
-        rounded_rectangle = Gsk.RoundedRect()
-        rounded_rectangle.init(rectangle, radius, radius, radius, radius)
-
-        snapshot.push_rounded_clip(rounded_rectangle)
-        snapshot.append_color(self.__background_color, rectangle)
-        snapshot.pop()
 
         # Draw the barcode
         for i in range(self.__data_height):
@@ -87,13 +77,11 @@ class BarcodeWidget(Gtk.Widget):
                 if not is_foreground:
                     continue
 
-                x = j * self.__dot_size + offset_x
-                y = i * self.__dot_size + offset_y
-                w = self.__dot_size
-                h = self.__dot_size
-
                 rectangle = Graphene.Rect()
-                rectangle.init(x, y, w, h)
+                rectangle.init(j + self.__margin_size,
+                               i + self.__margin_size,
+                               1,
+                               1)
                 snapshot.append_color(self.__foreground_color, rectangle)
 
     def encode(self, format, message, encoding):
