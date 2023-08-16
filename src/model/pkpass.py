@@ -286,7 +286,11 @@ class StandardField:
             pass
 
         finally:
-            self.__value = value
+            self.__value = value.strip()
+
+        if not self.__key or not self.__value:
+            # Keys and values are required fields.
+            raise Exception()
 
         self.__label = None
         if 'label' in pkpass_field_dictionary.keys():

@@ -373,10 +373,13 @@ class PassDataExtractor:
 
         result = list()
         for item_data in data_list:
-            arguments = (item_data,) + extra_arguments
 
             if item_constructor:
-                instance = item_constructor(*arguments)
+                try:
+                    arguments = (item_data,) + extra_arguments
+                    instance = item_constructor(*arguments)
+                except:
+                    continue
             else:
                 instance = item_data
 
