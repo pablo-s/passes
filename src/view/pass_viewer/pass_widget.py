@@ -299,10 +299,8 @@ class PkPassPlotter(PassPlotter):
 
         # Label color
         label_color = pkpass.label_color()
-        if label_color:
-            self._label_color = label_color.as_gdk_rgba()
-        else:
-            self._label_color = self._fg_color.copy()
+        self._label_color = label_color.as_gdk_rgba() \
+            if label_color else Color.named('black').as_gdk_rgba()
 
         # Images
         self._background_texture = None
