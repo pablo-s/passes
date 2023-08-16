@@ -167,7 +167,7 @@ class Application(Adw.Application):
             latest_pass_data = PassUpdater.update(selected_pass)
             stored_file = self.__persistence\
                 .save_pass_data(latest_pass_data,
-                                selected_pass.unique_identifier())
+                                selected_pass.unique_identifier() + '.tmp')
 
             # Create a new pass from the saved file
             digital_pass = PassFactory.create(stored_file)
@@ -177,8 +177,9 @@ class Application(Adw.Application):
             selected_pass_index = self.window().selected_pass_index()
             self.__pass_list.remove(selected_pass_index)
 
-            # Delete old pass file
-            self.__persistence.delete_pass_file(selected_pass)
+            # Replace the old pass file with the new one
+            self.__persistence.replace_pass_file(selected_pass,
+                                                 replacement=digital_pass)
 
             # Select the new pass in the pass list
             found, updated_pass_index = self.__pass_list.find(digital_pass)

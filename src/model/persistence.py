@@ -50,6 +50,15 @@ class PersistenceManager:
         target_file = Gio.File.new_for_path(target_path)
         target_file.delete()
 
+    def replace_pass_file(self, pass_to_replace, replacement):
+        source_path = replacement.get_path()
+        destination_path = pass_to_replace.get_path()
+
+        os.remove(destination_path)
+        os.rename(source_path, destination_path)
+
+        replacement.set_path(destination_path)
+
     def save_pass_data(self, pass_data, file_name):
         with tempfile.NamedTemporaryFile() as temp_pass_file:
             temp_pass_file.write(pass_data)
