@@ -111,6 +111,12 @@ class BarcodeWidget(Gtk.Widget):
         self.__data_width = width
         self.__data_height = height
 
+    def minimum_height(self):
+        return self.__data_height + 2 * self.__margin_size
+
+    def minimum_width(self):
+        return self.__data_width + 2 * self.__margin_size
+
 
 class BarcodeFormatNotSupported(Exception):
     def __init__(self):

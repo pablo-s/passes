@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from gi.repository import Adw, Gdk, Graphene, Gsk, Gtk, Pango
+from gi.repository import Adw, Gdk, GObject, Graphene, Gsk, Gtk, Pango
 
 from .barcode_widget import BarcodeWidget
 from .digital_pass import Color
@@ -104,19 +104,6 @@ class PassPlotter:
     def __init__(self, a_pass, pass_widget):
         self._pass_widget = pass_widget
         self._pango_context = pass_widget.get_pango_context()
-
-        # Barcode
-        self._barcode = None
-        barcode = a_pass.barcodes()[0]
-        if barcode:
-            self._barcode = BarcodeWidget()
-            self._barcode.props.width_request = PASS_WIDTH
-            self._barcode.props.height_request = 110
-            self._pass_widget.put(self._barcode, 0, PASS_HEIGHT - PASS_MARGIN - self._barcode.props.height_request)
-
-            self._barcode.encode(barcode.format(),
-                                 barcode.message(),
-                                 barcode.message_encoding())
 
     def _create_fields_layouts(self, fields):
         rows = []
@@ -596,6 +583,7 @@ class PassWidget(Gtk.Fixed):
         super().__init__()
 
         self.__pass_plotter = None
+        self.__barcode_button = None
         self.__children = []
 
         self.props.width_request = PASS_WIDTH
@@ -610,26 +598,75 @@ class PassWidget(Gtk.Fixed):
 
         self.add_css_class('card')
 
+    def __on_barcode_clicked(self, args):
+        self.emit('barcode_clicked')
+
+    @GObject.Signal
+    def barcode_clicked(self):
+        pass
+
     def do_snapshot(self, snapshot):
         if not self.__pass_plotter:
             return
 
         self.__pass_plotter.plot(snapshot)
 
-        for widget in self.__children:
-            self.snapshot_child(widget, snapshot)
+        if self.__barcode_button:
+            self.snapshot_child(self.__barcode_button, snapshot)
 
     def content(self, a_pass):
-        for child in self.__children:
-            self.remove(child)
+        if self.__barcode_button:
+            self.remove(self.__barcode_button)
+            self.__barcode_button = None
 
-        self.__children = []
         self.__pass_plotter = PassPlotter.new(a_pass, self)
+        self.create_barcode_button(a_pass)
 
         # After changing the plotter, we have to redraw the widget
         self.queue_draw()
 
-    def put(self, widget, x, y):
-        self.__children.append(widget)
-        super().put(widget, x, y)
+    def create_barcode_button(self, a_pass):
+        barcode = a_pass.barcodes()[0]
 
+        if not barcode:
+            return
+
+        self.__barcode_button = Gtk.Button()
+        self.__barcode_button.connect('clicked', self.__on_barcode_clicked)
+        self.__barcode_button.add_css_class('barcode-button')
+        barcode_widget = BarcodeWidget()
+        barcode_widget.encode(barcode.format(),
+                              barcode.message(),
+                              barcode.message_encoding())
+
+        aspect_ratio = barcode_widget.aspect_ratio()
+
+        # Square codes
+        if aspect_ratio == 1:
+            max_times = 140 // barcode_widget.minimum_height()
+
+            barcode_button_width = max_times * barcode_widget.minimum_height()
+            barcode_button_height = max_times * barcode_widget.minimum_height()
+
+        # Horizontal codes
+        elif aspect_ratio > 1:
+            max_times = (PASS_WIDTH - 2*PASS_MARGIN) // barcode_widget.minimum_width()
+
+            if max_times * barcode_widget.minimum_height() > 140:
+                max_times = 140 // barcode_widget.minimum_height()
+
+            barcode_button_width = max_times * barcode_widget.minimum_width()
+            barcode_button_height = max_times * barcode_widget.minimum_height()
+
+        # Vertical codes
+        else:
+            barcode_button_width = 177
+            barcode_button_height = 177
+
+        self.__barcode_button.props.width_request = barcode_button_width
+        self.__barcode_button.props.height_request = barcode_button_height
+
+        self.__barcode_button.set_child(barcode_widget)
+        self.put(self.__barcode_button,
+                 PASS_WIDTH/2 - barcode_button_width/2,
+                 PASS_HEIGHT - PASS_MARGIN - barcode_button_height)
