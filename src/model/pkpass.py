@@ -297,6 +297,7 @@ class StandardField:
             self.__label = pkpass_field_dictionary['label']
             if translation_dictionary and self.__label in translation_dictionary.keys():
                 self.__label = translation_dictionary[self.__label]
+            self.__label = self.__label.upper()
 
         self.__text_alignment = None
         if 'textAlignment' in pkpass_field_dictionary.keys():
