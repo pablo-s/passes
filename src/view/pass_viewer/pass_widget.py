@@ -412,8 +412,9 @@ class PkPassWithStripPlotter(PkPassPlotter):
         # Draw the strip
 
         strip_height = 0
+        draw_strip = self._strip_texture and not self._background_texture
 
-        if self._strip_texture and not self._background_texture:
+        if draw_strip:
             strip_scale = PASS_WIDTH / self._strip_texture.get_width()
             strip_height = self._strip_texture.get_height() * strip_scale
 
@@ -445,7 +446,8 @@ class PkPassWithStripPlotter(PkPassPlotter):
             point.y = 0
             self._snapshot.translate(point)
 
-            field_layout.append(self._snapshot, self._label_color, self._fg_color)
+            label_color = self._fg_color if draw_strip else self._label_color
+            field_layout.append(self._snapshot, label_color, self._fg_color)
 
             self._snapshot.restore()
 
