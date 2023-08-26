@@ -23,7 +23,7 @@
 }
 
 /* Do not highlight the selected menu row when the leaflet is folded. */
-.folded row:selected:not(:hover):not(:active)
+navigation-view row:selected:not(:hover):not(:active)
 {
   background-color: transparent;
 }
