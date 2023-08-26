@@ -39,6 +39,16 @@ class PassKitWebService:
 
         return connection
 
+    @staticmethod
+    def get_from_new_location(new_location):
+        print(new_location)
+        protocol, host_and_path = new_location.split('//', 1)
+        host, path = host_and_path.split('/', 1)
+
+        connection = http.client.HTTPSConnection(host)
+        connection.request("GET", '/{}'.format(path))
+
+        return connection
 
 class PassUpdater:
 
@@ -62,15 +72,20 @@ class PassUpdater:
 
         first_iteration = True
         last_response_status = -1
+        new_location = None
 
-        while first_iteration or last_response_status == 302:
+        while first_iteration or last_response_status in [301, 302]:
             first_iteration = False
 
-            connection = PassKitWebService\
-                            .get_latest_version(web_service_url,
-                                                pass_type_identifier,
-                                                serial_number,
-                                                authentication_token)
+            if new_location:
+                connection = PassKitWebService\
+                                .get_from_new_location(new_location)
+            else:
+                connection = PassKitWebService\
+                                .get_latest_version(web_service_url,
+                                                    pass_type_identifier,
+                                                    serial_number,
+                                                    authentication_token)
 
             response = connection.getresponse()
             last_response_status = response.status
@@ -86,10 +101,10 @@ class PassUpdater:
                 connection.close()
                 raise PassAlreadyUpdated()
 
-            elif response.status == 302:
-                """ 302 Found """
+            elif response.status in [301, 302]:
+                """ 301 Moved Permanently / 302 Found """
                 # Web Service URL has been updated
-                web_service_url = response.getheader('Location')
+                new_location = response.getheader('Location')
                 connection.close()
                 continue
 
