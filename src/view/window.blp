@@ -136,24 +136,15 @@ template PassesWindow : Adw.ApplicationWindow
 
                     content: Adw.NavigationPage info_panel
                     {
+                        width-request: 332;
+
                         Adw.ToolbarView
                         {
                             [top]
                             Adw.HeaderBar
                             {}
 
-                            Gtk.ScrolledWindow scrolled_window
-                            {
-                                hscrollbar-policy: never;
-
-                                Gtk.Viewport
-                                {
-                                    scroll-to-focus: true;
-                                    halign: center;
-
-                                    .AdditionalInformationPane pass_additional_info {}
-                                }
-                            }
+                            .AdditionalInformationPane pass_additional_info {}
                         }
                     };
                 }
