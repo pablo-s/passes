@@ -28,9 +28,10 @@ class PassesWindow(Adw.ApplicationWindow):
     __gtype_name__ = 'PassesWindow'
 
     main_leaflet = Gtk.Template.Child()
+    inner_leaflet = Gtk.Template.Child()
 
-    back_button = Gtk.Template.Child()
     update_button = Gtk.Template.Child()
+    info_button = Gtk.Template.Child()
 
     pass_list = Gtk.Template.Child()
     pass_widget = Gtk.Template.Child()
@@ -59,14 +60,11 @@ class PassesWindow(Adw.ApplicationWindow):
         self.pass_list.bind_model(pass_list_model)
 
         # Connect callbacks
-        self.back_button.connect('clicked', self._on_back_clicked)
         self.pass_list.connect('row-activated', self._on_row_activated)
         self.pass_widget.connect('barcode-clicked', self._on_barcode_clicked)
+        self.info_button.connect('clicked', self._on_info_button_clicked)
 
         self.main_leaflet_can_navigate = True
-
-    def _on_back_clicked(self, button):
-        self.navigate_back()
 
     def _on_barcode_clicked(self, button):
         try:
@@ -83,6 +81,9 @@ class PassesWindow(Adw.ApplicationWindow):
         except Exception as error:
             self.show_toast(str(error))
 
+    def _on_info_button_clicked(self, button):
+        self.inner_leaflet.set_show_content(True);
+
     def _on_row_activated(self, pass_list, pass_row):
         a_pass = pass_row.data()
 
@@ -92,16 +93,16 @@ class PassesWindow(Adw.ApplicationWindow):
         self.pass_additional_info.content(a_pass)
 
         if self.main_leaflet_can_navigate:
-            self.main_leaflet.navigate(Adw.NavigationDirection.FORWARD)
+            self.main_leaflet.set_show_content(True)
 
     def force_fold(self, force):
-        self.main_leaflet.set_can_unfold(not force)
+        self.main_leaflet.set_collapsed(force)
 
     def is_folded(self):
         return self.main_leaflet.get_folded()
 
     def navigate_back(self):
-        self.main_leaflet.navigate(Adw.NavigationDirection.BACK)
+        self.main_leaflet.set_show_content(False)
 
     def select_pass_at_index(self, index):
         self.pass_list.select_pass_at_index(index)

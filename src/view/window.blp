@@ -3,136 +3,163 @@ using Adw 1;
 
 template PassesWindow : Adw.ApplicationWindow
 {
-    title: _("Passes");
     default-width: 1110;
     default-height: 600;
 
-    Adw.ToastOverlay toast_overlay
+    // Minimum size of the window
+    width-request: 360;
+    height-request: 294;
+
+    Adw.Breakpoint
     {
-        Adw.Leaflet main_leaflet
+        condition("max-width: 664sp")
+        setters
         {
-            // Left side of the leaflet
-            Gtk.Box
+            main_leaflet.collapsed: true;
+        }
+    }
+
+    Adw.Breakpoint
+    {
+        condition("min-width: 1000sp")
+        setters
+        {
+            info_button.visible: false;
+            inner_leaflet.collapsed: false;
+        }
+    }
+
+    content: Adw.ToastOverlay toast_overlay
+    {
+        Adw.NavigationSplitView main_leaflet
+        {
+            show-content: true;
+
+            sidebar: Adw.NavigationPage
             {
-                orientation: vertical;
-                width-request: 332;
+                title: _("Passes");
 
-                Adw.HeaderBar main_header_bar
+                Adw.ToolbarView
                 {
-                    show-end-title-buttons: bind main_leaflet.folded;
+                    //top-bar-style: raised;
+                    width-request: 332;
 
-                    [start]
-                    Gtk.Button
+                    [top]
+                    Adw.HeaderBar main_header_bar
                     {
-                        action-name: "app.import";
-                        can-focus: false;
-                        icon-name: "list-add-symbolic";
-                        tooltip-text: _("Import a pass");
-                        visible: true;
+                        [start]
+                        Gtk.Button
+                        {
+                            action-name: "app.import";
+                            can-focus: false;
+                            icon-name: "list-add-symbolic";
+                            tooltip-text: _("Import a pass");
+                            visible: true;
+                        }
+
+                        [end]
+                        Gtk.MenuButton
+                        {
+                            icon-name: "open-menu-symbolic";
+                            menu-model: primary_menu;
+                            tooltip-text: _("Menu");
+                        }
                     }
 
-                    [end]
-                    Gtk.MenuButton
-                    {
-                        icon-name: "open-menu-symbolic";
-                        menu-model: primary_menu;
-                        tooltip-text: _("Menu");
-                    }
-                }
-
-                Gtk.ScrolledWindow
-                {
-                    hscrollbar-policy: never;
-                    vexpand: true;
-
-                    Gtk.Viewport
-                    {
-                        scroll-to-focus: true;
-                        .PassList pass_list {}
-                    }
-                }
-            }
-
-            Adw.LeafletPage
-            {
-                navigatable: false;
-                child: Gtk.Separator {};
-            }
-
-            // Right side of the leaflet
-            Gtk.Box
-            {
-                hexpand: true;
-                orientation: vertical;
-                width-request: 294;
-
-                Adw.HeaderBar
-                {
-                    title-widget: Adw.WindowTitle {title: "";};
-
-                    [start]
-                    Gtk.Button back_button
-                    {
-                        icon-name: "go-previous-symbolic";
-                        tooltip-text: _("Back");
-                        valign: center;
-                        visible: bind main_leaflet.folded;
-                    }
-
-                    [end]
-                    Gtk.MenuButton
-                    {
-                        icon-name: "view-more-symbolic";
-                        menu-model: secondary_menu;
-                    }
-
-                    [end]
-                    Gtk.ToggleButton info_button
-                    {
-                        active: bind info_panel.reveal_flap;
-                        icon-name: "info-symbolic";
-                        tooltip-text: _("Show additional information");
-                    }
-
-                    [end]
-                    Gtk.Button update_button
-                    {
-                        action-name: "app.update";
-                        icon-name: "view-refresh-symbolic";
-                        tooltip-text: _("Update pass");
-                    }
-                }
-
-                Adw.Flap info_panel
-                {
-                    flap-position: end;
-                    reveal-flap: bind info_button.active;
-
-                    content: Gtk.ScrolledWindow scrolled_window
+                    content: Gtk.ScrolledWindow
                     {
                         hscrollbar-policy: never;
-                        vexpand: true;
 
                         Gtk.Viewport
                         {
                             scroll-to-focus: true;
-                            halign: center;
+                            .PassList pass_list {}
+                        }
+                    };
+                }
+            };
 
-                            .PassWidget pass_widget
+            content: Adw.NavigationPage
+            {
+                //hexpand: true;
+                width-request: 294;
+
+                Adw.NavigationSplitView inner_leaflet
+                {
+                    show-content: false;
+                    sidebar-width-fraction: 1;
+                    min-sidebar-width: 300;
+                    max-sidebar-width: 1000;
+                    collapsed: true;
+
+                    sidebar: Adw.NavigationPage
+                    {
+                        Adw.ToolbarView
+                        {
+                            //top-bar-style: raised;
+
+                            [top]
+                            Adw.HeaderBar
+                            {
+                                [end]
+                                Gtk.MenuButton
+                                {
+                                    icon-name: "view-more-symbolic";
+                                    menu-model: secondary_menu;
+                                }
+
+                                [end]
+                                Gtk.Button info_button
+                                {
+                                    icon-name: "info-symbolic";
+                                    tooltip-text: _("Show additional information");
+                                }
+
+                                [end]
+                                Gtk.Button update_button
+                                {
+                                    action-name: "app.update";
+                                    icon-name: "view-refresh-symbolic";
+                                    tooltip-text: _("Update pass");
+                                }
+                            }
+
+                            content: .PassWidget pass_widget
                             {
                                 margin-start: 6;
                                 margin-end: 6;
                                 margin-top: 6;
                                 margin-bottom: 6;
+                            };
+                        }
+                    };
+
+                    content: Adw.NavigationPage info_panel
+                    {
+                        Adw.ToolbarView
+                        {
+                            [top]
+                            Adw.HeaderBar
+                            {}
+
+                            Gtk.ScrolledWindow scrolled_window
+                            {
+                                hscrollbar-policy: never;
+
+                                Gtk.Viewport
+                                {
+                                    scroll-to-focus: true;
+                                    halign: center;
+
+                                    .AdditionalInformationPane pass_additional_info {}
+                                }
                             }
                         }
                     };
-                    separator: Gtk.Separator {};
-                    flap: .AdditionalInformationPane pass_additional_info {};
                 }
-            }
+            };
         }
-    }
+    };
 }
 
 menu primary_menu
