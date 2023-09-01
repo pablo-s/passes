@@ -87,7 +87,7 @@ class PassesWindow(Adw.ApplicationWindow):
             self.show_toast(str(error))
 
     def _on_info_button_clicked(self, button):
-        self.inner_leaflet.set_show_content(True);
+        self.inner_leaflet.set_show_sidebar(True);
 
     def _on_row_activated(self, pass_list, pass_row):
         a_pass = pass_row.data()
