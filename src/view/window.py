@@ -36,6 +36,7 @@ class PassesWindow(Adw.ApplicationWindow):
     pass_list = Gtk.Template.Child()
     pass_widget = Gtk.Template.Child()
     pass_additional_info  = Gtk.Template.Child()
+    back_button  = Gtk.Template.Child()
 
     toast_overlay = Gtk.Template.Child()
 
@@ -60,11 +61,15 @@ class PassesWindow(Adw.ApplicationWindow):
         self.pass_list.bind_model(pass_list_model)
 
         # Connect callbacks
+        self.back_button.connect('clicked', self._on_back_button_clicked)
         self.pass_list.connect('row-activated', self._on_row_activated)
         self.pass_widget.connect('barcode-clicked', self._on_barcode_clicked)
         self.info_button.connect('clicked', self._on_info_button_clicked)
 
         self.main_leaflet_can_navigate = True
+
+    def _on_back_button_clicked(self, button):
+        self.inner_leaflet.set_show_sidebar(False);
 
     def _on_barcode_clicked(self, button):
         try:

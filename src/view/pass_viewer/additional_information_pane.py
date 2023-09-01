@@ -35,7 +35,6 @@ class AdditionalInformationPane(Gtk.Box):
         placeholder.set_icon_name('info-symbolic')
         placeholder.set_title(_('No additional information'))
         placeholder.add_css_class('compact')
-        placeholder.add_css_class('background')
         self.fields.set_placeholder(placeholder)
 
     def clean(self):

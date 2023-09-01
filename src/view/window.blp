@@ -12,7 +12,7 @@ template PassesWindow : Adw.ApplicationWindow
 
     Adw.Breakpoint
     {
-        condition("max-width: 664sp")
+        condition("max-width: 676sp")
         setters
         {
             main_leaflet.collapsed: true;
@@ -21,7 +21,7 @@ template PassesWindow : Adw.ApplicationWindow
 
     Adw.Breakpoint
     {
-        condition("min-width: 1000sp")
+        condition("min-width: 1008sp")
         setters
         {
             info_button.visible: false;
@@ -84,15 +84,15 @@ template PassesWindow : Adw.ApplicationWindow
                 //hexpand: true;
                 width-request: 294;
 
-                Adw.NavigationSplitView inner_leaflet
+                Adw.OverlaySplitView inner_leaflet
                 {
-                    show-content: false;
-                    sidebar-width-fraction: 1;
+                    sidebar-width-fraction: 0;
+                    sidebar-position: end;
                     min-sidebar-width: 300;
                     max-sidebar-width: 1000;
                     collapsed: true;
 
-                    sidebar: Adw.NavigationPage
+                    content: Adw.NavigationPage
                     {
                         Adw.ToolbarView
                         {
@@ -124,25 +124,31 @@ template PassesWindow : Adw.ApplicationWindow
                                 }
                             }
 
-                            content: .PassWidget pass_widget
-                            {
-                                margin-start: 6;
-                                margin-end: 6;
-                                margin-top: 6;
-                                margin-bottom: 6;
-                            };
+                            content: .PassWidget pass_widget{};
                         }
                     };
 
-                    content: Adw.NavigationPage info_panel
+                    sidebar: Adw.NavigationPage info_panel
                     {
+                        title: _("Additional information");
                         width-request: 332;
 
                         Adw.ToolbarView
                         {
                             [top]
                             Adw.HeaderBar
-                            {}
+                            {
+                                show-back-button: false;
+
+                                [start]
+                                Gtk.Button back_button
+                                {
+                                    icon-name: "go-previous-symbolic";
+                                    tooltip-text: _("Back");
+                                    valign: center;
+                                    visible: bind inner_leaflet.collapsed;
+                                }
+                            }
 
                             .AdditionalInformationPane pass_additional_info {}
                         }
