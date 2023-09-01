@@ -27,24 +27,27 @@ from .pass_widget import PassWidget
 class PassesWindow(Adw.ApplicationWindow):
     __gtype_name__ = 'PassesWindow'
 
-    main_leaflet = Gtk.Template.Child()
-    inner_leaflet = Gtk.Template.Child()
+    main_split_view = Gtk.Template.Child()
+    inner_split_view = Gtk.Template.Child()
+    toast_overlay = Gtk.Template.Child()
 
+    # Left panel
+    pass_list = Gtk.Template.Child()
+
+    # Main panel
     update_button = Gtk.Template.Child()
     info_button = Gtk.Template.Child()
-
-    pass_list = Gtk.Template.Child()
     pass_widget = Gtk.Template.Child()
-    pass_additional_info  = Gtk.Template.Child()
-    back_button  = Gtk.Template.Child()
 
-    toast_overlay = Gtk.Template.Child()
+    # Right panel
+    back_button  = Gtk.Template.Child()
+    pass_additional_info  = Gtk.Template.Child()
 
     def __init__(self, pass_list_model, **kwargs):
         super().__init__(**kwargs)
 
         # Whether or not the leaflet is allowed to navigate
-        self.main_leaflet_can_navigate = False
+        self.main_split_view_can_navigate = False
 
         # Set help overlay
         help_overlay = Gtk.Builder\
@@ -66,10 +69,10 @@ class PassesWindow(Adw.ApplicationWindow):
         self.pass_widget.connect('barcode-clicked', self._on_barcode_clicked)
         self.info_button.connect('clicked', self._on_info_button_clicked)
 
-        self.main_leaflet_can_navigate = True
+        self.main_split_view_can_navigate = True
 
     def _on_back_button_clicked(self, button):
-        self.inner_leaflet.set_show_sidebar(False);
+        self.inner_split_view.set_show_sidebar(False);
 
     def _on_barcode_clicked(self, button):
         try:
@@ -87,7 +90,7 @@ class PassesWindow(Adw.ApplicationWindow):
             self.show_toast(str(error))
 
     def _on_info_button_clicked(self, button):
-        self.inner_leaflet.set_show_sidebar(True);
+        self.inner_split_view.set_show_sidebar(True);
 
     def _on_row_activated(self, pass_list, pass_row):
         a_pass = pass_row.data()
@@ -97,17 +100,17 @@ class PassesWindow(Adw.ApplicationWindow):
         self.pass_widget.content(a_pass)
         self.pass_additional_info.content(a_pass)
 
-        if self.main_leaflet_can_navigate:
-            self.main_leaflet.set_show_content(True)
+        if self.main_split_view_can_navigate:
+            self.main_split_view.set_show_content(True)
 
     def force_fold(self, force):
-        self.main_leaflet.set_collapsed(force)
+        self.main_split_view.set_collapsed(force)
 
     def is_folded(self):
-        return self.main_leaflet.get_folded()
+        return self.main_split_view.get_folded()
 
     def navigate_back(self):
-        self.main_leaflet.set_show_content(False)
+        self.main_split_view.set_show_content(False)
 
     def select_pass_at_index(self, index):
         self.pass_list.select_pass_at_index(index)

@@ -15,7 +15,7 @@ template PassesWindow : Adw.ApplicationWindow
         condition("max-width: 676sp")
         setters
         {
-            main_leaflet.collapsed: true;
+            main_split_view.collapsed: true;
         }
     }
 
@@ -25,13 +25,13 @@ template PassesWindow : Adw.ApplicationWindow
         setters
         {
             info_button.visible: false;
-            inner_leaflet.collapsed: false;
+            inner_split_view.collapsed: false;
         }
     }
 
     content: Adw.ToastOverlay toast_overlay
     {
-        Adw.NavigationSplitView main_leaflet
+        Adw.NavigationSplitView main_split_view
         {
             show-content: true;
 
@@ -84,7 +84,7 @@ template PassesWindow : Adw.ApplicationWindow
                 //hexpand: true;
                 width-request: 294;
 
-                Adw.OverlaySplitView inner_leaflet
+                Adw.OverlaySplitView inner_split_view
                 {
                     sidebar-width-fraction: 0;
                     sidebar-position: end;
@@ -146,7 +146,7 @@ template PassesWindow : Adw.ApplicationWindow
                                     icon-name: "go-previous-symbolic";
                                     tooltip-text: _("Back");
                                     valign: center;
-                                    visible: bind inner_leaflet.collapsed;
+                                    visible: bind inner_split_view.collapsed;
                                 }
                             }
 
