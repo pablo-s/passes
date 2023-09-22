@@ -42,7 +42,7 @@ msgid ""
 "format."
 msgstr ""
 "Pases es una práctica aplicación que te ayuda a gestionar todos tus pases "
-"digitales sin esfuerzo. Con Passes, puedes almacenar cómodamente tus "
+"digitales sin esfuerzo. Con Pases, puedes almacenar cómodamente tus "
 "tarjetas de embarque, cupones, tarjetas de fidelización, entradas para "
 "eventos y mucho más, todo en formato PKPass o esPass."
 
