@@ -31,7 +31,7 @@ msgstr "Emanaldi digitalen kudeatzaile bat"
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:5
 msgid "Manage your digital passes"
-msgstr "Kudeatu zure pase digitalak"
+msgstr "Kudeatu zure emanaldi digitalak"
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:10
 msgid ""
