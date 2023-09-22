@@ -1,0 +1,245 @@
+# Basque translation for passes.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the passes package.
+# See file COPYING or go to <http://www.gnu.org/licenses/> for full license details.
+# Sergio Varela <sergiovg01@outlook.com>, 2022-2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: passes\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-07-13 17:48+0200\n"
+"PO-Revision-Date: 2023-09-22 11:56+0200\n"
+"Last-Translator: Sergio Varela <sergiovg01@outlook.com>\n"
+"Language-Team: Spanish - Spain <sergiovg01@outlook.com>\n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"X-Generator: Gtranslator 45.1\n"
+
+#: data/me.sanchezrodriguez.passes.desktop.in:3
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:4 src/main.py:97
+#: src/view/window.blp:6
+msgid "Passes"
+msgstr "Emanaldiak"
+
+#: data/me.sanchezrodriguez.passes.desktop.in:4
+msgid "A digital pass manager"
+msgstr "Emanaldi digitalen kudeatzaile bat"
+
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:5
+msgid "Manage your digital passes"
+msgstr "Kudeatu zure pase digitalak"
+
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:10
+msgid ""
+"Passes is a handy app that helps you manage all your digital passes "
+"effortlessly. With Passes, you can conveniently store your boarding passes, "
+"coupons, loyalty cards, event tickets, and more, all in PKPass or esPass "
+"format."
+msgstr ""
+"Emanaldiak aplikazio praktikoa da, zure pase digital guztiak esfortzurik "
+"gabe kudeatzen laguntzen dizuna. Emanaldiak programarekin, eroso gorde "
+"ditzakezu zure ontziratze-txartelak, kupoiak, leialtze-txartelak, "
+"ekitaldietarako sarrerak eta askoz gehiago, dena PKPass edo esPass formatuan."
+
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:11
+msgid ""
+"Moreover, the app seamlessly adjusts to different screen sizes, allowing you "
+"to access your passes on various devices, whether it's a desktop computer or "
+"a mobile phone."
+msgstr ""
+"Gainera, aplikazioa ezin hobeto egokitzen da pantaila-tamaina "
+"desberdinetara, eta, horri esker, hainbat gailutan sar zaitezke zure "
+"emanaldietara, dela mahai gaineko ordenagailu batean, dela telefono mugikor "
+"batean."
+
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:12
+msgid ""
+"Stop wasting time searching through your email or printing out your digital "
+"passes. Download Passes now and keep all your passes in one convenient "
+"location."
+msgstr ""
+"Ez galdu denbora zure posta elektronikoaren bidez bilatzen edo zure pase "
+"digitalak inprimatzen. Deskargatu orain Emanaldiak eta gorde zure emanaldi "
+"guztiak leku eroso batean."
+
+#: src/main.py:130
+msgid "Supported passes"
+msgstr "Emanaldi bateragarriak"
+
+#: src/main.py:135
+msgid "All files"
+msgstr "Fitxategi guztiak"
+
+#. Notify user
+#: src/main.py:183
+msgid "Pass updated"
+msgstr "Emanaldia eguneratu da"
+
+#: src/model/digital_pass_factory.py:169
+msgid "File is not a pass"
+msgstr "Fitxategi hau ez da emanaldi bat"
+
+#: src/model/digital_pass_factory.py:175
+msgid "Format not supported yet"
+msgstr "Formatu hau ez da oraindik onartzen"
+
+#: src/model/digital_pass_factory.py:181
+msgid "Unknown file encoding"
+msgstr "Artxiboaren kodifikazioa ezezaguna da"
+
+#: src/model/digital_pass.py:225
+msgid "Monday"
+msgstr "Astelehena"
+
+#: src/model/digital_pass.py:225
+msgid "Tuesday"
+msgstr "Asteartea"
+
+#: src/model/digital_pass.py:225
+msgid "Wednesday"
+msgstr "Asteazkena"
+
+#: src/model/digital_pass.py:226
+msgid "Thursday"
+msgstr "Osteguna"
+
+#: src/model/digital_pass.py:226
+msgid "Friday"
+msgstr "Ostirala"
+
+#: src/model/digital_pass.py:226
+msgid "Saturday"
+msgstr "Larunbata"
+
+#: src/model/digital_pass.py:226
+msgid "Sunday"
+msgstr "Igandea"
+
+#: src/model/digital_pass.py:260
+msgid "Today"
+msgstr "Gaur"
+
+#: src/model/digital_pass.py:263
+msgid "Tomorrow"
+msgstr "Bihar"
+
+#: src/model/digital_pass_updater.py:101
+msgid "Pass already updated"
+msgstr "Emanaldia eguneratuta zegoen"
+
+#: src/model/digital_pass_updater.py:107
+msgid "Pass not updatable"
+msgstr "Emanaldia ezin da eguneratu"
+
+#: src/model/digital_pass_updater.py:113
+msgid "Pass update error: {} {}"
+msgstr "Errorea emanaldia eguneratzean: {} {}"
+
+#: src/model/persistence.py:80
+msgid "File already imported"
+msgstr "Fitxategia inportatuta"
+
+#: src/view/barcode_widget.py:126
+msgid "Barcode format not supported"
+msgstr "Barra-kodearen formatua ez da onartzen"
+
+#: src/view/pass_list/pass_list.py:37
+msgid "You have no passes"
+msgstr "Ez duzu emanaldirik"
+
+#: src/view/pass_list/pass_list.py:38
+msgid "Use the “+” button to import a pass"
+msgstr "Erabili “+” botoia emanaldi bat inportatzeko"
+
+#: src/view/pass_list/pass_row_header.py:32
+msgid "Without expiration date"
+msgstr "Iraungitze-datarik gabe"
+
+#: src/view/pass_viewer/additional_information_pane.py:36
+msgid "No additional information"
+msgstr "Ez dago informazio gehigarririk"
+
+#: src/view/help_overlay.blp:14
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Orokorra"
+
+#: src/view/help_overlay.blp:18
+msgctxt "shortcut window"
+msgid "Show shortcuts"
+msgstr "Erakutsi lasterbideak"
+
+#: src/view/help_overlay.blp:24
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Irten"
+
+#: src/view/help_overlay.blp:31
+msgctxt "shortcut window"
+msgid "Passes"
+msgstr "Emanaldiak"
+
+#: src/view/help_overlay.blp:35
+msgctxt "shortcut window"
+msgid "Import a pass"
+msgstr "Emanaldi bat inportatu"
+
+#: src/view/help_overlay.blp:41
+msgctxt "shortcut window"
+msgid "Update selected pass"
+msgstr "Eguneratu hautatutako emanaldia"
+
+#: src/view/window.blp:30
+msgid "Import a pass"
+msgstr "Emanaldi bat inportatu"
+
+#: src/view/window.blp:39
+msgid "Menu"
+msgstr "Menua"
+
+#: src/view/window.blp:77
+msgid "Back"
+msgstr "Atzera"
+
+#: src/view/window.blp:94
+msgid "Show additional information"
+msgstr "Informazio gehigarria erakutsi"
+
+#: src/view/window.blp:102
+msgid "Update pass"
+msgstr "Emanaldia eguneratu"
+
+#: src/view/window.blp:109
+msgid "Show barcode"
+msgstr "Erakutsi barra-kodea"
+
+#. item (_("Preferences"), "app.preferences")
+#: src/view/window.blp:148
+msgid "Keyboard shortcuts"
+msgstr "Teklatuko lasterbideak"
+
+#: src/view/window.blp:149
+msgid "About Passes"
+msgstr "Emanaldiak-ri buruz"
+
+#: src/view/window.blp:154
+msgid "Delete"
+msgstr "Ezabatu"
+
+#, fuzzy
+#~ msgid "Pass list:"
+#~ msgstr "Emanaldiak"
+
+#, fuzzy
+#~ msgid "Fixed shorcuts."
+#~ msgstr "Teklatuko lasterbideak"
+
+#~ msgid "Anytime"
+#~ msgstr "Edozein unetan"
+
+#~ msgid "Unknown date"
+#~ msgstr "Data ezezaguna"
