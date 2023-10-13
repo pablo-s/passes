@@ -43,7 +43,10 @@ class PassFieldRow(Gtk.ListBoxRow):
         value = str(value)
         value_has_links = re.search('</a>', value)
 
-        if not value_has_links:
+        if value_has_links:
+            value = re.sub('&', '&amp;', value)
+
+        else:
             value = GLib.markup_escape_text(value)
 
             # Create a link for URLs
