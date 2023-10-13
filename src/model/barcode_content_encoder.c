@@ -14,15 +14,15 @@ enum BarcodeType
     QRCODE
 };
 
-char * encode_2d_symbol(struct zint_symbol* symbol, unsigned char * data);
-char * encode_barcode(unsigned char * data, unsigned symbology, unsigned * out_width, unsigned * out_height);
+char * encode_2d_symbol(struct zint_symbol* symbol, unsigned char * data, unsigned data_length);
+char * encode_barcode(unsigned char * data, unsigned data_length, unsigned symbology, unsigned * out_width, unsigned * out_height);
 
-char * encode_2d_symbol(struct zint_symbol* symbol, unsigned char * data)
+char * encode_2d_symbol(struct zint_symbol* symbol, unsigned char * data, unsigned data_length)
 {
     symbol->input_mode = DATA_MODE; // DATA_MODE | UNICODE_MODE
     symbol->output_options |= OUT_BUFFER_INTERMEDIATE;
 
-    ZBarcode_Encode_and_Buffer(symbol, data, 0, 0);
+    ZBarcode_Encode_and_Buffer(symbol, data, data_length, 0);
 
     unsigned amount_of_modules = (symbol->height * symbol->width) + 1;
     unsigned module_size = symbol->bitmap_width / symbol->width;
@@ -53,6 +53,7 @@ char * encode_2d_symbol(struct zint_symbol* symbol, unsigned char * data)
 }
 
 char * encode_barcode(unsigned char * data,
+                      unsigned data_length,
                       unsigned symbology,
                       unsigned * out_width,
                       unsigned * out_height)
@@ -81,7 +82,7 @@ char * encode_barcode(unsigned char * data,
             break;
     }
 
-    last_result = encode_2d_symbol(symbol, data);
+    last_result = encode_2d_symbol(symbol, data, data_length);
     *out_width = symbol->width;
     *out_height = symbol->height;
 
