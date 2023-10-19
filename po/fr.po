@@ -2,21 +2,22 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Irénée THIRION <irenee.thirion@e.email>, 2023.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: unnamed project\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-07-13 17:48+0200\n"
-"PO-Revision-Date: 2022-12-17 12:03+0100\n"
-"Last-Translator: Irénée Thirion <irenee.thirion@e.email>\n"
-"Language-Team: \n"
+"PO-Revision-Date: 2023-10-19 22:39+0200\n"
+"Last-Translator: Irénée THIRION <irenee.thirion@e.email>\n"
+"Language-Team: French <gnomefr@traduc.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.2.2\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+"X-Generator: Gtranslator 45.2\n"
 
 #: data/me.sanchezrodriguez.passes.desktop.in:3
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:4 src/main.py:97
@@ -30,7 +31,7 @@ msgstr "Un gestionnaire de passes numériques"
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:5
 msgid "Manage your digital passes"
-msgstr ""
+msgstr "Gérez vos passes numériques"
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:10
 msgid ""
@@ -39,6 +40,10 @@ msgid ""
 "coupons, loyalty cards, event tickets, and more, all in PKPass or esPass "
 "format."
 msgstr ""
+"Passes est une application pratique qui vous aide à gérer tous vos passes "
+"numériques sans effort. Avec Passes, vous pouvez stocker facilement vos "
+"cartes d’embarquement, vos coupons, vos cartes de fidélité, vos billets "
+"d’événements et bien plus encore, le tout au format PKPass ou esPass."
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:11
 msgid ""
@@ -46,6 +51,9 @@ msgid ""
 "to access your passes on various devices, whether it's a desktop computer or "
 "a mobile phone."
 msgstr ""
+"De plus l’application s’adapte facilement à toutes les tailles d’écrans, "
+"vous permettant d’accéder à vos passes sur divers appareils, ordinateurs ou "
+"portables."
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:12
 msgid ""
@@ -53,6 +61,8 @@ msgid ""
 "passes. Download Passes now and keep all your passes in one convenient "
 "location."
 msgstr ""
+"Ne perdez plus de temps à fouiller vos courriels ou à imprimer vos passes. "
+"Téléchargez Passes et conservez tous vos passes dans un endroit pratique."
 
 #: src/main.py:130
 msgid "Supported passes"
@@ -145,12 +155,11 @@ msgstr "Utilisez le bouton « + » pour importer un passe"
 
 #: src/view/pass_list/pass_row_header.py:32
 msgid "Without expiration date"
-msgstr ""
+msgstr "Sans date d’expiration"
 
 #: src/view/pass_viewer/additional_information_pane.py:36
-#, fuzzy
 msgid "No additional information"
-msgstr "Afficher les informations supplémentaires"
+msgstr "Pas d’informations supplémentaires"
 
 #: src/view/help_overlay.blp:14
 msgctxt "shortcut window"
@@ -208,9 +217,8 @@ msgstr "Afficher le code-barres"
 
 #. item (_("Preferences"), "app.preferences")
 #: src/view/window.blp:148
-#, fuzzy
 msgid "Keyboard shortcuts"
-msgstr "Afficher les raccourcis"
+msgstr "Raccourcis clavier"
 
 #: src/view/window.blp:149
 msgid "About Passes"
