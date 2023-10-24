@@ -1,7 +1,7 @@
 using Gtk 4.0;
 using Adw 1;
 
-template BarcodeDialog : Adw.Window
+template $BarcodeDialog : Adw.Window
 {
     default-width: 360;
     default-height: 529;
@@ -26,7 +26,7 @@ template BarcodeDialog : Adw.Window
             styles ["flat"]
         }
 
-        .BarcodeWidget barcode
+        $BarcodeWidget barcode
         {
             vexpand: true;
         }
