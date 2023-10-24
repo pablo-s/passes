@@ -46,9 +46,6 @@ class PassesWindow(Adw.ApplicationWindow):
     def __init__(self, pass_list_model, **kwargs):
         super().__init__(**kwargs)
 
-        # Whether or not the leaflet is allowed to navigate
-        self.main_split_view_can_navigate = False
-
         # Set help overlay
         help_overlay = Gtk.Builder\
             .new_from_resource('/me/sanchezrodriguez/passes/help_overlay.ui')\
@@ -65,11 +62,10 @@ class PassesWindow(Adw.ApplicationWindow):
 
         # Connect callbacks
         self.back_button.connect('clicked', self._on_back_button_clicked)
-        self.pass_list.connect('row-activated', self._on_row_activated)
+        self.pass_list.connect('pass-activated', self._on_pass_activated)
+        self.pass_list.connect('pass-selected', self._on_pass_selected)
         self.pass_widget.connect('barcode-clicked', self._on_barcode_clicked)
         self.info_button.connect('clicked', self._on_info_button_clicked)
-
-        self.main_split_view_can_navigate = True
 
     def _on_back_button_clicked(self, button):
         self.inner_split_view.set_show_sidebar(False);
@@ -92,22 +88,31 @@ class PassesWindow(Adw.ApplicationWindow):
     def _on_info_button_clicked(self, button):
         self.inner_split_view.set_show_sidebar(True);
 
-    def _on_row_activated(self, pass_list, pass_row):
-        a_pass = pass_row.data()
+    def _on_pass_activated(self, pass_list, digital_pass):
+        self.update_button.set_sensitive(digital_pass.is_updatable())
 
-        self.update_button.set_sensitive(a_pass.is_updatable())
+        self.pass_widget.content(digital_pass)
+        self.pass_additional_info.content(digital_pass)
 
-        self.pass_widget.content(a_pass)
-        self.pass_additional_info.content(a_pass)
+        if self.inner_split_view.get_collapsed():
+            self.inner_split_view.set_show_sidebar(False);
 
-        if self.main_split_view_can_navigate:
-            self.main_split_view.set_show_content(True)
+        self.main_split_view.set_show_content(True)
+
+    def _on_pass_selected(self, pass_list, digital_pass):
+        self.update_button.set_sensitive(digital_pass.is_updatable())
+
+        self.pass_widget.content(digital_pass)
+        self.pass_additional_info.content(digital_pass)
+
+        if self.inner_split_view.get_collapsed():
+            self.inner_split_view.set_show_sidebar(False);
 
     def force_fold(self, force):
         self.main_split_view.set_collapsed(force)
 
     def is_folded(self):
-        return self.main_split_view.get_folded()
+        return self.main_split_view.get_collapsed()
 
     def navigate_back(self):
         self.main_split_view.set_show_content(False)
