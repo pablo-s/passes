@@ -92,7 +92,14 @@ class Barcode:
 
     def __init__(self, barcode_dictionary):
         self.__format = barcode_dictionary['format']
+        if not self.__format:
+            # Format is a required field
+            raise Exception()
+
         self.__message = barcode_dictionary['message']
+        if not self.__message:
+            # Message is a required field
+            raise Exception()
 
         self.__message_encoding = None
         if 'messageEncoding' in barcode_dictionary.keys():
