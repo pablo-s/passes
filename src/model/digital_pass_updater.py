@@ -41,7 +41,6 @@ class PassKitWebService:
 
     @staticmethod
     def get_from_new_location(new_location):
-        print(new_location)
         protocol, host_and_path = new_location.split('//', 1)
         host, path = host_and_path.split('/', 1)
 
