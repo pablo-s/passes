@@ -18,6 +18,7 @@
 from gi.repository import Adw, GObject, Gtk
 
 from .digital_pass import DigitalPass
+from .digital_pass_list_store import SortingCriteria
 from .pass_row import PassRow
 
 
@@ -34,8 +35,10 @@ class PassList(Gtk.ListBox):
     def __init__(self):
         super().__init__()
 
+        self.__list_model = None
         self.__selected_row = None
-        self.set_header_func(self.on_update_header)
+        self.__sorting_criteria = None
+        self.set_header_func(self._on_update_headers)
 
         # Create a placeholder widget to be displayed when the list is empty
         placeholder = Adw.StatusPage.new()
@@ -50,21 +53,21 @@ class PassList(Gtk.ListBox):
         self.__selected_row = pass_row
         self.emit('pass-activated', pass_row.data())
 
-    def bind_model(self, pass_list_model):
-        super().bind_model(pass_list_model.get_model(), PassRow)
+    def _on_update_headers(self, row, row_above):
+        row.update_header_text_for(self.__sorting_criteria)
 
-    def on_update_header(self, row, row_above):
-        row_date = row.data().expiration_date()
-        row_header = row_date.as_relative_pretty_string() if row_date else None
+        if row_above:
+            row_above.update_header_text_for(self.__sorting_criteria)
 
-        row_above_date = row_above.data().expiration_date() if row_above else None
-        row_above_header = row_above_date.as_relative_pretty_string()\
-            if row_above and row_above_date else None
-
-        if not row_above or row_header != row_above_header:
+        if not row_above or row.header_text() != row_above.header_text():
             row.show_header()
         else:
             row.hide_header()
+
+    def bind_model(self, pass_list_model):
+        self.__sorting_criteria = pass_list_model.sorting_criteria()
+        self.__list_model = pass_list_model
+        super().bind_model(pass_list_model.get_model(), PassRow)
 
     def row_at_index(self, index):
         row_at_index = self.get_row_at_index(index)
@@ -96,6 +99,18 @@ class PassList(Gtk.ListBox):
             index = self.__selected_row.get_index()
 
         return index
+
+    def sort_by_creator(self):
+        self.__sorting_criteria = SortingCriteria.CREATOR
+        self.__list_model.sort_by_creator()
+
+    def sort_by_description(self):
+        self.__sorting_criteria = SortingCritera.DESCRIPTION
+        self.__list_model.sort_by_description()
+
+    def sort_by_expiration_date(self):
+        self.__sorting_criteria = SortingCriteria.EXPIRATION_DATE
+        self.__list_model.sort_by_expiration_date()
 
 
 

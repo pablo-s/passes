@@ -17,6 +17,7 @@
 
 from gi.repository import Gdk, GLib, Gtk
 
+from .digital_pass_list_store import SortingCriteria
 from .pass_icon import PassIcon
 from .pass_row_header import PassRowHeader
 
@@ -33,6 +34,9 @@ class PassRow(Gtk.ListBoxRow):
     def __init__(self, a_pass):
         super().__init__()
         self.__pass = a_pass
+
+        self.__header_text = ''
+        self.__sorting_criteria = None
 
         if a_pass.icon():
             self.icon.set_image(a_pass.icon())
@@ -52,12 +56,38 @@ class PassRow(Gtk.ListBoxRow):
     def data(self):
         return self.__pass
 
+    def header_text(self):
+        return self.__header_text
+
     def hide_header(self):
         self.set_header(None)
 
     def show_header(self):
-        header = PassRowHeader(self.__pass)
+        if not self.__header_text:
+            return
+
+        header = PassRowHeader(self.__header_text)
         self.set_header(header)
 
     def style(self):
         return self.__pass.style()
+
+    def update_header_text_for(self, sorting_criteria):
+        if self.__sorting_criteria == sorting_criteria:
+            return
+
+        self.__header_type = sorting_criteria
+
+        if sorting_criteria == SortingCriteria.CREATOR:
+            self.__header_text = self.__pass.creator()
+
+        elif sorting_criteria == SortingCriteria.DESCRIPTION:
+            self.__header_text = self.__pass.description()[0].upper()
+
+        elif sorting_criteria == SortingCriteria.EXPIRATION_DATE:
+            row_date = self.__pass.expiration_date()
+            self.__header_text = row_date.as_relative_pretty_string() \
+                                 if row_date else _('Without expiration date')
+
+        else:
+            self.__header_text = ''

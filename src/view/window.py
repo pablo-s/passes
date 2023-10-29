@@ -15,10 +15,11 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from gi.repository import Gio, GObject, Gtk, Adw
+from gi.repository import Gio, GLib, GObject, Gtk, Adw
 
 from .additional_information_pane import AdditionalInformationPane
 from .barcode_dialog import BarcodeDialog
+from .digital_pass_list_store import SortingCriteria
 from .pass_list import PassList
 from .pass_widget import PassWidget
 
@@ -57,8 +58,17 @@ class PassesWindow(Adw.ApplicationWindow):
             .set_accels_for_action('win.show-help-overlay',
                                    ['<Control>question'])
 
-        # Bind GtkListBox with GioListStore
+        # Bind pass list and model
         self.pass_list.bind_model(pass_list_model)
+
+        # Create action for pass sorting menu
+        action = Gio.SimpleAction\
+            .new_stateful("sort",
+                          GLib.VariantType.new('s'),
+                          GLib.Variant.new_string(pass_list_model.sorting_criteria()))
+
+        action.connect("activate", self._on_sort_action)
+        self.add_action(action)
 
         # Connect callbacks
         self.back_button.connect('clicked', self._on_back_button_clicked)
@@ -107,6 +117,23 @@ class PassesWindow(Adw.ApplicationWindow):
 
         if self.inner_split_view.get_collapsed():
             self.inner_split_view.set_show_sidebar(False);
+
+    def _on_sort_action(self, action, target_as_variant):
+        target = target_as_variant.get_string()
+
+        if target == SortingCriteria.CREATOR:
+            self.pass_list.sort_by_creator()
+
+        elif target == SortingCriteria.DESCRIPTION:
+            self.pass_list.sort_by_description()
+
+        elif target == SortingCriteria.EXPIRATION_DATE:
+            self.pass_list.sort_by_expiration_date()
+
+        else:
+            return
+
+        action.set_state(target_as_variant)
 
     def force_fold(self, force):
         self.main_split_view.set_collapsed(force)

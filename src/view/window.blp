@@ -159,9 +159,40 @@ template $PassesWindow : Adw.ApplicationWindow
 
 menu primary_menu
 {
-    //item (_("Preferences"), "app.preferences")
-    item (_("Keyboard shortcuts"), "win.show-help-overlay")
-    item (_("About Passes"), "app.about")
+    section
+    {
+        submenu
+        {
+            label: _("Sort");
+
+            item
+            {
+                action: "win.sort";
+                target: "description";
+                label: _("A-Z");
+            }
+
+            item
+            {
+                action: "win.sort";
+                target: "creator";
+                label: _("Creator");
+            }
+
+            item
+            {
+                action: "win.sort";
+                target: "expiration-date";
+                label: _("Expiration date");
+            }
+        }
+    }
+
+    section
+    {
+        item (_("Keyboard shortcuts"), "win.show-help-overlay")
+        item (_("About Passes"), "app.about")
+    }
 }
 
 menu secondary_menu

@@ -23,12 +23,6 @@ class PassRowHeader(Gtk.Label):
 
     __gtype_name__ = 'PassRowHeader'
 
-    def __init__(self, a_pass):
+    def __init__(self, text):
         super().__init__()
-
-        expiration_date = a_pass.expiration_date()
-
-        header_text = expiration_date.as_relative_pretty_string() \
-            if expiration_date else _('Without expiration date')
-
-        self.set_text(header_text)
+        self.set_text(str(text))

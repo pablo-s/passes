@@ -17,6 +17,8 @@
 
 import re
 
+from enum import StrEnum
+
 from gi.repository import Gio, GObject
 
 from .digital_pass import Date, DigitalPass
@@ -29,6 +31,8 @@ class DigitalPassListStore(GObject.GObject):
     def __init__(self):
         super().__init__()
         self.__list_store = Gio.ListStore.new(DigitalPass)
+        self.__sorting_criteria = SortingCriteria.DESCRIPTION
+        self.__sorting_function = SortPassesBy.description
 
     def __contains__(self, digital_pass):
         return self.find(digital_pass)[0]
@@ -50,8 +54,7 @@ class DigitalPassListStore(GObject.GObject):
         return self.__list_store
 
     def insert(self, digital_pass):
-        self.__list_store.insert_sorted(digital_pass,
-                                        SortPassesBy.expiration_date)
+        self.__list_store.insert_sorted(digital_pass, self.__sorting_function)
 
     def is_empty(self):
         return self.length() == 0
@@ -62,8 +65,46 @@ class DigitalPassListStore(GObject.GObject):
     def remove(self, index):
         self.__list_store.remove(index)
 
+    def sort_by_creator(self):
+        self.__sorting_criteria = SortingCriteria.CREATOR
+        self.__sorting_function = SortPassesBy.creator
+        self.__list_store.sort(self.__sorting_function)
+
+    def sort_by_description(self):
+        self.__sorting_criteria = SortingCriteria.DESCRIPTION
+        self.__sorting_function = SortPassesBy.description
+        self.__list_store.sort(self.__sorting_function)
+
+    def sort_by_expiration_date(self):
+        self.__sorting_criteria = SortingCriteria.EXPIRATION_DATE
+        self.__sorting_function = SortPassesBy.expiration_date
+        self.__list_store.sort(self.__sorting_function)
+
+    def sorting_criteria(self):
+        return self.__sorting_criteria
+
+
+class SortingCriteria(StrEnum):
+    CREATOR = 'creator'
+    DESCRIPTION = 'description'
+    EXPIRATION_DATE = 'expiration-date'
+
 
 class SortPassesBy:
+
+    @classmethod
+    def creator(cls, pass1, pass2):
+        """
+        Sort passes by creator.
+        """
+        return  pass1.creator().lower() > pass2.creator().lower()
+
+    @classmethod
+    def description(cls, pass1, pass2):
+        """
+        Sort passes by description.
+        """
+        return  pass1.description().lower() > pass2.description().lower()
 
     @classmethod
     def expiration_date(cls, d1, d2):
