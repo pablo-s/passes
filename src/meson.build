@@ -75,6 +75,7 @@ passes_sources = [
   'model/espass.py',
   'model/persistence.py',
   'model/pkpass.py',
+  'model/settings.py',
 ]
 
 install_data(passes_sources, install_dir: moduledir)

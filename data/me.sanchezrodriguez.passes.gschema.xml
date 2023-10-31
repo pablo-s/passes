@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist gettext-domain="passes">
+
+	<enum id="me.sanchezrodriguez.passes.SortingCriteria">
+		<!--
+		Keep the following values in sync with the SortingCritaria enum.
+		-->
+		<value value="0" nick="description"/>
+		<value value="1" nick="creator"/>
+		<value value="2" nick="expiration_date"/>
+	</enum>
+
 	<schema id="me.sanchezrodriguez.passes" path="/me/sanchezrodriguez/passes/">
+		<key name="default-sorting-criteria" enum="me.sanchezrodriguez.passes.SortingCriteria">
+			<default>'description'</default>
+			<summary>Default sort order</summary>
+			<description>The default order for passes.</description>
+		</key>
 	</schema>
 </schemalist>

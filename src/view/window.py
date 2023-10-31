@@ -118,22 +118,10 @@ class PassesWindow(Adw.ApplicationWindow):
         if self.inner_split_view.get_collapsed():
             self.inner_split_view.set_show_sidebar(False);
 
-    def _on_sort_action(self, action, target_as_variant):
-        target = target_as_variant.get_string()
-
-        if target == SortingCriteria.CREATOR:
-            self.pass_list.sort_by_creator()
-
-        elif target == SortingCriteria.DESCRIPTION:
-            self.pass_list.sort_by_description()
-
-        elif target == SortingCriteria.EXPIRATION_DATE:
-            self.pass_list.sort_by_expiration_date()
-
-        else:
-            return
-
-        action.set_state(target_as_variant)
+    def _on_sort_action(self, action, target: GLib.Variant):
+        sorting_criteria = SortingCriteria.from_string(target.get_string())
+        self.pass_list.sort_by(sorting_criteria)
+        action.set_state(target)
 
     def force_fold(self, force):
         self.main_split_view.set_collapsed(force)

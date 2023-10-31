@@ -100,18 +100,7 @@ class PassList(Gtk.ListBox):
 
         return index
 
-    def sort_by_creator(self):
-        self.__sorting_criteria = SortingCriteria.CREATOR
-        self.__list_model.sort_by_creator()
+    def sort_by(self, sorting_criteria):
+        self.__sorting_criteria = sorting_criteria
+        self.__list_model.sort_by(sorting_criteria)
 
-    def sort_by_description(self):
-        self.__sorting_criteria = SortingCritera.DESCRIPTION
-        self.__list_model.sort_by_description()
-
-    def sort_by_expiration_date(self):
-        self.__sorting_criteria = SortingCriteria.EXPIRATION_DATE
-        self.__list_model.sort_by_expiration_date()
-
-
-
-    

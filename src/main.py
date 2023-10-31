@@ -29,17 +29,23 @@ from .digital_pass_factory import FileIsNotAPass, FormatNotSupportedYet, PassFac
 from .digital_pass_list_store import DigitalPassListStore
 from .digital_pass_updater import PassUpdater
 from .persistence import FileAlreadyImported, PersistenceManager
+from .settings import Settings
 from .window import PassesWindow
 
 
 class Application(Adw.Application):
+
+    # Application ID
+    ID = 'me.sanchezrodriguez.passes'
+
     def __init__(self):
-        super().__init__(application_id='me.sanchezrodriguez.passes',
+        super().__init__(application_id=Application.ID,
                          flags=Gio.ApplicationFlags.FLAGS_NONE)
 
         self.__file_chooser = None
-        self.__pass_list = DigitalPassListStore()
         self.__persistence = PersistenceManager()
+        self.__settings = Settings(Application.ID)
+        self.__pass_list = DigitalPassListStore(self.__settings)
 
         pass_files = self.__persistence.load_pass_files()
         for pass_file in pass_files:
@@ -107,7 +113,6 @@ class Application(Adw.Application):
         about.set_website('https://github.com/pablo-s/passes')
         about.set_transient_for(self.window())
         about.show()
-
     def on_delete_action(self, widget, _):
         if not self.window():
             return

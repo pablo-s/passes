@@ -28,11 +28,11 @@ class DigitalPassListStore(GObject.GObject):
 
     __gtype_name__ = 'DigitalPassListStore'
 
-    def __init__(self):
+    def __init__(self, settings):
         super().__init__()
+        self.__settings = settings
         self.__list_store = Gio.ListStore.new(DigitalPass)
-        self.__sorting_criteria = SortingCriteria.DESCRIPTION
-        self.__sorting_function = SortPassesBy.description
+        self.__sorting_criteria = settings.get_sorting_criteria()
 
     def __contains__(self, digital_pass):
         return self.find(digital_pass)[0]
@@ -54,7 +54,9 @@ class DigitalPassListStore(GObject.GObject):
         return self.__list_store
 
     def insert(self, digital_pass):
-        self.__list_store.insert_sorted(digital_pass, self.__sorting_function)
+        self.__list_store\
+            .insert_sorted(digital_pass,
+                           self.__sorting_criteria.sorting_function())
 
     def is_empty(self):
         return self.length() == 0
@@ -65,29 +67,13 @@ class DigitalPassListStore(GObject.GObject):
     def remove(self, index):
         self.__list_store.remove(index)
 
-    def sort_by_creator(self):
-        self.__sorting_criteria = SortingCriteria.CREATOR
-        self.__sorting_function = SortPassesBy.creator
-        self.__list_store.sort(self.__sorting_function)
-
-    def sort_by_description(self):
-        self.__sorting_criteria = SortingCriteria.DESCRIPTION
-        self.__sorting_function = SortPassesBy.description
-        self.__list_store.sort(self.__sorting_function)
-
-    def sort_by_expiration_date(self):
-        self.__sorting_criteria = SortingCriteria.EXPIRATION_DATE
-        self.__sorting_function = SortPassesBy.expiration_date
-        self.__list_store.sort(self.__sorting_function)
+    def sort_by(self, sorting_criteria):
+        self.__sorting_criteria = sorting_criteria
+        self.__list_store.sort(sorting_criteria.sorting_function())
+        self.__settings.set_sorting_criteria(sorting_criteria)
 
     def sorting_criteria(self):
         return self.__sorting_criteria
-
-
-class SortingCriteria(StrEnum):
-    CREATOR = 'creator'
-    DESCRIPTION = 'description'
-    EXPIRATION_DATE = 'expiration-date'
 
 
 class SortPassesBy:
@@ -120,3 +106,22 @@ class SortPassesBy:
 
         return  d1_is_later_than_d2 or \
                 (dates_are_equal and d1.description() > d2.description())
+
+
+class SortingCriteria(StrEnum):
+    CREATOR = 'creator'
+    DESCRIPTION = 'description'
+    EXPIRATION_DATE = 'expiration_date'
+
+    __SORTING_FUNCTIONS = {
+        CREATOR: SortPassesBy.creator,
+        DESCRIPTION: SortPassesBy.description,
+        EXPIRATION_DATE: SortPassesBy.expiration_date
+    }
+
+    @classmethod
+    def from_string(cls, criteria):
+        return cls[criteria.upper()]
+
+    def sorting_function(self):
+        return self.__SORTING_FUNCTIONS[self.value]
