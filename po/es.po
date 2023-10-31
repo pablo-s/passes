@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: passes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-13 17:48+0200\n"
+"POT-Creation-Date: 2023-10-31 08:26+0100\n"
 "PO-Revision-Date: 2023-01-18 07:38+0100\n"
 "Last-Translator: Pablo Sánchez Rodríguez <>\n"
 "Language-Team: Spanish - Spain <>\n"
@@ -20,8 +20,8 @@ msgstr ""
 "X-Generator: Gtranslator 42.0\n"
 
 #: data/me.sanchezrodriguez.passes.desktop.in:3
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:4 src/main.py:97
-#: src/view/window.blp:6
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:4 src/main.py:107
+#: src/view/window.blp:39
 msgid "Passes"
 msgstr "Pases"
 
@@ -55,16 +55,24 @@ msgid ""
 "location."
 msgstr ""
 
-#: src/main.py:130
+#: data/me.sanchezrodriguez.passes.gschema.xml:16
+msgid "Default sort order"
+msgstr ""
+
+#: data/me.sanchezrodriguez.passes.gschema.xml:17
+msgid "The default order for passes."
+msgstr ""
+
+#: src/main.py:139
 msgid "Supported passes"
 msgstr "Pases compatibles"
 
-#: src/main.py:135
+#: src/main.py:144
 msgid "All files"
 msgstr "Todos los archivos"
 
 #. Notify user
-#: src/main.py:183
+#: src/main.py:194
 msgid "Pass updated"
 msgstr "Pase actualizado"
 
@@ -80,73 +88,69 @@ msgstr "Formato no compatible aún"
 msgid "Unknown file encoding"
 msgstr "Codificación de archivo desconocida"
 
-#: src/model/digital_pass.py:225
+#: src/model/digital_pass.py:232
 msgid "Monday"
 msgstr "Lunes"
 
-#: src/model/digital_pass.py:225
+#: src/model/digital_pass.py:232
 msgid "Tuesday"
 msgstr "Martes"
 
-#: src/model/digital_pass.py:225
+#: src/model/digital_pass.py:232
 msgid "Wednesday"
 msgstr "Miércoles"
 
-#: src/model/digital_pass.py:226
+#: src/model/digital_pass.py:233
 msgid "Thursday"
 msgstr "Jueves"
 
-#: src/model/digital_pass.py:226
+#: src/model/digital_pass.py:233
 msgid "Friday"
 msgstr "Viernes"
 
-#: src/model/digital_pass.py:226
+#: src/model/digital_pass.py:233
 msgid "Saturday"
 msgstr "Sábado"
 
-#: src/model/digital_pass.py:226
+#: src/model/digital_pass.py:233
 msgid "Sunday"
 msgstr "Domingo"
 
-#: src/model/digital_pass.py:260
+#: src/model/digital_pass.py:267
 msgid "Today"
 msgstr "Hoy"
 
-#: src/model/digital_pass.py:263
+#: src/model/digital_pass.py:270
 msgid "Tomorrow"
 msgstr "Mañana"
 
-#: src/model/digital_pass_updater.py:101
+#: src/model/digital_pass_updater.py:115
 msgid "Pass already updated"
 msgstr "Pase ya actualizado"
 
-#: src/model/digital_pass_updater.py:107
+#: src/model/digital_pass_updater.py:121
 msgid "Pass not updatable"
 msgstr "Pase no actualizable"
 
-#: src/model/digital_pass_updater.py:113
+#: src/model/digital_pass_updater.py:127
 msgid "Pass update error: {} {}"
 msgstr "Error de actualización del pase: {} {}"
 
-#: src/model/persistence.py:80
+#: src/model/persistence.py:88
 msgid "File already imported"
 msgstr "Archivo ya importado"
 
-#: src/view/barcode_widget.py:126
+#: src/view/barcode_widget.py:123
 msgid "Barcode format not supported"
 msgstr "Formato de código de barras no soportado"
 
-#: src/view/pass_list/pass_list.py:37
+#: src/view/pass_list/pass_list.py:46
 msgid "You have no passes"
 msgstr "No tienes pases"
 
-#: src/view/pass_list/pass_list.py:38
+#: src/view/pass_list/pass_list.py:47
 msgid "Use the “+” button to import a pass"
 msgstr "Usa el botón “+” para importar un pase"
-
-#: src/view/pass_list/pass_row_header.py:32
-msgid "Without expiration date"
-msgstr "Sin fecha de expiración"
 
 #: src/view/pass_viewer/additional_information_pane.py:36
 msgid "No additional information"
@@ -182,43 +186,63 @@ msgctxt "shortcut window"
 msgid "Update selected pass"
 msgstr "Actualizar el pase seleccionado"
 
-#: src/view/window.blp:30
+#: src/view/window.blp:55
 msgid "Import a pass"
 msgstr "Importa un pase"
 
-#: src/view/window.blp:39
+#: src/view/window.blp:64
 msgid "Menu"
 msgstr "Menú"
 
-#: src/view/window.blp:77
-msgid "Back"
-msgstr "Atrás"
-
-#: src/view/window.blp:94
+#: src/view/window.blp:113
 msgid "Show additional information"
 msgstr "Mostrar información adicional"
 
-#: src/view/window.blp:102
+#: src/view/window.blp:121
 msgid "Update pass"
 msgstr "Actualizar pase"
 
-#: src/view/window.blp:109
-msgid "Show barcode"
-msgstr "Mostrar código de barras"
+#: src/view/window.blp:131
+#, fuzzy
+msgid "Additional information"
+msgstr "Sin información adicional"
 
-#. item (_("Preferences"), "app.preferences")
-#: src/view/window.blp:148
+#: src/view/window.blp:145
+msgid "Back"
+msgstr "Atrás"
+
+#: src/view/window.blp:166
+msgid "Sort"
+msgstr ""
+
+#: src/view/window.blp:172
+msgid "A-Z"
+msgstr ""
+
+#: src/view/window.blp:179
+msgid "Creator"
+msgstr ""
+
+#: src/view/window.blp:186
+#, fuzzy
+msgid "Expiration date"
+msgstr "Sin fecha de expiración"
+
+#: src/view/window.blp:193
 #, fuzzy
 msgid "Keyboard shortcuts"
 msgstr "Mostrar atajos de teclado"
 
-#: src/view/window.blp:149
+#: src/view/window.blp:194
 msgid "About Passes"
 msgstr "Acerca de Pases"
 
-#: src/view/window.blp:154
+#: src/view/window.blp:200
 msgid "Delete"
 msgstr "Eliminar"
+
+#~ msgid "Show barcode"
+#~ msgstr "Mostrar código de barras"
 
 #, fuzzy
 #~ msgid "Pass list:"
