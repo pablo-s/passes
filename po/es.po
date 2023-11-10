@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: passes\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-31 08:26+0100\n"
-"PO-Revision-Date: 2023-01-18 07:38+0100\n"
+"PO-Revision-Date: 2023-11-10 08:38+0100\n"
 "Last-Translator: Pablo Sánchez Rodríguez <>\n"
 "Language-Team: Spanish - Spain <>\n"
 "Language: es_ES\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"X-Generator: Gtranslator 42.0\n"
+"X-Generator: Gtranslator 45.3\n"
 
 #: data/me.sanchezrodriguez.passes.desktop.in:3
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:4 src/main.py:107
@@ -31,7 +31,7 @@ msgstr "Un gestor de pases digitales"
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:5
 msgid "Manage your digital passes"
-msgstr ""
+msgstr "Gestiona tus pases digitales"
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:10
 msgid ""
@@ -40,6 +40,10 @@ msgid ""
 "coupons, loyalty cards, event tickets, and more, all in PKPass or esPass "
 "format."
 msgstr ""
+"Pases es una práctica aplicación que te ayuda a gestionar todos tus pases "
+"digitales sin esfuerzo. Con Pases, puedes almacenar cómodamente tus tarjetas "
+"de embarque, cupones, tarjetas de fidelización, entradas para eventos y "
+"mucho más, todo en formato PKPass o esPass."
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:11
 msgid ""
@@ -47,6 +51,9 @@ msgid ""
 "to access your passes on various devices, whether it's a desktop computer or "
 "a mobile phone."
 msgstr ""
+"Además, la aplicación se adapta perfectamente a los diferentes tamaños de "
+"pantalla, lo que te permite acceder a tus pases en varios dispositivos, ya "
+"sea un ordenador de sobremesa o un teléfono móvil."
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:12
 msgid ""
@@ -54,14 +61,17 @@ msgid ""
 "passes. Download Passes now and keep all your passes in one convenient "
 "location."
 msgstr ""
+"Deja de perder el tiempo buscando en tu correo electrónico o imprimiendo tus "
+"pases digitales. Descarga Pases ahora y conserva todos tus pases en una "
+"única y práctica ubicación."
 
 #: data/me.sanchezrodriguez.passes.gschema.xml:16
 msgid "Default sort order"
-msgstr ""
+msgstr "Orden predeterminado"
 
 #: data/me.sanchezrodriguez.passes.gschema.xml:17
 msgid "The default order for passes."
-msgstr ""
+msgstr "El orden por defecto para los pases."
 
 #: src/main.py:139
 msgid "Supported passes"
@@ -164,7 +174,7 @@ msgstr "General"
 #: src/view/help_overlay.blp:18
 msgctxt "shortcut window"
 msgid "Show shortcuts"
-msgstr "Mostrar atajos de teclado"
+msgstr "Mostrar atajos del teclado"
 
 #: src/view/help_overlay.blp:24
 msgctxt "shortcut window"
@@ -179,7 +189,7 @@ msgstr "Pases"
 #: src/view/help_overlay.blp:35
 msgctxt "shortcut window"
 msgid "Import a pass"
-msgstr "Importa un pase"
+msgstr "Importar un pase"
 
 #: src/view/help_overlay.blp:41
 msgctxt "shortcut window"
@@ -188,7 +198,7 @@ msgstr "Actualizar el pase seleccionado"
 
 #: src/view/window.blp:55
 msgid "Import a pass"
-msgstr "Importa un pase"
+msgstr "Importar un pase"
 
 #: src/view/window.blp:64
 msgid "Menu"
@@ -203,9 +213,8 @@ msgid "Update pass"
 msgstr "Actualizar pase"
 
 #: src/view/window.blp:131
-#, fuzzy
 msgid "Additional information"
-msgstr "Sin información adicional"
+msgstr "Información adicional"
 
 #: src/view/window.blp:145
 msgid "Back"
@@ -213,25 +222,23 @@ msgstr "Atrás"
 
 #: src/view/window.blp:166
 msgid "Sort"
-msgstr ""
+msgstr "Ordenación"
 
 #: src/view/window.blp:172
 msgid "A-Z"
-msgstr ""
+msgstr "A-Z"
 
 #: src/view/window.blp:179
 msgid "Creator"
-msgstr ""
+msgstr "Creador"
 
 #: src/view/window.blp:186
-#, fuzzy
 msgid "Expiration date"
-msgstr "Sin fecha de expiración"
+msgstr "Fecha de expiración"
 
 #: src/view/window.blp:193
-#, fuzzy
 msgid "Keyboard shortcuts"
-msgstr "Mostrar atajos de teclado"
+msgstr "Atajos del teclado"
 
 #: src/view/window.blp:194
 msgid "About Passes"
