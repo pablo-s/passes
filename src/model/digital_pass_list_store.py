@@ -107,16 +107,33 @@ class SortPassesBy:
         return  d1_is_later_than_d2 or \
                 (dates_are_equal and d1.description() > d2.description())
 
+    @classmethod
+    def relevant_date(cls, pass1, pass2):
+        """
+        Sort passes by relevant date. In the event that two passes have the
+        same expiration date then they will be sorted by description.
+        """
+        dates_comparison = Date.compare_dates(pass1.relevant_date(),
+                                              pass2.relevant_date())
+
+        d1_is_later_than_d2 = dates_comparison > 0
+        dates_are_equal = dates_comparison == 0
+
+        return  d1_is_later_than_d2 or \
+                (dates_are_equal and pass1.description() > pass2.description())
+
 
 class SortingCriteria(StrEnum):
     CREATOR = 'creator'
     DESCRIPTION = 'description'
     EXPIRATION_DATE = 'expiration_date'
+    RELEVANT_DATE = 'relevant_date'
 
     __SORTING_FUNCTIONS = {
         CREATOR: SortPassesBy.creator,
         DESCRIPTION: SortPassesBy.description,
-        EXPIRATION_DATE: SortPassesBy.expiration_date
+        EXPIRATION_DATE: SortPassesBy.expiration_date,
+        RELEVANT_DATE: SortPassesBy.relevant_date
     }
 
     @classmethod

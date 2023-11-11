@@ -70,6 +70,9 @@ class DigitalPass(GObject.GObject):
     def mime_type():
         raise NotImplementedError()
 
+    def relevant_date():
+        raise NotImplementedError()
+
     def set_path(self, new_path: str):
         self.__path = new_path
 

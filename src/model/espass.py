@@ -156,6 +156,9 @@ class EsPassAdapter(DigitalPass):
     def mime_type():
         return 'application/vnd.espass-espass+zip'
 
+    def relevant_date(self):
+        return None
+
     def unique_identifier(self):
         return '.'.join([self.__adaptee.id(), self.format()])
 

@@ -245,6 +245,9 @@ class PKPassAdapter(DigitalPass):
     def mime_type():
         return 'application/vnd.apple.pkpass'
 
+    def relevant_date(self):
+        return self.__adaptee.relevant_date()
+
     def unique_identifier(self):
         return '.'.join([self.__adaptee.pass_type_identifier(),
                          self.__adaptee.serial_number(),

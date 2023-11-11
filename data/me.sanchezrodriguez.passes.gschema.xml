@@ -8,11 +8,12 @@
 		<value value="0" nick="description"/>
 		<value value="1" nick="creator"/>
 		<value value="2" nick="expiration_date"/>
+		<value value="3" nick="relevant_date"/>
 	</enum>
 
 	<schema id="me.sanchezrodriguez.passes" path="/me/sanchezrodriguez/passes/">
 		<key name="default-sorting-criteria" enum="me.sanchezrodriguez.passes.SortingCriteria">
-			<default>'description'</default>
+			<default>'relevant_date'</default>
 			<summary>Default sort order</summary>
 			<description>The default order for passes.</description>
 		</key>

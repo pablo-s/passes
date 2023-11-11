@@ -89,5 +89,10 @@ class PassRow(Gtk.ListBoxRow):
             self.__header_text = row_date.as_relative_pretty_string() \
                                  if row_date else _('Without expiration date')
 
+        elif sorting_criteria == SortingCriteria.RELEVANT_DATE:
+            row_date = self.__pass.relevant_date()
+            self.__header_text = row_date.as_relative_pretty_string() \
+                                 if row_date else _('Without relevant date')
+
         else:
             self.__header_text = ''
