@@ -8,8 +8,8 @@
 ## Features
 
 - Adaptive user interface.
-- Import espass and pkpass files.
-- Aztec, CODE128, PDF417 and QR codes.
+- Support for ".espass" and ".pkpass" files.
+- Ability to update ".pkpass" files.
 
 ## Build
 
@@ -24,14 +24,6 @@ The recommended way of installing *Passes* is via Flatpak:
        src='https://flathub.org/assets/badges/flathub-badge-en.png'/>
 </a>
 <br/>
-<br/>
-
-Alternatively, it can also be obtained from the following packages:
-
-| Distribution | Package |
-|:-------------|:--------|
-| Arch Linux (AUR) | [`passes`](https://aur.archlinux.org/packages/passes) |
-| Arch Linux (AUR, git version) | [`passes-git`](https://aur.archlinux.org/packages/passes-git) |
 
 ## License
 
