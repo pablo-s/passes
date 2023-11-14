@@ -373,6 +373,9 @@ class PassDataExtractor:
 
             if key in self._dictionary:
                 value = self._dictionary[key]
+            else:
+                # The key does not exist... nothing to do
+                return None
 
             if not type_constructor and type(value) == dict:
                 return PassDataExtractor(value)
