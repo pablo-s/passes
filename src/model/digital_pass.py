@@ -295,6 +295,33 @@ class Date:
 
     @classmethod
     def from_iso_string(cls, string):
+        """
+        Creates a Date corresponding to the given ISO 8601 formatted string
+        """
+
+        # Include hours and seconds if they have not been specified.
+        # Why? DateTime.new_from_iso8601 does not accept times without them.
+
+        matches = re.finditer('(T|t)([0-9]{2}\:?)+(\+|\-|Z)?', string)
+
+        for match in matches:
+            missing_info = None
+            colon_count = match.group(0).count(':')
+
+            if colon_count == 0:
+                # Minutes and seconds are missing
+                missing_info = ':00:00'
+            elif colon_count == 1:
+                # Seconds are missing
+                missing_info = ':00'
+
+            if missing_info:
+                insertion_index = match.end() - 1
+                string = string[:insertion_index] + missing_info + string[insertion_index:]
+
+            # We are only interested in the first match
+            break
+
         date = GLib.DateTime.new_from_iso8601(string)
         return Date(date)
 
