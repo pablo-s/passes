@@ -18,47 +18,11 @@
 	</provides>
 
 	<releases>
-			<release date="2023-06-18" version="0.8">
+			<release date="2023-11-14" version="0.9">
 			<description translate="no">
-				<p>Passes has undergone many improvements since its last release. The main changes include the following:</p>
-				<p>Pass widget:</p>
 				<ul>
-					<li>Pass widget is now focusable, allowing better user navigation with keyboard.</li>
-					<li>Currencies are formatted when the international code is specified.</li>
-					<li>Strip image is placed below primary fields of coupons, events, and store cards.</li>
-					<li>Background image now appears in the background of event tickets.</li>
-					<li>Improved barcode area design.</li>
-					<li>Consideration of defined label color.</li>
-					<li>Dates are shown in the local time zone.</li>
-				</ul>
-				<p>Pass list:</p>
-				<ul>
-					<li>Passes are now sorted based on two criteria: expiration date and description.</li>
-					<li>Pass icon will now be displayed in a grayed-out state to visually indicate that the pass has expired.</li>
-				</ul>
-				<p>Addition information pane:</p>
-				<ul>
-					<li>Fields are now displayed within a boxed list.</li>
-					<li>An icon and a message are displayed when the pane is empty.</li>
-				</ul>
-				<p>File chooser (thanks to TheEvilSkeleton):</p>
-				<ul>
-					<li>File chooser window is now modal, so it connects and follow the main window.</li>
-					<li>Filter for supported formats (PKPass and esPass) have been added.</li>
-					<li>File chooser window can now be open with Ctrl+O.</li>
-				</ul>
-				<p>Translations</p>
-				<ul>
-					<li>French translation has been added (thanks to rene-coty).</li>
-					<li>Spanish translation has been improved.</li>
-				</ul>
-				<p>Others:</p>
-				<ul>
-					<li>PKPass passes can now be updated (if they are updatable).</li>
-					<li>License type and copyright fields have been updated (thanks to TheEvilSkeleton).</li>
-					<li>Media types have been included in appstream file (thanks to TheEvilSkeleton).</li>
-					<li>Escape shortcut can now be used to close the barcode dialog (thanks to TheEvilSkeleton).</li>
-					<li>"Info" icon has been included in the application.</li>
+					<li>Added the ability to sort passes based on different criteria.</li>
+					<li>Visual refinements to match the state of the art of GNOME apps.</li>
 				</ul>
 			</description>
 		</release>

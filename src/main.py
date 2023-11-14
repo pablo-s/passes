@@ -109,7 +109,7 @@ class Application(Adw.Application):
         about.set_license_type(Gtk.License.GPL_3_0)
         about.set_developer_name('Pablo Sánchez Rodríguez')
         about.set_issue_url('https://github.com/pablo-s/passes/issues')
-        about.set_version('0.8')
+        about.set_version('0.9')
         about.set_website('https://github.com/pablo-s/passes')
         about.set_transient_for(self.window())
         about.show()
