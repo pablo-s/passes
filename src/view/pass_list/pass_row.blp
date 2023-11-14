@@ -1,43 +1,39 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $PassRow : Gtk.ListBoxRow
-{
-    can-focus: true;
+template $PassRow: Gtk.ListBoxRow {
+  can-focus: true;
+  margin-top: 6;
+  selectable: true;
+
+  Gtk.Box box {
+    can-focus: false;
+    margin-bottom: 6;
     margin-top: 6;
-    selectable: true;
+    spacing: 12;
 
-    Gtk.Box box
-    {
-        can-focus: false;
-        margin-bottom: 6;
-        margin-top: 6;
-        spacing: 12;
+    $PassIcon icon {}
 
-        $PassIcon icon {}
+    Gtk.Box {
+      orientation: vertical;
+      spacing: 3;
+      valign: center;
 
-        Gtk.Box
-        {
-            orientation: vertical;
-            spacing: 3;
-            valign: center;
+      Gtk.Label title {
+        ellipsize: end;
+        hexpand: true;
+        use-markup: true;
+        xalign: 0;
+      }
 
-            Gtk.Label title
-            {
-                ellipsize: end;
-                hexpand: true;
-                use-markup: true;
-                xalign: 0;
-            }
+      Gtk.Label subtitle {
+        styles [
+          "subtitle"
+        ]
 
-            Gtk.Label subtitle
-            {
-                styles ["subtitle"]
-                hexpand: true;
-                xalign: 0;
-            }
-        }
-
+        hexpand: true;
+        xalign: 0;
+      }
     }
+  }
 }
-

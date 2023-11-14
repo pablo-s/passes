@@ -1,26 +1,25 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $AdditionalInformationPane : Gtk.Box
-{
-    Gtk.ScrolledWindow scrolled_window
-    {
-        hscrollbar-policy: never;
+template $AdditionalInformationPane: Gtk.Box {
+  Gtk.ScrolledWindow scrolled_window {
+    hscrollbar-policy: never;
 
-        Gtk.Viewport
-        {
-            scroll-to-focus: true;
+    Gtk.Viewport {
+      scroll-to-focus: true;
 
-            Gtk.ListBox fields
-            {
-                styles ["list-box-with-placeholder"]
-                hexpand: true;
-                margin-bottom: 12;
-                margin-top: 12;
-                margin-start: 12;
-                margin-end: 12;
-                selection-mode: none;
-            }
-        }
+      Gtk.ListBox fields {
+        styles [
+          "list-box-with-placeholder"
+        ]
+
+        hexpand: true;
+        margin-bottom: 12;
+        margin-top: 12;
+        margin-start: 12;
+        margin-end: 12;
+        selection-mode: none;
+      }
     }
+  }
 }
