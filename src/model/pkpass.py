@@ -31,84 +31,115 @@ class PKPass:
               'generic',
               'storeCard']
 
-    def __init__(self, pass_data, pass_translation, pass_images):
-        self.__data = PassDataExtractor(pass_data)
-        self.__translation = pass_translation
-        self.__images = pass_images
+    __slots__ = ('__description', '__format_version', '__organization_name',
+        '__pass_type_identifier', '__serial_number', '__team_identifier',
+        '__expiration_date', '__voided', '__locations', '__maximum_distance',
+        '__relevant_date', '__style', '__auxiliary_fields', '__back_fields',
+        '__header_fields', '__primary_fields', '__secondary_fields',
+        '__transit_type', '__barcode', '__barcodes', '__background',
+        '__background_color', '__foreground_color', '__grouping_identifier',
+        '__icon', '__label_color', '__logo', '__logo_text', '__strip',
+        '__authentication_token', '__web_service_url')
+
+    def __init__(self, pass_data, translation, images):
+        data = PassDataExtractor(pass_data)
+
+        self.__description = data.get('description')
+        self.__format_version = data.get('formatVersion')
+        self.__organization_name = data.get('organizationName')
+        self.__pass_type_identifier = data.get('passTypeIdentifier')
+        self.__serial_number = data.get('serialNumber')
+        self.__team_identifier = data.get('teamIdentifier')
+
+        self.__expiration_date = data.get('expirationDate', Date.from_iso_string)
+        self.__voided = data.get('voided', bool)
+
+        self.__locations = data.get('locations')
+        self.__maximum_distance = data.get('maxDistance')
+        self.__relevant_date = data.get('relevantDate', Date.from_iso_string)
 
         self.__style = None
         for style in PKPass.styles:
-            if style in self.__data.keys():
+            if style in data.keys():
                 self.__style = style
                 break
 
-        self.__auxiliary_fields = self.__data\
-            .get(self.__style)\
-            .get_list('auxiliaryFields', StandardField, self.__translation)
+        self.__auxiliary_fields = data.get(self.__style)\
+            .get_list('auxiliaryFields', StandardField, translation)
+        self.__back_fields = data.get(self.__style)\
+            .get_list('backFields', StandardField, translation)
+        self.__header_fields = data.get(self.__style)\
+            .get_list('headerFields', StandardField, translation)
+        self.__primary_fields = data.get(self.__style)\
+            .get_list('primaryFields', StandardField, translation)
+        self.__secondary_fields = data.get(self.__style)\
+            .get_list('secondaryFields', StandardField, translation)
+        self.__transit_type = data.get(self.__style).get('transitType')
 
-        self.__back_fields = self.__data\
-            .get(self.__style)\
-            .get_list('backFields', StandardField, self.__translation)
+        self.__barcode = data.get('barcode', Barcode)
+        self.__barcodes = data.get_list('barcodes', Barcode)
+        self.__background = Image(images['background']) \
+            if 'background' in images else None
+        self.__background_color = data.get('backgroundColor', Color.from_css)
+        self.__foreground_color = data.get('foregroundColor', Color.from_css)
+        self.__grouping_identifier = data.get('groupingIdentifier') \
+            if self.style() in ['boardingPass', 'eventTicket'] else None
+        self.__icon = Image(images['icon']) if 'icon' in images else None
+        self.__label_color = data.get('labelColor', Color.from_css)
+        self.__logo = Image(images['logo']) if 'logo' in images else None
+        self.__logo_text = data.get('logoText')
+        self.__strip = Image(images['strip']) if 'strip' in images else None
 
-        self.__header_fields = self.__data\
-            .get(self.__style)\
-            .get_list('headerFields', StandardField, self.__translation)
-
-        self.__primary_fields = self.__data\
-            .get(self.__style)\
-            .get_list('primaryFields', StandardField, self.__translation)
-
-        self.__secondary_fields = self.__data\
-            .get(self.__style)\
-            .get_list('secondaryFields', StandardField, self.__translation)
+        self.__authentication_token = data.get('authenticationToken')
+        self.__web_service_url = data.get('webServiceURL')
 
 
     # Standard
 
     # mandatory
     def description(self):
-        return self.__data.get('description')
+        return self.__description
 
     # mandatory
     def format_version(self):
-        return self.__data.get('formatVersion')
+        return self.__format_version
 
     # mandatory
     def organization_name(self):
-        return self.__data.get('organizationName')
+        return self.__organization_name
 
     # mandatory
     def pass_type_identifier(self):
-        return self.__data.get('passTypeIdentifier')
+        return self.__pass_type_identifier
 
     # mandatory
     def serial_number(self):
-        return self.__data.get('serialNumber')
+        return self.__serial_number
 
     # mandatory
     def team_identifier(self):
-        return self.__data.get('teamIdentifier')
+        return self.__team_identifier
 
 
     # Expiration
 
     def expiration_date(self):
-        return self.__data.get('expirationDate', Date.from_iso_string)
+        return self.__expiration_date
 
     def voided(self):
-        return self.__data.get('voided', bool)
+        return self.__voided
 
 
     # Relevance
 
     def locations(self):
-        return self.__data.get('locations')
+        return self.__locations
 
     def maximum_distance(self):
-        return self.__data.get('maxDistance')
+        return self.__maximum_distance
 
     def relevant_date(self):
-        return self.__data.get('relevantDate', Date.from_iso_string)
+        return self.__relevant_date
 
 
     # Style
@@ -135,62 +166,51 @@ class PKPass:
         return self.__secondary_fields
 
     def transit_type(self):
-        return self.__data.get(self.__style).get('transitType')
+        return self.__transit_type
 
 
     # Visual appearance
 
     def barcode(self):
-        return self.__data.get('barcode', Barcode)
+        return self.__barcode
 
     def barcodes(self):
-        return self.__data.get_list('barcodes', Barcode)
+        return self.__barcodes
 
     def background(self):
-        return Image(self.__images['background']) \
-            if 'background' in self.__images \
-            else None
+        return self.__background
 
     def background_color(self):
-        return self.__data.get('backgroundColor', Color.from_css)
+        return self.__background_color
 
     def foreground_color(self):
-        return self.__data.get('foregroundColor', Color.from_css)
+        return self.__foreground_color
 
     def grouping_identifier(self):
-        if self.style() in ['boardingPass', 'eventTicket']:
-            return self.__data.get('groupingIdentifier')
-        else:
-            return None
+        return self.__grouping_identifier
 
     def icon(self):
-        return Image(self.__images['icon']) \
-            if 'icon' in self.__images \
-            else None
+        return self.__icon
 
     def label_color(self):
-        return self.__data.get('labelColor', Color.from_css)
+        return self.__label_color
 
     def logo(self):
-        return Image(self.__images['logo']) \
-            if 'logo' in self.__images \
-            else None
+        return self.__logo
 
     def logo_text(self):
-        return self.__data.get('logoText')
+        return self.__logo_text
 
     def strip(self):
-        return Image(self.__images['strip']) \
-            if 'strip' in self.__images \
-            else None
+        return self.__strip
 
     # Web Service
 
     def authentication_token(self):
-        return self.__data.get('authenticationToken')
+        return self.__authentication_token
 
     def web_service_url(self):
-        return self.__data.get('webServiceURL')
+        return self.__web_service_url
 
 
 class PKPassAdapter(DigitalPass):
