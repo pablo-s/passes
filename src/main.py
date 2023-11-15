@@ -127,7 +127,7 @@ class Application(Adw.Application):
 
         about.add_credit_section(_("Contributors"), [
             # Contributors: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://websi.te
-            "Hari Rana",
+            "Hari Rana (TheEvilSkeleton) https://tesk.page",
             "skøldis <passes@turtle.garden>"
         ])
 
