@@ -28,8 +28,8 @@ class PassList(Gtk.ListBox):
     __gtype_name__ = 'PassList'
 
     __gsignals__ = {
-        'pass-activated' : (GObject.SIGNAL_RUN_LAST, GObject.TYPE_NONE, (DigitalPass,)),
-        'pass-selected' : (GObject.SIGNAL_RUN_LAST, GObject.TYPE_NONE, (DigitalPass,))
+    'pass-activated' : (GObject.SIGNAL_RUN_LAST, GObject.TYPE_NONE, (DigitalPass,)),
+    'pass-selected' : (GObject.SIGNAL_RUN_LAST, GObject.TYPE_NONE, (DigitalPass,))
     }
 
     def __init__(self):
@@ -43,8 +43,8 @@ class PassList(Gtk.ListBox):
         # Create a placeholder widget to be displayed when the list is empty
         placeholder = Adw.StatusPage.new()
         placeholder.set_icon_name('me.sanchezrodriguez.passes')
-        placeholder.set_title(_('You have no passes'))
-        placeholder.set_description(_('Use the “+” button to import a pass'))
+        placeholder.set_title(_('No Passes'))
+        placeholder.set_description(_('Use the “+” button to import a pass.'))
         self.set_placeholder(placeholder)
 
         self.connect('row-activated', self._on_row_activated)
@@ -57,23 +57,23 @@ class PassList(Gtk.ListBox):
         row.update_header_text_for(self.__sorting_criteria)
 
         if row_above:
-            row_above.update_header_text_for(self.__sorting_criteria)
-
+	        row_above.update_header_text_for(self.__sorting_criteria)
         if not row_above or row.header_text() != row_above.header_text():
-            row.show_header()
+	        row.show_header()
         else:
-            row.hide_header()
+	        row.hide_header()
 
     def bind_model(self, pass_list_model):
         self.__sorting_criteria = pass_list_model.sorting_criteria()
         self.__list_model = pass_list_model
         super().bind_model(pass_list_model.get_model(), PassRow)
+        self.row_at_index(0).activate()
 
     def row_at_index(self, index):
         row_at_index = self.get_row_at_index(index)
 
         if not row_at_index:
-            row_at_index = self.get_row_at_index(0)
+	        row_at_index = self.get_row_at_index(0)
 
         return row_at_index if row_at_index else None
 
@@ -81,14 +81,14 @@ class PassList(Gtk.ListBox):
         row_at_index = self.row_at_index(index)
 
         if row_at_index:
-            self.select_row(row_at_index)
-            self.emit('pass-selected', row_at_index.data())
+        	self.select_row(row_at_index)
+        	self.emit('pass-selected', row_at_index.data())
 
     def selected_pass(self):
         selected_pass = None
 
         if self.__selected_row:
-            selected_pass = self.__selected_row.data()
+        	selected_pass = self.__selected_row.data()
 
         return selected_pass
 
@@ -96,7 +96,7 @@ class PassList(Gtk.ListBox):
         index = None
 
         if self.__selected_row:
-            index = self.__selected_row.get_index()
+        	index = self.__selected_row.get_index()
 
         return index
 

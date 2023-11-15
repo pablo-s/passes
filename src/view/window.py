@@ -22,6 +22,7 @@ from .barcode_dialog import BarcodeDialog
 from .digital_pass_list_store import SortingCriteria
 from .pass_list import PassList
 from .pass_widget import PassWidget
+from .const import Config
 
 
 @Gtk.Template(resource_path='/me/sanchezrodriguez/passes/window.ui')
@@ -76,6 +77,9 @@ class PassesWindow(Adw.ApplicationWindow):
         self.pass_list.connect('pass-selected', self._on_pass_selected)
         self.pass_widget.connect('barcode-clicked', self._on_barcode_clicked)
         self.info_button.connect('clicked', self._on_info_button_clicked)
+
+        if Config.DEVEL:
+            self.add_css_class ('devel')
 
     def _on_back_button_clicked(self, button):
         self.inner_split_view.set_show_sidebar(False);

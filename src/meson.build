@@ -43,7 +43,16 @@ python = import('python')
 
 conf = configuration_data()
 conf.set('PYTHON', python.find_installation('python3').path())
-conf.set('VERSION', meson.project_version())
+conf.set('APPID', 'me.sanchezrodriguez.passes')
+if get_option('profile') == 'development'
+  vcs_tag = run_command('git', 'rev-parse', '--short', 'HEAD').stdout().strip()
+  conf.set('DEVEL', 'Development')
+  conf.set('VERSION', meson.project_version() + '.dev-' + vcs_tag)
+else
+  conf.set('DEVEL', 'Default')
+  conf.set('VERSION', meson.project_version())
+endif
+
 conf.set('localedir', join_paths(get_option('prefix'), get_option('localedir')))
 conf.set('pkgdatadir', pkgdatadir)
 
@@ -77,5 +86,11 @@ passes_sources = [
   'model/pkpass.py',
   'model/settings.py',
 ]
+
+passes_sources += configure_file(
+  input: 'view/const.py.in',
+  output: 'const.py',
+  configuration: conf,
+)
 
 install_data(passes_sources, install_dir: moduledir)

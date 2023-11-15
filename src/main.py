@@ -30,27 +30,34 @@ from .digital_pass_list_store import DigitalPassListStore
 from .digital_pass_updater import PassUpdater
 from .persistence import FileAlreadyImported, PersistenceManager
 from .settings import Settings
+from .const import Config
 from .window import PassesWindow
 
 
 class Application(Adw.Application):
 
-    # Application ID
-    ID = 'me.sanchezrodriguez.passes'
+    troubleshooting = "OS: {os}\nApplication version: {wv}\nGTK: {gtk}\nlibadwaita: {adw}\nApp ID: {app_id}\nProfile: {profile}\nLanguage: {lang}"
 
     def __init__(self):
-        super().__init__(application_id=Application.ID,
+        super().__init__(application_id=Config.APPID,
                          flags=Gio.ApplicationFlags.FLAGS_NONE)
 
         self.__file_chooser = None
         self.__persistence = PersistenceManager()
-        self.__settings = Settings(Application.ID)
+        self.__settings = Settings(Config.APPID)
         self.__pass_list = DigitalPassListStore(self.__settings)
 
         pass_files = self.__persistence.load_pass_files()
         for pass_file in pass_files:
             digital_pass = PassFactory.create(pass_file)
             self.__pass_list.insert(digital_pass)
+
+        gtk_version = str(Gtk.MAJOR_VERSION) + "." + str(Gtk.MINOR_VERSION) + "." + str(Gtk.MICRO_VERSION)
+        adw_version = str(Adw.MAJOR_VERSION) + "." + str(Adw.MINOR_VERSION) + "." + str(Adw.MICRO_VERSION)
+        os_string = GLib.get_os_info("NAME") + " " + GLib.get_os_info("VERSION")
+        lang = GLib.environ_getenv(GLib.get_environ(), "LANG")
+
+        self.troubleshooting = self.troubleshooting.format( os = os_string, wv = Config.VERSION, gtk = gtk_version, adw = adw_version, profile = Config.PROFILE, app_id = Config.APPID, lang = lang )
 
     def do_activate(self):
         window = self.props.active_window
@@ -102,17 +109,30 @@ class Application(Adw.Application):
             self.window().show_toast(str(exception))
 
     def on_about_action(self, widget, __):
-        about = Adw.AboutWindow()
-        about.set_application_icon('me.sanchezrodriguez.passes')
-        about.set_application_name(_('Passes'))
-        about.set_copyright('Copyright © 2022-2023 Pablo Sánchez Rodríguez')
-        about.set_license_type(Gtk.License.GPL_3_0)
-        about.set_developer_name('Pablo Sánchez Rodríguez')
-        about.set_issue_url('https://github.com/pablo-s/passes/issues')
-        about.set_version('0.9')
-        about.set_website('https://github.com/pablo-s/passes')
-        about.set_transient_for(self.window())
+        about = Adw.AboutWindow(
+            application_icon = Config.APPID,
+            application_name = _('Passes'),
+            copyright = 'Copyright © 2022-2023 Pablo Sánchez Rodríguez',
+            license_type = Gtk.License.GPL_3_0,
+            developer_name = 'Pablo Sánchez Rodríguez',
+            issue_url = 'https://github.com/pablo-s/passes/issues',
+            version = Config.VERSION,
+            developers = [ 'Pablo Sánchez Rodríguez' ],
+            # Translators: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://websi.te
+            translator_credits = _("translator-credits"),
+            website = 'https://github.com/pablo-s/passes',
+            debug_info=self.troubleshooting,
+            transient_for = self.window()
+        )
+
+        about.add_credit_section(_("Contributors"), [
+            # Contributors: do one of the following, one per line: Your Name, Your Name <email@email.org>, Your Name https://websi.te
+            "Hari Rana",
+            "skøldis <passes@turtle.garden>"
+        ])
+
         about.show()
+
     def on_delete_action(self, widget, _):
         if not self.window():
             return
