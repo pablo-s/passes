@@ -52,7 +52,6 @@ else
   conf.set('DEVEL', 'Default')
   conf.set('VERSION', meson.project_version())
 endif
-
 conf.set('localedir', join_paths(get_option('prefix'), get_option('localedir')))
 conf.set('pkgdatadir', pkgdatadir)
 
