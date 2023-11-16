@@ -1,10 +1,12 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $PassFieldRow: Gtk.ListBoxRow {
+template $PassFieldRow: Gtk.ListBoxRow
+{
   activatable: false;
 
-  Gtk.Box {
+  Gtk.Box
+  {
     margin-bottom: 6;
     margin-end: 6;
     margin-start: 6;
@@ -12,7 +14,8 @@ template $PassFieldRow: Gtk.ListBoxRow {
     orientation: vertical;
     spacing: 6;
 
-    Gtk.Label label {
+    Gtk.Label label
+    {
       styles [
         "caption-heading"
       ]
@@ -20,7 +23,8 @@ template $PassFieldRow: Gtk.ListBoxRow {
       halign: start;
     }
 
-    Gtk.Label value {
+    Gtk.Label value
+    {
       halign: start;
       wrap: true;
       wrap-mode: word_char;

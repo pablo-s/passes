@@ -1,62 +1,75 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $PassesWindow: Adw.ApplicationWindow {
+template $PassesWindow: Adw.ApplicationWindow
+{
   default-width: 1110;
   default-height: 600;
   // Minimum size of the window
   width-request: 360;
   height-request: 294;
 
-  Adw.Breakpoint {
+  Adw.Breakpoint
+  {
     condition ("max-width: 676sp")
 
-    setters {
+    setters
+    {
       main_split_view.collapsed: true;
     }
   }
 
-  Adw.Breakpoint {
+  Adw.Breakpoint
+  {
     condition ("min-width: 1008sp")
 
-    setters {
+    setters
+    {
       info_button.visible: false;
       inner_split_view.collapsed: false;
     }
   }
 
-  content: Adw.ToastOverlay toast_overlay {
-    Adw.NavigationSplitView main_split_view {
-      sidebar: Adw.NavigationPage {
+  content: Adw.ToastOverlay toast_overlay
+  {
+    Adw.NavigationSplitView main_split_view
+    {
+      sidebar: Adw.NavigationPage
+      {
         title: _("Passes");
 
-        Adw.ToolbarView {
-          //top-bar-style: raised;
+        Adw.ToolbarView
+        {
           width-request: 332;
 
           [top]
-          Adw.HeaderBar main_header_bar {
+          Adw.HeaderBar main_header_bar
+          {
             [start]
-            Gtk.Button {
+            Gtk.Button
+            {
               action-name: "app.import";
               can-focus: false;
               icon-name: "list-add-symbolic";
-              tooltip-text: _("Import A Pass");
+              tooltip-text: _("Import a Pass");
               visible: true;
             }
 
             [end]
-            Gtk.MenuButton {
+            Gtk.MenuButton
+            {
               icon-name: "open-menu-symbolic";
               menu-model: primary_menu;
               tooltip-text: _("Menu");
             }
           }
 
-          content: Gtk.ScrolledWindow {
+          content: Gtk.ScrolledWindow
+          {
             hscrollbar-policy: never;
 
-            Gtk.Viewport {
+            Gtk.Viewport
+            {
               scroll-to-focus: true;
 
               $PassList pass_list {}
@@ -65,36 +78,43 @@ template $PassesWindow: Adw.ApplicationWindow {
         }
       };
 
-      content: Adw.NavigationPage {
+      content: Adw.NavigationPage
+      {
         width-request: 294;
 
-        Adw.OverlaySplitView inner_split_view {
+        Adw.OverlaySplitView inner_split_view
+        {
           sidebar-width-fraction: 0;
           sidebar-position: end;
           min-sidebar-width: 300;
           max-sidebar-width: 1000;
           collapsed: true;
 
-          content: Adw.NavigationPage {
-            Adw.ToolbarView {
-              //top-bar-style: raised;
+          content: Adw.NavigationPage
+          {
+            Adw.ToolbarView
+            {
 
               [top]
-              Adw.HeaderBar {
+              Adw.HeaderBar
+              {
                 [end]
-                Gtk.MenuButton {
+                Gtk.MenuButton
+                {
                   icon-name: "view-more-symbolic";
                   menu-model: secondary_menu;
                 }
 
                 [end]
-                Gtk.Button info_button {
+                Gtk.Button info_button
+                {
                   icon-name: "info-symbolic";
                   tooltip-text: _("Show Additional Information");
                 }
 
                 [end]
-                Gtk.Button update_button {
+                Gtk.Button update_button
+                {
                   action-name: "app.update";
                   icon-name: "view-refresh-symbolic";
                   tooltip-text: _("Update Pass");
@@ -105,17 +125,21 @@ template $PassesWindow: Adw.ApplicationWindow {
             }
           };
 
-          sidebar: Adw.NavigationPage info_panel {
+          sidebar: Adw.NavigationPage info_panel
+          {
             title: _("Additional Information");
             width-request: 332;
 
-            Adw.ToolbarView {
+            Adw.ToolbarView
+            {
               [top]
-              Adw.HeaderBar {
+              Adw.HeaderBar
+              {
                 show-back-button: false;
 
                 [start]
-                Gtk.Button back_button {
+                Gtk.Button back_button
+                {
                   icon-name: "go-previous-symbolic";
                   tooltip-text: _("Back");
                   valign: center;
@@ -132,30 +156,37 @@ template $PassesWindow: Adw.ApplicationWindow {
   };
 }
 
-menu primary_menu {
-  section {
-    submenu {
+menu primary_menu
+{
+  section
+  {
+    submenu
+    {
       label: _("Sort");
 
-      item {
+      item
+      {
         action: "win.sort";
         target: "description";
         label: _("Alphabetical");
       }
 
-      item {
+      item
+      {
         action: "win.sort";
         target: "creator";
         label: _("Creator");
       }
 
-      item {
+      item
+      {
         action: "win.sort";
         target: "expiration_date";
         label: _("Expiration Date");
       }
 
-      item {
+      item
+      {
         action: "win.sort";
         target: "relevant_date";
         label: _("Relevant Date");
@@ -163,12 +194,14 @@ menu primary_menu {
     }
   }
 
-  section {
+  section
+  {
     item (_("Keyboard Shortcuts"), "win.show-help-overlay")
     item (_("About Passes"), "app.about")
   }
 }
 
-menu secondary_menu {
+menu secondary_menu
+{
   item (_("Delete"), "app.delete")
 }

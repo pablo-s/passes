@@ -1,12 +1,14 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $PassRow: Gtk.ListBoxRow {
+template $PassRow: Gtk.ListBoxRow
+{
   can-focus: true;
   margin-top: 6;
   selectable: true;
 
-  Gtk.Box box {
+  Gtk.Box box
+  {
     can-focus: false;
     margin-bottom: 6;
     margin-top: 6;
@@ -14,19 +16,22 @@ template $PassRow: Gtk.ListBoxRow {
 
     $PassIcon icon {}
 
-    Gtk.Box {
+    Gtk.Box
+    {
       orientation: vertical;
       spacing: 3;
       valign: center;
 
-      Gtk.Label title {
+      Gtk.Label title
+      {
         ellipsize: end;
         hexpand: true;
         use-markup: true;
         xalign: 0;
       }
 
-      Gtk.Label subtitle {
+      Gtk.Label subtitle
+      {
         styles [
           "subtitle"
         ]
