@@ -36,7 +36,7 @@ from .window import PassesWindow
 
 class Application(Adw.Application):
 
-    troubleshooting = "OS: {os}\nApplication version: {wv}\nGTK: {gtk}\nlibadwaita: {adw}\nApp ID: {app_id}\nProfile: {profile}\nLanguage: {lang}"
+    troubleshooting = "OS: {os}\nApplication version: {wv}\nGTK: {gtk}\nlibadwaita: {adw}\n{flatpak}\nProfile: {profile}\nLanguage: {lang}"
 
     def __init__(self):
         super().__init__(application_id=Config.APPID,
@@ -52,12 +52,17 @@ class Application(Adw.Application):
             digital_pass = PassFactory.create(pass_file)
             self.__pass_list.insert(digital_pass)
 
+        is_flatpak = GLib.environ_getenv(GLib.get_environ(), "FLATPAK_ID") != None
+        is_flatpak_str = "Not running in Flatpak environment"
+        if is_flatpak:
+            is_flatpak_str = "Running in Flatpak environment\nApp ID: {app_id}".format( app_id = Config.APPID )
+
         gtk_version = str(Gtk.MAJOR_VERSION) + "." + str(Gtk.MINOR_VERSION) + "." + str(Gtk.MICRO_VERSION)
         adw_version = str(Adw.MAJOR_VERSION) + "." + str(Adw.MINOR_VERSION) + "." + str(Adw.MICRO_VERSION)
         os_string = GLib.get_os_info("NAME") + " " + GLib.get_os_info("VERSION")
         lang = GLib.environ_getenv(GLib.get_environ(), "LANG")
 
-        self.troubleshooting = self.troubleshooting.format( os = os_string, wv = Config.VERSION, gtk = gtk_version, adw = adw_version, profile = Config.PROFILE, app_id = Config.APPID, lang = lang )
+        self.troubleshooting = self.troubleshooting.format( os = os_string, wv = Config.VERSION, gtk = gtk_version, adw = adw_version, profile = Config.PROFILE, flatpak = is_flatpak_str, lang = lang )
 
     def do_activate(self):
         window = self.props.active_window
