@@ -32,6 +32,7 @@ def decode_string(string):
     for encoding in encodings:
         try:
             decoded_string = string.decode(encoding)
+            break
         except UnicodeDecodeError:
             pass
 
