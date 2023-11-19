@@ -148,12 +148,12 @@ class PassFactory:
     @classmethod
     def __create_translation_dict(cls, translation_file_content):
         content = decode_string(translation_file_content)
-        entries = content.split('\n')
+        entries = content.split(';')
 
         translation_dict = dict()
 
         for entry in entries:
-            result = re.search('"(.*)" = "(.*)"', entry)
+            result = re.search('"(.*)" = "(.*)"', entry, re.DOTALL)
 
             if not result or len(result.groups()) != 2:
                 continue
