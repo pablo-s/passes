@@ -41,6 +41,7 @@ class PassFieldRow(Gtk.ListBoxRow):
 
     def set_value(self, value):
         value = str(value)
+        value = re.sub(r'\<br\/>', '\n', value)
         value_has_links = re.search('</a>', value)
 
         if value_has_links:
