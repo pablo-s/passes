@@ -193,6 +193,10 @@ class Application(Adw.Application):
             # Notify user
             self.window().show_toast(_('Pass updated'))
 
+        except FileIsNotAPass:
+            self.__persistence.delete_pass_file(stored_file)
+            self.window().show_toast(_('Pass could not be updated'))
+
         except Exception as exception:
             self.window().show_toast(str(exception))
 
