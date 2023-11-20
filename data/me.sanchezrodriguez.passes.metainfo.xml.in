@@ -20,6 +20,7 @@
 	<releases>
 			<release date="2023-11-14" version="0.9">
 			<description translate="no">
+				<p>What is new?</p>
 				<ul>
 					<li>Added the ability to sort passes based on different criteria.</li>
 					<li>Visual refinements to match the state of the art of GNOME apps.</li>
