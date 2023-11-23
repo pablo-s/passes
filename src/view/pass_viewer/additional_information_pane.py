@@ -25,6 +25,7 @@ class AdditionalInformationPane(Gtk.Box):
 
     __gtype_name__ = 'AdditionalInformationPane'
 
+    scrolled_window = Gtk.Template.Child()
     fields = Gtk.Template.Child()
 
     def __init__(self):
@@ -38,10 +39,16 @@ class AdditionalInformationPane(Gtk.Box):
         self.fields.set_placeholder(placeholder)
 
     def clean(self):
+        # Remove all fields
         row = self.fields.get_row_at_index(0)
         while row:
             self.fields.remove(row)
             row = self.fields.get_row_at_index(0)
+
+        # Move the scrollbar to the top
+        vertical_adjustment = Gtk.Adjustment()
+        vertical_adjustment.set_value(vertical_adjustment.get_lower())
+        self.scrolled_window.set_vadjustment(vertical_adjustment)
 
     def content(self, a_pass):
         self.clean()
