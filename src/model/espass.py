@@ -16,7 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from .digital_pass import Barcode, Color, Date, DigitalPass, Image, \
-                          PassDataExtractor, Date, TimeInterval
+                          PassDataExtractor, PassField, Date, TimeInterval
 
 
 class EsPass():
@@ -166,27 +166,25 @@ class EsPassAdapter(DigitalPass):
         return False
 
 
-class EsPassField:
+class EsPassField(PassField):
     """
     An EsPass Field
     """
 
+    __slots__ = ('__hide')
+
     def __init__(self, espass_field_dictionary):
+
+        super().__init__()
+
         self.__hide = False
         if 'hide' in espass_field_dictionary.keys():
             self.__hide = espass_field_dictionary['hide']
 
-        self.__label = None
         if 'label' in espass_field_dictionary.keys():
-            self.__label = espass_field_dictionary['label']
+            self._label = espass_field_dictionary['label']
 
-        self.__value = espass_field_dictionary['value']
+        self._value = espass_field_dictionary['value']
 
     def is_hidden(self):
         return self.__hide
-
-    def label(self):
-        return self.__label
-
-    def value(self):
-        return self.__value

@@ -434,6 +434,22 @@ class PassDataExtractor:
         return self._dictionary.keys()
 
 
+class PassField:
+
+    __slots__ = ('_label',
+                 '_value')
+
+    def __init__(self):
+        self._label = None
+        self._value = None
+
+    def label(self):
+        return self._label
+
+    def value(self):
+        return self._value
+
+
 class TimeInterval:
     def __init__(self, start_time, end_time):
         self.__start_time = start_time

@@ -17,7 +17,8 @@
 
 from gi.repository import Gdk, Gtk
 
-from .digital_pass import Barcode, Color, Currency, Date, DigitalPass, Image, PassDataExtractor
+from .digital_pass import Barcode, Color, Currency, Date, DigitalPass, Image, \
+                          PassDataExtractor, PassField
 
 
 class PKPass:
@@ -277,13 +278,18 @@ class PKPassAdapter(DigitalPass):
         return self.__adaptee.voided()
 
 
-class StandardField:
+class StandardField(PassField):
     """
     A PKPass Standard Field
     """
 
+    __slots__ = ('__key',
+                 '__text_alignment')
+
     def __init__(self, pkpass_field_dictionary, translation_dictionary = None):
         self.__key = pkpass_field_dictionary['key']
+
+        super().__init__()
 
         try:
             # Pass field values contain information, provided as a string, that
@@ -309,18 +315,17 @@ class StandardField:
             pass
 
         finally:
-            self.__value = value.strip()
+            self._value = value.strip()
 
-        if not self.__key or not self.__value:
+        if not self.__key or not self._value:
             # Keys and values are required fields.
             raise Exception()
 
-        self.__label = None
         if 'label' in pkpass_field_dictionary.keys():
-            self.__label = pkpass_field_dictionary['label']
-            if translation_dictionary and self.__label in translation_dictionary.keys():
-                self.__label = translation_dictionary[self.__label]
-            self.__label = self.__label.upper()
+            self._label = pkpass_field_dictionary['label']
+            if translation_dictionary and self._label in translation_dictionary.keys():
+                self._label = translation_dictionary[self._label]
+            self._label = self._label.upper()
 
         self.__text_alignment = None
         if 'textAlignment' in pkpass_field_dictionary.keys():
@@ -328,12 +333,6 @@ class StandardField:
 
     def key(self):
         return self.__key
-
-    def label(self):
-        return self.__label
-
-    def value(self):
-        return self.__value
 
     def text_alignment(self):
         return self.__text_alignment
