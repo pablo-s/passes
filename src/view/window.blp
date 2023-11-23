@@ -81,6 +81,7 @@ template $PassesWindow : Adw.ApplicationWindow
             content: Adw.NavigationPage
             {
                 width-request: 294;
+                title: "-";
 
                 Adw.OverlaySplitView inner_split_view
                 {
@@ -92,6 +93,8 @@ template $PassesWindow : Adw.ApplicationWindow
 
                     content: Adw.NavigationPage
                     {
+                        title: "-";
+
                         Adw.ToolbarView
                         {
                             //top-bar-style: raised;
@@ -99,6 +102,8 @@ template $PassesWindow : Adw.ApplicationWindow
                             [top]
                             Adw.HeaderBar
                             {
+                                show-title: false;
+
                                 [end]
                                 Gtk.MenuButton
                                 {
