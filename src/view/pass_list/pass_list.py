@@ -28,8 +28,7 @@ class PassList(Gtk.ListBox):
     __gtype_name__ = 'PassList'
 
     __gsignals__ = {
-        'pass-activated' : (GObject.SIGNAL_RUN_LAST, GObject.TYPE_NONE, (DigitalPass,)),
-        'pass-selected' : (GObject.SIGNAL_RUN_LAST, GObject.TYPE_NONE, (DigitalPass,))
+        'pass-activated' : (GObject.SIGNAL_RUN_LAST, GObject.TYPE_NONE, (DigitalPass,))
     }
 
     def __init__(self):
@@ -81,8 +80,7 @@ class PassList(Gtk.ListBox):
         row_at_index = self.row_at_index(index)
 
         if row_at_index:
-            self.select_row(row_at_index)
-            self.emit('pass-selected', row_at_index.data())
+            row_at_index.activate()
 
     def selected_pass(self):
         selected_pass = None

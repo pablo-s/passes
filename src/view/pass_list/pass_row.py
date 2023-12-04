@@ -53,6 +53,9 @@ class PassRow(Gtk.ListBoxRow):
         self.title.set_label(description)
         self.subtitle.set_label(a_pass.creator())
 
+    def activate(self):
+        self.emit('activate')
+
     def data(self):
         return self.__pass
 

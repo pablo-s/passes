@@ -47,6 +47,8 @@ class PassesWindow(Adw.ApplicationWindow):
     def __init__(self, pass_list_model, **kwargs):
         super().__init__(**kwargs)
 
+        self.__show_pass_on_select = False
+
         # Set help overlay
         help_overlay = Gtk.Builder\
             .new_from_resource('/me/sanchezrodriguez/passes/help_overlay.ui')\
@@ -73,7 +75,6 @@ class PassesWindow(Adw.ApplicationWindow):
         # Connect callbacks
         self.back_button.connect('clicked', self._on_back_button_clicked)
         self.pass_list.connect('pass-activated', self._on_pass_activated)
-        self.pass_list.connect('pass-selected', self._on_pass_selected)
         self.pass_widget.connect('barcode-clicked', self._on_barcode_clicked)
         self.info_button.connect('clicked', self._on_info_button_clicked)
 
@@ -107,16 +108,7 @@ class PassesWindow(Adw.ApplicationWindow):
         if self.inner_split_view.get_collapsed():
             self.inner_split_view.set_show_sidebar(False);
 
-        self.main_split_view.set_show_content(True)
-
-    def _on_pass_selected(self, pass_list, digital_pass):
-        self.update_button.set_sensitive(digital_pass.is_updatable())
-
-        self.pass_widget.content(digital_pass)
-        self.pass_additional_info.content(digital_pass)
-
-        if self.inner_split_view.get_collapsed():
-            self.inner_split_view.set_show_sidebar(False);
+        self.main_split_view.set_show_content(self.__show_pass_on_select)
 
     def _on_sort_action(self, action, target: GLib.Variant):
         sorting_criteria = SortingCriteria.from_string(target.get_string())
@@ -140,6 +132,9 @@ class PassesWindow(Adw.ApplicationWindow):
 
     def selected_pass_index(self):
         return self.pass_list.selected_pass_index()
+
+    def show_pass_on_select(self, show_pass):
+        self.__show_pass_on_select = show_pass
 
     def show_toast(self, message):
         toast = Adw.Toast.new(message)

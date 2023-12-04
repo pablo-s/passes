@@ -70,6 +70,7 @@ class Application(Adw.Application):
 
         if not pass_list_is_empty:
             window.select_pass_at_index(0)
+            window.show_pass_on_select(True)
 
         window.present()
 
@@ -96,7 +97,9 @@ class Application(Adw.Application):
 
                 found, index = self.__pass_list.find(digital_pass)
                 if found:
+                    self.window().show_pass_on_select(False)
                     self.window().select_pass_at_index(index)
+                    self.window().show_pass_on_select(True)
 
         except Exception as exception:
             self.window().show_toast(str(exception))
@@ -113,6 +116,7 @@ class Application(Adw.Application):
         about.set_website('https://github.com/pablo-s/passes')
         about.set_transient_for(self.window())
         about.show()
+
     def on_delete_action(self, widget, _):
         if not self.window():
             return
@@ -129,7 +133,10 @@ class Application(Adw.Application):
             return
 
         index_to_select = min(self.__pass_list.length() - 1, selected_pass_index)
+        self.window().show_pass_on_select(False)
+        self.window().navigate_back()
         self.window().select_pass_at_index(index_to_select)
+        self.window().show_pass_on_select(True)
 
     def on_import_action(self, widget, __):
         if not self.__file_chooser:
