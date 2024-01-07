@@ -33,7 +33,7 @@ class AdditionalInformationPane(Gtk.Box):
         # Create a placeholder widget to be displayed when the pane is empty
         placeholder = Adw.StatusPage.new()
         placeholder.set_icon_name('info-symbolic')
-        placeholder.set_title(_('No additional information'))
+        placeholder.set_title(_('No Additional Information'))
         placeholder.add_css_class('compact')
         self.fields.set_placeholder(placeholder)
 

@@ -120,5 +120,5 @@ class BarcodeWidget(Gtk.Widget):
 
 class BarcodeFormatNotSupported(Exception):
     def __init__(self):
-        message = _('Barcode format not supported')
+        message = _('Barcode Format Not Supported')
         super().__init__(message)
