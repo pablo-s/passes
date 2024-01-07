@@ -1,0 +1,249 @@
+# Russian translation for passes.
+# Copyright (C) 2024 THE passes'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the passes package.
+# volkov <volkovissocool@gmail.com>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: passes\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-31 08:26+0100\n"
+"PO-Revision-Date: 2024-01-07 17:15+0200\n"
+"Last-Translator: volkov <volkovissocool@gmail.com>\n"
+"Language-Team: volkov <volkovissocool@gmail.com>\n"
+"Language: ru_RU\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"X-Generator: Poedit 3.4\n"
+
+#: data/me.sanchezrodriguez.passes.desktop.in:3
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:4 src/main.py:107
+#: src/view/window.blp:39
+msgid "Passes"
+msgstr "Пропускной"
+
+#: data/me.sanchezrodriguez.passes.desktop.in:4
+msgid "A digital pass manager"
+msgstr "Цифровой менеджер пропусков"
+
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:5
+msgid "Manage your digital passes"
+msgstr "Управляйте вашими цифровыми пропусками"
+
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:10
+msgid ""
+"Passes is a handy app that helps you manage all your digital passes "
+"effortlessly. With Passes, you can conveniently store your boarding passes, "
+"coupons, loyalty cards, event tickets, and more, all in PKPass or esPass "
+"format."
+msgstr ""
+"Пропускной - это удобное приложение которое помогает вам управлять всеми "
+"вашими цифровыми пропусками с легкостью. С Пропускным вы можете удобно "
+"хранить ваши посадочные билеты, купоны, карточки постоянного покупателя, "
+"билеты на выступления и много чего еще - в едином PKPass или esPass формате."
+
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:11
+msgid ""
+"Moreover, the app seamlessly adjusts to different screen sizes, allowing you "
+"to access your passes on various devices, whether it's a desktop computer or "
+"a mobile phone."
+msgstr ""
+"Также, это приложение плавно адаптируется под любые размеры экрана, "
+"благодаря чему вы можете получить доступ к вашим пропускам на разных "
+"устройствах - будь то настольный компьютер или смартфон."
+
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:12
+msgid ""
+"Stop wasting time searching through your email or printing out your digital "
+"passes. Download Passes now and keep all your passes in one convenient "
+"location."
+msgstr ""
+"Прекратите тратить время на поиск цифровых пропусков в ящике электронной "
+"почте или распечатанные пропуска. Скачайте Пропуской сейчас и храните все "
+"ваши пропуска в едином и удобном месте."
+
+#: data/me.sanchezrodriguez.passes.gschema.xml:16
+msgid "Default sort order"
+msgstr "Стандартный порядок сортирования"
+
+#: data/me.sanchezrodriguez.passes.gschema.xml:17
+msgid "The default order for passes."
+msgstr "Стандартный порядок сортировки пропусков."
+
+#: src/main.py:139
+msgid "Supported passes"
+msgstr "Поддержуемые форматы пропусков"
+
+#: src/main.py:144
+msgid "All files"
+msgstr "Все файлы"
+
+#. Notify user
+#: src/main.py:194
+msgid "Pass updated"
+msgstr "Пропуск обновлен"
+
+#: src/model/digital_pass_factory.py:169
+msgid "File is not a pass"
+msgstr "Этот файл не является пропуском"
+
+#: src/model/digital_pass_factory.py:175
+msgid "Format not supported yet"
+msgstr "Этот формат еще не поддерживается"
+
+#: src/model/digital_pass_factory.py:181
+msgid "Unknown file encoding"
+msgstr "Неизвестная кодировка файла"
+
+#: src/model/digital_pass.py:232
+msgid "Monday"
+msgstr "Понедельник"
+
+#: src/model/digital_pass.py:232
+msgid "Tuesday"
+msgstr "Вторник"
+
+#: src/model/digital_pass.py:232
+msgid "Wednesday"
+msgstr "Среда"
+
+#: src/model/digital_pass.py:233
+msgid "Thursday"
+msgstr "Четверг"
+
+#: src/model/digital_pass.py:233
+msgid "Friday"
+msgstr "Пятница"
+
+#: src/model/digital_pass.py:233
+msgid "Saturday"
+msgstr "Суббота"
+
+#: src/model/digital_pass.py:233
+msgid "Sunday"
+msgstr "Воскресенье"
+
+#: src/model/digital_pass.py:267
+msgid "Today"
+msgstr "Сегодня"
+
+#: src/model/digital_pass.py:270
+msgid "Tomorrow"
+msgstr "Завтра"
+
+#: src/model/digital_pass_updater.py:115
+msgid "Pass already updated"
+msgstr "Пропуск уже обновлен"
+
+#: src/model/digital_pass_updater.py:121
+msgid "Pass not updatable"
+msgstr "Этот пропуск невозможно обновить"
+
+#: src/model/digital_pass_updater.py:127
+msgid "Pass update error: {} {}"
+msgstr "Ошибка обновления пропуска: {} {}"
+
+#: src/model/persistence.py:88
+msgid "File already imported"
+msgstr "Файл уже импортирован"
+
+#: src/view/barcode_widget.py:123
+msgid "Barcode format not supported"
+msgstr "Формат штрих-кода не поддерживается"
+
+#: src/view/pass_list/pass_list.py:46
+msgid "You have no passes"
+msgstr "У вас нет пропусков"
+
+#: src/view/pass_list/pass_list.py:47
+msgid "Use the “+” button to import a pass"
+msgstr "Используйте “+” кнопку чтобы импортировать пропуск"
+
+#: src/view/pass_viewer/additional_information_pane.py:36
+msgid "No additional information"
+msgstr "Нет дополнительной информации"
+
+#: src/view/help_overlay.blp:14
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Основные"
+
+#: src/view/help_overlay.blp:18
+msgctxt "shortcut window"
+msgid "Show shortcuts"
+msgstr "Показать горячие клавиши"
+
+#: src/view/help_overlay.blp:24
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Выйти"
+
+#: src/view/help_overlay.blp:31
+msgctxt "shortcut window"
+msgid "Passes"
+msgstr "Пропуски"
+
+#: src/view/help_overlay.blp:35
+msgctxt "shortcut window"
+msgid "Import a pass"
+msgstr "Импортировать пропуск"
+
+#: src/view/help_overlay.blp:41
+msgctxt "shortcut window"
+msgid "Update selected pass"
+msgstr "Обновить выбранные пропуски"
+
+#: src/view/window.blp:55
+msgid "Import a pass"
+msgstr "Импортировать пропуск"
+
+#: src/view/window.blp:64
+msgid "Menu"
+msgstr "Меню"
+
+#: src/view/window.blp:113
+msgid "Show additional information"
+msgstr "Показать дополнительную информацию"
+
+#: src/view/window.blp:121
+msgid "Update pass"
+msgstr "Обновить пропуск"
+
+#: src/view/window.blp:131
+msgid "Additional information"
+msgstr "Дополнительная информация"
+
+#: src/view/window.blp:145
+msgid "Back"
+msgstr "Назад"
+
+#: src/view/window.blp:166
+msgid "Sort"
+msgstr "Сортировать"
+
+#: src/view/window.blp:172
+msgid "A-Z"
+msgstr "По названию"
+
+#: src/view/window.blp:179
+msgid "Creator"
+msgstr "По создателю"
+
+#: src/view/window.blp:186
+msgid "Expiration date"
+msgstr "По дате окончания срока"
+
+#: src/view/window.blp:193
+msgid "Keyboard shortcuts"
+msgstr "_Горячие клавиши"
+
+#: src/view/window.blp:194
+msgid "About Passes"
+msgstr "Про Пропускной"
+
+#: src/view/window.blp:200
+msgid "Delete"
+msgstr "Удалить"
