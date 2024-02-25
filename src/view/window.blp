@@ -31,30 +31,21 @@ template $PassesWindow : Adw.ApplicationWindow
 
     content: Adw.ToastOverlay toast_overlay
     {
-        Adw.NavigationSplitView main_split_view
+        Adw.ViewStack views
         {
-
-            sidebar: Adw.NavigationPage
+            Adw.ViewStackPage
             {
-                title: _("Passes");
-
-                Adw.ToolbarView
+                name: "welcome";
+                title: "Welcome page";
+                child: Gtk.Box
                 {
-                    //top-bar-style: raised;
-                    width-request: 332;
+                    orientation: vertical;
 
                     [top]
-                    Adw.HeaderBar main_header_bar
+                    Adw.HeaderBar
                     {
-                        [start]
-                        Gtk.Button
-                        {
-                            action-name: "app.import";
-                            can-focus: false;
-                            icon-name: "list-add-symbolic";
-                            tooltip-text: _("Import a pass");
-                            visible: true;
-                        }
+                        show-title: false;
+                        styles ["flat"]
 
                         [end]
                         Gtk.MenuButton
@@ -65,99 +56,158 @@ template $PassesWindow : Adw.ApplicationWindow
                         }
                     }
 
-                    content: Gtk.ScrolledWindow
+                    Adw.StatusPage
                     {
-                        hscrollbar-policy: never;
+                        title: _('Passes');
+                        description: _('Manage your digital passes');
+                        icon-name: 'me.sanchezrodriguez.passes';
+                        vexpand: true;
 
-                        Gtk.Viewport
+                        child: Gtk.Button
                         {
-                            scroll-to-focus: true;
-                            $PassList pass_list {}
-                        }
-                    };
-                }
-            };
+                            action-name: "app.import";
+                            halign: center;
+                            label: _("Import a pass…");
+                            styles ["pill", "suggested-action"]
+                        };
 
-            content: Adw.NavigationPage
+
+                    }
+                };
+            }
+
+            Adw.ViewStackPage
             {
-                width-request: 294;
-                title: "-";
-
-                Adw.OverlaySplitView inner_split_view
+                name: "main";
+                title: "Main page";
+                child: Adw.NavigationSplitView main_split_view
                 {
-                    sidebar-width-fraction: 0;
-                    sidebar-position: end;
-                    min-sidebar-width: 300;
-                    max-sidebar-width: 1000;
-                    collapsed: true;
 
-                    content: Adw.NavigationPage
+                    sidebar: Adw.NavigationPage
                     {
-                        title: "-";
+                        title: _("Passes");
 
                         Adw.ToolbarView
                         {
-                            //top-bar-style: raised;
+                            width-request: 332;
 
                             [top]
-                            Adw.HeaderBar
+                            Adw.HeaderBar main_header_bar
                             {
-                                show-title: false;
+                                [start]
+                                Gtk.Button
+                                {
+                                    action-name: "app.import";
+                                    can-focus: false;
+                                    icon-name: "list-add-symbolic";
+                                    tooltip-text: _("Import a pass");
+                                    visible: true;
+                                }
 
                                 [end]
                                 Gtk.MenuButton
                                 {
-                                    icon-name: "view-more-symbolic";
-                                    menu-model: secondary_menu;
-                                }
-
-                                [end]
-                                Gtk.Button info_button
-                                {
-                                    icon-name: "info-symbolic";
-                                    tooltip-text: _("Show additional information");
-                                }
-
-                                [end]
-                                Gtk.Button update_button
-                                {
-                                    action-name: "app.update";
-                                    icon-name: "view-refresh-symbolic";
-                                    tooltip-text: _("Update pass");
+                                    icon-name: "open-menu-symbolic";
+                                    menu-model: primary_menu;
+                                    tooltip-text: _("Menu");
                                 }
                             }
 
-                            content: $PassWidget pass_widget{};
-                        }
-                    };
-
-                    sidebar: Adw.NavigationPage info_panel
-                    {
-                        title: _("Additional information");
-                        width-request: 332;
-
-                        Adw.ToolbarView
-                        {
-                            [top]
-                            Adw.HeaderBar
+                            content: Gtk.ScrolledWindow
                             {
-                                show-back-button: false;
+                                hscrollbar-policy: never;
 
-                                [start]
-                                Gtk.Button back_button
+                                Gtk.Viewport
                                 {
-                                    icon-name: "go-previous-symbolic";
-                                    tooltip-text: _("Back");
-                                    valign: center;
-                                    visible: bind inner_split_view.collapsed;
+                                    scroll-to-focus: true;
+                                    $PassList pass_list {}
                                 }
-                            }
-
-                            $AdditionalInformationPane pass_additional_info {}
+                            };
                         }
                     };
-                }
-            };
+
+                    content: Adw.NavigationPage
+                    {
+                        width-request: 294;
+                        title: "-";
+
+                        Adw.OverlaySplitView inner_split_view
+                        {
+                            sidebar-width-fraction: 0;
+                            sidebar-position: end;
+                            min-sidebar-width: 300;
+                            max-sidebar-width: 1000;
+                            collapsed: true;
+
+                            content: Adw.NavigationPage
+                            {
+                                title: "-";
+
+                                Adw.ToolbarView
+                                {
+                                    //top-bar-style: raised;
+
+                                    [top]
+                                    Adw.HeaderBar
+                                    {
+                                        show-title: false;
+
+                                        [end]
+                                        Gtk.MenuButton
+                                        {
+                                            icon-name: "view-more-symbolic";
+                                            menu-model: secondary_menu;
+                                        }
+
+                                        [end]
+                                        Gtk.Button info_button
+                                        {
+                                            icon-name: "info-symbolic";
+                                            tooltip-text: _("Show additional information");
+                                        }
+
+                                        [end]
+                                        Gtk.Button update_button
+                                        {
+                                            action-name: "app.update";
+                                            icon-name: "view-refresh-symbolic";
+                                            tooltip-text: _("Update pass");
+                                        }
+                                    }
+
+                                    content: $PassWidget pass_widget{};
+                                }
+                            };
+
+                            sidebar: Adw.NavigationPage info_panel
+                            {
+                                title: _("Additional information");
+                                width-request: 332;
+
+                                Adw.ToolbarView
+                                {
+                                    [top]
+                                    Adw.HeaderBar
+                                    {
+                                        show-back-button: false;
+
+                                        [start]
+                                        Gtk.Button back_button
+                                        {
+                                            icon-name: "go-previous-symbolic";
+                                            tooltip-text: _("Back");
+                                            valign: center;
+                                            visible: bind inner_split_view.collapsed;
+                                        }
+                                    }
+
+                                    $AdditionalInformationPane pass_additional_info {}
+                                }
+                            };
+                        }
+                    };
+                };
+            }
         }
     };
 }

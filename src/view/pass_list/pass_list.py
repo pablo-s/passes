@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from gi.repository import Adw, GObject, Gtk
+from gi.repository import GObject, Gtk
 
 from .digital_pass import DigitalPass
 from .digital_pass_list_store import SortingCriteria
@@ -38,13 +38,6 @@ class PassList(Gtk.ListBox):
         self.__selected_row = None
         self.__sorting_criteria = None
         self.set_header_func(self._on_update_headers)
-
-        # Create a placeholder widget to be displayed when the list is empty
-        placeholder = Adw.StatusPage.new()
-        placeholder.set_icon_name('me.sanchezrodriguez.passes')
-        placeholder.set_title(_('You have no passes'))
-        placeholder.set_description(_('Use the “+” button to import a pass'))
-        self.set_placeholder(placeholder)
 
         self.connect('row-activated', self._on_row_activated)
 

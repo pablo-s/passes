@@ -1,6 +1,6 @@
 # main.py
 #
-# Copyright 2022-2023 Pablo Sánchez Rodríguez
+# Copyright 2022-2024 Pablo Sánchez Rodríguez
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -66,7 +66,7 @@ class Application(Adw.Application):
         self.create_action('update', self.on_update_action, ['<Control>u'])
 
         pass_list_is_empty = self.__pass_list.is_empty()
-        window.force_fold(pass_list_is_empty)
+        window.show_welcome_view(pass_list_is_empty)
 
         if not pass_list_is_empty:
             window.select_pass_at_index(0)
@@ -93,7 +93,7 @@ class Application(Adw.Application):
 
             if self.window():
                 if not self.__pass_list.is_empty():
-                    self.window().force_fold(False)
+                    self.window().show_welcome_view(False)
 
                 found, index = self.__pass_list.find(digital_pass)
                 if found:
@@ -128,7 +128,7 @@ class Application(Adw.Application):
         self.__pass_list.remove(selected_pass_index)
 
         if self.__pass_list.is_empty():
-            self.window().force_fold(True)
+            self.window().show_welcome_view(True)
             self.window().navigate_back()
             return
 

@@ -1,6 +1,6 @@
 # window.py
 #
-# Copyright 2022-2023 Pablo Sánchez Rodríguez
+# Copyright 2022-2024 Pablo Sánchez Rodríguez
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -27,6 +27,8 @@ from .pass_widget import PassWidget
 @Gtk.Template(resource_path='/me/sanchezrodriguez/passes/window.ui')
 class PassesWindow(Adw.ApplicationWindow):
     __gtype_name__ = 'PassesWindow'
+
+    views = Gtk.Template.Child()
 
     main_split_view = Gtk.Template.Child()
     inner_split_view = Gtk.Template.Child()
@@ -139,3 +141,7 @@ class PassesWindow(Adw.ApplicationWindow):
     def show_toast(self, message):
         toast = Adw.Toast.new(message)
         self.toast_overlay.add_toast(toast)
+
+    def show_welcome_view(self, show=True):
+        view_name = 'welcome' if show else 'main'
+        self.views.set_visible_child_name(view_name)
