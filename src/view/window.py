@@ -117,12 +117,6 @@ class PassesWindow(Adw.ApplicationWindow):
         self.pass_list.sort_by(sorting_criteria)
         action.set_state(target)
 
-    def force_fold(self, force):
-        self.main_split_view.set_collapsed(force)
-
-    def is_folded(self):
-        return self.main_split_view.get_collapsed()
-
     def navigate_back(self):
         self.main_split_view.set_show_content(False)
 
