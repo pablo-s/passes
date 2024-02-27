@@ -12,6 +12,11 @@
 		<p>Stop wasting time searching through your email or printing out your digital passes. Download Passes now and keep all your passes in one convenient location.</p>
 	</description>
 
+	<branding>
+		<color type="primary" scheme_preference="light">#99c1f1</color>
+		<color type="primary" scheme_preference="dark">#164279</color>
+	</branding>
+
 	<provides>
 		<mediatype>application/vnd.apple.pkpass</mediatype>
 		<mediatype>application/vnd.espass-espass+zip</mediatype>
