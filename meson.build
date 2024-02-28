@@ -1,6 +1,6 @@
 project('passes', 'c',
           version: '0.9',
-    meson_version: '>= 0.58.0',
+    meson_version: '>= 0.59.0',
   default_options: [ 'warning_level=2',
                    ],
 )
