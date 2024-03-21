@@ -4,8 +4,8 @@
     "sources": [
         {
             "type": "git",
-            "tag" : "2.12.0",
-            "commit" : "9cfc2a85b03da0a7879422e2bd085f3772fcd914",
+            "tag" : "2.13.0",
+            "commit" : "a9b526be08bfe9891bdec87dbb9bf11b3b56e5d9",
             "url": "https://github.com/zint/zint.git"
         }
     ],
