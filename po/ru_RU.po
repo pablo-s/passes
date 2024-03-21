@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: passes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-31 08:26+0100\n"
+"POT-Creation-Date: 2024-03-21 07:28+0100\n"
 "PO-Revision-Date: 2024-01-07 17:15+0200\n"
 "Last-Translator: volkov <volkovissocool@gmail.com>\n"
 "Language-Team: volkov <volkovissocool@gmail.com>\n"
@@ -20,14 +20,18 @@ msgstr ""
 "X-Generator: Poedit 3.4\n"
 
 #: data/me.sanchezrodriguez.passes.desktop.in:3
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:4 src/main.py:107
-#: src/view/window.blp:39
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:4 src/main.py:110
+#: src/view/window.blp:88
 msgid "Passes"
 msgstr "Пропускной"
 
 #: data/me.sanchezrodriguez.passes.desktop.in:4
 msgid "A digital pass manager"
 msgstr "Цифровой менеджер пропусков"
+
+#: data/me.sanchezrodriguez.passes.desktop.in:10
+msgid "digital pass;espass;pkpass;"
+msgstr ""
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:5
 msgid "Manage your digital passes"
@@ -65,72 +69,77 @@ msgstr ""
 "почте или распечатанные пропуска. Скачайте Пропуской сейчас и храните все "
 "ваши пропуска в едином и удобном месте."
 
-#: data/me.sanchezrodriguez.passes.gschema.xml:16
+#: data/me.sanchezrodriguez.passes.gschema.xml:17
 msgid "Default sort order"
 msgstr "Стандартный порядок сортирования"
 
-#: data/me.sanchezrodriguez.passes.gschema.xml:17
+#: data/me.sanchezrodriguez.passes.gschema.xml:18
 msgid "The default order for passes."
 msgstr "Стандартный порядок сортировки пропусков."
 
-#: src/main.py:139
+#: src/main.py:145
 msgid "Supported passes"
 msgstr "Поддержуемые форматы пропусков"
 
-#: src/main.py:144
+#: src/main.py:150
 msgid "All files"
 msgstr "Все файлы"
 
 #. Notify user
-#: src/main.py:194
+#: src/main.py:200
 msgid "Pass updated"
 msgstr "Пропуск обновлен"
 
-#: src/model/digital_pass_factory.py:169
+#: src/main.py:204
+#, fuzzy
+msgid "Pass could not be updated"
+msgstr "Этот пропуск невозможно обновить"
+
+#: src/model/digital_pass_factory.py:170
 msgid "File is not a pass"
 msgstr "Этот файл не является пропуском"
 
-#: src/model/digital_pass_factory.py:175
+#: src/model/digital_pass_factory.py:176
 msgid "Format not supported yet"
 msgstr "Этот формат еще не поддерживается"
 
-#: src/model/digital_pass_factory.py:181
+#: src/model/digital_pass_factory.py:182
 msgid "Unknown file encoding"
 msgstr "Неизвестная кодировка файла"
 
-#: src/model/digital_pass.py:232
+#: src/model/digital_pass.py:235
 msgid "Monday"
 msgstr "Понедельник"
 
-#: src/model/digital_pass.py:232
+#: src/model/digital_pass.py:235
 msgid "Tuesday"
 msgstr "Вторник"
 
-#: src/model/digital_pass.py:232
+#: src/model/digital_pass.py:235
 msgid "Wednesday"
 msgstr "Среда"
 
-#: src/model/digital_pass.py:233
+#: src/model/digital_pass.py:236
 msgid "Thursday"
 msgstr "Четверг"
 
-#: src/model/digital_pass.py:233
+#: src/model/digital_pass.py:236
 msgid "Friday"
 msgstr "Пятница"
 
-#: src/model/digital_pass.py:233
+#: src/model/digital_pass.py:236
 msgid "Saturday"
 msgstr "Суббота"
 
-#: src/model/digital_pass.py:233
+#: src/model/digital_pass.py:236
 msgid "Sunday"
 msgstr "Воскресенье"
 
-#: src/model/digital_pass.py:267
+#: src/model/digital_pass.py:270
 msgid "Today"
 msgstr "Сегодня"
 
-#: src/model/digital_pass.py:270
+#: src/model/digital_pass.py:273
 msgid "Tomorrow"
 msgstr "Завтра"
 
@@ -154,15 +163,7 @@ msgstr "Файл уже импортирован"
 msgid "Barcode format not supported"
 msgstr "Формат штрих-кода не поддерживается"
 
-#: src/view/pass_list/pass_list.py:46
-msgid "You have no passes"
-msgstr "У вас нет пропусков"
-
-#: src/view/pass_list/pass_list.py:47
-msgid "Use the “+” button to import a pass"
-msgstr "Используйте “+” кнопку чтобы импортировать пропуск"
-
-#: src/view/pass_viewer/additional_information_pane.py:36
+#: src/view/pass_viewer/additional_information_pane.py:37
 msgid "No additional information"
 msgstr "Нет дополнительной информации"
 
@@ -196,54 +197,69 @@ msgctxt "shortcut window"
 msgid "Update selected pass"
 msgstr "Обновить выбранные пропуски"
 
-#: src/view/window.blp:55
-msgid "Import a pass"
-msgstr "Импортировать пропуск"
-
-#: src/view/window.blp:64
+#: src/view/window.blp:55 src/view/window.blp:112
 msgid "Menu"
 msgstr "Меню"
 
-#: src/view/window.blp:113
+#: src/view/window.blp:70
+#, fuzzy
+msgid "Import a pass…"
+msgstr "Импортировать пропуск"
+
+#: src/view/window.blp:103
+msgid "Import a pass"
+msgstr "Импортировать пропуск"
+
+#: src/view/window.blp:166
 msgid "Show additional information"
 msgstr "Показать дополнительную информацию"
 
-#: src/view/window.blp:121
+#: src/view/window.blp:174
 msgid "Update pass"
 msgstr "Обновить пропуск"
 
-#: src/view/window.blp:131
+#: src/view/window.blp:184
 msgid "Additional information"
 msgstr "Дополнительная информация"
 
-#: src/view/window.blp:145
+#: src/view/window.blp:198
 msgid "Back"
 msgstr "Назад"
 
-#: src/view/window.blp:166
+#: src/view/window.blp:221
 msgid "Sort"
 msgstr "Сортировать"
 
-#: src/view/window.blp:172
+#: src/view/window.blp:227
 msgid "A-Z"
 msgstr "По названию"
 
-#: src/view/window.blp:179
+#: src/view/window.blp:234
 msgid "Creator"
 msgstr "По создателю"
 
-#: src/view/window.blp:186
+#: src/view/window.blp:241
 msgid "Expiration date"
 msgstr "По дате окончания срока"
 
-#: src/view/window.blp:193
+#: src/view/window.blp:248
+msgid "Relevant date"
+msgstr ""
+
+#: src/view/window.blp:255
 msgid "Keyboard shortcuts"
 msgstr "_Горячие клавиши"
 
-#: src/view/window.blp:194
+#: src/view/window.blp:256
 msgid "About Passes"
 msgstr "Про Пропускной"
 
-#: src/view/window.blp:200
+#: src/view/window.blp:262
 msgid "Delete"
 msgstr "Удалить"
+
+#~ msgid "You have no passes"
+#~ msgstr "У вас нет пропусков"
+
+#~ msgid "Use the “+” button to import a pass"
+#~ msgstr "Используйте “+” кнопку чтобы импортировать пропуск"

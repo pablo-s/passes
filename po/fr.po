@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: passes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-31 08:26+0100\n"
+"POT-Creation-Date: 2024-03-21 07:28+0100\n"
 "PO-Revision-Date: 2023-10-19 22:39+0200\n"
 "Last-Translator: Irénée THIRION <irenee.thirion@e.email>\n"
 "Language-Team: French <gnomefr@traduc.org>\n"
@@ -20,14 +20,18 @@ msgstr ""
 "X-Generator: Gtranslator 45.2\n"
 
 #: data/me.sanchezrodriguez.passes.desktop.in:3
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:4 src/main.py:107
-#: src/view/window.blp:39
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:4 src/main.py:110
+#: src/view/window.blp:88
 msgid "Passes"
 msgstr "Passes"
 
 #: data/me.sanchezrodriguez.passes.desktop.in:4
 msgid "A digital pass manager"
 msgstr "Un gestionnaire de passes numériques"
+
+#: data/me.sanchezrodriguez.passes.desktop.in:10
+msgid "digital pass;espass;pkpass;"
+msgstr ""
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:5
 msgid "Manage your digital passes"
@@ -64,72 +68,77 @@ msgstr ""
 "Ne perdez plus de temps à fouiller vos courriels ou à imprimer vos passes. "
 "Téléchargez Passes et conservez tous vos passes dans un endroit pratique."
 
-#: data/me.sanchezrodriguez.passes.gschema.xml:16
+#: data/me.sanchezrodriguez.passes.gschema.xml:17
 msgid "Default sort order"
 msgstr ""
 
-#: data/me.sanchezrodriguez.passes.gschema.xml:17
+#: data/me.sanchezrodriguez.passes.gschema.xml:18
 msgid "The default order for passes."
 msgstr ""
 
-#: src/main.py:139
+#: src/main.py:145
 msgid "Supported passes"
 msgstr "Passes pris en charge"
 
-#: src/main.py:144
+#: src/main.py:150
 msgid "All files"
 msgstr "Tous les fichiers"
 
 #. Notify user
-#: src/main.py:194
+#: src/main.py:200
 msgid "Pass updated"
 msgstr "Passe mis à  jour"
 
-#: src/model/digital_pass_factory.py:169
+#: src/main.py:204
+#, fuzzy
+msgid "Pass could not be updated"
+msgstr "Ce passe ne peut être mis à jour"
+
+#: src/model/digital_pass_factory.py:170
 msgid "File is not a pass"
 msgstr "Le fichier n’est pas un passe"
 
-#: src/model/digital_pass_factory.py:175
+#: src/model/digital_pass_factory.py:176
 msgid "Format not supported yet"
 msgstr "Format pas encore pris en charge"
 
-#: src/model/digital_pass_factory.py:181
+#: src/model/digital_pass_factory.py:182
 msgid "Unknown file encoding"
 msgstr "Encodage du fichier inconnu"
 
-#: src/model/digital_pass.py:232
+#: src/model/digital_pass.py:235
 msgid "Monday"
 msgstr "Lundi"
 
-#: src/model/digital_pass.py:232
+#: src/model/digital_pass.py:235
 msgid "Tuesday"
 msgstr "Mardi"
 
-#: src/model/digital_pass.py:232
+#: src/model/digital_pass.py:235
 msgid "Wednesday"
 msgstr "Mercredi"
 
-#: src/model/digital_pass.py:233
+#: src/model/digital_pass.py:236
 msgid "Thursday"
 msgstr "Jeudi"
 
-#: src/model/digital_pass.py:233
+#: src/model/digital_pass.py:236
 msgid "Friday"
 msgstr "Vendredi"
 
-#: src/model/digital_pass.py:233
+#: src/model/digital_pass.py:236
 msgid "Saturday"
 msgstr "Samedi"
 
-#: src/model/digital_pass.py:233
+#: src/model/digital_pass.py:236
 msgid "Sunday"
 msgstr "Dimanche"
 
-#: src/model/digital_pass.py:267
+#: src/model/digital_pass.py:270
 msgid "Today"
 msgstr "Aujourd’hui"
 
-#: src/model/digital_pass.py:270
+#: src/model/digital_pass.py:273
 msgid "Tomorrow"
 msgstr "Demain"
 
@@ -153,15 +162,7 @@ msgstr "Fichier déjà importé"
 msgid "Barcode format not supported"
 msgstr "Format de code-barres non pris en charge"
 
-#: src/view/pass_list/pass_list.py:46
-msgid "You have no passes"
-msgstr "Vous n’avez aucun passe"
-
-#: src/view/pass_list/pass_list.py:47
-msgid "Use the “+” button to import a pass"
-msgstr "Utilisez le bouton « + » pour importer un passe"
-
-#: src/view/pass_viewer/additional_information_pane.py:36
+#: src/view/pass_viewer/additional_information_pane.py:37
 msgid "No additional information"
 msgstr "Pas d’informations supplémentaires"
 
@@ -195,59 +196,74 @@ msgctxt "shortcut window"
 msgid "Update selected pass"
 msgstr "Mettre à jour le passe sélectionné"
 
-#: src/view/window.blp:55
-msgid "Import a pass"
-msgstr "Importer un passe"
-
-#: src/view/window.blp:64
+#: src/view/window.blp:55 src/view/window.blp:112
 msgid "Menu"
 msgstr "Menu"
 
-#: src/view/window.blp:113
+#: src/view/window.blp:70
+#, fuzzy
+msgid "Import a pass…"
+msgstr "Importer un passe"
+
+#: src/view/window.blp:103
+msgid "Import a pass"
+msgstr "Importer un passe"
+
+#: src/view/window.blp:166
 msgid "Show additional information"
 msgstr "Afficher les informations supplémentaires"
 
-#: src/view/window.blp:121
+#: src/view/window.blp:174
 msgid "Update pass"
 msgstr "Mettre à jour le passe"
 
-#: src/view/window.blp:131
+#: src/view/window.blp:184
 #, fuzzy
 msgid "Additional information"
 msgstr "Pas d’informations supplémentaires"
 
-#: src/view/window.blp:145
+#: src/view/window.blp:198
 msgid "Back"
 msgstr "Retour"
 
-#: src/view/window.blp:166
+#: src/view/window.blp:221
 msgid "Sort"
 msgstr ""
 
-#: src/view/window.blp:172
+#: src/view/window.blp:227
 msgid "A-Z"
 msgstr ""
 
-#: src/view/window.blp:179
+#: src/view/window.blp:234
 msgid "Creator"
 msgstr ""
 
-#: src/view/window.blp:186
+#: src/view/window.blp:241
 #, fuzzy
 msgid "Expiration date"
 msgstr "Sans date d’expiration"
 
-#: src/view/window.blp:193
+#: src/view/window.blp:248
+msgid "Relevant date"
+msgstr ""
+
+#: src/view/window.blp:255
 msgid "Keyboard shortcuts"
 msgstr "Raccourcis clavier"
 
-#: src/view/window.blp:194
+#: src/view/window.blp:256
 msgid "About Passes"
 msgstr "À propos de Passes"
 
-#: src/view/window.blp:200
+#: src/view/window.blp:262
 msgid "Delete"
 msgstr "Supprimer"
+
+#~ msgid "You have no passes"
+#~ msgstr "Vous n’avez aucun passe"
+
+#~ msgid "Use the “+” button to import a pass"
+#~ msgstr "Utilisez le bouton « + » pour importer un passe"
 
 #~ msgid "Show barcode"
 #~ msgstr "Afficher le code-barres"

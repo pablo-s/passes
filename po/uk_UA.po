@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: passes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-31 08:26+0100\n"
+"POT-Creation-Date: 2024-03-21 07:28+0100\n"
 "PO-Revision-Date: 2024-01-07 17:02+0200\n"
 "Last-Translator: volkov <volkovissocool@gmail.com>\n"
 "Language-Team: volkov <volkovissocool@gmail.com>\n"
@@ -20,14 +20,18 @@ msgstr ""
 "X-Generator: Poedit 3.4\n"
 
 #: data/me.sanchezrodriguez.passes.desktop.in:3
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:4 src/main.py:107
-#: src/view/window.blp:39
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:4 src/main.py:110
+#: src/view/window.blp:88
 msgid "Passes"
 msgstr "Пропускний"
 
 #: data/me.sanchezrodriguez.passes.desktop.in:4
 msgid "A digital pass manager"
 msgstr "Цифровий менеджер перепусток"
+
+#: data/me.sanchezrodriguez.passes.desktop.in:10
+msgid "digital pass;espass;pkpass;"
+msgstr ""
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:5
 msgid "Manage your digital passes"
@@ -65,72 +69,77 @@ msgstr ""
 "або роздрукованих перепусток. Завантажте Пропускний прямо зараз і керуйте "
 "вашими перепустками в єдиному і зручному місці."
 
-#: data/me.sanchezrodriguez.passes.gschema.xml:16
+#: data/me.sanchezrodriguez.passes.gschema.xml:17
 msgid "Default sort order"
 msgstr "Стандартне сортування"
 
-#: data/me.sanchezrodriguez.passes.gschema.xml:17
+#: data/me.sanchezrodriguez.passes.gschema.xml:18
 msgid "The default order for passes."
 msgstr "Стандартний поряд сортування перепусток."
 
-#: src/main.py:139
+#: src/main.py:145
 msgid "Supported passes"
 msgstr "Підтримувані формати перепусток"
 
-#: src/main.py:144
+#: src/main.py:150
 msgid "All files"
 msgstr "Всі файли"
 
 #. Notify user
-#: src/main.py:194
+#: src/main.py:200
 msgid "Pass updated"
 msgstr "Перепустка оновлена"
 
-#: src/model/digital_pass_factory.py:169
+#: src/main.py:204
+#, fuzzy
+msgid "Pass could not be updated"
+msgstr "Перепустка не оновлюється"
+
+#: src/model/digital_pass_factory.py:170
 msgid "File is not a pass"
 msgstr "Цей файл не є перепусткою"
 
-#: src/model/digital_pass_factory.py:175
+#: src/model/digital_pass_factory.py:176
 msgid "Format not supported yet"
 msgstr "Формат поки що не підтримується"
 
-#: src/model/digital_pass_factory.py:181
+#: src/model/digital_pass_factory.py:182
 msgid "Unknown file encoding"
 msgstr "Невідоме кодування файлу"
 
-#: src/model/digital_pass.py:232
+#: src/model/digital_pass.py:235
 msgid "Monday"
 msgstr "Понеділок"
 
-#: src/model/digital_pass.py:232
+#: src/model/digital_pass.py:235
 msgid "Tuesday"
 msgstr "Вівторок"
 
-#: src/model/digital_pass.py:232
+#: src/model/digital_pass.py:235
 msgid "Wednesday"
 msgstr "Середа"
 
-#: src/model/digital_pass.py:233
+#: src/model/digital_pass.py:236
 msgid "Thursday"
 msgstr "Четвер"
 
-#: src/model/digital_pass.py:233
+#: src/model/digital_pass.py:236
 msgid "Friday"
 msgstr "П'ятниця"
 
-#: src/model/digital_pass.py:233
+#: src/model/digital_pass.py:236
 msgid "Saturday"
 msgstr "Субота"
 
-#: src/model/digital_pass.py:233
+#: src/model/digital_pass.py:236
 msgid "Sunday"
 msgstr "Неділя"
 
-#: src/model/digital_pass.py:267
+#: src/model/digital_pass.py:270
 msgid "Today"
 msgstr "Сьогодні"
 
-#: src/model/digital_pass.py:270
+#: src/model/digital_pass.py:273
 msgid "Tomorrow"
 msgstr "Завтра"
 
@@ -154,15 +163,7 @@ msgstr "Файл вже імпортовано"
 msgid "Barcode format not supported"
 msgstr "Формат штрих-коду не підтримується"
 
-#: src/view/pass_list/pass_list.py:46
-msgid "You have no passes"
-msgstr "У вас немає перепусток"
-
-#: src/view/pass_list/pass_list.py:47
-msgid "Use the “+” button to import a pass"
-msgstr "Клацніть по “+” кнопці щоб імпортувати перепустку"
-
-#: src/view/pass_viewer/additional_information_pane.py:36
+#: src/view/pass_viewer/additional_information_pane.py:37
 msgid "No additional information"
 msgstr "Немає додаткової інформації"
 
@@ -196,54 +197,69 @@ msgctxt "shortcut window"
 msgid "Update selected pass"
 msgstr "Оновити обрані пропуски"
 
-#: src/view/window.blp:55
-msgid "Import a pass"
-msgstr "Імпортувати перепустку"
-
-#: src/view/window.blp:64
+#: src/view/window.blp:55 src/view/window.blp:112
 msgid "Menu"
 msgstr "Меню"
 
-#: src/view/window.blp:113
+#: src/view/window.blp:70
+#, fuzzy
+msgid "Import a pass…"
+msgstr "Імпортувати перепустку"
+
+#: src/view/window.blp:103
+msgid "Import a pass"
+msgstr "Імпортувати перепустку"
+
+#: src/view/window.blp:166
 msgid "Show additional information"
 msgstr "Показати додаткову інформацію"
 
-#: src/view/window.blp:121
+#: src/view/window.blp:174
 msgid "Update pass"
 msgstr "Оновити перепустку"
 
-#: src/view/window.blp:131
+#: src/view/window.blp:184
 msgid "Additional information"
 msgstr "Додаткова інформація"
 
-#: src/view/window.blp:145
+#: src/view/window.blp:198
 msgid "Back"
 msgstr "Назад"
 
-#: src/view/window.blp:166
+#: src/view/window.blp:221
 msgid "Sort"
 msgstr "Сортувати"
 
-#: src/view/window.blp:172
+#: src/view/window.blp:227
 msgid "A-Z"
 msgstr "За названою"
 
-#: src/view/window.blp:179
+#: src/view/window.blp:234
 msgid "Creator"
 msgstr "За створювачем"
 
-#: src/view/window.blp:186
+#: src/view/window.blp:241
 msgid "Expiration date"
 msgstr "За терміном придатності"
 
-#: src/view/window.blp:193
+#: src/view/window.blp:248
+msgid "Relevant date"
+msgstr ""
+
+#: src/view/window.blp:255
 msgid "Keyboard shortcuts"
 msgstr "Клавіатурні скорочення"
 
-#: src/view/window.blp:194
+#: src/view/window.blp:256
 msgid "About Passes"
 msgstr "Про Пропускний"
 
-#: src/view/window.blp:200
+#: src/view/window.blp:262
 msgid "Delete"
 msgstr "Видалити"
+
+#~ msgid "You have no passes"
+#~ msgstr "У вас немає перепусток"
+
+#~ msgid "Use the “+” button to import a pass"
+#~ msgstr "Клацніть по “+” кнопці щоб імпортувати перепустку"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: passes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-31 08:26+0100\n"
+"POT-Creation-Date: 2024-03-21 07:28+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,13 +18,17 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: data/me.sanchezrodriguez.passes.desktop.in:3
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:4 src/main.py:107
-#: src/view/window.blp:39
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:4 src/main.py:110
+#: src/view/window.blp:88
 msgid "Passes"
 msgstr ""
 
 #: data/me.sanchezrodriguez.passes.desktop.in:4
 msgid "A digital pass manager"
+msgstr ""
+
+#: data/me.sanchezrodriguez.passes.desktop.in:10
+msgid "digital pass;espass;pkpass;"
 msgstr ""
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:5
@@ -53,72 +57,76 @@ msgid ""
 "location."
 msgstr ""
 
-#: data/me.sanchezrodriguez.passes.gschema.xml:16
+#: data/me.sanchezrodriguez.passes.gschema.xml:17
 msgid "Default sort order"
 msgstr ""
 
-#: data/me.sanchezrodriguez.passes.gschema.xml:17
+#: data/me.sanchezrodriguez.passes.gschema.xml:18
 msgid "The default order for passes."
 msgstr ""
 
-#: src/main.py:139
+#: src/main.py:145
 msgid "Supported passes"
 msgstr ""
 
-#: src/main.py:144
+#: src/main.py:150
 msgid "All files"
 msgstr ""
 
 #. Notify user
-#: src/main.py:194
+#: src/main.py:200
 msgid "Pass updated"
 msgstr ""
 
-#: src/model/digital_pass_factory.py:169
+#: src/main.py:204
+msgid "Pass could not be updated"
+msgstr ""
+
+#: src/model/digital_pass_factory.py:170
 msgid "File is not a pass"
 msgstr ""
 
-#: src/model/digital_pass_factory.py:175
+#: src/model/digital_pass_factory.py:176
 msgid "Format not supported yet"
 msgstr ""
 
-#: src/model/digital_pass_factory.py:181
+#: src/model/digital_pass_factory.py:182
 msgid "Unknown file encoding"
 msgstr ""
 
-#: src/model/digital_pass.py:232
+#: src/model/digital_pass.py:235
 msgid "Monday"
 msgstr ""
 
-#: src/model/digital_pass.py:232
+#: src/model/digital_pass.py:235
 msgid "Tuesday"
 msgstr ""
 
-#: src/model/digital_pass.py:232
+#: src/model/digital_pass.py:235
 msgid "Wednesday"
 msgstr ""
 
-#: src/model/digital_pass.py:233
+#: src/model/digital_pass.py:236
 msgid "Thursday"
 msgstr ""
 
-#: src/model/digital_pass.py:233
+#: src/model/digital_pass.py:236
 msgid "Friday"
 msgstr ""
 
-#: src/model/digital_pass.py:233
+#: src/model/digital_pass.py:236
 msgid "Saturday"
 msgstr ""
 
-#: src/model/digital_pass.py:233
+#: src/model/digital_pass.py:236
 msgid "Sunday"
 msgstr ""
 
-#: src/model/digital_pass.py:267
+#: src/model/digital_pass.py:270
 msgid "Today"
 msgstr ""
 
-#: src/model/digital_pass.py:270
+#: src/model/digital_pass.py:273
 msgid "Tomorrow"
 msgstr ""
 
@@ -142,15 +150,7 @@ msgstr ""
 msgid "Barcode format not supported"
 msgstr ""
 
-#: src/view/pass_list/pass_list.py:46
-msgid "You have no passes"
-msgstr ""
-
-#: src/view/pass_list/pass_list.py:47
-msgid "Use the “+” button to import a pass"
-msgstr ""
-
-#: src/view/pass_viewer/additional_information_pane.py:36
+#: src/view/pass_viewer/additional_information_pane.py:37
 msgid "No additional information"
 msgstr ""
 
@@ -184,54 +184,62 @@ msgctxt "shortcut window"
 msgid "Update selected pass"
 msgstr ""
 
-#: src/view/window.blp:55
-msgid "Import a pass"
-msgstr ""
-
-#: src/view/window.blp:64
+#: src/view/window.blp:55 src/view/window.blp:112
 msgid "Menu"
 msgstr ""
 
-#: src/view/window.blp:113
-msgid "Show additional information"
+#: src/view/window.blp:70
+msgid "Import a pass…"
 msgstr ""
 
-#: src/view/window.blp:121
-msgid "Update pass"
-msgstr ""
-
-#: src/view/window.blp:131
-msgid "Additional information"
-msgstr ""
-
-#: src/view/window.blp:145
-msgid "Back"
+#: src/view/window.blp:103
+msgid "Import a pass"
 msgstr ""
 
 #: src/view/window.blp:166
+msgid "Show additional information"
+msgstr ""
+
+#: src/view/window.blp:174
+msgid "Update pass"
+msgstr ""
+
+#: src/view/window.blp:184
+msgid "Additional information"
+msgstr ""
+
+#: src/view/window.blp:198
+msgid "Back"
+msgstr ""
+
+#: src/view/window.blp:221
 msgid "Sort"
 msgstr ""
 
-#: src/view/window.blp:172
+#: src/view/window.blp:227
 msgid "A-Z"
 msgstr ""
 
-#: src/view/window.blp:179
+#: src/view/window.blp:234
 msgid "Creator"
 msgstr ""
 
-#: src/view/window.blp:186
+#: src/view/window.blp:241
 msgid "Expiration date"
 msgstr ""
 
-#: src/view/window.blp:193
+#: src/view/window.blp:248
+msgid "Relevant date"
+msgstr ""
+
+#: src/view/window.blp:255
 msgid "Keyboard shortcuts"
 msgstr ""
 
-#: src/view/window.blp:194
+#: src/view/window.blp:256
 msgid "About Passes"
 msgstr ""
 
-#: src/view/window.blp:200
+#: src/view/window.blp:262
 msgid "Delete"
 msgstr ""
