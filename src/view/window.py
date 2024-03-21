@@ -90,10 +90,8 @@ class PassesWindow(Adw.ApplicationWindow):
 
             if barcode:
                 dialog = BarcodeDialog()
-                dialog.set_modal(True)
-                dialog.set_transient_for(self)
                 dialog.set_barcode(barcode)
-                dialog.show()
+                dialog.present(self)
 
         except Exception as error:
             self.show_toast(str(error))

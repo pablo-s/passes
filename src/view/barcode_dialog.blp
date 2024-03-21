@@ -1,11 +1,9 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $BarcodeDialog : Adw.Window
+template $BarcodeDialog : Adw.Dialog
 {
-    default-width: 360;
-    default-height: 529;
-    styles ["barcode-dialog"]
+    follows-content-size: true;
 
     ShortcutController
     {
@@ -16,11 +14,12 @@ template $BarcodeDialog : Adw.Window
       }
     }
 
-    Gtk.Box
+    child: Gtk.Box
     {
         orientation: vertical;
+        styles ["barcode-dialog"]
 
-        Gtk.HeaderBar
+        Adw.HeaderBar
         {
             title-widget: Adw.WindowTitle {title: "";};
             styles ["flat"]
@@ -28,6 +27,9 @@ template $BarcodeDialog : Adw.Window
 
         $BarcodeWidget barcode
         {
+            height-request: 360;
+            width-request: 360;
+
             vexpand: true;
         }
 
@@ -38,5 +40,5 @@ template $BarcodeDialog : Adw.Window
             margin-bottom: 6;
             styles ["heading"]
         }
-    }
+    };
 }
