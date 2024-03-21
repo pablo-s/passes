@@ -2,14 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the passes package.
 # See file COPYING or go to <http://www.gnu.org/licenses/> for full license details.
-# Pablo Sánchez Rodríguez <>, 2022-2023.
+# Pablo Sánchez Rodríguez <>, 2022-2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: passes\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-21 07:28+0100\n"
-"PO-Revision-Date: 2023-11-10 08:38+0100\n"
+"PO-Revision-Date: 2024-03-21 07:36+0100\n"
 "Last-Translator: Pablo Sánchez Rodríguez <>\n"
 "Language-Team: Spanish - Spain <>\n"
 "Language: es_ES\n"
@@ -91,9 +91,8 @@ msgid "Pass updated"
 msgstr "Pase actualizado"
 
 #: src/main.py:204
-#, fuzzy
 msgid "Pass could not be updated"
-msgstr "Pase no actualizable"
+msgstr "El pase no se pudo actualizar"
 
 #: src/model/digital_pass_factory.py:170
 msgid "File is not a pass"
@@ -202,9 +201,8 @@ msgid "Menu"
 msgstr "Menú"
 
 #: src/view/window.blp:70
-#, fuzzy
 msgid "Import a pass…"
-msgstr "Importar un pase"
+msgstr "Importar un pase…"
 
 #: src/view/window.blp:103
 msgid "Import a pass"
@@ -244,7 +242,7 @@ msgstr "Fecha de expiración"
 
 #: src/view/window.blp:248
 msgid "Relevant date"
-msgstr ""
+msgstr "Fecha relevante"
 
 #: src/view/window.blp:255
 msgid "Keyboard shortcuts"
