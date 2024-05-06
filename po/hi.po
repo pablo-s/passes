@@ -1,0 +1,254 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the passes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Scrambled777 <weblate.scrambled777@simplelogin.com>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: passes\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-21 07:28+0100\n"
+"PO-Revision-Date: 2024-05-06 18:26+0530\n"
+"Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
+"Language-Team: Hindi\n"
+"Language: hi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Gtranslator 46.1\n"
+
+#: data/me.sanchezrodriguez.passes.desktop.in:3
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:4 src/main.py:110
+#: src/view/window.blp:88
+msgid "Passes"
+msgstr "Passes"
+
+#: data/me.sanchezrodriguez.passes.desktop.in:4
+msgid "A digital pass manager"
+msgstr "एक डिजिटल पास प्रबंधक"
+
+#: data/me.sanchezrodriguez.passes.desktop.in:10
+msgid "digital pass;espass;pkpass;"
+msgstr "डिजिटल पास;espass;pkpass;"
+
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:5
+msgid "Manage your digital passes"
+msgstr "अपने डिजिटल पास प्रबंधित करें"
+
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:10
+msgid ""
+"Passes is a handy app that helps you manage all your digital passes "
+"effortlessly. With Passes, you can conveniently store your boarding passes, "
+"coupons, loyalty cards, event tickets, and more, all in PKPass or esPass "
+"format."
+msgstr ""
+"Passes एक आसान ऐप है जो आपके सभी डिजिटल पासों को सहजता से प्रबंधित करने में आपकी मदद "
+"करता है। Passes के साथ, आप अपने बोर्डिंग पास, कूपन, लॉयल्टी कार्ड, इवेंट टिकट और बहुत "
+"कुछ आसानी से PKPass या esPass प्रारूप में संग्रहीत कर सकते हैं।"
+
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:11
+msgid ""
+"Moreover, the app seamlessly adjusts to different screen sizes, allowing you "
+"to access your passes on various devices, whether it's a desktop computer or "
+"a mobile phone."
+msgstr ""
+"इसके अलावा, ऐप विभिन्न स्क्रीन आकारों में सहजता से समायोजित हो जाता है, जिससे आप "
+"विभिन्न उपकरणों पर अपने पास तक पहुंच सकते हैं, चाहे वह डेस्कटॉप कंप्यूटर हो या मोबाइल फोन।"
+
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:12
+msgid ""
+"Stop wasting time searching through your email or printing out your digital "
+"passes. Download Passes now and keep all your passes in one convenient "
+"location."
+msgstr ""
+"अपने ईमेल को खोजने या अपने डिजिटल पास को प्रिंट करने में समय बर्बाद करना बंद करें। अभी "
+"पास डाउनलोड करें और अपने सभी पास एक सुविधाजनक स्थान पर रखें।"
+
+#: data/me.sanchezrodriguez.passes.gschema.xml:17
+msgid "Default sort order"
+msgstr "तयशुदा छंटाई क्रम"
+
+#: data/me.sanchezrodriguez.passes.gschema.xml:18
+msgid "The default order for passes."
+msgstr "पास के लिए तयशुदा क्रम।"
+
+#: src/main.py:145
+msgid "Supported passes"
+msgstr "समर्थित पास"
+
+#: src/main.py:150
+msgid "All files"
+msgstr "सभी फाइलें"
+
+#. Notify user
+#: src/main.py:200
+msgid "Pass updated"
+msgstr "पास अद्यतित"
+
+#: src/main.py:204
+msgid "Pass could not be updated"
+msgstr "पास अद्यतन नहीं किया जा सका"
+
+#: src/model/digital_pass_factory.py:170
+msgid "File is not a pass"
+msgstr "फाइल कोई पास नहीं है"
+
+#: src/model/digital_pass_factory.py:176
+msgid "Format not supported yet"
+msgstr "प्रारूप अभी तक समर्थित नहीं है"
+
+#: src/model/digital_pass_factory.py:182
+msgid "Unknown file encoding"
+msgstr "अज्ञात फाइल एन्कोडिंग"
+
+#: src/model/digital_pass.py:235
+msgid "Monday"
+msgstr "सोमवार"
+
+#: src/model/digital_pass.py:235
+msgid "Tuesday"
+msgstr "मंगलवार"
+
+#: src/model/digital_pass.py:235
+msgid "Wednesday"
+msgstr "बुधवार"
+
+#: src/model/digital_pass.py:236
+msgid "Thursday"
+msgstr "गुरुवार"
+
+#: src/model/digital_pass.py:236
+msgid "Friday"
+msgstr "शुक्रवार"
+
+#: src/model/digital_pass.py:236
+msgid "Saturday"
+msgstr "शनिवार"
+
+#: src/model/digital_pass.py:236
+msgid "Sunday"
+msgstr "रविवार"
+
+#: src/model/digital_pass.py:270
+msgid "Today"
+msgstr "आज"
+
+#: src/model/digital_pass.py:273
+msgid "Tomorrow"
+msgstr "कल"
+
+#: src/model/digital_pass_updater.py:115
+msgid "Pass already updated"
+msgstr "पास पहले से ही अद्यतित है"
+
+#: src/model/digital_pass_updater.py:121
+msgid "Pass not updatable"
+msgstr "पास अद्यतन योग्य नहीं है"
+
+#: src/model/digital_pass_updater.py:127
+msgid "Pass update error: {} {}"
+msgstr "पास अद्यतन त्रुटि: {} {}"
+
+#: src/model/persistence.py:88
+msgid "File already imported"
+msgstr "फाइल पहले से ही आयातित है"
+
+#: src/view/barcode_widget.py:123
+msgid "Barcode format not supported"
+msgstr "बारकोड प्रारूप समर्थित नहीं है"
+
+#: src/view/pass_viewer/additional_information_pane.py:37
+msgid "No additional information"
+msgstr "कोई अतिरिक्त जानकारी नहीं"
+
+#: src/view/help_overlay.blp:14
+msgctxt "shortcut window"
+msgid "General"
+msgstr "सामान्य"
+
+#: src/view/help_overlay.blp:18
+msgctxt "shortcut window"
+msgid "Show shortcuts"
+msgstr "शॉर्टकट दिखाएं"
+
+#: src/view/help_overlay.blp:24
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "छोड़ें"
+
+#: src/view/help_overlay.blp:31
+msgctxt "shortcut window"
+msgid "Passes"
+msgstr "Passes"
+
+#: src/view/help_overlay.blp:35
+msgctxt "shortcut window"
+msgid "Import a pass"
+msgstr "पास आयात करें"
+
+#: src/view/help_overlay.blp:41
+msgctxt "shortcut window"
+msgid "Update selected pass"
+msgstr "चयनित पास अद्यतन करें"
+
+#: src/view/window.blp:55 src/view/window.blp:112
+msgid "Menu"
+msgstr "मेनू"
+
+#: src/view/window.blp:70
+msgid "Import a pass…"
+msgstr "पास आयात करें…"
+
+#: src/view/window.blp:103
+msgid "Import a pass"
+msgstr "पास आयात करें"
+
+#: src/view/window.blp:166
+msgid "Show additional information"
+msgstr "अतिरिक्त जानकारी दिखाएं"
+
+#: src/view/window.blp:174
+msgid "Update pass"
+msgstr "पास अद्यतन करें"
+
+#: src/view/window.blp:184
+msgid "Additional information"
+msgstr "अतिरिक्त जानकारी"
+
+#: src/view/window.blp:198
+msgid "Back"
+msgstr "पीछे"
+
+#: src/view/window.blp:221
+msgid "Sort"
+msgstr "छांटें"
+
+#: src/view/window.blp:227
+msgid "A-Z"
+msgstr "A-Z"
+
+#: src/view/window.blp:234
+msgid "Creator"
+msgstr "निर्माता"
+
+#: src/view/window.blp:241
+msgid "Expiration date"
+msgstr "समाप्ति तिथि"
+
+#: src/view/window.blp:248
+msgid "Relevant date"
+msgstr "प्रासंगिक तिथि"
+
+#: src/view/window.blp:255
+msgid "Keyboard shortcuts"
+msgstr "कीबोर्ड शॉर्टकट"
+
+#: src/view/window.blp:256
+msgid "About Passes"
+msgstr "Passes के बारे में"
+
+#: src/view/window.blp:262
+msgid "Delete"
+msgstr "मिटाएं"
