@@ -1,6 +1,6 @@
 # digital_pass.py
 #
-# Copyright 2022-2023 Pablo Sánchez Rodríguez
+# Copyright 2022-2024 Pablo Sánchez Rodríguez
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -68,6 +68,9 @@ class DigitalPass(GObject.GObject):
         raise NotImplementedError()
 
     def mime_type():
+        raise NotImplementedError()
+
+    def plotter(self, widget):
         raise NotImplementedError()
 
     def relevant_date():

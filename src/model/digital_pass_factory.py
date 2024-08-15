@@ -1,6 +1,6 @@
 # digital_pass_factory.py
 #
-# Copyright 2022-2023 Pablo Sánchez Rodríguez
+# Copyright 2022-2024 Pablo Sánchez Rodríguez
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -17,12 +17,8 @@
 
 import json
 import re
-import zipfile
 
 from gi.repository import Gdk, GObject, Gtk
-
-from .espass import EsPass, EsPassAdapter
-from .pkpass import PKPass, PKPassAdapter
 
 
 def decode_string(string):
@@ -49,104 +45,18 @@ class PassFactory:
 
     @classmethod
     def create(cls, pass_file):
-        try:
-            path = pass_file.get_path()
-            archive = zipfile.ZipFile(path, 'r')
+        for factory in cls.__subclasses__():
+            if factory.understands(pass_file):
+                # Create and configure the digital pass
+                digital_pass = factory.create(pass_file)
+                path = pass_file.get_path()
+                digital_pass.set_path(path)
+                return digital_pass
 
-            if 'main.json' in archive.namelist():
-                digital_pass = cls.__create_espass(archive)
-            elif 'pass.json' in archive.namelist():
-                digital_pass = cls.__create_pkpass(archive)
-            else:
-                raise FileIsNotAPass()
-
-            digital_pass.set_path(path)
-            return digital_pass
-
-        except zipfile.BadZipFile as exception:
-            raise FileIsNotAPass()
+        raise FileIsNotAPass()
 
     @classmethod
-    def __create_espass(cls, archive):
-        """
-        Create an EsPass object from a compressed file
-        """
-
-        pass_data = dict()
-        pass_images = dict()
-
-        for file_name in archive.namelist():
-            if file_name.endswith('.png'):
-                image = archive.read(file_name)
-                pass_images[file_name] = image
-
-            if file_name.endswith('main.json'):
-                json_content = archive.read(file_name)
-                pass_data = json.loads(json_content)
-
-        espass = EsPass(pass_data, pass_images)
-        return EsPassAdapter(espass)
-
-    @classmethod
-    def __create_pkpass(cls, archive):
-        """
-        Create a PKPass object from a compressed file
-        """
-
-        manifest_text = archive.read('manifest.json')
-        manifest = json.loads(manifest_text)
-
-        pass_data = dict()
-        pass_translations = dict()
-        pass_images = dict()
-
-        for file_name in sorted(manifest.keys()):
-            if file_name.endswith('.png'):
-                image = archive.read(file_name)
-
-                # For every type of image (background, footer, icon, logo, strip
-                # and thumbnail), only load the image with lowest resolution
-
-                image_type = re.split('\.|@', file_name)[0]
-
-                if image_type in pass_images.keys():
-                    continue
-
-                pass_images[image_type] = image
-
-            if file_name.endswith('pass.strings'):
-                language = file_name.split('.')[0]
-                file_content = archive.read(file_name)
-                translation_dict = cls.__create_translation_dict(file_content)
-                pass_translations[language] = translation_dict
-
-            if file_name.endswith('pass.json'):
-                json_content = archive.read(file_name)
-                pass_data = json.loads(json_content)
-
-
-        language_to_import = None
-        if pass_translations:
-            user_language = Gtk.get_default_language().to_string()
-
-            for language in pass_translations:
-                if language in user_language:
-                    language_to_import = language
-                    break
-
-            if language_to_import is None:
-                # TODO: Open a dialogue and ask the user what language to import
-                pass
-
-        pass_translation = None
-        if language_to_import:
-            pass_translation = pass_translations[language_to_import]
-
-        pkpass = PKPass(pass_data, pass_translation, pass_images)
-        return PKPassAdapter(pkpass)
-
-    @classmethod
-    def __create_translation_dict(cls, translation_file_content):
+    def _create_translation_dict(cls, translation_file_content):
         content = decode_string(translation_file_content)
         entries = content.split(';')
 

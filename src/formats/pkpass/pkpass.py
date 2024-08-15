@@ -1,6 +1,6 @@
 # pkpass.py
 #
-# Copyright 2022-2023 Pablo Sánchez Rodríguez
+# Copyright 2022-2024 Pablo Sánchez Rodríguez
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -17,9 +17,10 @@
 
 from gi.repository import Gdk, Gtk
 
-from .digital_pass import Barcode, Color, Currency, Date, DigitalPass, Image, \
-                          PassDataExtractor, PassField
+from passes.digital_pass import Barcode, Color, Currency, Date, DigitalPass, \
+                                Image, PassDataExtractor, PassField
 
+from .pkpass_plotter import PkPassPlotter
 
 class PKPass:
     """
@@ -265,6 +266,9 @@ class PKPassAdapter(DigitalPass):
 
     def mime_type():
         return 'application/vnd.apple.pkpass'
+
+    def plotter(self, widget):
+        return PkPassPlotter.new(self, widget)
 
     def relevant_date(self):
         return self.__adaptee.relevant_date()

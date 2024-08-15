@@ -1,6 +1,6 @@
 # espass.py
 #
-# Copyright 2022-2023 Pablo Sánchez Rodríguez
+# Copyright 2022-2024 Pablo Sánchez Rodríguez
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -15,8 +15,10 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from .digital_pass import Barcode, Color, Date, DigitalPass, Image, \
-                          PassDataExtractor, PassField, Date, TimeInterval
+from passes.digital_pass import Barcode, Color, Date, DigitalPass, Image, \
+                                PassDataExtractor, PassField, Date, TimeInterval
+
+from .espass_plotter import EsPassPlotter
 
 
 class EsPass():
@@ -25,10 +27,10 @@ class EsPass():
     """
 
     types = ['BOARDING',
-              'COUPON',
-              'EVENT',
-              'LOYALTY',
-              'VOUCHER']
+             'COUPON',
+             'EVENT',
+             'LOYALTY',
+             'VOUCHER']
 
     def __init__(self, pass_data, pass_images):
         self.__data = PassDataExtractor(pass_data)
@@ -155,6 +157,9 @@ class EsPassAdapter(DigitalPass):
 
     def mime_type():
         return 'application/vnd.espass-espass+zip'
+
+    def plotter(self, widget):
+        return EsPassPlotter(self, widget)
 
     def relevant_date(self):
         return None

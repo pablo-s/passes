@@ -32,6 +32,9 @@ from .persistence import FileAlreadyImported, PersistenceManager
 from .settings import Settings
 from .window import PassesWindow
 
+# Import all formats that can be imported
+from .formats import *
+
 
 class Application(Adw.Application):
 

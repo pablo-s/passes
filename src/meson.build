@@ -72,10 +72,22 @@ passes_sources = [
   'model/digital_pass_list_store.py',
   'model/digital_pass_updater.py',
   'model/digital_pass.py',
-  'model/espass.py',
   'model/persistence.py',
-  'model/pkpass.py',
   'model/settings.py',
 ]
 
 install_data(passes_sources, install_dir: moduledir)
+
+addons_sources = [
+  'formats/__init__.py',
+  'formats/espass/__init__.py',
+  'formats/espass/espass.py',
+  'formats/espass/espass_factory.py',
+  'formats/espass/espass_plotter.py',
+  'formats/pkpass/__init__.py',
+  'formats/pkpass/pkpass.py',
+  'formats/pkpass/pkpass_factory.py',
+  'formats/pkpass/pkpass_plotter.py',
+]
+
+install_data(addons_sources, install_dir: moduledir, preserve_path: true)
