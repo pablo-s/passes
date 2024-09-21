@@ -21,49 +21,20 @@ from .pass_field_row import PassFieldRow
 
 
 @Gtk.Template(resource_path='/me/sanchezrodriguez/passes/additional_information_pane.ui')
-class AdditionalInformationPane(Gtk.Box):
+class AdditionalInformationPane(Gtk.Stack):
 
     __gtype_name__ = 'AdditionalInformationPane'
 
-    scrolled_window = Gtk.Template.Child()
     fields = Gtk.Template.Child()
 
-    def __init__(self):
-        super().__init__()
-
-        # Create a placeholder widget to be displayed when the pane is empty
-        placeholder = Adw.StatusPage.new()
-        placeholder.set_icon_name('info-symbolic')
-        placeholder.set_title(_('No additional information'))
-        placeholder.add_css_class('compact')
-        self.fields.set_placeholder(placeholder)
-
-    def clean(self):
-        # Remove all fields
-        row = self.fields.get_row_at_index(0)
-        while row:
-            self.fields.remove(row)
-            row = self.fields.get_row_at_index(0)
-
-        # Move the scrollbar to the top
-        vertical_adjustment = Gtk.Adjustment()
-        vertical_adjustment.set_value(vertical_adjustment.get_lower())
-        self.scrolled_window.set_vadjustment(vertical_adjustment)
-
     def content(self, a_pass):
-        self.clean()
+        self.fields.remove_all()
         fields = a_pass.additional_information()
 
         if len(fields) == 0:
-            alignment = Gtk.Align.FILL
-            if self.fields.has_css_class('boxed-list'):
-                self.fields.remove_css_class('boxed-list')
+            self.set_visible_child_name("empty_page")
         else:
-            alignment = Gtk.Align.START
-            if not self.fields.has_css_class('boxed-list'):
-                self.fields.add_css_class('boxed-list')
-
-        self.fields.set_valign(alignment)
+            self.set_visible_child_name("fields_page")
 
         for field in fields:
             label = field.label()
