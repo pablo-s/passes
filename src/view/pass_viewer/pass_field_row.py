@@ -17,27 +17,17 @@
 
 import re
 
-from gi.repository import GLib, Gtk
+from gi.repository import GLib, Gtk, Adw
 
 
 @Gtk.Template(resource_path='/me/sanchezrodriguez/passes/pass_field_row.ui')
-class PassFieldRow(Gtk.ListBoxRow):
+class PassFieldRow(Adw.ActionRow):
 
     __gtype_name__ = 'PassFieldRow'
 
-    label = Gtk.Template.Child()
-    value = Gtk.Template.Child()
-
-    def __init__(self):
-        super().__init__()
-        self.value.set_use_markup(True)
-
     def set_label(self, label):
         if label and label.strip():
-            self.label.set_text(label)
-            self.label.show()
-        else:
-            self.label.hide()
+            self.set_title(label)
 
     def set_value(self, value):
         value = str(value)
@@ -65,4 +55,4 @@ class PassFieldRow(Gtk.ListBoxRow):
                            '<a href="mailto:\\1">\\1</a>',
                            value)
 
-        self.value.set_label(value)
+        self.set_subtitle(value)
