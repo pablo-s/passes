@@ -1,7 +1,7 @@
 {
     "app-id" : "me.sanchezrodriguez.passes",
     "runtime" : "org.gnome.Platform",
-    "runtime-version" : "46",
+    "runtime-version" : "master",
     "sdk" : "org.gnome.Sdk",
     "command" : "passes",
     "finish-args" : [
@@ -22,12 +22,9 @@
         "*.la",
         "*.a"
     ],
-    "cleanup-commands" : [
-        "find /app -type d -name blueprintcompiler | xargs rm -fr"
-    ],
     "modules" : [
-        "modules/blueprint.json",
-        "modules/zint.json",
+        "blueprint.json",
+        "zint.json",
         {
             "name" : "passes",
             "builddir" : true,
@@ -35,7 +32,7 @@
             "sources" : [
                 {
                     "type" : "dir",
-                    "path" : "."
+                    "path" : ".."
                 }
             ]
         }
