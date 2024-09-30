@@ -1,0 +1,259 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the passes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# twlvnn kraftwerk <kraft_werk@tutanota.com>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: passes\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-21 07:28+0100\n"
+"PO-Revision-Date: 2024-06-26 15:09+0200\n"
+"Last-Translator: twlvnn kraftwerk <kraft_werk@tutanota.com>\n"
+"Language-Team: Bulgarian <dict-notifications@fsa-bg.org>\n"
+"Language: bg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"X-Generator: Gtranslator 46.1\n"
+
+#: data/me.sanchezrodriguez.passes.desktop.in:3
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:4 src/main.py:110
+#: src/view/window.blp:88
+msgid "Passes"
+msgstr "Пропуски"
+
+#: data/me.sanchezrodriguez.passes.desktop.in:4
+msgid "A digital pass manager"
+msgstr "Електронен управител на пропуски"
+
+#: data/me.sanchezrodriguez.passes.desktop.in:10
+msgid "digital pass;espass;pkpass;"
+msgstr "пропуск;електронен пропуск;"
+
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:5
+msgid "Manage your digital passes"
+msgstr "Управлявайте ващите електронни пропуски"
+
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:10
+msgid ""
+"Passes is a handy app that helps you manage all your digital passes "
+"effortlessly. With Passes, you can conveniently store your boarding passes, "
+"coupons, loyalty cards, event tickets, and more, all in PKPass or esPass "
+"format."
+msgstr ""
+"„Пропуски“ е удобно приложение, което ви помага да управлявате безпроблемно "
+"всичките си електронни пропуски. С „Пропуски“ може удобно да съхранявате "
+"своите бордни карти, талони, карти за лоялност, билети за събития и други, "
+"всички във формат PKPass или esPass."
+
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:11
+msgid ""
+"Moreover, the app seamlessly adjusts to different screen sizes, allowing you "
+"to access your passes on various devices, whether it's a desktop computer or "
+"a mobile phone."
+msgstr ""
+"Освен това приложението се адаптира безпроблемно към всякакви устройства и "
+"разделителни способности, което ви позволява да имате достъп до пропуските "
+"си на различни устройства, независимо дали става въпрос за настолен компютър "
+"или мобилен телефон."
+
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:12
+msgid ""
+"Stop wasting time searching through your email or printing out your digital "
+"passes. Download Passes now and keep all your passes in one convenient "
+"location."
+msgstr ""
+"Спрете да губите време в търсене в електронната си поща или в разпечатване "
+"на електронни пропуски. Изтеглете пропуските си сега и ги запазвайте на едно "
+"удобно място."
+
+#: data/me.sanchezrodriguez.passes.gschema.xml:17
+msgid "Default sort order"
+msgstr "Стандартен ред на подредба"
+
+#: data/me.sanchezrodriguez.passes.gschema.xml:18
+msgid "The default order for passes."
+msgstr "Стандартната подредба за пропуските."
+
+#: src/main.py:145
+msgid "Supported passes"
+msgstr "Поддържани пропуски"
+
+#: src/main.py:150
+msgid "All files"
+msgstr "Всички файлове"
+
+#. Notify user
+#: src/main.py:200
+msgid "Pass updated"
+msgstr "Пропускът е обновен"
+
+#: src/main.py:204
+msgid "Pass could not be updated"
+msgstr "Пропускът не може да бъде обновен"
+
+#: src/model/digital_pass_factory.py:170
+msgid "File is not a pass"
+msgstr "Файлът не е пропуск"
+
+#: src/model/digital_pass_factory.py:176
+msgid "Format not supported yet"
+msgstr "Форматът не се поддържа все още"
+
+#: src/model/digital_pass_factory.py:182
+msgid "Unknown file encoding"
+msgstr "Непознато кодиране на файла"
+
+#: src/model/digital_pass.py:235
+msgid "Monday"
+msgstr "Понеделник"
+
+#: src/model/digital_pass.py:235
+msgid "Tuesday"
+msgstr "Вторник"
+
+#: src/model/digital_pass.py:235
+msgid "Wednesday"
+msgstr "Сряда"
+
+#: src/model/digital_pass.py:236
+msgid "Thursday"
+msgstr "Четвъртък"
+
+#: src/model/digital_pass.py:236
+msgid "Friday"
+msgstr "Петък"
+
+#: src/model/digital_pass.py:236
+msgid "Saturday"
+msgstr "Събота"
+
+#: src/model/digital_pass.py:236
+msgid "Sunday"
+msgstr "Неделя"
+
+#: src/model/digital_pass.py:270
+msgid "Today"
+msgstr "Днес"
+
+#: src/model/digital_pass.py:273
+msgid "Tomorrow"
+msgstr "Утре"
+
+#: src/model/digital_pass_updater.py:115
+msgid "Pass already updated"
+msgstr "Пропускът вече е обновен"
+
+#: src/model/digital_pass_updater.py:121
+msgid "Pass not updatable"
+msgstr "Пропускът не може да бъде обновен"
+
+#: src/model/digital_pass_updater.py:127
+msgid "Pass update error: {} {}"
+msgstr "Грешка при обновяването на пропуска: {} {}"
+
+#: src/model/persistence.py:88
+msgid "File already imported"
+msgstr "Файлът вече е внесен"
+
+#: src/view/barcode_widget.py:123
+msgid "Barcode format not supported"
+msgstr "Форматът на баркода не се поддържа все още"
+
+#: src/view/pass_viewer/additional_information_pane.py:37
+msgid "No additional information"
+msgstr "Няма допълнителна информация"
+
+#: src/view/help_overlay.blp:14
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Общи"
+
+#: src/view/help_overlay.blp:18
+msgctxt "shortcut window"
+msgid "Show shortcuts"
+msgstr "Показване на клавишните комбинации"
+
+#: src/view/help_overlay.blp:24
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Спиране на програмата"
+
+#: src/view/help_overlay.blp:31
+msgctxt "shortcut window"
+msgid "Passes"
+msgstr "Пропуски"
+
+#: src/view/help_overlay.blp:35
+msgctxt "shortcut window"
+msgid "Import a pass"
+msgstr "Внасяне на пропуск"
+
+#: src/view/help_overlay.blp:41
+msgctxt "shortcut window"
+msgid "Update selected pass"
+msgstr "Обновяване на избрания пропуск"
+
+#: src/view/window.blp:55 src/view/window.blp:112
+msgid "Menu"
+msgstr "Меню"
+
+#: src/view/window.blp:70
+msgid "Import a pass…"
+msgstr "Внасяне на пропуск…"
+
+#: src/view/window.blp:103
+msgid "Import a pass"
+msgstr "Внасяне на пропуск"
+
+#: src/view/window.blp:166
+msgid "Show additional information"
+msgstr "Показване на допълнителна информация"
+
+#: src/view/window.blp:174
+msgid "Update pass"
+msgstr "Обновяване на пропуска"
+
+#: src/view/window.blp:184
+msgid "Additional information"
+msgstr "Допълнителна информация"
+
+#: src/view/window.blp:198
+msgid "Back"
+msgstr "Назад"
+
+#: src/view/window.blp:221
+msgid "Sort"
+msgstr "Подреждане"
+
+#: src/view/window.blp:227
+msgid "A-Z"
+msgstr "А-Я"
+
+#: src/view/window.blp:234
+msgid "Creator"
+msgstr "Създател"
+
+#: src/view/window.blp:241
+msgid "Expiration date"
+msgstr "Дата на изтичане"
+
+# It's unclear whether this is the date of "boarding" for the ticket, so until its clarified I am going with just "date" as saying "What date do you leave in" works in Bulgarian as well.
+#: src/view/window.blp:248
+msgid "Relevant date"
+msgstr "Дата"
+
+#: src/view/window.blp:255
+msgid "Keyboard shortcuts"
+msgstr "Клавишни комбинации"
+
+#: src/view/window.blp:256
+msgid "About Passes"
+msgstr "Относно „Пропуски“"
+
+#: src/view/window.blp:262
+msgid "Delete"
+msgstr "Изтриване"
