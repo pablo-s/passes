@@ -1,0 +1,255 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the passes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: passes\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-21 07:28+0100\n"
+"PO-Revision-Date: 2024-12-17 14:43+0100\n"
+"Last-Translator: Jonáš Loskot <osobni@jonasloskot.cz>\n"
+"Language-Team: \n"
+"Language: cs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.5\n"
+
+#: data/me.sanchezrodriguez.passes.desktop.in:3
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:4 src/main.py:110
+#: src/view/window.blp:88
+msgid "Passes"
+msgstr "Průkazy"
+
+#: data/me.sanchezrodriguez.passes.desktop.in:4
+msgid "A digital pass manager"
+msgstr "Správce digitálních průkazů"
+
+#: data/me.sanchezrodriguez.passes.desktop.in:10
+msgid "digital pass;espass;pkpass;"
+msgstr "digitální průkaz;espass;pkpass;"
+
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:5
+msgid "Manage your digital passes"
+msgstr "Spravujte své digitální průkazy"
+
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:10
+msgid ""
+"Passes is a handy app that helps you manage all your digital passes "
+"effortlessly. With Passes, you can conveniently store your boarding passes, "
+"coupons, loyalty cards, event tickets, and more, all in PKPass or esPass "
+"format."
+msgstr ""
+"Průkazy jsou praktická aplikace, která vám pomůže snadno spravovat všechny "
+"vaše digitální průkazy. Pomocí aplikace Průkazy můžete pohodlně ukládat "
+"jízdenky, kupony, věrnostní karty, vstupenky na akce a další dokumenty ve "
+"formátu PKPass nebo esPass."
+
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:11
+msgid ""
+"Moreover, the app seamlessly adjusts to different screen sizes, allowing you "
+"to access your passes on various devices, whether it's a desktop computer or "
+"a mobile phone."
+msgstr ""
+"Aplikace se navíc plynule přizpůsobuje různým velikostem obrazovky, takže k "
+"průkazům můžete přistupovat na různých zařízeních, ať už jde o stolní "
+"počítač, či mobilní telefon."
+
+#: data/me.sanchezrodriguez.passes.metainfo.xml.in:12
+msgid ""
+"Stop wasting time searching through your email or printing out your digital "
+"passes. Download Passes now and keep all your passes in one convenient "
+"location."
+msgstr ""
+"Přestaňte ztrácet čas hledáním v e-mailu nebo tisknutím digitálních průkazů. "
+"Stáhněte si aplikaci Průkazy nyní a mějte všechny průkazy na jednom místě."
+
+#: data/me.sanchezrodriguez.passes.gschema.xml:17
+msgid "Default sort order"
+msgstr "Výchozí pořadí řazení"
+
+#: data/me.sanchezrodriguez.passes.gschema.xml:18
+msgid "The default order for passes."
+msgstr "Výchozí pořadí průkazů."
+
+#: src/main.py:145
+msgid "Supported passes"
+msgstr "Podporované průkazy"
+
+#: src/main.py:150
+msgid "All files"
+msgstr "Všechny soubory"
+
+#. Notify user
+#: src/main.py:200
+msgid "Pass updated"
+msgstr "Průkaz aktualizován"
+
+#: src/main.py:204
+msgid "Pass could not be updated"
+msgstr "Nepodařilo se aktualizovat průkaz"
+
+#: src/model/digital_pass_factory.py:170
+msgid "File is not a pass"
+msgstr "Soubor není průkaz"
+
+#: src/model/digital_pass_factory.py:176
+msgid "Format not supported yet"
+msgstr "Formát zatím není podporován"
+
+#: src/model/digital_pass_factory.py:182
+msgid "Unknown file encoding"
+msgstr "Neznámé kódování souboru"
+
+#: src/model/digital_pass.py:235
+msgid "Monday"
+msgstr "Pondělí"
+
+#: src/model/digital_pass.py:235
+msgid "Tuesday"
+msgstr "Úterý"
+
+#: src/model/digital_pass.py:235
+msgid "Wednesday"
+msgstr "Středa"
+
+#: src/model/digital_pass.py:236
+msgid "Thursday"
+msgstr "Čtvrtek"
+
+#: src/model/digital_pass.py:236
+msgid "Friday"
+msgstr "Pátek"
+
+#: src/model/digital_pass.py:236
+msgid "Saturday"
+msgstr "Sobota"
+
+#: src/model/digital_pass.py:236
+msgid "Sunday"
+msgstr "Neděle"
+
+#: src/model/digital_pass.py:270
+msgid "Today"
+msgstr "Dnes"
+
+#: src/model/digital_pass.py:273
+msgid "Tomorrow"
+msgstr "Zítra"
+
+#: src/model/digital_pass_updater.py:115
+msgid "Pass already updated"
+msgstr "Průkaz je již aktuální"
+
+#: src/model/digital_pass_updater.py:121
+msgid "Pass not updatable"
+msgstr "Průkaz nelze aktualizovat"
+
+#: src/model/digital_pass_updater.py:127
+msgid "Pass update error: {} {}"
+msgstr "Chyba aktualizace průkazu: {} {}"
+
+#: src/model/persistence.py:88
+msgid "File already imported"
+msgstr "Soubor je již importován"
+
+#: src/view/barcode_widget.py:123
+msgid "Barcode format not supported"
+msgstr "Formát čárového kódu není podporován"
+
+#: src/view/pass_viewer/additional_information_pane.py:37
+msgid "No additional information"
+msgstr "Žádné další informace"
+
+#: src/view/help_overlay.blp:14
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Obecné"
+
+#: src/view/help_overlay.blp:18
+msgctxt "shortcut window"
+msgid "Show shortcuts"
+msgstr "Zobrazit zkratky"
+
+#: src/view/help_overlay.blp:24
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Ukončit"
+
+#: src/view/help_overlay.blp:31
+msgctxt "shortcut window"
+msgid "Passes"
+msgstr "Průkazy"
+
+#: src/view/help_overlay.blp:35
+msgctxt "shortcut window"
+msgid "Import a pass"
+msgstr "Importovat průkaz"
+
+#: src/view/help_overlay.blp:41
+msgctxt "shortcut window"
+msgid "Update selected pass"
+msgstr "Aktualizovat vybraný průkaz"
+
+#: src/view/window.blp:55 src/view/window.blp:112
+msgid "Menu"
+msgstr "Nabídka"
+
+#: src/view/window.blp:70
+msgid "Import a pass…"
+msgstr "Importovat průkaz…"
+
+#: src/view/window.blp:103
+msgid "Import a pass"
+msgstr "Importovat průkaz"
+
+#: src/view/window.blp:166
+msgid "Show additional information"
+msgstr "Zobrazit další informace"
+
+#: src/view/window.blp:174
+msgid "Update pass"
+msgstr "Aktualizovat průkaz"
+
+#: src/view/window.blp:184
+msgid "Additional information"
+msgstr "Další informace"
+
+#: src/view/window.blp:198
+msgid "Back"
+msgstr "Zpět"
+
+#: src/view/window.blp:221
+msgid "Sort"
+msgstr "Seřadit"
+
+#: src/view/window.blp:227
+msgid "A-Z"
+msgstr "A-Z"
+
+#: src/view/window.blp:234
+msgid "Creator"
+msgstr "Tvůrce"
+
+#: src/view/window.blp:241
+msgid "Expiration date"
+msgstr "Datum expirace"
+
+#: src/view/window.blp:248
+msgid "Relevant date"
+msgstr "Relevantní datum"
+
+#: src/view/window.blp:255
+msgid "Keyboard shortcuts"
+msgstr "Klávesové zkratky"
+
+#: src/view/window.blp:256
+msgid "About Passes"
+msgstr "O aplikaci Průkazy"
+
+#: src/view/window.blp:262
+msgid "Delete"
+msgstr "Odstranit"
