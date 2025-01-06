@@ -233,7 +233,18 @@ class BoardingPassPlotter(PkPassPlotter):
                                         value_font = PassFont.biggest_value,
                                         alignment = Pango.Alignment.RIGHT)
 
+        # Check if font size needs to be reduced
+        if origin_field.get_value_width() > (max_row_width / 2) or destination_field.get_value_width() > (max_row_width / 2):
+            origin_field.set_value_font(PassFont.big_value)
+            destination_field.set_value_font(PassFont.big_value)
+
+        if origin_field.get_value_width() > (max_row_width / 2) or destination_field.get_value_width() > (max_row_width / 2):
+            origin_field.set_value_font(PassFont.value)
+            destination_field.set_value_font(PassFont.value)
+
+        # Set final widths
         destination_field.set_width(self.pass_width() - 2 * self.pass_margin())
+        origin_field.set_width(max_row_width / 2)
         self._snapshot.save()
 
         point = Graphene.Point()
