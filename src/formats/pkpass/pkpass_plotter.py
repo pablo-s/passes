@@ -92,14 +92,18 @@ class PkPassPlotter(PassPlotter):
 
     def _plot_header(self):
         header_height = 32
+        header_width = self.pass_width() - (self.pass_margin() * 2)
 
         # Draw the logo if it exists
         if self._logo_texture:
-            logo_scale = header_height / self._logo_texture.get_height()
-            logo_width = self._logo_texture.get_width() * logo_scale
+            logo_height_scale = header_height / self._logo_texture.get_height()
+            logo_width_scale = (header_width / 2) / self._logo_texture.get_width()
+            logo_scale = logo_height_scale if logo_height_scale < logo_width_scale else logo_width_scale
+            scaled_logo_width = self._logo_texture.get_width() * logo_scale
+            scaled_logo_height = self._logo_texture.get_height() * logo_scale
 
             rectangle = Graphene.Rect()
-            rectangle.init(self.pass_margin(), self.pass_margin(), logo_width, header_height)
+            rectangle.init(self.pass_margin(), self.pass_margin(), scaled_logo_width, scaled_logo_height)
             self._snapshot.append_texture(self._logo_texture, rectangle)
 
         point = Graphene.Point()

@@ -17,9 +17,9 @@ You can build *Passes* using GNOME Builder: import the project and press the Pla
 
 <details>
   <summary>Dependencies</summary>
+  <br>
 
-  Passes requires flatpak-builder to be installed alongside gnome-builder
-  
+  Passes requires `flatpak-builder` to be installed alongside gnome-builder  
 </details>
 
 ## Install
