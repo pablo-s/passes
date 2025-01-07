@@ -98,7 +98,7 @@ class PkPassPlotter(PassPlotter):
         if self._logo_texture:
             logo_height_scale = header_height / self._logo_texture.get_height()
             logo_width_scale = (header_width / 2) / self._logo_texture.get_width()
-            logo_scale = logo_height_scale if logo_height_scale < logo_width_scale else logo_width_scale
+            logo_scale = min(logo_height_scale, logo_width_scale)
             scaled_logo_width = self._logo_texture.get_width() * logo_scale
             scaled_logo_height = self._logo_texture.get_height() * logo_scale
 
