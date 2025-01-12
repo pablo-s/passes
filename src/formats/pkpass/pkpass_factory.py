@@ -65,7 +65,7 @@ class PkPassFactory(PassFactory):
                 # For every type of image (background, footer, icon, logo, strip
                 # and thumbnail), only load the image with lowest resolution
 
-                image_type = re.split('\.|@', file_name)[0]
+                image_type = re.split(r'\.|@', file_name)[0]
 
                 if image_type in pass_images.keys():
                     continue
