@@ -159,7 +159,7 @@ class Color:
     @classmethod
     def from_css(this_class, css_string):
         if css_string.startswith('rgb'):
-            result = re.search('rgb\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)',
+            result = re.search(r'rgb\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)',
                                css_string)
 
             if not result or len(result.groups()) != 3:
@@ -170,7 +170,7 @@ class Color:
             b = result.group(3)
 
         elif css_string.startswith('#'):
-            result = re.search('\#(\S{2})(\S{2})(\S{2})(\S{2})',
+            result = re.search(r'\#(\S{2})(\S{2})(\S{2})(\S{2})',
                                css_string)
 
             if not result or len(result.groups()) != 4:
@@ -305,7 +305,7 @@ class Date:
         # Include hours and seconds if they have not been specified.
         # Why? DateTime.new_from_iso8601 does not accept times without them.
 
-        matches = re.finditer('(T|t)([0-9]{2}\:?)+(\+|\-|Z)?', string)
+        matches = re.finditer(r'(T|t)([0-9]{2}\:?)+(\+|\-|Z)?', string)
 
         for match in matches:
             missing_info = None

@@ -41,17 +41,17 @@ class PassFieldRow(Adw.ActionRow):
             value = GLib.markup_escape_text(value)
 
             # Create a link for URLs
-            value = re.sub('(?:(https?://)|(www))(\S+)',
+            value = re.sub(r'(?:(https?://)|(www))(\S+)',
                            '<a href="https://\\2\\3">\\1\\2\\3</a>',
                            value)
 
             # Create a link for telephone numbers
-            value = re.sub('(\+\d+[\(\)\-\d\s\.]+\d)',
+            value = re.sub(r'(\+\d+[\(\)\-\d\s\.]+\d)',
                            '<a href="tel:\\1">\\1</a>',
                            value)
 
             # Create a link for e-mails
-            value = re.sub('(\S+\@[\w\-]+\.\w+)',
+            value = re.sub(r'(\S+\@[\w\-]+\.\w+)',
                            '<a href="mailto:\\1">\\1</a>',
                            value)
 
