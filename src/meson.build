@@ -18,7 +18,7 @@ blueprint_compiler = find_program('blueprint-compiler')
 ui_files = []
 
 foreach blueprint_file : blueprint_files
-  path_as_string = '@0@'.format(blueprint_file)
+  path_as_string = blueprint_file.full_path()
   filename = path_as_string.split('/')[-1]
 
   ui_file = custom_target(path_as_string.underscorify(),
