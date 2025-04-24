@@ -102,6 +102,9 @@ class BarcodeWidget(Gtk.Widget):
         elif format in ['PKBarcodeFormatQR', 'QR_CODE']:
             encoding_function = BarcodeContentEncoder.encode_qr_code
 
+        elif format in ['EAN']:
+            encoding_function = BarcodeContentEncoder.encode_ean_code
+
         else:
             raise BarcodeFormatNotSupported()
 
