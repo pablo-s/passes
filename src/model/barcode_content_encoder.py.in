@@ -26,6 +26,7 @@ class BarcodeType(IntEnum):
     CODE128 = 1
     PDF417 = 2
     QRCODE = 3
+    EAN = 4
 
 
 class BarcodeContentEncoder():
@@ -79,4 +80,8 @@ class BarcodeContentEncoder():
     @classmethod
     def encode_qr_code(this_class, text, encoding):
         return this_class.encode_barcode(text, BarcodeType.QRCODE, encoding)
+
+    @classmethod
+    def encode_ean_code(this_class, text, encoding):
+        return this_class.encode_barcode(text, BarcodeType.EAN, encoding)
 

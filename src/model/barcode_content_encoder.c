@@ -12,7 +12,8 @@ enum BarcodeType
     AZTEC = 0,
     CODE128,
     PDF417,
-    QRCODE
+    QRCODE,
+    EAN,
 };
 
 char * encode_2d_symbol(struct zint_symbol* symbol, unsigned char * data, unsigned data_length);
@@ -59,6 +60,10 @@ char * encode_barcode(unsigned char * data,
         case QRCODE:
             symbol->symbology = BARCODE_QRCODE;
             symbol->option_1 = 1; // Error Correction Level L=1 M=2 Q=3 H=4
+            break;
+
+        case EAN:
+            symbol->symbology = BARCODE_EANX;
             break;
     }
 
