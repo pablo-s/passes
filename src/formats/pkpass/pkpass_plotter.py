@@ -213,6 +213,9 @@ class BoardingPassPlotter(PkPassPlotter):
 
     def _plot_primary_fields(self):
 
+        if not self._primary_fields:
+            return
+
         max_row_width = self.pass_width() - 2 * self.pass_margin()
 
         # Origin
