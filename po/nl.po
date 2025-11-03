@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-21 07:28+0100\n"
-"PO-Revision-Date: 2022-06-12 14:19+0200\n"
+"PO-Revision-Date: 2025-11-03 10:14+0100\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch <kde-i18n-nl@kde.org>\n"
 "Language: nl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 22.04.1\n"
+"X-Generator: Poedit 3.8\n"
 
 #: data/me.sanchezrodriguez.passes.desktop.in:3
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:4 src/main.py:110
@@ -29,11 +29,11 @@ msgstr "Een digitale kaartenbeheerder"
 
 #: data/me.sanchezrodriguez.passes.desktop.in:10
 msgid "digital pass;espass;pkpass;"
-msgstr ""
+msgstr "digitale kaart;espass;pkpass;"
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:5
 msgid "Manage your digital passes"
-msgstr ""
+msgstr "Beheer je digitale kaarten"
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:10
 msgid ""
@@ -42,6 +42,9 @@ msgid ""
 "coupons, loyalty cards, event tickets, and more, all in PKPass or esPass "
 "format."
 msgstr ""
+"Kaarten is een handige toepassing voor het beheren van al je digitale "
+"kaarten. Zo kun je instapkaarten, coupons, klantenkaarten en "
+"toegangsbewijzen opslaan, in pkpass- of espass-formaat."
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:11
 msgid ""
@@ -49,6 +52,8 @@ msgid ""
 "to access your passes on various devices, whether it's a desktop computer or "
 "a mobile phone."
 msgstr ""
+"De toepassing past zich automatisch aan de schermgrootte van je apparaat "
+"aan, en is dus bruikbaar op zowel je computer als telefoon."
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:12
 msgid ""
@@ -56,33 +61,33 @@ msgid ""
 "passes. Download Passes now and keep all your passes in one convenient "
 "location."
 msgstr ""
+"Verspil geen tijd meer aan het doorzoeken van e-mails of afdrukken van "
+"kaarten - download Kaarten en houd ze netjes bijeen, gewoon in de app."
 
 #: data/me.sanchezrodriguez.passes.gschema.xml:17
 msgid "Default sort order"
-msgstr ""
+msgstr "Standaard sorteervolgorde"
 
 #: data/me.sanchezrodriguez.passes.gschema.xml:18
 msgid "The default order for passes."
-msgstr ""
+msgstr "De standaard sorteervolgorde van kaarten."
 
 #: src/main.py:145
-#, fuzzy
 msgid "Supported passes"
-msgstr "Kaart importeren"
+msgstr "Ondersteunde kaarten"
 
 #: src/main.py:150
 msgid "All files"
-msgstr ""
+msgstr "Alle bestanden"
 
 #. Notify user
 #: src/main.py:200
 msgid "Pass updated"
-msgstr ""
+msgstr "De kaart is bijgewerkt"
 
 #: src/main.py:204
-#, fuzzy
 msgid "Pass could not be updated"
-msgstr "Dit bestand is al geïmporteerd"
+msgstr "De kaart kan niet worden bijgewerkt"
 
 #: src/model/digital_pass_factory.py:170
 msgid "File is not a pass"
@@ -133,17 +138,16 @@ msgid "Tomorrow"
 msgstr "Morgen"
 
 #: src/model/digital_pass_updater.py:115
-#, fuzzy
 msgid "Pass already updated"
-msgstr "Dit bestand is al geïmporteerd"
+msgstr "Deze kaart is al bijgewerkt"
 
 #: src/model/digital_pass_updater.py:121
 msgid "Pass not updatable"
-msgstr ""
+msgstr "Deze kaart kan niet worden bijgewerkt"
 
 #: src/model/digital_pass_updater.py:127
 msgid "Pass update error: {} {}"
-msgstr ""
+msgstr "Bijwerkfout: {} {}"
 
 #: src/model/persistence.py:88
 msgid "File already imported"
@@ -155,32 +159,29 @@ msgstr "Dit barcodeformaat wordt niet ondersteund"
 
 #: src/view/pass_viewer/additional_information_pane.py:37
 msgid "No additional information"
-msgstr ""
+msgstr "Er is geen aanvullende informatie beschikbaar"
 
 #: src/view/help_overlay.blp:14
 msgctxt "shortcut window"
 msgid "General"
-msgstr ""
+msgstr "Algemeen"
 
 #: src/view/help_overlay.blp:18
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Show shortcuts"
-msgstr "Sneltoetsen"
+msgstr "Sneltoetsen tonen"
 
 #: src/view/help_overlay.blp:24
 msgctxt "shortcut window"
 msgid "Quit"
-msgstr ""
+msgstr "Afsluiten"
 
 #: src/view/help_overlay.blp:31
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Passes"
 msgstr "Kaarten"
 
 #: src/view/help_overlay.blp:35
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Import a pass"
 msgstr "Kaart importeren"
@@ -188,16 +189,15 @@ msgstr "Kaart importeren"
 #: src/view/help_overlay.blp:41
 msgctxt "shortcut window"
 msgid "Update selected pass"
-msgstr ""
+msgstr "Gekozen kaart bijwerken"
 
 #: src/view/window.blp:55 src/view/window.blp:112
 msgid "Menu"
 msgstr "Menu"
 
 #: src/view/window.blp:70
-#, fuzzy
 msgid "Import a pass…"
-msgstr "Kaart importeren"
+msgstr "Kaart importeren…"
 
 #: src/view/window.blp:103
 msgid "Import a pass"
@@ -205,15 +205,15 @@ msgstr "Kaart importeren"
 
 #: src/view/window.blp:166
 msgid "Show additional information"
-msgstr ""
+msgstr "Aanvullende informatie tonen"
 
 #: src/view/window.blp:174
 msgid "Update pass"
-msgstr ""
+msgstr "Kaart bijwerken"
 
 #: src/view/window.blp:184
 msgid "Additional information"
-msgstr ""
+msgstr "Aanvullende informatie"
 
 #: src/view/window.blp:198
 msgid "Back"
@@ -221,26 +221,25 @@ msgstr "Terug"
 
 #: src/view/window.blp:221
 msgid "Sort"
-msgstr ""
+msgstr "Sorteren"
 
 #: src/view/window.blp:227
 msgid "A-Z"
-msgstr ""
+msgstr "A–Z"
 
 #: src/view/window.blp:234
 msgid "Creator"
-msgstr ""
+msgstr "Maker"
 
 #: src/view/window.blp:241
 msgid "Expiration date"
-msgstr ""
+msgstr "Vervaldatum"
 
 #: src/view/window.blp:248
 msgid "Relevant date"
-msgstr ""
+msgstr "Relevante datum"
 
 #: src/view/window.blp:255
-#, fuzzy
 msgid "Keyboard shortcuts"
 msgstr "Sneltoetsen"
 
