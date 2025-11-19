@@ -92,14 +92,18 @@ class PkPassPlotter(PassPlotter):
 
     def _plot_header(self):
         header_height = 32
+        header_width = self.pass_width() - (self.pass_margin() * 2)
 
         # Draw the logo if it exists
         if self._logo_texture:
-            logo_scale = header_height / self._logo_texture.get_height()
-            logo_width = self._logo_texture.get_width() * logo_scale
+            logo_height_scale = header_height / self._logo_texture.get_height()
+            logo_width_scale = (header_width / 2) / self._logo_texture.get_width()
+            logo_scale = min(logo_height_scale, logo_width_scale)
+            scaled_logo_width = self._logo_texture.get_width() * logo_scale
+            scaled_logo_height = self._logo_texture.get_height() * logo_scale
 
             rectangle = Graphene.Rect()
-            rectangle.init(self.pass_margin(), self.pass_margin(), logo_width, header_height)
+            rectangle.init(self.pass_margin(), self.pass_margin(), scaled_logo_width, scaled_logo_height)
             self._snapshot.append_texture(self._logo_texture, rectangle)
 
         point = Graphene.Point()
@@ -232,7 +236,18 @@ class BoardingPassPlotter(PkPassPlotter):
                                         value_font = PassFont.biggest_value,
                                         alignment = Pango.Alignment.RIGHT)
 
+        # Check if font size needs to be reduced
+        if origin_field.get_value_width() > (max_row_width / 2) or destination_field.get_value_width() > (max_row_width / 2):
+            origin_field.set_value_font(PassFont.big_value)
+            destination_field.set_value_font(PassFont.big_value)
+
+        if origin_field.get_value_width() > (max_row_width / 2) or destination_field.get_value_width() > (max_row_width / 2):
+            origin_field.set_value_font(PassFont.value)
+            destination_field.set_value_font(PassFont.value)
+
+        # Set final widths
         destination_field.set_width(self.pass_width() - 2 * self.pass_margin())
+        origin_field.set_width(max_row_width / 2)
         self._snapshot.save()
 
         point = Graphene.Point()
