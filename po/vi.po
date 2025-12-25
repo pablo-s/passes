@@ -1,170 +1,145 @@
-# SOME DESCRIPTIVE TITLE.
+# Vietnamese translation by Vietnam Linux L10n <https://github.com/linux-l10n-vi>
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the passes package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# Kinten Le <kinten108101@protonmail.com>, 2024.
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: passes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-31 08:26+0100\n"
-"PO-Revision-Date: 2024-03-16 01:06+0700\n"
-"Last-Translator: Kinten Le <kinten108101@protonmail.com>\n"
-"Language-Team: Vietnamese <kinten108101@protonmail.com>\n"
+"POT-Creation-Date: 2024-03-21 07:28+0100\n"
+"PO-Revision-Date: 2025-12-25 00:16+0700\n"
+"Last-Translator: Loc Huynh <https://github.com/hthienloc>\n"
+"Language-Team: \n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0\n"
-"X-Generator: Gtranslator 45.3\n"
+"X-Generator: Poedit 3.8\n"
 
-#: data/me.sanchezrodriguez.passes.desktop.in:3
-#: data/me.sanchezrodriguez.passes.metainfo.xml.in:4 src/main.py:107
-#: src/view/window.blp:39
+#: data/me.sanchezrodriguez.passes.desktop.in:3 data/me.sanchezrodriguez.passes.metainfo.xml.in:4 src/main.py:110 src/view/window.blp:88
 msgid "Passes"
-msgstr "Phiếu"
+msgstr "Passes"
 
 #: data/me.sanchezrodriguez.passes.desktop.in:4
 msgid "A digital pass manager"
-msgstr "Trình quản lí phiếu điện tử"
+msgstr "Trình quản lý vé kĩ thuật số"
+
+#: data/me.sanchezrodriguez.passes.desktop.in:10
+msgid "digital pass;espass;pkpass;"
+msgstr "digital pass;espass;pkpass;"
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:5
 msgid "Manage your digital passes"
-msgstr "Quản lí các loại vé và phiếu điện tử"
+msgstr "Quản lý vé kĩ thuật số của bạn"
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:10
-msgid ""
-"Passes is a handy app that helps you manage all your digital passes "
-"effortlessly. With Passes, you can conveniently store your boarding passes, "
-"coupons, loyalty cards, event tickets, and more, all in PKPass or esPass "
-"format."
+msgid "Passes is a handy app that helps you manage all your digital passes effortlessly. With Passes, you can conveniently store your boarding passes, coupons, loyalty cards, event tickets, and more, all in PKPass or esPass format."
 msgstr ""
-"Phiếu là một ứng dụng tiện lợi giúp bạn quản lí phiếu điện tử một cách gọn "
-"lẹ. Khi dùng ứng dụng này, bạn có thể lưu vé máy bay, coupon giảm giá, thẻ "
-"khách hàng thân thiết, vé sự kiện, ... tất cả trong định dạng PKPass hoặc "
-"esPass."
+"Passes là một ứng dụng tiện dụng giúp bạn quản lý tất cả các vé kỹ thuật số của mình một cách dễ dàng. Với Passes, bạn có thể lưu trữ vé lên máy bay, phiếu giảm giá, thẻ khách hàng thân thiết, vé sự kiện, v.v. Một cách thuận tiện, tất cả đều ở định dạng PKPass hoặc esPass."
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:11
-msgid ""
-"Moreover, the app seamlessly adjusts to different screen sizes, allowing you "
-"to access your passes on various devices, whether it's a desktop computer or "
-"a mobile phone."
-msgstr ""
-"Ngoài ra, ứng dụng này tương thích với mọi kích cớ màn hình, cho phép bạn "
-"truy cập phiếu của mình từ mọi thiết bị dẫu là máy tính bàn hay điện thoại "
-"di dộng."
+msgid "Moreover, the app seamlessly adjusts to different screen sizes, allowing you to access your passes on various devices, whether it's a desktop computer or a mobile phone."
+msgstr "Hơn nữa, ứng dụng còn điều chỉnh liền mạch theo các kích thước màn hình khác nhau, cho phép bạn truy cập vé của mình trên nhiều thiết bị khác nhau, cho dù đó là máy tính để bàn hay điện thoại di động."
 
 #: data/me.sanchezrodriguez.passes.metainfo.xml.in:12
-msgid ""
-"Stop wasting time searching through your email or printing out your digital "
-"passes. Download Passes now and keep all your passes in one convenient "
-"location."
-msgstr ""
-"Đừng lãng phí thời gian của bạn để lục email hay in phiếu điện tử ra giấy. "
-"Tải ứng dụng Phiếu ngay hôm nay để lưu tất cả phiếu và vé vào một chỗ duy "
-"nhất."
-
-#: data/me.sanchezrodriguez.passes.gschema.xml:16
-msgid "Default sort order"
-msgstr "Thứ tự xếp mặc định"
+msgid "Stop wasting time searching through your email or printing out your digital passes. Download Passes now and keep all your passes in one convenient location."
+msgstr "Đừng lãng phí thời gian tìm kiếm qua email hoặc in vé kỹ thuật số của bạn. Tải xuống Passes ngay bây giờ và lưu giữ tất cả vé của bạn ở một vị trí thuận tiện."
 
 #: data/me.sanchezrodriguez.passes.gschema.xml:17
+msgid "Default sort order"
+msgstr "Thứ tự sắp xếp mặc định"
+
+#: data/me.sanchezrodriguez.passes.gschema.xml:18
 msgid "The default order for passes."
-msgstr "Thứ tự mặc định dùng để xếp phiếu."
+msgstr "Thứ tự mặc định cho vé."
 
-#: src/main.py:139
+#: src/main.py:145
 msgid "Supported passes"
-msgstr "Các loại phiếu được hỗ trợ"
+msgstr "Vé được hỗ trợ"
 
-#: src/main.py:144
+#: src/main.py:150
 msgid "All files"
-msgstr "Tất cả"
+msgstr "Tất cả các tập tin"
 
 #. Notify user
-#: src/main.py:194
+#: src/main.py:200
 msgid "Pass updated"
-msgstr "Cập nhật phiếu xong"
+msgstr "Đã cập nhật vé"
 
-#: src/model/digital_pass_factory.py:169
+#: src/main.py:204
+msgid "Pass could not be updated"
+msgstr "Không thể cập nhật vé"
+
+#: src/model/digital_pass_factory.py:170
 msgid "File is not a pass"
-msgstr "Tệp không phải là phiếu"
+msgstr "Tệp không phải là vé"
 
-#: src/model/digital_pass_factory.py:175
+#: src/model/digital_pass_factory.py:176
 msgid "Format not supported yet"
-msgstr "Chưa hỗ trợ định dạng này"
+msgstr "Định dạng chưa được hỗ trợ"
 
-#: src/model/digital_pass_factory.py:181
+#: src/model/digital_pass_factory.py:182
 msgid "Unknown file encoding"
-msgstr "Không xác định được mã ký tự của tệp này"
+msgstr "Mã hóa tệp không xác định"
 
-#: src/model/digital_pass.py:232
+#: src/model/digital_pass.py:235
 msgid "Monday"
 msgstr "Thứ hai"
 
-#: src/model/digital_pass.py:232
+#: src/model/digital_pass.py:235
 msgid "Tuesday"
 msgstr "Thứ ba"
 
-#: src/model/digital_pass.py:232
+#: src/model/digital_pass.py:235
 msgid "Wednesday"
 msgstr "Thứ tư"
 
-#: src/model/digital_pass.py:233
+#: src/model/digital_pass.py:236
 msgid "Thursday"
 msgstr "Thứ năm"
 
-#: src/model/digital_pass.py:233
+#: src/model/digital_pass.py:236
 msgid "Friday"
 msgstr "Thứ sáu"
 
-#: src/model/digital_pass.py:233
+#: src/model/digital_pass.py:236
 msgid "Saturday"
 msgstr "Thứ bảy"
 
-#: src/model/digital_pass.py:233
+#: src/model/digital_pass.py:236
 msgid "Sunday"
 msgstr "Chủ nhật"
 
-#: src/model/digital_pass.py:267
+#: src/model/digital_pass.py:270
 msgid "Today"
 msgstr "Hôm nay"
 
-#: src/model/digital_pass.py:270
+#: src/model/digital_pass.py:273
 msgid "Tomorrow"
 msgstr "Ngày mai"
 
 #: src/model/digital_pass_updater.py:115
 msgid "Pass already updated"
-msgstr "Đã cập nhật phiếu này"
+msgstr "Thẻ đã được cập nhật"
 
 #: src/model/digital_pass_updater.py:121
 msgid "Pass not updatable"
-msgstr "Không thể cập nhật phiếu"
+msgstr "Thẻ không thể cập nhật"
 
 #: src/model/digital_pass_updater.py:127
 msgid "Pass update error: {} {}"
-msgstr "Lỗi khi cập nhật phiếu: {} {}"
+msgstr "Lỗi cập nhật vé: {}"
 
 #: src/model/persistence.py:88
 msgid "File already imported"
-msgstr "Đã nhập tệp này"
+msgstr "Tệp đã được nhập"
 
 #: src/view/barcode_widget.py:123
 msgid "Barcode format not supported"
-msgstr "Không hỗ trợ định dạng barcode này"
+msgstr "Định dạng mã vạch không được hỗ trợ"
 
-#: src/view/pass_list/pass_list.py:46
-msgid "You have no passes"
-msgstr "Bạn hiện không có phiếu nào"
-
-#: src/view/pass_list/pass_list.py:47
-msgid "Use the “+” button to import a pass"
-msgstr "Nhấn nút “+” để nhập phiếu"
-
-#: src/view/pass_viewer/additional_information_pane.py:36
+#: src/view/pass_viewer/additional_information_pane.py:37
 msgid "No additional information"
-msgstr "Không có thêm thông tin"
+msgstr "Không thông tin bổ sung"
 
 #: src/view/help_overlay.blp:14
 msgctxt "shortcut window"
@@ -174,7 +149,7 @@ msgstr "Chung"
 #: src/view/help_overlay.blp:18
 msgctxt "shortcut window"
 msgid "Show shortcuts"
-msgstr "Xem phím tắt"
+msgstr "Hiển thị phím tắt"
 
 #: src/view/help_overlay.blp:24
 msgctxt "shortcut window"
@@ -184,66 +159,74 @@ msgstr "Thoát"
 #: src/view/help_overlay.blp:31
 msgctxt "shortcut window"
 msgid "Passes"
-msgstr "Phiếu"
+msgstr "Đường chuyền"
 
 #: src/view/help_overlay.blp:35
 msgctxt "shortcut window"
 msgid "Import a pass"
-msgstr "Nhập phiếu"
+msgstr "Nhập vé"
 
 #: src/view/help_overlay.blp:41
 msgctxt "shortcut window"
 msgid "Update selected pass"
-msgstr "Cập nhật phiếu đã chọn"
+msgstr "Cập nhật thẻ đã chọn"
 
-#: src/view/window.blp:55
-msgid "Import a pass"
-msgstr "Nhập phiếu"
-
-#: src/view/window.blp:64
+#: src/view/window.blp:55 src/view/window.blp:112
 msgid "Menu"
-msgstr "Menu"
+msgstr "Trình đơn"
 
-#: src/view/window.blp:113
-msgid "Show additional information"
-msgstr "Xem thêm thông tin"
+#: src/view/window.blp:70
+msgid "Import a pass…"
+msgstr "Nhập vé…"
 
-#: src/view/window.blp:121
-msgid "Update pass"
-msgstr "Cập nhật phiếu"
-
-#: src/view/window.blp:131
-msgid "Additional information"
-msgstr "Thông tin thêm"
-
-#: src/view/window.blp:145
-msgid "Back"
-msgstr "Quay lại"
+#: src/view/window.blp:103
+msgid "Import a pass"
+msgstr "Nhập vé"
 
 #: src/view/window.blp:166
+msgid "Show additional information"
+msgstr "Hiển thị thông tin bổ sung"
+
+#: src/view/window.blp:174
+msgid "Update pass"
+msgstr "Cập nhật vé"
+
+#: src/view/window.blp:184
+msgid "Additional information"
+msgstr "Thông tin bổ sung"
+
+#: src/view/window.blp:198
+msgid "Back"
+msgstr "Mặt sau"
+
+#: src/view/window.blp:221
 msgid "Sort"
 msgstr "Sắp xếp"
 
-#: src/view/window.blp:172
+#: src/view/window.blp:227
 msgid "A-Z"
 msgstr "A-Z"
 
-#: src/view/window.blp:179
+#: src/view/window.blp:234
 msgid "Creator"
-msgstr "Nhà cung cấp"
+msgstr "Người sáng tạo"
 
-#: src/view/window.blp:186
+#: src/view/window.blp:241
 msgid "Expiration date"
-msgstr "Hạn sử dụng"
+msgstr "Ngày hết hạn"
 
-#: src/view/window.blp:193
+#: src/view/window.blp:248
+msgid "Relevant date"
+msgstr "Ngày liên quan"
+
+#: src/view/window.blp:255
 msgid "Keyboard shortcuts"
 msgstr "Phím tắt"
 
-#: src/view/window.blp:194
+#: src/view/window.blp:256
 msgid "About Passes"
-msgstr "Giới thiệu Phiếu"
+msgstr "Giới thiệu về Passes"
 
-#: src/view/window.blp:200
+#: src/view/window.blp:262
 msgid "Delete"
 msgstr "Xóa"
