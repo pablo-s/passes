@@ -319,7 +319,7 @@ class StandardField(PassField):
             pass
 
         finally:
-            self._value = value.strip()
+            self._value = value.strip() if isinstance(value, str) else value
 
         if not self.__key or not self._value:
             # Keys and values are required fields.
