@@ -31,7 +31,7 @@ endforeach
 
 gnome.compile_resources('passes',
   'passes.gresource.xml',
-  dependencies: ui_files,
+  dependencies: ui_files + [appstream_file],
   gresource_bundle: true,
   install: true,
   install_dir: pkgdatadir,

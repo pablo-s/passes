@@ -108,15 +108,9 @@ class Application(Adw.Application):
             self.window().show_toast(str(exception))
 
     def on_about_action(self, widget, __):
-        about = Adw.AboutDialog()
-        about.set_application_icon('me.sanchezrodriguez.passes')
-        about.set_application_name(_('Passes'))
-        about.set_copyright('Copyright © 2022-2023 Pablo Sánchez Rodríguez')
-        about.set_license_type(Gtk.License.GPL_3_0)
-        about.set_developer_name('Pablo Sánchez Rodríguez')
-        about.set_issue_url('https://github.com/pablo-s/passes/issues')
-        about.set_version('0.10')
-        about.set_website('https://github.com/pablo-s/passes')
+        about = Adw.AboutDialog.new_from_appdata(
+            '/me/sanchezrodriguez/passes/me.sanchezrodriguez.passes.metainfo.xml',
+            None)
         about.present(self.window())
 
     def on_delete_action(self, widget, _):

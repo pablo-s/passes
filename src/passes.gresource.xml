@@ -11,5 +11,6 @@
     <file>pass_row.ui</file>
     <file>style.css</file>
     <file>window.ui</file>
+    <file>me.sanchezrodriguez.passes.metainfo.xml</file>
   </gresource>
 </gresources>
