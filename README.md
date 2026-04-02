@@ -15,6 +15,13 @@
 
 You can build *Passes* using GNOME Builder: import the project and press the Play button.
 
+<details>
+  <summary>Dependencies</summary>
+  <br>
+
+  Passes requires `flatpak-builder` to be installed alongside gnome-builder  
+</details>
+
 ## Install
 
 The recommended way of installing *Passes* is via Flatpak:

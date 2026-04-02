@@ -84,6 +84,12 @@ class FieldLayout:
 
     def get_width(self):
         return self.__label.get_width() / Pango.SCALE
+    
+    def get_value_width(self):
+        return self.__value.get_pixel_size().width
+    
+    def set_value_font(self, font):
+        self.__value.set_font_description(font)
 
     def set_alignment(self, alignment):
         self.__label.set_alignment(alignment)
