@@ -1,6 +1,6 @@
 # barcode_widget.py
 #
-# Copyright 2022-2023 Pablo Sánchez Rodríguez
+# Copyright 2022-2024 Pablo Sánchez Rodríguez
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -65,7 +65,6 @@ class BarcodeWidget(Gtk.Widget):
         snapshot.translate(translation)
 
         snapshot.scale(scaling_factor, scaling_factor)
-
 
         # Draw the barcode
         for i in range(self.__data_height):
