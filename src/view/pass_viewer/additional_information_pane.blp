@@ -6,8 +6,10 @@ template $AdditionalInformationPane : Gtk.Stack
     Gtk.StackPage
     {
         name: 'fields_page';
-        child: Adw.PreferencesPage
+        child: Gtk.ScrolledWindow
         {
+            hscrollbar-policy: never;
+
             Gtk.ListBox fields
             {
                 styles ["boxed-list"]
