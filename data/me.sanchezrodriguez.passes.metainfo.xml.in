@@ -23,15 +23,17 @@
 	</provides>
 
 	<releases>
-			<release date="2024-07-06" version="0.10">
+		<release date="2026-04-02" version="0.11">
 			<description translate="no">
 				<p>What is new?</p>
 				<ul>
-					<li>Added Ukrainian translation.</li>
-					<li>Added Russian translation.</li>
-					<li>Added Vietnamese translation.</li>
-					<li>Improved how addition information fields are displayed.</li>
-					<li>Visual refinements to match the state of the art of GNOME apps.</li>
+					<li>Added support for EAN barcodes.</li>
+					<li>Fixed a crash when boarding pass primary fields could not be parsed.</li>
+					<li>Fixed primary fields not being displayed when their value is a date.</li>
+					<li>Fixed additional information pane being empty after GNOME 50 update.</li>
+					<li>Improved right-to-left language support.</li>
+					<li>Added Bulgarian translation.</li>
+					<li>Updated Dutch and Vietnamese translations.</li>
 				</ul>
 			</description>
 		</release>
