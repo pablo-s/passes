@@ -15,10 +15,20 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from gi.repository import Graphene, Pango
+from gi.repository import Graphene, Gtk, Pango
 
 from passes.digital_pass import Color
 from passes.pass_widget import FieldLayout, PassFont, PassPlotter
+
+
+# Mapping of PKPass transit types to GNOME symbolic icon names
+TRANSIT_ICON_NAMES = {
+    'PKTransitTypeAir':     'flying-symbolic',
+    'PKTransitTypeTrain':   'train-symbolic',
+    'PKTransitTypeBus':     'bus-symbolic',
+    'PKTransitTypeBoat':    'ferry-symbolic',
+    'PKTransitTypeGeneric': 'arrow1-right-symbolic',
+}
 
 
 class PkPassPlotter(PassPlotter):
@@ -208,8 +218,24 @@ class PkPassWithStripPlotter(PkPassPlotter):
 
 class BoardingPassPlotter(PkPassPlotter):
 
+    TRANSIT_ICON_SIZE = 20
+
     def __init__(self, pkpass, pkpass_widget):
         super().__init__(pkpass, pkpass_widget)
+
+        # Load transit type icon
+        self._transit_icon = None
+        transit_type = pkpass.adaptee().transit_type()
+        icon_name = TRANSIT_ICON_NAMES.get(transit_type,
+                                           'arrow1-right-symbolic')
+
+        display = pkpass_widget.get_display()
+        icon_theme = Gtk.IconTheme.get_for_display(display)
+        icon_theme.add_search_path('/usr/share/gnome-maps/icons')
+        if icon_theme.has_icon(icon_name):
+            self._transit_icon = icon_theme.lookup_icon(
+                icon_name, None, self.TRANSIT_ICON_SIZE, 1,
+                Gtk.TextDirection.NONE, Gtk.IconLookupFlags(0))
 
     def _plot_primary_fields(self):
 
@@ -233,6 +259,10 @@ class BoardingPassPlotter(PkPassPlotter):
                                         alignment = Pango.Alignment.RIGHT)
 
         destination_field.set_width(self.pass_width() - 2 * self.pass_margin())
+
+        fields_height = max(origin_field.get_height(),
+                            destination_field.get_height())
+
         self._snapshot.save()
 
         point = Graphene.Point()
@@ -243,11 +273,26 @@ class BoardingPassPlotter(PkPassPlotter):
         origin_field.append(self._snapshot, self._label_color, self._fg_color)
         destination_field.append(self._snapshot, self._label_color, self._fg_color)
 
+        # Draw transit icon centered between origin and destination
+        if self._transit_icon:
+            icon_size = self.TRANSIT_ICON_SIZE
+            icon_x = (max_row_width - icon_size) / 2
+            icon_y = (fields_height - icon_size) / 2
+
+            self._snapshot.save()
+            icon_point = Graphene.Point()
+            icon_point.x = icon_x
+            icon_point.y = icon_y
+            self._snapshot.translate(icon_point)
+            self._transit_icon.snapshot_symbolic(
+                self._snapshot, icon_size, icon_size, [self._fg_color])
+            self._snapshot.restore()
+
         self._snapshot.restore()
 
         # Perform a translation so that the next drawing starts below this one
         point.x = 0
-        point.y = max(origin_field.get_height(), destination_field.get_height()) + 2 * self.pass_margin()
+        point.y = fields_height + 2 * self.pass_margin()
         self._snapshot.translate(point)
 
     def _plot_secondary_and_axiliary_fields(self):
