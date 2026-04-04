@@ -302,8 +302,14 @@ class StandardField(PassField):
 
             value = pkpass_field_dictionary['value']
 
-            if 'dateStyle' in pkpass_field_dictionary:
-                value = Date.from_iso_string(value)
+            if 'dateStyle' in pkpass_field_dictionary \
+                    or 'timeStyle' in pkpass_field_dictionary:
+                date = Date.from_iso_string(value)
+                date_style = pkpass_field_dictionary.get(
+                    'dateStyle', 'PKDateStyleShort')
+                time_style = pkpass_field_dictionary.get(
+                    'timeStyle', 'PKDateStyleShort')
+                value = date.formatted_string(date_style, time_style)
 
             elif 'currencyCode' in pkpass_field_dictionary:
                 value = Currency.format(value, pkpass_field_dictionary['currencyCode'])
