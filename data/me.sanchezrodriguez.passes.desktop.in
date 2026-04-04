@@ -8,5 +8,6 @@ Type=Application
 Categories=GTK;Utility;
 Keywords=digital pass;espass;pkpass;
 StartupNotify=true
+MimeType=application/vnd.apple.pkpass;application/vnd.espass-espass+zip;
 # Translators: Do NOT translate or transliterate this text (these are enum types)!
 X-Purism-FormFactor=Workstation;Mobile;
