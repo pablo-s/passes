@@ -276,17 +276,17 @@ class PassWidget(Gtk.Fixed):
 
         # Square codes
         if aspect_ratio == 1:
-            max_times = 140 // barcode_widget.minimum_height()
+            max_times = max(1, 140 // barcode_widget.minimum_height())
 
             barcode_button_width = max_times * barcode_widget.minimum_height()
             barcode_button_height = max_times * barcode_widget.minimum_height()
 
         # Horizontal codes
         elif aspect_ratio > 1:
-            max_times = (self.__pass_plotter.pass_width() - 2*self.__pass_plotter.pass_margin()) // barcode_widget.minimum_width()
+            max_times = max(1, (self.__pass_plotter.pass_width() - 2*self.__pass_plotter.pass_margin()) // barcode_widget.minimum_width())
 
             if max_times * barcode_widget.minimum_height() > 140:
-                max_times = 140 // barcode_widget.minimum_height()
+                max_times = max(1, 140 // barcode_widget.minimum_height())
 
             barcode_button_width = max_times * barcode_widget.minimum_width()
             barcode_button_height = max_times * barcode_widget.minimum_height()
