@@ -57,7 +57,10 @@ class BarcodeWidget(Gtk.Widget):
 
         h_scaling = canvas_width / barcode_width
         v_scaling = canvas_height / barcode_height
-        scaling_factor = int(min(h_scaling, v_scaling))
+        scaling_factor = min(h_scaling, v_scaling)
+
+        if scaling_factor <= 0:
+            return
 
         translation = Graphene.Point()
         translation.x = (canvas_width - barcode_width * scaling_factor) / 2
