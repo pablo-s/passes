@@ -253,8 +253,44 @@ class Date:
     def __lt__(self, other):
         return self.compare(other) < 0
 
+    # Mapping of Apple PKPass date/time style constants to GLib format strings
+    _date_formats = {
+        'PKDateStyleNone':   None,
+        'PKDateStyleShort':  '%x',
+        'PKDateStyleMedium': '%x',
+        'PKDateStyleLong':   '%B %-e, %Y',
+        'PKDateStyleFull':   '%A, %B %-e, %Y',
+    }
+
+    _time_formats = {
+        'PKDateStyleNone':   None,
+        'PKDateStyleShort':  '%R',
+        'PKDateStyleMedium': '%T',
+        'PKDateStyleLong':   '%T %Z',
+        'PKDateStyleFull':   '%T %Z',
+    }
+
     def __str__(self):
         return self.__date.to_local().format('%c')
+
+    def formatted_string(self, date_style='PKDateStyleShort',
+                         time_style='PKDateStyleShort'):
+        """
+        Format the date according to Apple PKPass dateStyle/timeStyle values.
+        """
+        local_date = self.__date.to_local()
+
+        date_fmt = Date._date_formats.get(date_style)
+        time_fmt = Date._time_formats.get(time_style)
+
+        if date_fmt and time_fmt:
+            return local_date.format(date_fmt + ' ' + time_fmt)
+        elif date_fmt:
+            return local_date.format(date_fmt)
+        elif time_fmt:
+            return local_date.format(time_fmt)
+        else:
+            return ''
 
     def as_relative_pretty_string(self):
 
