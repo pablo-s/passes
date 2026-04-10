@@ -1,6 +1,9 @@
 compiler = meson.get_compiler('c')
 
-libzint = compiler.find_library('zint', dirs: '/app/lib')
+libzint = compiler.find_library('zint', dirs: '/app/lib', required: false)
+if not libzint.found()
+  libzint = dependency('zint')
+endif
 
 shared_library('barcode-content-encoder',
 	['barcode_content_encoder.c'],
