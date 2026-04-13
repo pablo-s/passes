@@ -27,7 +27,7 @@ class PassFieldRow(Adw.ActionRow):
 
     def set_label(self, label):
         if label and label.strip():
-            self.set_title(label)
+            self.set_title(GLib.markup_escape_text(label))
 
     def set_value(self, value):
         value = str(value)
