@@ -87,10 +87,19 @@ class PassIcon(Gtk.Box):
 
     def __guess_background_color(self):
         if not self.__image:
-            return
+            return None
 
-        pixel_buffer = self.__image.as_pixbuf()
+        try:
+            pixel_buffer = self.__image.as_pixbuf()
+        except Exception:
+            return None
+
+        if not pixel_buffer:
+            return None
+
         data = pixel_buffer.read_pixel_bytes().get_data()
+        if len(data) < 4:
+            return None
 
         # This method assumes that the background color of an image is the color
         # of the first pixel of the image if it is not transparent.

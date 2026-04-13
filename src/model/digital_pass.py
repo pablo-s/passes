@@ -158,6 +158,8 @@ class Color:
 
     @classmethod
     def from_css(this_class, css_string):
+        a = 255
+
         if css_string.startswith('rgb'):
             result = re.search(r'rgb\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)',
                                css_string)
@@ -170,20 +172,22 @@ class Color:
             b = result.group(3)
 
         elif css_string.startswith('#'):
-            result = re.search(r'\#(\S{2})(\S{2})(\S{2})(\S{2})',
+            result = re.search(r'\#([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})?',
                                css_string)
 
-            if not result or len(result.groups()) != 4:
+            if not result:
                 raise BadColor()
 
-            r = int(result.group(2), 16)
-            g = int(result.group(3), 16)
-            b = int(result.group(4), 16)
+            r = int(result.group(1), 16)
+            g = int(result.group(2), 16)
+            b = int(result.group(3), 16)
+            if result.group(4):
+                a = int(result.group(4), 16)
 
         else:
             raise BadColor()
 
-        return Color(r, g, b)
+        return Color(r, g, b, a)
 
     def invert(self):
         self.__r = 255 - self.__r
