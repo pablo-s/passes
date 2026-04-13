@@ -32,9 +32,9 @@ class PassFieldRow(Adw.ActionRow):
     def set_value(self, value):
         value = str(value)
         value = re.sub(r'\<br\/>', '\n', value)
-        value_has_links = re.search('</a>', value)
+        value_has_markup = re.search(r'<[^>]+>', value)
 
-        if value_has_links:
+        if value_has_markup:
             value = re.sub('&', '&amp;', value)
 
         else:
