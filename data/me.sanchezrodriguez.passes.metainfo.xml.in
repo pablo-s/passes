@@ -23,17 +23,19 @@
 	</provides>
 
 	<releases>
-		<release date="2026-04-02" version="0.11">
+		<release date="2026-04-13" version="0.12">
 			<description translate="no">
 				<p>What is new?</p>
 				<ul>
-					<li>Added support for EAN barcodes.</li>
-					<li>Fixed a crash when boarding pass primary fields could not be parsed.</li>
-					<li>Fixed primary fields not being displayed when their value is a date.</li>
-					<li>Fixed additional information pane being empty after GNOME 50 update.</li>
-					<li>Improved right-to-left language support.</li>
-					<li>Added Bulgarian translation.</li>
-					<li>Updated Dutch and Vietnamese translations.</li>
+					<li>Added a transit type icon between origin and destination on boarding passes.</li>
+					<li>Fixed QR code size.</li>
+					<li>Fixed oversized primary fields.</li>
+					<li>Added support for PKPass dateStyle and timeStyle when formatting date fields.</li>
+					<li>Fixed a crash when a pass field label contains an ampersand.</li>
+					<li>Fixed a crash when loading passes with a background color and a corrupt icon.</li>
+					<li>Fixed pass field values with markup tags not being rendered correctly.</li>
+					<li>Fixed hex color parsing in PKPass and esPass files.</li>
+					<li>Added Czech translation.</li>
 				</ul>
 			</description>
 		</release>
