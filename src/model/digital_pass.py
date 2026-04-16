@@ -47,7 +47,8 @@ class DigitalPass(GObject.GObject):
     def expiration_date(self):
         raise NotImplementedError()
 
-    def file_extension(self):
+    @staticmethod
+    def file_extension():
         raise NotImplementedError()
 
     def format(self):
@@ -67,13 +68,14 @@ class DigitalPass(GObject.GObject):
     def is_updatable(self):
         raise NotImplementedError()
 
+    @staticmethod
     def mime_type():
         raise NotImplementedError()
 
     def plotter(self, widget):
         raise NotImplementedError()
 
-    def relevant_date():
+    def relevant_date(self):
         raise NotImplementedError()
 
     def set_path(self, new_path: str):

@@ -144,6 +144,7 @@ class EsPassAdapter(DigitalPass):
 
         return latest_expiration_date
 
+    @staticmethod
     def file_extension():
         return '.espass'
 
@@ -156,6 +157,7 @@ class EsPassAdapter(DigitalPass):
     def is_updatable(self):
         return False
 
+    @staticmethod
     def mime_type():
         return 'application/vnd.espass-espass+zip'
 
