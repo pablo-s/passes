@@ -1,26 +1,16 @@
 ![Application icon](data/icons/hicolor/scalable/apps/me.sanchezrodriguez.passes.svg)
 # Passes
 
-*Passes* is a digital pass manager made with libadwaita for the GNOME desktop.
+*Passes* is a digital pass manager for the GNOME desktop, built with libadwaita.
 
-![Screenshot](/data/screenshots/passes.png)
+![Screenshot](data/screenshots/passes.png)
 
 ## Features
 
-- Adaptive user interface.
-- Support for ".espass" and ".pkpass" files.
-- Ability to update ".pkpass" files.
-
-## Build
-
-You can build *Passes* using GNOME Builder: import the project and press the Play button.
-
-<details>
-  <summary>Dependencies</summary>
-  <br>
-
-  Passes requires `flatpak-builder` to be installed alongside gnome-builder  
-</details>
+- Adaptive user interface that works on both desktop and mobile.
+- Support for `.espass` and `.pkpass` pass formats.
+- Barcode display for supported passes.
+- `.pkpass` update downloads.
 
 ## Install
 
@@ -32,6 +22,10 @@ The recommended way of installing *Passes* is via Flatpak:
 </a>
 <br/>
 
+## Build
+
+*Passes* can be built using [GNOME Builder](https://apps.gnome.org/Builder/). Install it alongside `flatpak-builder`, then import the project and press the Run button.
+
 ## License
 
-*Passes* is available under the terms of the [GPL 3.0](/COPYING) license.
+*Passes* is available under the terms of the [GPL 3.0](COPYING) license.
