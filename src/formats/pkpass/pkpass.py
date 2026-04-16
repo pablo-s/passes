@@ -233,7 +233,8 @@ class PKPassAdapter(DigitalPass):
         barcodes = self.__adaptee.barcodes()
 
         if not barcodes:
-            barcodes = [self.__adaptee.barcode()]
+            barcode = self.__adaptee.barcode()
+            barcodes = [barcode] if barcode else []
 
         return barcodes
 

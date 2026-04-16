@@ -265,10 +265,12 @@ class PassWidget(Gtk.Fixed):
         self.queue_draw()
 
     def create_barcode_button(self, a_pass):
-        barcode = a_pass.barcodes()[0]
+        barcodes = a_pass.barcodes()
 
-        if not barcode:
+        if not barcodes:
             return
+
+        barcode = barcodes[0]
 
         self.__barcode_button = Gtk.Button()
         self.__barcode_button.connect('clicked', self.__on_barcode_clicked)

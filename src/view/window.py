@@ -86,9 +86,10 @@ class PassesWindow(Adw.ApplicationWindow):
     def _on_barcode_clicked(self, button):
         try:
             selected_pass = self.selected_pass()
-            barcode = selected_pass.barcodes()[0]
+            barcodes = selected_pass.barcodes()
 
-            if barcode:
+            if barcodes:
+                barcode = barcodes[0]
                 dialog = BarcodeDialog()
                 dialog.set_barcode(barcode)
                 dialog.present(self)

@@ -124,7 +124,8 @@ class EsPassAdapter(DigitalPass):
         return self.__adaptee.accent_color()
 
     def barcodes(self):
-        return [self.__adaptee.barcode()]
+        barcode = self.__adaptee.barcode()
+        return [barcode] if barcode else []
 
     def creator(self):
         return self.__adaptee.creator()
