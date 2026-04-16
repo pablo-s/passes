@@ -144,8 +144,8 @@ class EsPassAdapter(DigitalPass):
 
         return latest_expiration_date
 
-    @staticmethod
-    def file_extension():
+    @classmethod
+    def file_extension(cls):
         return '.espass'
 
     def format(self):
@@ -157,8 +157,8 @@ class EsPassAdapter(DigitalPass):
     def is_updatable(self):
         return False
 
-    @staticmethod
-    def mime_type():
+    @classmethod
+    def mime_type(cls):
         return 'application/vnd.espass-espass+zip'
 
     def plotter(self, widget):

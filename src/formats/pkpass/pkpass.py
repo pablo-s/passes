@@ -253,8 +253,8 @@ class PKPassAdapter(DigitalPass):
     def expiration_date(self):
         return self.__adaptee.expiration_date()
 
-    @staticmethod
-    def file_extension():
+    @classmethod
+    def file_extension(cls):
         return '.pkpass'
 
     def format(self):
@@ -266,8 +266,8 @@ class PKPassAdapter(DigitalPass):
     def is_updatable(self):
         return self.__adaptee.web_service_url() and not self.has_expired()
 
-    @staticmethod
-    def mime_type():
+    @classmethod
+    def mime_type(cls):
         return 'application/vnd.apple.pkpass'
 
     def plotter(self, widget):
