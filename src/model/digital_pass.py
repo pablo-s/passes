@@ -422,11 +422,11 @@ class PassDataExtractor:
                 # The key does not exist... nothing to do
                 return None
 
-            if not type_constructor and type(value) == dict:
+            if not type_constructor and isinstance(value, dict):
                 return PassDataExtractor(value)
 
             if type_constructor:
-                if type(type_constructor) == bool:
+                if isinstance(type_constructor, bool):
                     value = self._cast_to_boolean(value)
 
                 else:
