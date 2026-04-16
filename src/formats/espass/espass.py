@@ -16,7 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from passes.digital_pass import Barcode, Color, Date, DigitalPass, Image, \
-                                PassDataExtractor, PassField, Date, TimeInterval
+                                PassDataExtractor, PassField, TimeInterval
 
 from .espass_plotter import EsPassPlotter
 
