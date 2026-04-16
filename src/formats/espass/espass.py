@@ -110,9 +110,9 @@ class EsPass():
 
 
 class EsPassAdapter(DigitalPass):
-    def __init__(self, pkpass):
+    def __init__(self, espass):
         super().__init__()
-        self.__adaptee = pkpass
+        self.__adaptee = espass
 
     def adaptee(self):
         return self.__adaptee
