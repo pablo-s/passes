@@ -53,8 +53,8 @@ class EsPass():
         timespan_dicts = self.__data\
             .get_list('validTimespans')
 
-        for dict in timespan_dicts:
-            timespan = TimeInterval.from_iso_strings(dict['from'], dict['to'])
+        for timespan_dict in timespan_dicts:
+            timespan = TimeInterval.from_iso_strings(timespan_dict['from'], timespan_dict['to'])
             self.__validity_time_intervals.append(timespan)
 
 
