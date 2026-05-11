@@ -177,7 +177,17 @@ template $PassesWindow : Adw.ApplicationWindow
                                         }
                                     }
 
-                                    content: $PassWidget pass_widget{};
+                                    content: Gtk.ScrolledWindow
+                                    {
+                                        hscrollbar-policy: never;
+                                        child: $PassWidget pass_widget
+                                        {
+                                            margin-start: 12;
+                                            margin-end: 12;
+                                            margin-top: 12;
+                                            margin-bottom: 12;
+                                        };
+                                    };
                                 }
                             };
 
