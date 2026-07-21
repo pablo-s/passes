@@ -62,6 +62,8 @@ class PersistenceManager:
     def save_pass_data(self, pass_data, file_name):
         with tempfile.NamedTemporaryFile() as temp_pass_file:
             temp_pass_file.write(pass_data)
+            temp_pass_file.flush()
+            os.fsync(temp_pass_file.fileno())
 
             pass_file_path = os.path.join(tempfile.gettempdir(), str(temp_pass_file.name))
             pass_file = Gio.File.new_for_path(pass_file_path)
