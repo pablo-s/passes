@@ -43,7 +43,7 @@ class Application(Adw.Application):
 
     def __init__(self):
         super().__init__(application_id=Application.ID,
-                         flags=Gio.ApplicationFlags.FLAGS_NONE)
+                         flags=Gio.ApplicationFlags.HANDLES_OPEN)
 
         self.__file_chooser = None
         self.__persistence = PersistenceManager()
@@ -79,6 +79,12 @@ class Application(Adw.Application):
 
     def do_startup(self):
         Adw.Application.do_startup(self)
+
+    def do_open(self, files, _n_files, _hint):
+        self.do_activate()
+
+        for pass_file in files:
+            self.import_pass(pass_file)
 
     def import_pass(self, pass_file):
         try:
