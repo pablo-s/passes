@@ -15,6 +15,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import hashlib
+
 from gi.repository import Gdk, Gtk
 
 from passes.digital_pass import Barcode, Color, Currency, Date, DigitalPass, \
@@ -277,9 +279,11 @@ class PKPassAdapter(DigitalPass):
         return self.__adaptee.relevant_date()
 
     def unique_identifier(self):
-        return '.'.join([self.__adaptee.pass_type_identifier(),
-                         self.__adaptee.serial_number(),
-                         self.format()])
+        identifier = '.'.join([self.__adaptee.pass_type_identifier(),
+                               self.__adaptee.serial_number(),
+                               self.format()])
+        return '{}.{}'.format(hashlib.sha256(identifier.encode()).hexdigest(),
+                              self.format())
 
     def voided(self):
         return self.__adaptee.voided()
