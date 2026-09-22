@@ -1,3 +1,4 @@
 *.json~
 .flatpak-builder
 /subprojects/blueprint-compiler
+__pycache__/

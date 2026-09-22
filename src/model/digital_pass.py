@@ -68,6 +68,9 @@ class DigitalPass(GObject.GObject):
     def is_updatable(self):
         raise NotImplementedError()
 
+    def logo_text(self):
+        return None
+
     @classmethod
     def mime_type(cls):
         raise NotImplementedError()
@@ -344,6 +347,21 @@ class Date:
         Creates a Date corresponding to the given ISO 8601 formatted string
         """
 
+        # GLib only accepts full date/times. If only a date is given
+        # (e.g. '2026-09-22'), interpret it as midnight local time.
+        if 'T' not in string and 't' not in string:
+            try:
+                year, month, day = string.split('-')[0:3]
+                date = GLib.DateTime.new_local(int(year), int(month), int(day),
+                                               0, 0, 0)
+            except (ValueError, TypeError):
+                date = None
+
+            if not date:
+                raise ValueError('Invalid ISO 8601 date: %s' % string)
+
+            return Date(date)
+
         # Include hours and seconds if they have not been specified.
         # Why? DateTime.new_from_iso8601 does not accept times without them.
 
@@ -368,6 +386,7 @@ class Date:
             break
 
         date = GLib.DateTime.new_from_iso8601(string)
+
         return Date(date)
 
     @classmethod

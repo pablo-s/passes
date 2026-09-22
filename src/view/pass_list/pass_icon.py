@@ -25,9 +25,9 @@ class PassIcon(Gtk.Box):
 
     __gtype_name__ = 'PassIcon'
 
-    BORDER_RADIUS = 6
-    BORDER_WIDTH = 0
     ICON_SIZE = 45
+    BORDER_RADIUS = 6
+    BORDER_WIDTH = 5
 
     def __init__(self):
         super().__init__()
@@ -36,6 +36,8 @@ class PassIcon(Gtk.Box):
 
         self.props.height_request = PassIcon.ICON_SIZE + PassIcon.BORDER_WIDTH
         self.props.width_request = PassIcon.ICON_SIZE + PassIcon.BORDER_WIDTH
+
+        self.__badge_text = None
 
     def __draw_background(self, snapshot):
         if not self.__background_color:
@@ -49,7 +51,7 @@ class PassIcon(Gtk.Box):
         rounded_rectangle.init_from_rect(rectangle, PassIcon.BORDER_RADIUS)
 
         snapshot.push_rounded_clip(rounded_rectangle)
-        snapshot.append_color(self.__background_color, rectangle)
+        snapshot.append_color(self.__background_color.as_gdk_rgba(), rectangle)
         snapshot.pop()
 
     def __draw_icon(self, snapshot):
@@ -67,7 +69,11 @@ class PassIcon(Gtk.Box):
             .init_from_rect(rectangle,
                             PassIcon.BORDER_RADIUS - PassIcon.BORDER_WIDTH)
 
-        texture = self.__image.as_texture()
+        image = self.__image
+        if hasattr(image, 'as_texture'):
+            texture = image.as_texture()
+        else:
+            texture = image
         texture_height = texture.get_height()
         texture_width = texture.get_width()
         scale = (PassIcon.ICON_SIZE) / max(texture_width, texture_height)
@@ -110,19 +116,66 @@ class PassIcon(Gtk.Box):
 
         return Color(*background_color) if background_color else None
 
-    def do_snapshot(self, snapshot):
-        self.__draw_background(snapshot)
-        self.__draw_icon(snapshot)
+    def __draw_badge(self, snapshot):
+        if self.__image or not self.__badge_text:
+            return
 
-    def set_background_color(self, color):
-        bg_color = self.__guess_background_color()
-        if not bg_color:
-            bg_color = color
+        if PassIcon.ICON_SIZE <= 0:
+            return
 
-        self.__background_color = bg_color.as_gdk_rgba()
+        rectangle = Graphene.Rect()
+        rectangle.init(PassIcon.BORDER_WIDTH,
+                       PassIcon.BORDER_WIDTH,
+                       PassIcon.ICON_SIZE - PassIcon.BORDER_WIDTH,
+                       PassIcon.ICON_SIZE - PassIcon.BORDER_WIDTH)
+
+        cr = snapshot.append_cairo(rectangle)
+
+        from gi.repository import Pango, PangoCairo
+
+        layout = PangoCairo.create_layout(cr)
+        layout.set_text(self.__badge_text, -1)
+        layout.set_font_description(Pango.FontDescription
+                                    .from_string('Sans 10'))
+
+        ink, logical = layout.get_pixel_extents()
+        text_w = logical.width
+        text_h = logical.height
+
+        # Zentrierte, abgerundete Plakette mit dem Text
+        bw, bh = text_w + 16, text_h + 8
+        bx = (PassIcon.ICON_SIZE - bw) / 2
+        by = (PassIcon.ICON_SIZE - bh) / 2
+
+        cr.new_path()
+        radius = 6
+        cr.move_to(bx + radius, by)
+        cr.arc(bx + bw - radius, by + radius, radius, -1.5708, 0)
+        cr.arc(bx + bw - radius, by + bh - radius, radius, 0, 1.5708)
+        cr.arc(bx + radius, by + bh - radius, radius, 1.5708, 3.14159)
+        cr.arc(bx + radius, by + radius, radius, 3.14159, 4.71239)
+        cr.close_path()
+        cr.set_source_rgba(0.08, 0.08, 0.08, 0.9)
+        cr.fill()
+
+        cr.move_to(bx + 8, by + 4)
+        cr.set_source_rgba(1, 1, 1, 1)
+        PangoCairo.show_layout(cr, layout)
+        cr.stroke()
+
+    def set_badge_text(self, text):
+        self.__badge_text = text
         self.queue_draw()
 
     def set_image(self, image):
         self.__image = image
         self.queue_draw()
 
+    def set_background_color(self, color):
+        self.__background_color = color
+        self.queue_draw()
+
+    def do_snapshot(self, snapshot):
+        self.__draw_background(snapshot)
+        self.__draw_icon(snapshot)
+        self.__draw_badge(snapshot)
