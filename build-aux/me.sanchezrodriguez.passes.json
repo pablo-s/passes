@@ -9,7 +9,11 @@
         "--share=ipc",
         "--socket=fallback-x11",
         "--device=dri",
-        "--socket=wayland"
+        "--device=all",
+        "--socket=wayland",
+        "--talk-name=org.freedesktop.portal.Desktop",
+        "--talk-name=org.freedesktop.portal.Camera",
+        "--talk-name=org.freedesktop.portal.Screenshot"
     ],
     "cleanup" : [
         "/include",
@@ -24,6 +28,11 @@
     ],
     "modules" : [
         "zint.json",
+        "python3-scikit-build-core.json",
+        "python3-nanobind.json",
+        "python3-zxing-cpp.json",
+        "python3-pybind11.json",
+        "python3-pillow.json",
         {
             "name" : "passes",
             "builddir" : true,

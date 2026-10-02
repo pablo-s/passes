@@ -33,13 +33,30 @@ class PassRow(Gtk.ListBoxRow):
 
     def __init__(self, a_pass):
         super().__init__()
-        self.__pass = a_pass
 
+        from .airline_logo import AirlineLogoFetcher
+
+        self.__pass = a_pass
+        self.__header_type = None
         self.__header_text = ''
         self.__sorting_criteria = None
 
         if a_pass.icon():
             self.icon.set_image(a_pass.icon())
+
+        elif a_pass.logo_text():
+            self.icon.set_badge_text(a_pass.logo_text())
+
+            def _on_success(texture):
+                self.icon.set_image(texture)
+                return GLib.SOURCE_REMOVE
+
+            def _on_failure():
+                return GLib.SOURCE_REMOVE
+
+            AirlineLogoFetcher.fetch(a_pass.logo_text(),
+                                     on_success=_on_success,
+                                     on_failure=_on_failure)
 
         if a_pass.background_color():
             self.icon.set_background_color(a_pass.background_color())

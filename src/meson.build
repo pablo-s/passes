@@ -59,6 +59,7 @@ passes_sources = [
   '__init__.py',
   'view/barcode_dialog.py',
   'view/barcode_widget.py',
+  'view/import_dialog.py',
   'view/pass_list/pass_icon.py',
   'view/pass_list/pass_list.py',
   'view/pass_list/pass_row_header.py',
@@ -72,7 +73,9 @@ passes_sources = [
   'model/digital_pass_list_store.py',
   'model/digital_pass_updater.py',
   'model/digital_pass.py',
+  'model/airline_logo.py',
   'model/persistence.py',
+  'model/qr_code_reader.py',
   'model/settings.py',
 ]
 
@@ -88,6 +91,11 @@ addons_sources = [
   'formats/pkpass/pkpass.py',
   'formats/pkpass/pkpass_factory.py',
   'formats/pkpass/pkpass_plotter.py',
+  'formats/qr_boarding/__init__.py',
+  'formats/qr_boarding/qr_boarding.py',
+  'formats/qr_boarding/qr_boarding_factory.py',
+  'formats/qr_boarding/qr_boarding_plotter.py',
+  'model/airline_logo.py',
 ]
 
 install_data(addons_sources, install_dir: moduledir, preserve_path: true)

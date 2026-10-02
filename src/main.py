@@ -15,7 +15,10 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import os
 import sys
+import tempfile
+
 import gi
 
 gi.require_version('Gdk', '4.0')
@@ -31,6 +34,7 @@ from .digital_pass_updater import PassUpdater
 from .persistence import FileAlreadyImported, PersistenceManager
 from .settings import Settings
 from .window import PassesWindow
+from .import_dialog import ImportDialog, CameraDialog
 
 # Import all formats that can be imported
 from .formats import *
@@ -41,19 +45,28 @@ class Application(Adw.Application):
     # Application ID
     ID = 'me.sanchezrodriguez.passes'
 
+    # Delay after hiding the window before opening the screenshot portal,
+    # so the compositor has time to process the unmap.
+    SCREENSHOT_HIDE_DELAY_MS = 200
+
     def __init__(self):
         super().__init__(application_id=Application.ID,
                          flags=Gio.ApplicationFlags.FLAGS_NONE)
 
         self.__file_chooser = None
+        self.__screenshot_bus = None
+        self.__screenshot_subscribe_id = None
         self.__persistence = PersistenceManager()
         self.__settings = Settings(Application.ID)
         self.__pass_list = DigitalPassListStore(self.__settings)
 
         pass_files = self.__persistence.load_pass_files()
         for pass_file in pass_files:
-            digital_pass = PassFactory.create(pass_file)
-            self.__pass_list.insert(digital_pass)
+            try:
+                digital_pass = PassFactory.create(pass_file)
+                self.__pass_list.insert(digital_pass)
+            except FileIsNotAPass:
+                pass
 
     def do_activate(self):
         window = self.props.active_window
@@ -105,6 +118,8 @@ class Application(Adw.Application):
                     self.window().show_pass_on_select(True)
 
         except Exception as exception:
+            import traceback
+            traceback.print_exc(file=sys.stderr)
             self.window().show_toast(str(exception))
 
     def on_about_action(self, widget, __):
@@ -135,6 +150,18 @@ class Application(Adw.Application):
         self.window().show_pass_on_select(True)
 
     def on_import_action(self, widget, __):
+        dialog = ImportDialog(self._on_import_option_chosen)
+        dialog.present(self.window())
+
+    def _on_import_option_chosen(self, option):
+        if option == 0:
+            self._open_file_chooser()
+        elif option == 1:
+            self._import_from_screenshot()
+        elif option == 2:
+            self._import_from_camera()
+
+    def _open_file_chooser(self):
         if not self.__file_chooser:
             self.__file_chooser = Gtk.FileDialog.new()
 
@@ -156,6 +183,91 @@ class Application(Adw.Application):
 
         self.__file_chooser.open(parent = self.window(),
                                  callback = self._on_file_chosen)
+
+    def _import_from_screenshot(self):
+        self.window().hide()
+        GLib.timeout_add(Application.SCREENSHOT_HIDE_DELAY_MS,
+                         self._start_screenshot_portal)
+
+    def _start_screenshot_portal(self):
+        try:
+            bus = Gio.bus_get_sync(Gio.BusType.SESSION, None)
+
+            proxy = Gio.DBusProxy.new_sync(
+                bus,
+                Gio.DBusProxyFlags.NONE,
+                None,
+                'org.freedesktop.portal.Desktop',
+                '/org/freedesktop/portal/desktop',
+                'org.freedesktop.portal.Screenshot',
+                None
+            )
+
+            result = proxy.call_sync(
+                'Screenshot',
+                GLib.Variant('(sa{sv})', ('', {'interactive': GLib.Variant('b', True)})),
+                Gio.DBusCallFlags.NONE,
+                -1,
+                None
+            )
+
+            request_path = result.get_child_value(0).get_string()
+
+            self.__screenshot_bus = bus
+            self.__screenshot_subscribe_id = bus.signal_subscribe(
+                'org.freedesktop.portal.Desktop',
+                'org.freedesktop.portal.Request',
+                'Response',
+                request_path,
+                None,
+                Gio.DBusSignalFlags.NONE,
+                self._on_screenshot_response)
+
+        except Exception as exception:
+            self.window().present()
+            self.window().show_toast(str(exception))
+
+        return GLib.SOURCE_REMOVE
+
+    def _on_screenshot_response(self, connection, sender_name, object_path,
+                                interface_name, signal_name, parameters):
+        if signal_name != 'Response':
+            return
+
+        self.window().present()
+        response = parameters.get_child_value(0).get_uint32()
+        results = parameters.get_child_value(1)
+
+        if response == 0:
+            uri = results.lookup_value('uri', GLib.VariantType('s'))
+            if uri:
+                uri_str = uri.get_string()
+
+                screenshot_file = Gio.File.new_for_uri(uri_str)
+
+                fd, temp_path = tempfile.mkstemp(suffix='.png')
+                os.close(fd)
+
+                screenshot_file.copy(
+                    Gio.File.new_for_path(temp_path),
+                    Gio.FileCopyFlags.OVERWRITE,
+                    None, None, None)
+
+                self.import_pass(Gio.File.new_for_path(temp_path))
+
+        bus = self.__screenshot_bus
+        if bus and self.__screenshot_subscribe_id:
+            bus.signal_unsubscribe(self.__screenshot_subscribe_id)
+            self.__screenshot_bus = None
+            self.__screenshot_subscribe_id = None
+
+    def _import_from_camera(self):
+        dialog = CameraDialog(self._on_camera_captured)
+        dialog.present(self.window())
+
+    def _on_camera_captured(self, temp_path):
+        image_file = Gio.File.new_for_path(temp_path)
+        self.import_pass(image_file)
 
     def on_preferences_action(self, widget, _):
         print('app.preferences action activated')
