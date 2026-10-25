@@ -65,5 +65,5 @@ class EsPassFactory(PassFactory):
                 pass_data = json.loads(json_content)
 
         espass = EsPass(pass_data, pass_images)
-        return EsPassAdapter(espass)
+        return [EsPassAdapter(espass)]
 

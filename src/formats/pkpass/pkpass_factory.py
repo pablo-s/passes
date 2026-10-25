@@ -18,6 +18,7 @@
 import json
 import re
 import zipfile
+import io
 
 from gi.repository import Gdk, GObject, Gtk
 
@@ -38,19 +39,48 @@ class PkPassFactory(PassFactory):
         try:
             path = pass_file.get_path()
             archive = zipfile.ZipFile(path, 'r')
-            return 'pass.json' in archive.namelist()
+            names = archive.namelist()
+            if 'pass.json' in names:
+                return True
+            if any(name.lower().endswith('.pkpass') for name in names):
+                return True
 
         except zipfile.BadZipFile as exception:
             return False
 
+        return False
+
     @classmethod
     def create(cls, pass_file):
+        """Create PKPassAdapter objects from a .pkpass or .pkpasses file."""
+        path = pass_file.get_path()
+
+        with zipfile.ZipFile(path, 'r') as archive:
+            names = archive.namelist()
+
+            if 'pass.json' in names:
+                return [cls._create_pkpass(archive)]
+
+            pkpasses = []
+
+            for file_name in names:
+                if not file_name.lower().endswith('.pkpass'):
+                    continue
+
+                pass_bytes = archive.read(file_name)
+
+                with zipfile.ZipFile(io.BytesIO(pass_bytes), 'r') as pkpass_archive:
+                    pkpasses.append(cls._create_pkpass(pkpass_archive))
+
+            return pkpasses
+
+
+    @classmethod
+    def _create_pkpass(cls, archive):
         """
-        Create a PKPass object from pass file
+        Create a PKPass object from pass archive
         """
 
-        path = pass_file.get_path()
-        archive = zipfile.ZipFile(path, 'r')
         manifest_text = archive.read('manifest.json')
         manifest = json.loads(manifest_text)
 
