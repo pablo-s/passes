@@ -254,8 +254,8 @@ class PKPassAdapter(DigitalPass):
         return self.__adaptee.expiration_date()
 
     @classmethod
-    def file_extension(cls):
-        return '.pkpass'
+    def file_extensions(cls):
+        return ['.pkpass', '.pkpasses']
 
     def format(self):
         return 'pkpass'

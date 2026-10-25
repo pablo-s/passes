@@ -48,10 +48,11 @@ class PassFactory:
         for factory in cls.__subclasses__():
             if factory.understands(pass_file):
                 # Create and configure the digital pass
-                digital_pass = factory.create(pass_file)
-                path = pass_file.get_path()
-                digital_pass.set_path(path)
-                return digital_pass
+                digital_passes = factory.create(pass_file)
+                for digital_pass in digital_passes:
+                    path = pass_file.get_path()
+                    digital_pass.set_path(path)
+                return digital_passes
 
         raise FileIsNotAPass()
 

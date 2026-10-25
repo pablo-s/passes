@@ -145,8 +145,8 @@ class EsPassAdapter(DigitalPass):
         return latest_expiration_date
 
     @classmethod
-    def file_extension(cls):
-        return '.espass'
+    def file_extensions(cls):
+        return ['.espass']
 
     def format(self):
         return 'espass'

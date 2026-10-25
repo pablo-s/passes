@@ -48,7 +48,7 @@ class DigitalPass(GObject.GObject):
         raise NotImplementedError()
 
     @classmethod
-    def file_extension(cls):
+    def file_extensions(cls):
         raise NotImplementedError()
 
     def format(self):
@@ -93,7 +93,7 @@ class DigitalPass(GObject.GObject):
 
     @classmethod
     def supported_file_extensions(cls):
-        return [pass_type.file_extension() for pass_type in cls.__subclasses__()]
+        return [ext for pass_type in cls.__subclasses__() for ext in pass_type.file_extensions()]
 
 
 class Barcode:

@@ -52,8 +52,9 @@ class Application(Adw.Application):
 
         pass_files = self.__persistence.load_pass_files()
         for pass_file in pass_files:
-            digital_pass = PassFactory.create(pass_file)
-            self.__pass_list.insert(digital_pass)
+            digital_passes = PassFactory.create(pass_file)
+            for digital_pass in digital_passes:
+                self.__pass_list.insert(digital_pass)
 
     def do_activate(self):
         window = self.props.active_window
@@ -82,27 +83,28 @@ class Application(Adw.Application):
 
     def import_pass(self, pass_file):
         try:
-            digital_pass = PassFactory.create(pass_file)
+            digital_passes = PassFactory.create(pass_file)
+            for digital_pass in digital_passes:
 
-            if digital_pass in self.__pass_list:
-                self.window().show_toast("Pass already imported")
-                return
+                if digital_pass in self.__pass_list:
+                    self.window().show_toast("Pass already imported")
+                    continue
 
-            stored_file = self.__persistence\
-                .save_pass_file(pass_file, digital_pass.unique_identifier())
+                stored_file = self.__persistence\
+                    .save_pass_file(pass_file, digital_pass.unique_identifier())
 
-            digital_pass.set_path(stored_file.get_path())
-            self.__pass_list.insert(digital_pass)
+                digital_pass.set_path(stored_file.get_path())
+                self.__pass_list.insert(digital_pass)
 
-            if self.window():
-                if not self.__pass_list.is_empty():
-                    self.window().show_welcome_view(False)
+                if self.window():
+                    if not self.__pass_list.is_empty():
+                        self.window().show_welcome_view(False)
 
-                found, index = self.__pass_list.find(digital_pass)
-                if found:
-                    self.window().show_pass_on_select(False)
-                    self.window().select_pass_at_index(index)
-                    self.window().show_pass_on_select(True)
+                    found, index = self.__pass_list.find(digital_pass)
+                    if found:
+                        self.window().show_pass_on_select(False)
+                        self.window().select_pass_at_index(index)
+                        self.window().show_pass_on_select(True)
 
         except Exception as exception:
             self.window().show_toast(str(exception))
@@ -140,8 +142,9 @@ class Application(Adw.Application):
 
             supported_types_filter = Gtk.FileFilter()
             supported_types_filter.set_name(_('Supported passes'))
-            for mime_type in DigitalPass.supported_mime_types():
-                supported_types_filter.add_mime_type(mime_type)
+
+            for file_extension in DigitalPass.supported_file_extensions():
+                supported_types_filter.add_suffix(file_extension.lstrip('.'))
 
             all_files_filter = Gtk.FileFilter()
             all_files_filter.set_name(_('All files'))
@@ -178,7 +181,7 @@ class Application(Adw.Application):
                                 selected_pass.unique_identifier() + '.tmp')
 
             # Create a new pass from the saved file
-            digital_pass = PassFactory.create(stored_file)
+            digital_pass = PassFactory.create(stored_file)[0]
 
             # Replace the old pass with the new one
             self.__pass_list.insert(digital_pass)
